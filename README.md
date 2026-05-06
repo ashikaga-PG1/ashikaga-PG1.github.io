@@ -9,6 +9,7 @@
   - `index.html` : ツールの本体。
   - `webapp/` : スクリプト、スタイル、講義データ（Markdown/画像）。
   - `secret/` : **制限エリア (Answer Area)**。課題の解説・解答を掲載。
+  - `review.html` : **Knowledge Review**。要点まとめリファレンス。
 - `game/` : **Circuit Quest**。電気回路の不具合を修正するデバッグゲーム。
 
 ## 🔑 アクセス制御

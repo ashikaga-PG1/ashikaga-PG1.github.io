@@ -238,6 +238,22 @@ body {
     color: var(--accent-gold);
 }
 
+.review-card:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 30px 60px rgba(139, 92, 246, 0.15);
+}
+.review-card .card-icon {
+    background: rgba(139, 92, 246, 0.1);
+    color: #a78bfa;
+}
+.review-card:hover .card-icon {
+    background: #8b5cf6;
+    color: white;
+}
+.review-card:hover .action-label {
+    color: #a78bfa;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .entry-grid {
