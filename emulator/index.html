@@ -3792,6 +3792,7 @@ return main();
   const bindEvents = () => {
     el.sessionSelect.addEventListener("change", () => {
       applySampleSelection(Number(el.sessionSelect.value));
+      resetCurrentSample();
     });
 
     el.sampleSelect.addEventListener("change", () => {
@@ -3799,6 +3800,7 @@ return main();
       renderGuide();
       renderEditor();
       renderDiagnostics();
+      resetCurrentSample();
       schedulePersist();
     });
 
