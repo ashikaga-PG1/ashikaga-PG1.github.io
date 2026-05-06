@@ -200,7 +200,7 @@ code {
 }
 
 .panel-head {
-  padding: 24px 24px 16px;
+  padding: 16px 20px 12px;
 }
 
 .panel-head--row {
@@ -227,9 +227,9 @@ code {
 }
 
 .panel--sessions,
-.panel--samples,
-.panel--guide {
-  min-height: 400px;
+.panel--sessions,
+.panel--samples {
+  min-height: auto;
 }
 
 .panel--sessions {
@@ -274,13 +274,19 @@ code {
 }
 
 .sample-select-wrap {
-  padding: 20px;
+  padding: 12px 20px 16px;
   background: rgba(16, 185, 129, 0.05);
   border-top: 1px solid var(--border);
   display: flex;
-  align-items: center;
-  gap: 15px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 20px;
   flex-shrink: 0;
+}
+
+.select-item {
+  flex: 1;
+  min-width: 280px;
 }
 
 .sample-select-wrap label {
@@ -511,12 +517,14 @@ code {
           <p>まず講義回を選び、次に実行するサンプルを選択してください。</p>
         </div>
         <div class="sample-select-wrap">
-          <label class="status-label">ステップ 1: 講義を選択</label>
-          <select id="sessionSelect" class="sample-select-cemu"></select>
-        </div>
-        <div class="sample-select-wrap">
-          <label class="status-label">ステップ 2: サンプルコードを選択</label>
-          <select id="sampleSelect" class="sample-select-cemu"></select>
+          <div class="select-item">
+            <label class="status-label">ステップ 1: 講義を選択</label>
+            <select id="sessionSelect" class="sample-select-cemu"></select>
+          </div>
+          <div class="select-item">
+            <label class="status-label">ステップ 2: サンプルコードを選択</label>
+            <select id="sampleSelect" class="sample-select-cemu"></select>
+          </div>
         </div>
       </aside>
 
