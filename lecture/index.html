@@ -267,6 +267,25 @@
   }
 
   /* Tabs */
+  .secret-notice {
+    margin: 16px 0;
+    padding: 16px 20px;
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    border-radius: 12px;
+    color: #fde047;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .secret-notice.hidden { display: none; }
+  .secret-notice a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
   .toolbar { display: flex; gap: 10px; margin-bottom: 24px; }
   .tab {
     padding: 10px 20px;
@@ -443,7 +462,8 @@
         <div class="session-head">
           <div class="session-kicker">Current Session</div>
           <h1 id="sessionTitle"></h1>
-          <p class="session-note">各回の資料、確認テスト、サンプル実験を切り替えながら学習できます。</p>
+          <div id="secretNotice" class="secret-notice hidden"></div>
+          <p class="session-note">各回の資料、サンプル実験を切り替えながら学習できます。</p>
           <div id="textbookRefs" class="textbookrefs"></div>
           <div class="toolbar">
             <button id="tabSlides" class="tab active">スライド</button>

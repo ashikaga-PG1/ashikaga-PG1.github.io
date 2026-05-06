@@ -63,7 +63,7 @@ window.__COURSE__ = {
     {
       "id": "session04",
       "no": 4,
-      "title": "電気回路とプログラミング1（演習課題1）",
+      "title": "演習課題1（出題編）：オームの法則",
       "slides": [],
       "assignment": {
         "title": "演習課題1：オームの法則（for/if）",
@@ -88,7 +88,7 @@ window.__COURSE__ = {
     {
       "id": "session05",
       "no": 5,
-      "title": "演習課題1の解説と復習（課題1）",
+      "title": "演習課題1（解説編）：制限エリアで公開",
       "slides": [],
       "assignment": {
         "title": "演習課題1 解説：オームの法則（for/if）",
@@ -120,7 +120,7 @@ window.__COURSE__ = {
     {
       "id": "session07",
       "no": 7,
-      "title": "電気回路とプログラミング2（演習課題2）",
+      "title": "演習課題2（出題編）：配列でオームの法則",
       "slides": [],
       "assignment": {
         "title": "演習課題2：配列でオームの法則（scanfなし）",
@@ -142,7 +142,7 @@ window.__COURSE__ = {
     {
       "id": "session08",
       "no": 8,
-      "title": "演習課題2の解説と復習（課題2）",
+      "title": "演習課題2（解説編）：制限エリアで公開",
       "slides": [],
       "assignment": {
         "title": "演習課題2：配列でオームの法則（scanfなし）",
@@ -179,7 +179,7 @@ window.__COURSE__ = {
     {
       "id": "session10",
       "no": 10,
-      "title": "電気回路とプログラミング3（演習課題3）",
+      "title": "演習課題3（出題編）：関数でオームの法則",
       "slides": [],
       "assignment": {
         "title": "演習課題3：関数でオームの法則（配列版・scanfなし）",
@@ -204,7 +204,7 @@ window.__COURSE__ = {
     {
       "id": "session11",
       "no": 11,
-      "title": "演習課題3の解説と復習（課題3）",
+      "title": "演習課題3（解説編）：制限エリアで公開",
       "slides": [],
       "assignment": {
         "title": "演習課題3（解説）：関数でオームの法則（配列版）",
@@ -239,7 +239,7 @@ window.__COURSE__ = {
     {
       "id": "session13",
       "no": 13,
-      "title": "電気回路とプログラミング4（演習課題4）",
+      "title": "演習課題4（出題編）：ファイル入力でデータ処理",
       "slides": [],
       "assignment": {
         "title": "演習課題4：ファイル入力でデータ処理（ファイル入出力）",
@@ -262,7 +262,7 @@ window.__COURSE__ = {
     {
       "id": "session14",
       "no": 14,
-      "title": "演習課題4の解説と復習（課題4）",
+      "title": "演習課題4（解説編）：制限エリアで公開",
       "slides": [],
       "assignment": {
         "title": "演習課題4：ファイル入力でデータ処理（ファイル入出力）",

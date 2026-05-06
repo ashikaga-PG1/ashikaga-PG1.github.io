@@ -130,6 +130,7 @@
         sampleReset: $('sampleReset'),
         sampleCopy: $('sampleCopy'),
         sampleCopyMsg: $('sampleCopyMsg'),
+        secretNotice: $('secretNotice'),
       };
 
       this.state = {
@@ -355,6 +356,17 @@
       if (this.el.sessionTitle) {
         this.el.sessionTitle.textContent = `${labelOf(s)}：${s.title}`;
       }
+
+      if (this.el.secretNotice) {
+        if (this.isExplainSession(s)) {
+          const kNo = (s.no === 5 ? 1 : s.no === 8 ? 2 : s.no === 11 ? 3 : s.no === 14 ? 4 : 0);
+          this.el.secretNotice.innerHTML = `<span>🔒 この回は <b>課題 ${kNo}</b> の解説回です。詳細な解答・解説は <a href="secret/index.html">こちら（制限エリア）</a> から確認できます。</span>`;
+          this.el.secretNotice.classList.remove('hidden');
+        } else {
+          this.el.secretNotice.classList.add('hidden');
+        }
+      }
+
       this.renderTextbookRefs();
       this.renderSlides();
       this.renderQuiz();

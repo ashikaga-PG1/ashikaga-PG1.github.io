@@ -222,6 +222,22 @@ body {
     color: var(--accent-gold);
 }
 
+.secret-card:hover {
+    border-color: rgba(245, 158, 11, 0.6);
+    box-shadow: 0 30px 60px rgba(245, 158, 11, 0.15);
+}
+.secret-card .card-icon {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--accent-gold);
+}
+.secret-card:hover .card-icon {
+    background: var(--accent-gold);
+    color: white;
+}
+.secret-card:hover .action-label {
+    color: var(--accent-gold);
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .entry-grid {
