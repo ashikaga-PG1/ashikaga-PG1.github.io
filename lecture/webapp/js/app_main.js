@@ -299,9 +299,17 @@
 
     tryUnlock() {
       const pass = this.el.lockPass.value;
-      // Fixed password for now, can be changed later
-      if (pass === 'pg1') {
-        const s = this.state.session;
+      const s = this.state.session;
+      if (!s) return;
+
+      const passMap = {
+        5: 'aB7xR9m2',
+        8: 'kP4tW5nQ',
+        11: 'vE2sY8zG',
+        14: 'hJ9cM6dL'
+      };
+
+      if (pass === passMap[s.no]) {
         this.state.unlockedSessions[s.no] = true;
         this.hideLockScreen();
         this.setTab('slides');

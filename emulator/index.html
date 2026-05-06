@@ -126,44 +126,6 @@ code {
   font-weight: 700;
 }
 
-.session-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 20px;
-  flex: 1;
-  overflow-y: auto;
-  min-height: 0;
-}
-
-.session-button {
-  flex: 0 0 calc(20% - 8px);
-  min-width: 140px;
-  padding: 12px;
-  text-align: left;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.session-button strong {
-  display: block;
-  font-size: 0.75rem;
-  opacity: 0.6;
-  margin-bottom: 2px;
-}
-
-.session-button span {
-  font-size: 0.9rem;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-}
 
 .status-card {
   display: flex;
@@ -548,9 +510,12 @@ code {
 	          <h2>講義 ＞ サンプルコードを選択</h2>
           <p>まず講義回を選び、次に実行するサンプルを選択してください。</p>
         </div>
-	        <nav id="sessionList" class="session-list" aria-label="講義一覧"></nav>
         <div class="sample-select-wrap">
-          <label class="status-label">サンプルコードを選択</label>
+          <label class="status-label">ステップ 1: 講義を選択</label>
+          <select id="sessionSelect" class="sample-select-cemu"></select>
+        </div>
+        <div class="sample-select-wrap">
+          <label class="status-label">ステップ 2: サンプルコードを選択</label>
           <select id="sampleSelect" class="sample-select-cemu"></select>
         </div>
       </aside>
@@ -3221,7 +3186,7 @@ return main();
     saveButton: document.getElementById("saveButton"),
     sessionsPanel: document.getElementById("sessionsPanel"),
     samplesPanel: document.getElementById("samplesPanel"),
-    sessionList: document.getElementById("sessionList"),
+    sessionSelect: document.getElementById("sessionSelect"),
     sampleSelect: document.getElementById("sampleSelect"),
     samplePanelTitle: document.getElementById("samplePanelTitle"),
     samplePanelDesc: document.getElementById("samplePanelDesc"),
@@ -3512,16 +3477,16 @@ return main();
 
   const renderSessions = () => {
     const sessions = getSessions();
-    el.sessionList.innerHTML = sessions
-      .map(
-        (session) => `
-          <button class="session-button ${session.sessionNo === state.currentSessionNo ? "is-active" : ""}" data-session="${session.sessionNo}">
-            <strong>第${session.sessionNo}回</strong><br>
-            <span>${session.title}</span>
-          </button>
-        `,
-      )
-      .join("");
+    if (!el.sessionSelect) return;
+
+    el.sessionSelect.innerHTML = "";
+    sessions.forEach((session) => {
+      const opt = document.createElement("option");
+      opt.value = session.sessionNo;
+      opt.textContent = `第${session.sessionNo}回：${session.title}`;
+      if (session.sessionNo === state.currentSessionNo) opt.selected = true;
+      el.sessionSelect.appendChild(opt);
+    });
   };
 
   const renderSamples = () => {
@@ -3769,10 +3734,8 @@ return main();
   };
 
   const bindEvents = () => {
-    el.sessionList.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-session]");
-      if (!button) return;
-      applySampleSelection(Number(button.dataset.session));
+    el.sessionSelect.addEventListener("change", () => {
+      applySampleSelection(Number(el.sessionSelect.value));
     });
 
     el.sampleSelect.addEventListener("change", () => {
