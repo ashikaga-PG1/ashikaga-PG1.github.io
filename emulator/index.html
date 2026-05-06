@@ -126,11 +126,43 @@ code {
   font-weight: 700;
 }
 
-.status-card {
-  padding: 14px 20px;
-  border-radius: 18px;
+.session-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+}
+
+.session-button {
+  flex: 0 0 calc(20% - 8px);
+  min-width: 140px;
+  padding: 12px;
+  text-align: left;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.session-button strong {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-bottom: 2px;
+}
+
+.session-button span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.status-card {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -188,9 +220,8 @@ code {
 }
 
 .workspace {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
   margin-top: 24px;
 }
@@ -249,21 +280,11 @@ code {
   grid-column: 1 / -1;
 }
 
-.session-list,
 .sample-list,
 .guide-scroll {
   padding: 0 20px 24px;
 }
 
-.session-list {
-  display: grid;
-  gap: 10px;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-}
-
-.session-button,
 .sample-button {
   width: 100%;
   padding: 14px 18px;
@@ -276,13 +297,11 @@ code {
   transition: all 0.2s ease;
 }
 
-.session-button:hover,
 .sample-button:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-.session-button.is-active,
 .sample-button.is-active {
   border-color: var(--accent);
   background: rgba(16, 185, 129, 0.1);
@@ -290,16 +309,23 @@ code {
 }
 
 .sample-select-wrap {
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border-top: 1px solid var(--border);
+  padding: 0 20px 20px;
+  background: transparent;
+  border-top: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.sample-select-wrap label {
+  white-space: nowrap;
 }
 
 .sample-select-cemu {
-  width: 100%;
-  margin-top: 8px;
-  padding: 12px 14px;
-  border-radius: 12px;
+  max-width: 400px;
+  margin-top: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
   background: #0b1220;
   color: #fff;
   border: 1px solid var(--border);
@@ -342,6 +368,21 @@ code {
   border: 1px solid var(--border);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.02);
+}
+
+.guide-section ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+.guide-section li {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .guide-section {

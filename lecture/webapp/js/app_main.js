@@ -145,6 +145,7 @@
         isPlaying: false,
         playInterval: null,
         bpMap: {},
+        revealedAnswer: false,
       };
 
       // Ensure marked is configured to support fenced code blocks and language classes
@@ -870,6 +871,7 @@ async renderMermaid(mdBox) {
       // reset runtime
       this.state.traceIdx = -1;
       // show first
+      this.state.revealedAnswer = false;
       this.showSample();
     }
 
@@ -899,6 +901,28 @@ async renderMermaid(mdBox) {
       });
 
       this.renderSampleTrace(sample);
+
+      // Reveal logic for Answer samples in Explanation sessions
+      const isAnswer = String(sample.title || '').includes('解答例');
+      const shouldHide = this.isExplainSession(this.state.session) && isAnswer;
+
+      if (shouldHide && !this.state.revealedAnswer) {
+        const overlay = document.createElement('div');
+        overlay.className = 'answer-reveal-overlay';
+        overlay.innerHTML = `
+          <div class="reveal-content">
+            <p>このプログラムの解答はスライドに記載されています。<br>自分で考えてから確認しましょう。</p>
+            <button class="reveal-button">解答を表示して動かす</button>
+          </div>
+        `;
+        overlay.querySelector('.reveal-button').onclick = () => {
+          overlay.remove();
+          this.state.revealedAnswer = true;
+        };
+        // Position relative for overlay
+        this.el.sampleCode.style.position = 'relative';
+        this.el.sampleCode.appendChild(overlay);
+      }
     }
 
 	    updateSampleControls(sample, trace) {
