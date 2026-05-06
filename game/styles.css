@@ -19,6 +19,12 @@
   --accent-cyan: #22d3ee;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
 /* Global Nav */
 .global-nav {
   display: flex;
@@ -299,6 +305,9 @@ h3 {
 
 .mission-rail {
   padding: 12px;
+  height: calc(100vh - 126px);
+  overflow-y: auto;
+  flex-shrink: 0;
 }
 
 .rail-head,
