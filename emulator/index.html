@@ -508,8 +508,6 @@ code {
         </div>
         <div class="guide-scroll">
           <div id="sampleMeta" class="meta-grid"></div>
-          <div id="guideNotes" class="guide-section"></div>
-          <div id="assignmentBox" class="guide-section"></div>
           <div id="functionList" class="guide-section"></div>
         </div>
       </section>
@@ -3180,8 +3178,6 @@ return main();
     guideTitle: document.getElementById("guideTitle"),
     guideSubtitle: document.getElementById("guideSubtitle"),
     sampleMeta: document.getElementById("sampleMeta"),
-    guideNotes: document.getElementById("guideNotes"),
-    assignmentBox: document.getElementById("assignmentBox"),
     functionList: document.getElementById("functionList"),
     editorTitle: document.getElementById("editorTitle"),
     editorSubtitle: document.getElementById("editorSubtitle"),
@@ -3527,34 +3523,6 @@ return main();
         <strong>${sample.features.length}</strong>
       </article>
     `;
-
-    const notes = [...(sample.notes || [])];
-    if (sample.features.includes("fopen")) {
-      notes.push("ブラウザ版では data.txt / result.txt の代わりに input.csv / output.csv を使います。");
-    }
-    if (sample.mode === "edit-run") {
-      notes.push("??? を埋めてからチェック・実行してください。");
-    }
-    notes.push("file:// モードでは Worker を使わず、実行はメインスレッドで行います。");
-
-    el.guideNotes.innerHTML = `
-      <h3>メモ</h3>
-      ${notes.length ? `<ul>${notes.map((note) => `<li>${note}</li>`).join("")}</ul>` : "<p>このサンプルに固有の注意はありません。</p>"}
-    `;
-
-    if (session.assignment) {
-      const specs = Array.isArray(session.assignment.specs) ? session.assignment.specs : [];
-      el.assignmentBox.innerHTML = `
-        <h3>課題情報</h3>
-        <p>${session.assignment.task || "この回はサンプル中心です。"}</p>
-        ${specs.length ? `<ul>${specs.map((item) => `<li>${item}</li>`).join("")}</ul>` : ""}
-      `;
-    } else {
-      el.assignmentBox.innerHTML = `
-        <h3>学習ポイント</h3>
-        <p>この回はサンプルコードを動かしながら基本文法を確認します。</p>
-      `;
-    }
 
     el.functionList.innerHTML = `
       <h3>使用関数・機能</h3>
