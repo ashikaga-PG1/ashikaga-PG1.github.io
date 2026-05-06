@@ -128,6 +128,7 @@
         sampleStep: $('sampleStep'),
         sampleRun: $('sampleRun'),
         sampleReset: $('sampleReset'),
+        samplePlay: $('samplePlay'),
         sampleCopy: $('sampleCopy'),
         sampleCopyMsg: $('sampleCopyMsg'),
         secretNotice: $('secretNotice'),
@@ -140,6 +141,9 @@
         md: { slides: [], idx: 0, cache: new Map(), loadedNo: null },
         traceIdx: -1,
         activeTab: 'slides',
+        currentCode: '',
+        isPlaying: false,
+        playInterval: null,
       };
 
       // Ensure marked is configured to support fenced code blocks and language classes
@@ -253,6 +257,7 @@
       this.state.slideIdx = 0;
       this.state.md.idx = 0;
       this.state.traceIdx = -1;
+      this.stopSamplePlay();
 
       this.highlightSession();
       this.renderAll();
@@ -782,10 +787,12 @@ async renderMermaid(mdBox) {
 
     varsToTable(vars) {
       const entries = Object.entries(vars || {});
-      if (entries.length === 0) return '<div class="small">（表示する変数がありません）</div>';
+      if (entries.length === 0) return '<div style="padding:20px;color:var(--muted);font-size:0.85rem;">（表示する変数がありません）</div>';
 
-      let html = '<table><thead><tr><th>変数</th><th>値</th></tr></thead><tbody>';
-      for (const [k, v] of entries) html += `<tr><td>${escapeHtml(k)}</td><td>${escapeHtml(v)}</td></tr>`;
+      let html = '<table><thead><tr><th>変数 (Name)</th><th>値 (Value)</th></tr></thead><tbody>';
+      for (const [k, v] of entries) {
+        html += `<tr><td><span class="var-name">${escapeHtml(k)}</span></td><td><span class="var-val">${escapeHtml(v)}</span></td></tr>`;
+      }
       html += '</tbody></table>';
       return html;
     }
@@ -864,9 +871,20 @@ async renderMermaid(mdBox) {
         return;
       }
 
-	      this.el.sampleCode.textContent = sample.code || '';
-	      this.renderSampleTrace(sample);
-	    }
+      // Split code into lines for highlighting
+      this.state.currentCode = String(sample.code || '');
+      const lines = this.state.currentCode.split('\n');
+      this.el.sampleCode.innerHTML = '';
+      lines.forEach((line, i) => {
+        const div = document.createElement('div');
+        div.className = 'code-line-wrapper';
+        div.dataset.line = String(i);
+        div.textContent = line || ' ';
+        this.el.sampleCode.appendChild(div);
+      });
+
+      this.renderSampleTrace(sample);
+    }
 
 	    updateSampleControls(sample, trace) {
 	      const readOnlySample = this.isTaskSession(this.state.session);
@@ -938,8 +956,20 @@ async renderMermaid(mdBox) {
           this.el.sampleStepInfo.textContent = `Step ${shownIdx + 1}/${total}` + (at ? `: ${at}` : '');
         }
 	      }
-	      this.el.varsTable.innerHTML = this.varsToTable(step.vars || {});
-	      this.updateSampleControls(sample, trace);
+      this.el.varsTable.innerHTML = this.varsToTable(step.vars || {});
+      
+      // Line highlighting
+      if (this.el.sampleCode) {
+        const lineNo = (step && step.line != null) ? Number(step.line) : -1;
+        const wrappers = this.el.sampleCode.querySelectorAll('.code-line-wrapper');
+        wrappers.forEach((w, i) => {
+          const isActive = (i === lineNo);
+          w.classList.toggle('active', isActive);
+          if (isActive) w.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        });
+      }
+
+      this.updateSampleControls(sample, trace);
 
 	    }
     // -------------------------
@@ -956,6 +986,7 @@ async renderMermaid(mdBox) {
         map[k].tab?.classList.toggle('active', isActive);
         map[k].view?.classList.toggle('hidden', !isActive);
       }
+      this.stopSamplePlay();
       this.state.activeTab = name;
       this.renderHeroOverview();
     }
@@ -1058,8 +1089,9 @@ toggleTheme() {
       this.el.sampleStep?.addEventListener('click', () => this.sampleStep());
       this.el.sampleRun?.addEventListener('click', () => this.sampleRun());
       this.el.sampleReset?.addEventListener('click', () => this.sampleReset());
+      this.el.samplePlay?.addEventListener('click', () => this.toggleSamplePlay());
       this.el.sampleCopy?.addEventListener('click', async () => {
-        const ok = await copyToClipboard(this.el.sampleCode?.textContent || '');
+        const ok = await copyToClipboard(this.state.currentCode || '');
         toast('sampleCopyMsg', ok ? 'コピーしました' : 'コピーに失敗しました');
       });
 
@@ -1094,6 +1126,7 @@ toggleTheme() {
 
       this.state.traceIdx = clamp(this.state.traceIdx + 1, -1, trace.length - 1);
       this.renderSampleTrace(sample);
+      return (this.state.traceIdx >= trace.length - 1);
     }
     sampleRun() {
       if (this.isTaskSession(this.state.session)) return;
@@ -1130,12 +1163,46 @@ toggleTheme() {
     }
     sampleReset() {
       if (this.isTaskSession(this.state.session)) return;
+      this.stopSamplePlay();
       const sample = this.getSelectedSample();
       if (!sample) return;
 
       this.state.traceIdx = -1;
       if (this.el.sampleOut) this.el.sampleOut.textContent = '';
       this.renderSampleTrace(sample);
+    }
+
+    toggleSamplePlay() {
+      if (this.state.isPlaying) {
+        this.stopSamplePlay();
+      } else {
+        this.startSamplePlay();
+      }
+    }
+
+    startSamplePlay() {
+      if (this.isTaskSession(this.state.session)) return;
+      const sample = this.getSelectedSample();
+      if (!sample || !sample.trace) return;
+
+      this.state.isPlaying = true;
+      if (this.el.samplePlay) this.el.samplePlay.textContent = '停止';
+      
+      this.state.playInterval = setInterval(() => {
+        const atEnd = this.sampleStep();
+        if (atEnd) {
+          this.stopSamplePlay();
+        }
+      }, 800); // 0.8s step
+    }
+
+    stopSamplePlay() {
+      this.state.isPlaying = false;
+      if (this.el.samplePlay) this.el.samplePlay.textContent = '自動再生';
+      if (this.state.playInterval) {
+        clearInterval(this.state.playInterval);
+        this.state.playInterval = null;
+      }
     }
 
     // -------------------------

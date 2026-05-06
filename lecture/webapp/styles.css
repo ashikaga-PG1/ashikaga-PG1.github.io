@@ -388,3 +388,239 @@ button:focus-visible{box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 35%, 
 [data-theme="dark"] #viewSlides .code code{
   color:inherit !important;
 }
+
+/* =============================
+   Visualizer-Style Sample Tab
+   ============================= */
+.sample-toolbar-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.sample-select-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sample-select-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sample-select-modern {
+  background: #0f172a;
+  color: white;
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  min-width: 240px;
+}
+
+.sample-btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.sample-btn-modern {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--fg);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sample-btn-modern:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.sample-btn-modern.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.sample-btn-modern.primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.sample-visualizer-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  height: calc(100vh - 420px);
+  min-height: 500px;
+}
+
+.sample-panel {
+  background: var(--panel);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.panel-header {
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-body {
+  flex: 1;
+  overflow: auto;
+  padding: 0;
+}
+
+.step-badge {
+  background: var(--accent);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  letter-spacing: 0;
+}
+
+/* Code Panel */
+.code-viewer {
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  padding: 20px;
+  background: #0f172a;
+  height: 100%;
+  overflow: auto;
+}
+
+.code-content {
+  margin: 0;
+  white-space: pre;
+  font-family: inherit;
+}
+
+.code-line-wrapper {
+  padding: 0 10px 0 30px;
+  position: relative;
+  border-left: 3px solid transparent;
+  min-height: 1.6em;
+  white-space: pre;
+}
+
+.code-line-wrapper.active {
+  background: rgba(59, 130, 246, 0.15);
+  border-left-color: var(--accent);
+}
+
+.code-line-wrapper.active::before {
+  content: "▶";
+  position: absolute;
+  left: 10px;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+/* Right Column */
+.sample-right-cols {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel-vars {
+  flex: 1;
+}
+
+.panel-console {
+  height: 180px;
+}
+
+/* Console Content */
+.console-content {
+  margin: 0;
+  padding: 16px 20px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  background: #020617;
+  height: 100%;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+/* Variables Table Override */
+#varsTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#varsTable th {
+  text-align: left;
+  padding: 10px 20px;
+  font-size: 0.7rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+}
+
+#varsTable td {
+  padding: 10px 20px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#varsTable tr:last-child td {
+  border-bottom: none;
+}
+
+.var-name { color: #818cf8; }
+.var-val { color: #f472b6; font-weight: 600; }
+
+.copy-toast {
+  font-size: 0.8rem;
+  color: #34d399;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+@media (max-width: 1200px) {
+  .sample-visualizer-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .sample-right-cols {
+    height: auto;
+  }
+  .panel-console {
+    height: 240px;
+  }
+}

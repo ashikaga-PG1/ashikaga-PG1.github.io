@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="webapp/styles.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Outfit:wght@400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --shell-max: 1360px;
@@ -490,25 +490,46 @@
 
 
         <section id="viewSample" class="view hidden">
-          <div class="row">
-            <select id="sampleSelect"></select>
-            <button id="sampleStep" class="sample-action-button sample-action-button--primary">ステップ</button>
-            <button id="sampleRun" class="sample-action-button sample-action-button--primary">最後まで</button>
-            <button id="sampleReset" class="sample-action-button">リセット</button>
-            <button id="sampleCopy" class="sample-action-button">コピー</button>
-            <span id="sampleCopyMsg" class="small"></span>
+          <div class="sample-toolbar-new">
+            <div class="sample-select-group">
+              <label for="sampleSelect">Select Sample:</label>
+              <select id="sampleSelect" class="sample-select-modern"></select>
+            </div>
+            <div class="sample-btn-group">
+              <button id="sampleReset" class="sample-btn-modern">リセット</button>
+              <button id="samplePlay" class="sample-btn-modern primary">自動再生</button>
+              <button id="sampleStep" class="sample-btn-modern primary">ステップ実行</button>
+              <button id="sampleRun" class="sample-btn-modern">最後まで</button>
+              <button id="sampleCopy" class="sample-btn-modern">コピー</button>
+            </div>
+            <span id="sampleCopyMsg" class="copy-toast"></span>
           </div>
 
-          <div class="grid2">
-            <div>
-              <div class="label">サンプルコード（編集不可）</div>
-              <pre id="sampleCode" class="code"></pre>
+          <div class="sample-visualizer-grid">
+            <div class="sample-panel panel-code">
+              <div class="panel-header">
+                <span>C Program</span>
+                <span id="sampleStepInfo" class="step-badge"></span>
+              </div>
+              <div class="panel-body">
+                <pre id="sampleCode" class="code-content"></pre>
+              </div>
             </div>
-            <div>
-              <div class="label labelRow"><span>出力</span><span id="sampleStepInfo" class="small stepInfo"></span></div>
-              <pre id="sampleOut" class="code"></pre>
-              <div class="label">変数</div>
-              <div id="varsTable"></div>
+            
+            <div class="sample-right-cols">
+              <div class="sample-panel panel-vars">
+                <div class="panel-header">Variables</div>
+                <div class="panel-body">
+                  <div id="varsTable"></div>
+                </div>
+              </div>
+              
+              <div class="sample-panel panel-console">
+                <div class="panel-header">Console Output</div>
+                <div class="panel-body">
+                  <pre id="sampleOut" class="console-content"></pre>
+                </div>
+              </div>
             </div>
           </div>
         </section>
