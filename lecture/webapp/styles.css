@@ -536,15 +536,16 @@ button:focus-visible{box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 35%, 
 }
 
 .code-line-wrapper.active {
-  background: rgba(59, 130, 246, 0.15);
-  border-left-color: var(--accent);
+  background: var(--accent);
+  color: white;
+  border-left-color: #fff;
 }
 
 .code-line-wrapper.active::before {
   content: "▶";
   position: absolute;
   left: 10px;
-  color: var(--accent);
+  color: white;
   font-size: 0.8rem;
 }
 

@@ -144,6 +144,7 @@
         currentCode: '',
         isPlaying: false,
         playInterval: null,
+        bpMap: {},
       };
 
       // Ensure marked is configured to support fenced code blocks and language classes
@@ -831,6 +832,19 @@ async renderMermaid(mdBox) {
       return n === 4 || n === 7 || n === 10 || n === 13;
     }
 
+    buildBreakpointMap(code) {
+      const map = {};
+      const lines = String(code || '').split('\n');
+      lines.forEach((line, i) => {
+        const match = line.match(/\/\/\s*@(bp|breakpoint)\s+(.+)$/);
+        if (match) {
+          const label = match[2].trim();
+          map[label] = i;
+        }
+      });
+      return map;
+    }
+
     getSelectedSample() {
       const samples = this.getSamples();
       const idx = Number(this.el.sampleSelect?.value || 0);
@@ -873,6 +887,7 @@ async renderMermaid(mdBox) {
 
       // Split code into lines for highlighting
       this.state.currentCode = String(sample.code || '');
+      this.state.bpMap = this.buildBreakpointMap(this.state.currentCode);
       const lines = this.state.currentCode.split('\n');
       this.el.sampleCode.innerHTML = '';
       lines.forEach((line, i) => {
@@ -960,7 +975,12 @@ async renderMermaid(mdBox) {
       
       // Line highlighting
       if (this.el.sampleCode) {
-        const lineNo = (step && step.line != null) ? Number(step.line) : -1;
+        const atLabel = (step && (step.at || step.event || step.note)) ? String(step.at || step.event || step.note) : '';
+        let lineNo = (step && step.line != null) ? Number(step.line) : -1;
+        if (lineNo < 0 && atLabel && this.state.bpMap[atLabel] != null) {
+          lineNo = this.state.bpMap[atLabel];
+        }
+
         const wrappers = this.el.sampleCode.querySelectorAll('.code-line-wrapper');
         wrappers.forEach((w, i) => {
           const isActive = (i === lineNo);
