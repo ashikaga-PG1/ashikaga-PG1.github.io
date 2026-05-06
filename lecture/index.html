@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>プログラミング１（2026年度）授業資料ツール</title>
+<link rel="stylesheet" href="webapp/styles.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --shell-max: 1360px;
+    --hero-ink: #f8fafc;
+    --accent: #3b82f6;
+    --accent-cyan: #22d3ee;
+    --panel-bg: rgba(15, 23, 42, 0.6);
+    --border-soft: rgba(255, 255, 255, 0.1);
+    --text-muted: #94a3b8;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: radial-gradient(circle at top left, #0a192f 0%, #030a16 100%);
+    background-attachment: fixed;
+    color: var(--hero-ink);
+    margin: 0;
+  }
+
+  /* Topbar / Hero Section */
+  .topbar { 
+    width: min(var(--shell-max), calc(100vw - 32px));
+    margin: 20px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero-main {
+    padding: 34px 40px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(3, 10, 22, 0.9) 100%);
+    border: 1px solid var(--border-soft);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-side {
+    padding: 24px 30px;
+    background: var(--panel-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-soft);
+    border-radius: 24px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .hero-info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-side-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-cyan);
+    margin: 0;
+  }
+
+  .hero-side-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .hero-side-desc {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .hero-ctrl-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid var(--border-soft);
+  }
+
+  .hero-session-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-picker-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+
+  .hero-picker-controls {
+    display: flex;
+    gap: 6px;
+  }
+
+  .hero-session-select {
+    flex: 1;
+    background: #0f172a;
+    color: white;
+    border: 1px solid var(--border-soft);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .hero-button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .hero-button-primary { background: var(--accent); color: white; }
+  .hero-button-secondary { background: rgba(255, 255, 255, 0.05); color: var(--hero-ink); border: 1px solid var(--border-soft); }
+  .hero-button:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+  .back-portal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--hero-ink);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-soft);
+    transition: all 0.2s;
+  }
+
+  .back-portal:hover {
+    background: var(--accent);
+    transform: translateX(-4px);
+  }
+
+  /* Global Nav */
+  .global-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+    background: rgba(3, 10, 22, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-size: 0.85rem;
+  }
+  .nav-left .nav-link {
+    color: var(--hero-ink);
+    text-decoration: none;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  .nav-left .nav-link:hover { opacity: 1; color: var(--accent); }
+  .nav-center { font-family: 'Outfit', sans-serif; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; }
+  .nav-right { font-weight: 700; color: var(--accent-cyan); }
+
+  .title {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    letter-spacing: -0.02em;
+  }
+
+  /* Layout Shell */
+  .layout-shell { padding: 20px 16px 40px; }
+  .layout {
+    width: min(var(--shell-max), calc(100vw - 32px));
+    margin: 0 auto;
+    min-height: calc(100vh - 220px);
+    display: flex;
+    background: var(--panel-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-soft);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 280px;
+    border-right: 1px solid var(--border-soft);
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .nav-intro {
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  #sessionList button {
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    margin-bottom: 6px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  #sessionList button:hover {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--hero-ink);
+  }
+
+  #sessionList button.active {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  }
+
+  /* Main Content */
+  .main { flex: 1; padding: 32px; overflow-y: auto; }
+  .session-head { margin-bottom: 24px; }
+  #sessionTitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Tabs */
+  .secret-notice {
+    margin: 16px 0;
+    padding: 16px 20px;
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    border-radius: 12px;
+    color: #fde047;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .secret-notice.hidden { display: none; }
+  .secret-notice a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .toolbar { display: flex; gap: 10px; margin-bottom: 24px; }
+  .tab {
+    padding: 10px 20px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-soft);
+    color: var(--text-muted);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  /* Views */
+  .view {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 24px;
+    padding: 24px;
+    border: 1px solid var(--border-soft);
+  }
+
+  .slidewrap {
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .code, pre {
+    background: #0f172a !important;
+    color: #e2e8f0 !important;
+    border: 1px solid var(--border-soft) !important;
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  /* Components */
+  .metric-card {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 99px;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-soft);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+  @media (max-width: 1000px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-soft); }
+  }
+</style>
+<script>
+  window.__PROG1_WEBAPP_PREFIX__ = "webapp/";
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)'], ['$', '$']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']]
+    },
+    options: {
+      skipHtmlTags: ['script','noscript','style','textarea','pre','code']
+    }
+  };
+</script>
+<script id="MathJax-script" defer src="webapp/js/mathjax/es5/tex-mml-chtml.js"></script>
+<script>
+(function(){
+  const sleep = (ms)=>new Promise(r=>setTimeout(r, ms));
+  const getTypesetTargets = () => {
+    const ids = ['slideMd', 'quizBox', 'varsTable', 'textbookRefs'];
+    const nodes = ids
+      .map((id) => document.getElementById(id))
+      .filter((n) => !!n);
+    return nodes.length ? nodes : [document.body];
+  };
+
+  const typeset = async () => {
+    for(let i=0;i<40;i++){
+      if (window.MathJax && typeof MathJax.typesetPromise === "function") break;
+      await sleep(50);
+    }
+    if (!(window.MathJax && typeof MathJax.typesetPromise === "function")) return;
+
+    try{
+      const targets = getTypesetTargets();
+      if (MathJax.startup && MathJax.startup.promise) await MathJax.startup.promise;
+      if (typeof MathJax.typesetClear === "function") MathJax.typesetClear(targets);
+      await MathJax.typesetPromise(targets);
+    }catch(e){
+      console.warn("MathJax typeset failed:", e);
+    }
+  };
+
+  let t = null;
+  const kick = () => {
+    if (t) clearTimeout(t);
+    t = setTimeout(typeset, 120);
+  };
+
+  window.addEventListener("load", () => {
+    kick();
+    const obs = new MutationObserver(kick);
+    const observed = getTypesetTargets();
+    observed.forEach((node) => obs.observe(node, { childList:true, subtree:true }));
+  });
+})();
+</script>
+</head>
+<body>
+<nav class="global-nav">
+  <div class="nav-left">
+    <a href="../index.html" class="nav-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Portal
+    </a>
+  </div>
+  <div class="nav-center">Programming 1 Digital Platform</div>
+  <div class="nav-right">Lecture Tool</div>
+</nav>
+<div id="app">
+  <header class="topbar hero">
+    <section class="hero-main">
+      <p class="hero-eyebrow">Built for Programming I 2026</p>
+      <div class="title">プログラミング１（2026年度）授業資料ツール</div>
+      <p class="hero-lead">授業スライド、確認テスト、サンプル実験をひとつの画面にまとめ、各回を往復しながら学べるように整理したビューです。基礎から回路例、関数、配列、ファイル入出力まで流れを追いやすくしています。</p>
+    </section>
+    <aside class="hero-side">
+      <div class="hero-info-group">
+        <p class="hero-side-label">Learning Status</p>
+        <h2 id="heroFocusTitle" class="hero-side-title">現在地: 回を選択してください</h2>
+        <p id="heroFocusDesc" class="hero-side-desc">スライド、確認テスト、サンプル実験を切り替えながら学習を進めましょう。</p>
+      </div>
+
+      <div class="hero-ctrl-group">
+        <div class="hero-session-picker">
+          <label class="hero-picker-label" for="heroSessionSelect">Session Selector</label>
+          <div class="hero-picker-controls">
+            <button id="heroPrevSession" type="button" class="hero-button hero-button-secondary" style="flex:0; min-width:44px;">←</button>
+            <select id="heroSessionSelect" class="hero-session-select"></select>
+            <button id="heroNextSession" type="button" class="hero-button hero-button-secondary" style="flex:0; min-width:44px;">→</button>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button id="heroOpenCurrent" type="button" class="hero-button hero-button-primary">今の回を開く</button>
+          <button id="heroResetProgress" type="button" class="hero-button hero-button-secondary">最初に戻る</button>
+        </div>
+      </div>
+    </aside>
+  </header>
+
+
+  <div class="layout-shell">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="nav-intro">
+          <p class="nav-label">Course Schedule</p>
+          <h3 class="nav-title">講義一覧</h3>
+        </div>
+        <ul id="sessionList"></ul>
+      </aside>
+      <main class="main">
+        <div class="session-head">
+          <div class="session-kicker">Current Session</div>
+          <h1 id="sessionTitle"></h1>
+          <div id="secretNotice" class="secret-notice hidden"></div>
+          <p class="session-note">各回の資料、サンプル実験を切り替えながら学習できます。</p>
+          <div id="textbookRefs" class="textbookrefs"></div>
+          <div class="toolbar">
+            <button id="tabSlides" class="tab active">スライド</button>
+            <button id="tabSample" class="tab">サンプル実験</button>
+          </div>
+        </div>
+
+        <section id="viewSlides" class="view">
+          <div class="subhead">
+            <div>
+              <button id="prevSlide">◀</button>
+              <span id="slideCounter"></span>
+              <button id="nextSlide">▶</button>
+              <button id="slideFullscreen" class="btn">全画面</button>
+              <button id="themeToggle" class="themebtn" title="ライト/ダーク切替" aria-label="ライト/ダーク切替">🌙</button>
+            </div>
+            <div class="small"></div>
+          </div>
+          <div class="slidewrap">
+            <img id="slideImg" alt="slide"/>
+            <div id="slideMd" class="mdslide hidden"></div>
+          </div>
+        </section>
+
+
+        <section id="viewSample" class="view hidden">
+          <div class="row">
+            <select id="sampleSelect"></select>
+            <button id="sampleStep" class="sample-action-button sample-action-button--primary">ステップ</button>
+            <button id="sampleRun" class="sample-action-button sample-action-button--primary">最後まで</button>
+            <button id="sampleReset" class="sample-action-button">リセット</button>
+            <button id="sampleCopy" class="sample-action-button">コピー</button>
+            <span id="sampleCopyMsg" class="small"></span>
+          </div>
+
+          <div class="grid2">
+            <div>
+              <div class="label">サンプルコード（編集不可）</div>
+              <pre id="sampleCode" class="code"></pre>
+            </div>
+            <div>
+              <div class="label labelRow"><span>出力</span><span id="sampleStepInfo" class="small stepInfo"></span></div>
+              <pre id="sampleOut" class="code"></pre>
+              <div class="label">変数</div>
+              <div id="varsTable"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</div>
+<script src="webapp/js/marked.min.js"></script>
+<script src="webapp/js/mermaid.min.js"></script>
+<script src="webapp/data/bundle.js"></script>
+<script src="webapp/assets/md_bundle.js"></script>
+<script src="webapp/js/app_utils.js"></script>
+<script src="webapp/js/app_data.js"></script>
+<script src="webapp/js/app_main.js"></script>
+<script src="webapp/app.js"></script>
+</body>
+</html>

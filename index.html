@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming 1 Digital Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="portal-shell">
+        <header class="hero-section">
+            <p class="eyebrow">Academic Year 2026</p>
+            <h1 class="main-title">Programming 1<span class="sub-title">Digital Platform</span></h1>
+            <p class="hero-desc">講義資料の閲覧から回路診断ゲームまで、C言語学習のための統合プラットフォームへようこそ。</p>
+        </header>
+
+        <nav class="entry-grid">
+            <!-- 1. Lecture Tool -->
+            <a href="lecture/index.html" class="portal-card lecture-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18 18.247 18.477 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>Lecture Tool</h2>
+                    <p>講義スライドやサンプルコードの閲覧。課題の確認もこちらから行います。</p>
+                    <span class="action-label">資料を閲覧する &rarr;</span>
+                </div>
+            </a>
+
+            <!-- 2. Circuit Quest -->
+            <a href="game/index.html" class="portal-card game-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>Circuit Quest</h2>
+                    <p>電気回路のデバッグをテーマにしたC言語学習ゲーム。各チャプターをクリアしましょう。</p>
+                    <span class="action-label">クエストを開始する &rarr;</span>
+                </div>
+            </a>
+
+            <!-- 3. Answer Area (Secret) -->
+            <a href="lecture/secret/index.html" class="portal-card secret-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>Answer Area</h2>
+                    <p>課題の解説・解答例を掲載している制限エリアです。講義内パスワードが必要です。</p>
+                    <span class="action-label">制限エリアに入る &rarr;</span>
+                </div>
+            </a>
+        </nav>
+
+        <footer class="portal-footer">
+            <p>&copy; 2026 Department of Electrical and Electronic Engineering. All rights reserved.</p>
+        </footer>
+    </main>
+</body>
+</html>

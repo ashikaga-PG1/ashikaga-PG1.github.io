@@ -1,0 +1,22884 @@
+window.__COURSE__ = {
+  "schemaVersion": 2,
+  "title": "プログラミング１（2026年度）授業資料ツール",
+  "sessions": [
+    {
+      "id": "sessionPrep",
+      "no": -1,
+      "displayLabel": "準備回",
+      "title": "お知らせ（授業運用・提出方法など）",
+      "textbook_refs": [],
+      "slides": []
+    },
+    {
+      "id": "session00",
+      "no": 0,
+      "title": "環境構築（Windows / macOS / VSCode / gcc）",
+      "slides": [],
+      "assignment": null,
+      "textbook_refs": [],
+      "displayLabel": "第0回"
+    },
+    {
+      "id": "session01",
+      "no": 1,
+      "title": "プログラムの基本",
+      "slides": [],
+      "assignment": null,
+      "textbook_refs": [
+        "ch1",
+        "1-1",
+        "1-2",
+        "1-3"
+      ],
+      "displayLabel": "第1回"
+    },
+    {
+      "id": "session02",
+      "no": 2,
+      "title": "C言語の基本（変数・出力）",
+      "slides": [],
+      "assignment": null,
+      "textbook_refs": [
+        "ch2",
+        "2-1",
+        "2-2",
+        "2-3",
+        "2-4"
+      ]
+    },
+    {
+      "id": "session03",
+      "no": 3,
+      "title": "条件分岐と繰り返し（if / for / while）",
+      "slides": [],
+      "assignment": null,
+      "textbook_refs": [
+        "ch3",
+        "3-1",
+        "3-2",
+        "3-3"
+      ]
+    },
+    {
+      "id": "session04",
+      "no": 4,
+      "title": "演習課題1（出題編）：オームの法則",
+      "slides": [],
+      "assignment": {
+        "title": "演習課題1：オームの法則（for/if）",
+        "task": "scanfを使わずに、抵抗値を変化させて電流を計算し、安全判定（OK/WARN）するプログラムを作成する。",
+        "specs": [
+          "電圧 V=5.0[V]、許容電流 Imax=0.60[A] とする。",
+          "for文で抵抗 R=5,10,15,...,50[Ω] を順に処理する。",
+          "各Rについて I=V/R を計算し、1行ずつ表示する（小数3桁）。",
+          "I>Imax なら WARN、それ以外は OK と表示する。",
+          "OK の件数を数えて最後に OK=○ / 10 を表示する。"
+        ],
+        "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 1; k <= 10; k++){\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if( ??? ){\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    }else{\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}\n",
+        "hints": "ヒント：I=V/R。小数表示は printf(\"%.3f\", 値) を使います。"
+      },
+      "textbook_refs": [
+        "ch3",
+        "3-1",
+        "3-2",
+        "3-3"
+      ]
+    },
+    {
+      "id": "session05",
+      "no": 5,
+      "title": "演習課題1（解説編）：制限エリアで公開",
+      "slides": [],
+      "assignment": {
+        "title": "演習課題1 解説：オームの法則（for/if）",
+        "task": "未完成コードの ??? を埋めて、仕様を満たす完成版にする。",
+        "specs": [
+          "TODOの ??? を埋めて完成させる。",
+          "計算式 I=V/R、判定 I>Imax、OK件数の更新を正しく実装する。",
+          "出力形式（改行含む）を仕様どおりに揃える。"
+        ],
+        "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 1; k <= 10; k++){\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if( ??? ){\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    }else{\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}\n",
+        "hints": "ヒント：I=V/R。小数表示は printf(\"%.3f\", 値) を使います。"
+      },
+      "textbook_refs": [
+        "ch1",
+        "ch2",
+        "ch3"
+      ]
+    },
+    {
+      "id": "session06",
+      "no": 6,
+      "title": "配列（一次元配列）",
+      "slides": [],
+      "assignment": null,
+      "textbook_refs": [
+        "3-4"
+      ]
+    },
+    {
+      "id": "session07",
+      "no": 7,
+      "title": "演習課題2（出題編）：配列でオームの法則",
+      "slides": [],
+      "assignment": {
+        "title": "演習課題2：配列でオームの法則（scanfなし）",
+        "task": "<p>抵抗値を配列で用意し、オームの法則 <b>I = V / R</b> で電流を計算します。<br>この回は <b>配列＋for＋if</b> がポイントです（<b>scanfは使いません</b>）。</p>",
+        "specs": [
+          "定数：V=5.0[V], Imax=0.60[A]",
+          "抵抗配列：R={5,10,15,20,25}（要素数5）",
+          "for文で I[k]=V/R[k] を計算して配列Iに格納する",
+          "if(I[k] > Imax) なら WARN、それ以外は OK を表示する",
+          "最後に OK件数 okCount を表示する"
+        ],
+        "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for(int k = 0; k < 5; k++){\n    I[k] = ???;\n  }\n// TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 0; k < 5; k++){\n    if(???){\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    }else{\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}\n",
+        "hints": "ヒント：配列の要素数は5（添字0〜4）。計算→格納→判定→表示→集計の順で書くと整理しやすい。"
+      },
+      "textbook_refs": [
+        "3-4"
+      ]
+    },
+    {
+      "id": "session08",
+      "no": 8,
+      "title": "演習課題2（解説編）：制限エリアで公開",
+      "slides": [],
+      "assignment": {
+        "title": "演習課題2：配列でオームの法則（scanfなし）",
+        "task": "<p>抵抗値を配列で用意し、オームの法則 <b>I = V / R</b> で電流を計算します。<br>この回は <b>配列＋for＋if</b> がポイントです（<b>scanfは使いません</b>）。</p>",
+        "specs": [
+          "定数：V=5.0[V], Imax=0.60[A]",
+          "抵抗配列：R={5,10,15,20,25}（要素数5）",
+          "for文で I[k]=V/R[k] を計算して配列Iに格納する",
+          "if(I[k] > Imax) なら WARN、それ以外は OK を表示する",
+          "最後に OK件数 okCount を表示する"
+        ],
+        "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for(int k = 0; k < 5; k++){\n    I[k] = ???;\n  }\n// TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 0; k < 5; k++){\n    if(???){\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    }else{\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}\n",
+        "hints": "ヒント：配列の要素数は5（添字0〜4）。計算→格納→判定→表示→集計の順で書くと整理しやすい。"
+      },
+      "textbook_refs": [
+        "ch1",
+        "ch2",
+        "ch3"
+      ]
+    },
+    {
+      "id": "session09",
+      "no": 9,
+      "title": "関数（引数・戻り値）",
+      "slides": [],
+      "assignment": null,
+      "textbook_refs": [
+        "ch4",
+        "4-1",
+        "4-2",
+        "4-3"
+      ]
+    },
+    {
+      "id": "session10",
+      "no": 10,
+      "title": "演習課題3（出題編）：関数でオームの法則",
+      "slides": [],
+      "assignment": {
+        "title": "演習課題3：関数でオームの法則（配列版・scanfなし）",
+        "task": "<p>電流計算を関数 <b>calcI(V,R)</b> に分け、mainから呼び出す形でプログラムを完成させてください。<br>入力は <b>scanf</b> を使わず、<b>配列</b>（V_list/R_list）を用いて複数ケースを処理します。</p>",
+        "specs": [
+          "関数 calcI(V,R) を作り、I = V / R を返す（Rのチェックはmain側）",
+          "V_list/R_list の3ケース分を for で処理して I を計算する",
+          "R<=0 の場合は \"R error\" を表示してスキップする",
+          "I を小数3桁で表示する",
+          "有効データの平均電流 avg を表示する（valid==0なら NA）"
+        ],
+        "starterCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(???) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(???) return a; // もし、a が b よりも小さければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};        //電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};        //抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = ???;        //TODO2-1: 電圧リストのk番目\n    double R = ???;        //TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = ???(maxI, I);       //TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);         //TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n",
+        "hints": "ヒント：配列の要素数N回だけ同じ処理を繰り返す。平均は sumI と valid を更新して最後に sumI/valid。"
+      },
+      "textbook_refs": [
+        "ch4",
+        "4-1",
+        "4-2",
+        "4-3"
+      ]
+    },
+    {
+      "id": "session11",
+      "no": 11,
+      "title": "演習課題3（解説編）：制限エリアで公開",
+      "slides": [],
+      "assignment": {
+        "title": "演習課題3（解説）：関数でオームの法則（配列版）",
+        "task": "<p>第10回の未完成コードを完成させた解答例を確認し、<b>関数</b>（引数・戻り値）と <b>配列＋for</b> の典型パターンを復習します。</p>",
+        "specs": [
+          "関数 calcI(V,R) を作り、I = V / R を返す（Rのチェックはmain側）",
+          "V_list/R_list の3ケース分を for で処理して I を計算する",
+          "R<=0 の場合は \"R error\" を表示してスキップする",
+          "I を小数3桁で表示する",
+          "有効データの平均電流 avg を表示する（valid==0なら NA）"
+        ],
+        "starterCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(???) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(???) return a; // もし、a が b よりも小さければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};        //電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};        //抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = ???;        //TODO2-1: 電圧リストのk番目\n    double R = ???;        //TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = ???(maxI, I);       //TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);         //TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n",
+        "hints": "ポイント：calcIは V/R を返す。表示は %.3f。sumI+=I, valid++。"
+      },
+      "textbook_refs": [
+        "ch4"
+      ]
+    },
+    {
+      "id": "session12",
+      "no": 12,
+      "title": "入出力（キーボード入力とファイル入出力）",
+      "slides": [],
+      "assignment": null,
+      "textbook_refs": [
+        "ch2",
+        "2-3",
+        "ch7",
+        "7-1"
+      ]
+    },
+    {
+      "id": "session13",
+      "no": 13,
+      "title": "演習課題4（出題編）：ファイル入力でデータ処理",
+      "slides": [],
+      "assignment": {
+        "title": "演習課題4：ファイル入力でデータ処理（ファイル入出力）",
+        "task": "<p>ファイル <b>data.txt</b> から (V, R) を読み込み、I=V/R を計算して表示します。</p><p>この回は <b>fopen / fscanf / fclose</b> がポイントです。</p>",
+        "specs": [
+          "data.txt を読み取りで開く。",
+          "result.txt を書き込みで開く。",
+          "while(fscanf(... )==2) で V と R を1行ずつ読み取り、I=V/R を計算する。",
+          "R<=0 の行は \"skip (R error)\" を表示してスキップする。",
+          "有効な行は result.txt に出力し、最後に平均 avg を表示する。"
+        ],
+        "starterCode": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name){\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name){\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout){\n  Stats st = {0.0, 0};\n  double V, R;\n\n// TODO2-1: 値をファイルから読み込み\n  while(???(fin, \"%lf %lf\", &V, &R) == 2){\n    if(R <= 0){\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st){\n  if(st.valid > 0) printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  else          printf(\"avg=NA\\n\");\n}\n\nint main(void){\n  const char *inName = \"data.txt\";\n  const char *outName = \"result.txt\";\n\n  FILE *fin = openInputFile(inName);\n  if(fin == NULL){\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if(fout == NULL){\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n\n  return 0;\n}",
+        "hints": "ヒント：while(fscanf(fp, \"%lf %lf\", &V, &R) == 2) が定番です。最後に fclose(fp) を忘れずに。"
+      },
+      "textbook_refs": [
+        "ch7",
+        "7-1"
+      ]
+    },
+    {
+      "id": "session14",
+      "no": 14,
+      "title": "演習課題4（解説編）：制限エリアで公開",
+      "slides": [],
+      "assignment": {
+        "title": "演習課題4：ファイル入力でデータ処理（ファイル入出力）",
+        "task": "<p>ファイル <b>data.txt</b> から (V, R) を読み込み、I=V/R を計算して表示します。</p><p>この回は <b>fopen / fscanf / fclose</b> がポイントです。</p>",
+        "specs": [
+          "data.txt を読み取りで開く。",
+          "result.txt を書き込みで開く。",
+          "while(fscanf(... )==2) で V と R を1行ずつ読み取り、I=V/R を計算する。",
+          "R<=0 の行は \"skip (R error)\" を表示してスキップする。",
+          "有効な行は result.txt に出力し、最後に平均 avg を表示する。"
+        ],
+        "starterCode": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name){\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name){\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout){\n  Stats st = {0.0, 0};\n  double V, R;\n\n// TODO2-1: 値をファイルから読み込み\n  while(???(fin, \"%lf %lf\", &V, &R) == 2){\n    if(R <= 0){\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st){\n  if(st.valid > 0) printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  else          printf(\"avg=NA\\n\");\n}\n\nint main(void){\n  const char *inName = \"data.txt\";\n  const char *outName = \"result.txt\";\n\n  FILE *fin = openInputFile(inName);\n  if(fin == NULL){\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if(fout == NULL){\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n\n  return 0;\n}",
+        "hints": "ヒント：while(fscanf(fp, \"%lf %lf\", &V, &R) == 2) が定番です。最後に fclose(fp) を忘れずに。"
+      },
+      "textbook_refs": [
+        "ch7"
+      ]
+    },
+    {
+      "id": "session15",
+      "no": 15,
+      "title": "総括：今後の学習へ（発展：ソート等）",
+      "slides": [],
+      "assignment": null,
+      "textbook_refs": [
+        "ch8",
+        "8-1",
+        "8-2",
+        "8-3"
+      ]
+    },
+    {
+      "id": "sessionRLC",
+      "no": 16,
+      "displayLabel": "第15+回",
+      "title": "RLC共振（RK4シミュレーション）",
+      "textbook_refs": [],
+      "slides": []
+    }
+  ],
+  "quizzes": {
+    "1": [
+      {
+        "type": "mcq",
+        "q": "C言語プログラムの実行が開始される関数はどれ？",
+        "choices": [
+          "start()",
+          "main()",
+          "printf()",
+          "init()"
+        ],
+        "answer": 0,
+        "explain": ": C言語では main 関数から処理が始まります。"
+      },
+      {
+        "type": "mcq",
+        "q": "printf を使うために必要なヘッダはどれ？",
+        "choices": [
+          "<math.h>",
+          "<stdio.h>",
+          "<stdlib.h>",
+          "<string.h>"
+        ],
+        "answer": 0,
+        "explain": ": printf は標準入出力の機能なので <stdio.h> をインクルードします。"
+      },
+      {
+        "type": "mcq",
+        "q": "文字列 \"Hello\" の後に改行して表示したい。適切なのは？",
+        "choices": [
+          "printf(\"Hello\");",
+          "printf(\"Hello\\n\");",
+          "printf(\"\\nHello\");",
+          "printf(\"Hello\\t\");"
+        ],
+        "answer": 0,
+        "explain": ": \\n は改行コードです。"
+      },
+      {
+        "type": "mcq",
+        "q": "IPO の意味として正しい組み合わせは？",
+        "choices": [
+          "Input→Print→Output",
+          "Input→Process→Output",
+          "Init→Process→Out",
+          "Input→Program→Order"
+        ],
+        "answer": 0,
+        "explain": ": プログラムは入力→処理→出力の流れで考えると整理しやすいです。"
+      },
+      {
+        "type": "mcq",
+        "q": "main の最後に return 0; と書く意味として最も近いのは？",
+        "choices": [
+          "メモリを全消去する",
+          "正常終了をOSに伝える",
+          "必ず0を表示する",
+          "変数を初期化する"
+        ],
+        "answer": 0,
+        "explain": ": return 0 は「正常終了」の慣習的な戻り値です。"
+      }
+    ],
+    "2": [
+      {
+        "type": "mcq",
+        "q": "int と double の説明として正しいのは？",
+        "choices": [
+          "どちらも整数型",
+          "intは整数、doubleは小数を扱える",
+          "intは文字列、doubleは整数",
+          "doubleは真偽値"
+        ],
+        "answer": 0,
+        "explain": ": int は整数、double は実数（小数）を扱います。"
+      },
+      {
+        "type": "mcq",
+        "q": "int 型の変数 a を表示する printf の書式は？",
+        "choices": [
+          "%f",
+          "%d",
+          "%lf",
+          "%c"
+        ],
+        "answer": 0,
+        "explain": ": %d は整数（int）用の書式指定子です。"
+      },
+      {
+        "type": "mcq",
+        "q": "小数を小数第2位まで表示したい。適切なのは？",
+        "choices": [
+          "printf(\"%f\", x);",
+          "printf(\"%.2f\", x);",
+          "printf(\"%2.f\", x);",
+          "printf(\"%d\", x);"
+        ],
+        "answer": 0,
+        "explain": ": %.2f は小数点以下2桁で表示します。"
+      },
+      {
+        "type": "mcq",
+        "q": "Cで int a=7, b=2; のとき a/b の結果は？",
+        "choices": [
+          "3",
+          "3.5",
+          "4",
+          "0"
+        ],
+        "answer": 0,
+        "explain": ": int 同士の割り算は整数除算になり、小数点以下は切り捨てられます。"
+      },
+      {
+        "type": "mcq",
+        "q": "7/2 を 3.5 として計算したい。適切なのは？",
+        "choices": [
+          "a/b",
+          "(double)a/b",
+          "a/(int)b",
+          "(int)a/(double)b"
+        ],
+        "answer": 0,
+        "explain": ": どちらかを double にすると実数除算になります。"
+      }
+    ],
+    "3": [
+      {
+        "type": "mcq",
+        "q": "条件分岐で「等しい」を判定する演算子は？",
+        "choices": [
+          "=",
+          "==",
+          "!=",
+          "<="
+        ],
+        "answer": 0,
+        "explain": ": = は代入、== が等しい比較です。"
+      },
+      {
+        "type": "mcq",
+        "q": "n が偶数かどうかを判定する条件として適切なのは？",
+        "choices": [
+          "n%2=0",
+          "n%2==0",
+          "n/2==0",
+          "n%2!=2"
+        ],
+        "answer": 0,
+        "explain": ": % は余り。余りが0なら偶数です。"
+      },
+      {
+        "type": "mcq",
+        "q": "for 文の基本形に含まれる3要素は？",
+        "choices": [
+          "宣言・実行・終了",
+          "初期化・条件・更新",
+          "入力・処理・出力",
+          "比較・代入・表示"
+        ],
+        "answer": 0,
+        "explain": ": for(初期化; 条件; 更新) が基本形です。"
+      },
+      {
+        "type": "mcq",
+        "q": "while 文の説明として正しいのは？",
+        "choices": [
+          "必ず1回は実行される",
+          "条件が真の間、繰り返す",
+          "回数が決まった繰り返し専用",
+          "条件が偽の間だけ実行"
+        ],
+        "answer": 0,
+        "explain": ": while は条件が真の間、繰り返します。"
+      },
+      {
+        "type": "mcq",
+        "q": "無限ループが起きやすい原因として最も多いのは？",
+        "choices": [
+          "printfを書いた",
+          "ループ変数の更新を忘れた",
+          "変数をintにした",
+          "returnを書いた"
+        ],
+        "answer": 0,
+        "explain": ": 条件が変化しないと、いつまでもループが終わりません。"
+      }
+    ],
+    "4": [
+      {
+        "type": "mcq",
+        "q": "オームの法則として正しい式は？",
+        "choices": [
+          "V=IR",
+          "P=IV",
+          "E=mc^2",
+          "a^2+b^2=c^2"
+        ],
+        "answer": 0,
+        "explain": ": 直流回路の基本式です。"
+      },
+      {
+        "type": "mcq",
+        "q": "V=5, R=10 のとき I は？",
+        "choices": [
+          "0.5A",
+          "2A",
+          "50A",
+          "15A"
+        ],
+        "answer": 0,
+        "explain": ": I = V / R = 5 / 10 = 0.5 です。"
+      },
+      {
+        "type": "mcq",
+        "q": "電流が大きくなりすぎるのを防ぐには（他条件一定）？",
+        "choices": [
+          "抵抗を大きくする",
+          "抵抗を小さくする",
+          "電圧を上げる",
+          "電流を上げる"
+        ],
+        "answer": 0,
+        "explain": ": I=V/R より、R が大きいほど I は小さくなります。"
+      },
+      {
+        "type": "mcq",
+        "q": "繰り返しで一覧を作るとき、変化させる値は一般に？",
+        "choices": [
+          "ループ変数",
+          "printfの書式",
+          "return値",
+          "include"
+        ],
+        "answer": 0,
+        "explain": ": for 文のカウンタなどを使います。"
+      },
+      {
+        "type": "mcq",
+        "q": "V=12, R=4 のとき I を計算してください（数値のみ）。",
+        "choices": [
+          "3",
+          "4",
+          "8",
+          "16"
+        ],
+        "answer": 0,
+        "explain": ": I = V / R = 12 / 4 = 3 です。"
+      }
+    ],
+    "5": [
+      {
+        "type": "mcq",
+        "q": "課題1で使う式として正しいのは？",
+        "choices": [
+          "I = V / R",
+          "V = I / R",
+          "R = V * I",
+          "I = V + R"
+        ],
+        "answer": 0,
+        "explain": ": オームの法則より電流は I = V / R です。"
+      },
+      {
+        "type": "mcq",
+        "q": "for文で R=5,10,15,...,50 を順に処理するには、k を 1 から 10 まで回すとき R はどう書くのが適切？",
+        "choices": [
+          "R = 5 + k",
+          "R = 5 * k",
+          "R = k / 5",
+          "R = 10 * k"
+        ],
+        "answer": 0,
+        "explain": ": k=1,2,...,10 に対して 5,10,...,50 を作れます。"
+      },
+      {
+        "type": "mcq",
+        "q": "I > Imax のとき表示すべき判定は？",
+        "choices": [
+          "OK",
+          "PASS",
+          "WARN",
+          "ERROR"
+        ],
+        "answer": 0,
+        "explain": ": 課題の仕様では、許容電流を超えたら WARN です。"
+      },
+      {
+        "type": "mcq",
+        "q": "OK の件数を 1 増やす処理として適切なのは？",
+        "choices": [
+          "okCount = 0;",
+          "okCount = okCount + 1;",
+          "okCount = okCount - 1;",
+          "okCount == okCount + 1;"
+        ],
+        "answer": 0,
+        "explain": ": 変数の中身を 1 増やす基本形です。"
+      },
+      {
+        "type": "mcq",
+        "q": "V=5.0, R=10 のとき電流 I はいくら？",
+        "choices": [
+          "0.5",
+          "2.0",
+          "5.0",
+          "10.0"
+        ],
+        "answer": 0,
+        "explain": ": I = V / R = 5.0 / 10 = 0.5 です。"
+      }
+    ],
+    "6": [
+      {
+        "type": "mcq",
+        "q": "Cの配列 a の最初の要素の添字は？",
+        "choices": [
+          "1",
+          "0",
+          "-1",
+          "aの長さ"
+        ],
+        "answer": 0,
+        "explain": ": 配列の添字は0から始まります。"
+      },
+      {
+        "type": "mcq",
+        "q": "要素数5の配列 a[5] の最後の添字は？",
+        "choices": [
+          "5",
+          "4",
+          "0",
+          "3"
+        ],
+        "answer": 0,
+        "explain": ": a[0]〜a[4] の5個です。"
+      },
+      {
+        "type": "mcq",
+        "q": "配列の全要素を順に処理する for ループとして適切なのは？",
+        "choices": [
+          "for(i=1;i<=5;i++)",
+          "for(i=0;i<5;i++)",
+          "for(i=0;i<=5;i++)",
+          "for(i=5;i<0;i--)"
+        ],
+        "answer": 0,
+        "explain": ": 範囲外アクセスを避けるには i<要素数 が基本です。"
+      },
+      {
+        "type": "mcq",
+        "q": "範囲外アクセスが起きる例として正しいのは？",
+        "choices": [
+          "a[0]に代入",
+          "a[4]を参照",
+          "a[5]を参照",
+          "a[i]を参照"
+        ],
+        "answer": 0,
+        "explain": ": a[5] は5要素配列では範囲外です。"
+      },
+      {
+        "type": "mcq",
+        "q": "配列の平均を求めるとき、合計 `sum` を求めたあとに行う計算として適切なのは？",
+        "choices": [
+          "sum + N",
+          "sum - N",
+          "sum / N",
+          "sum * N"
+        ],
+        "answer": 0,
+        "explain": ": 平均は「合計 ÷ 要素数」で求めるので、`sum / N` です。"
+      }
+    ],
+    "7": [
+      {
+        "type": "mcq",
+        "q": "抵抗値が配列R[ ]に入っているとき、各抵抗の電流を計算するのに便利なのは？",
+        "choices": [
+          "forで添字を回す",
+          "gotoで飛ぶ",
+          "includeを増やす",
+          "returnを多用"
+        ],
+        "answer": 0,
+        "explain": ": 同じ計算を繰り返すのに向いています。"
+      },
+      {
+        "type": "mcq",
+        "q": "V一定でRが増えるとIは？",
+        "choices": [
+          "増える",
+          "減る",
+          "変わらない",
+          "不定"
+        ],
+        "answer": 0,
+        "explain": ": I=V/R なので、R が増えると I は減ります。"
+      },
+      {
+        "type": "mcq",
+        "q": "R[0]にアクセスする添字は？",
+        "choices": [
+          "1",
+          "0",
+          "-1",
+          "R"
+        ],
+        "answer": 0,
+        "explain": ": 配列の添字は 0 始まりです。"
+      },
+      {
+        "type": "mcq",
+        "q": "配列長Nのとき添字範囲は？",
+        "choices": [
+          "0〜N",
+          "0〜N-1",
+          "1〜N",
+          "1〜N-1"
+        ],
+        "answer": 0,
+        "explain": ": C の配列の添字範囲は 0〜N-1 です。"
+      },
+      {
+        "type": "mcq",
+        "q": "V=10, R= {5,10} のIは？（2つ、カンマ区切り）",
+        "choices": [
+          "2,1",
+          "1,2",
+          "0.5,1",
+          "5,10"
+        ],
+        "answer": 0,
+        "explain": ": I = V / R より、10 / 5 = 2、10 / 10 = 1 です。"
+      }
+    ],
+    "8": [
+      {
+        "type": "mcq",
+        "q": "課題2では主に何を使った？",
+        "choices": [
+          "配列",
+          "ポインタ",
+          "構造体",
+          "再帰"
+        ],
+        "answer": 0,
+        "explain": ": この回の中心テーマは配列です。"
+      },
+      {
+        "type": "mcq",
+        "q": "配列処理の典型は？",
+        "choices": [
+          "iを0からN-1へ",
+          "iを1からNへ",
+          "iをNから0へ",
+          "iを固定"
+        ],
+        "answer": 0,
+        "explain": ": 添字は 0 始まりで N-1 まで使います。"
+      },
+      {
+        "type": "mcq",
+        "q": "`I[k] = V / R[k]` の計算結果を入れる配列はどれ？",
+        "choices": [
+          "V",
+          "R",
+          "I",
+          "k"
+        ],
+        "answer": 0,
+        "explain": ": 課題2では計算した電流を配列 I に格納します。"
+      },
+      {
+        "type": "mcq",
+        "q": "`if(I[k] > Imax)` が表しているのは？",
+        "choices": [
+          "電流が許容値を超えたかどうかの判定",
+          "配列の長さを求める処理",
+          "ファイルを開く処理",
+          "関数を終了する処理"
+        ],
+        "answer": 0,
+        "explain": ": I[k] が Imax より大きいとき WARN にします。"
+      },
+      {
+        "type": "mcq",
+        "q": "最後に表示する `OK=%d / 5` の `5` は何を表す？",
+        "choices": [
+          "OK の件数",
+          "配列の要素数",
+          "許容電流",
+          "抵抗値の最大値"
+        ],
+        "answer": 0,
+        "explain": ": この課題では抵抗配列の要素数が 5 個です。"
+      }
+    ],
+    "9": [
+      {
+        "type": "mcq",
+        "q": "関数を main より後ろに書くとき、先に必要になるものは？",
+        "choices": [
+          "#define",
+          "関数プロトタイプ宣言",
+          "malloc",
+          "goto"
+        ],
+        "answer": 0,
+        "explain": ": 先に「この関数があります」という宣言（プロトタイプ）が必要です。"
+      },
+      {
+        "type": "mcq",
+        "q": "Cの引数渡しとして基本なのは？",
+        "choices": [
+          "参照渡し",
+          "値渡し",
+          "ポインタ渡しだけ",
+          "コピー禁止"
+        ],
+        "answer": 0,
+        "explain": ": Cは基本は値渡し（コピー）です。"
+      },
+      {
+        "type": "mcq",
+        "q": "戻り値がない関数の戻り値型は？",
+        "choices": [
+          "int",
+          "double",
+          "void",
+          "null"
+        ],
+        "answer": 0,
+        "explain": ": void は戻り値がないことを表します。"
+      },
+      {
+        "type": "mcq",
+        "q": "関数内で宣言した変数（ローカル変数）の有効範囲は？",
+        "choices": [
+          "プログラム全体",
+          "その関数の中だけ",
+          "同じファイル全体",
+          "OS全体"
+        ],
+        "answer": 0,
+        "explain": ": ローカル変数はブロック（関数）を出ると使えません。"
+      },
+      {
+        "type": "mcq",
+        "q": "関数を使う最大の利点として最も適切なのは？",
+        "choices": [
+          "実行が必ず速くなる",
+          "同じ処理を再利用し、見通しが良くなる",
+          "必ず短いコードになる",
+          "printfが不要になる"
+        ],
+        "answer": 0,
+        "explain": ": 再利用と分割で、保守性が上がります。"
+      }
+    ],
+    "10": [
+      {
+        "type": "mcq",
+        "q": "課題3での中心要素は？",
+        "choices": [
+          "関数",
+          "配列だけ",
+          "ファイルI/O",
+          "構造体"
+        ],
+        "answer": 0,
+        "explain": ": この回の中心テーマは関数です。"
+      },
+      {
+        "type": "mcq",
+        "q": "`R <= 0` のデータが出てきたときの処理として適切なのは？",
+        "choices": [
+          "そのまま I=V/R を計算する",
+          "`\"R error\"` を表示してスキップする",
+          "必ず 0 を代入する",
+          "ファイルに保存する"
+        ],
+        "answer": 0,
+        "explain": ": 課題3では不正な抵抗値をエラー表示して飛ばします。"
+      },
+      {
+        "type": "mcq",
+        "q": "`double f(double V,double R)` の引数は何？",
+        "choices": [
+          "電圧と抵抗",
+          "電流と電圧",
+          "抵抗と抵抗",
+          "ファイル名"
+        ],
+        "answer": 0,
+        "explain": ": `calcI(V, R)` のように電圧と抵抗を受け取ります。"
+      },
+      {
+        "type": "mcq",
+        "q": "有効データが 0 件のとき、平均の表示はどうする？",
+        "choices": [
+          "avg=0",
+          "avg=-1",
+          "avg=NA",
+          "表示しない"
+        ],
+        "answer": 0,
+        "explain": ": 仕様では有効データが 0 件なら NA を表示します。"
+      },
+      {
+        "type": "mcq",
+        "q": "`V_list={5.0}`, `R_list={0.0}` の1件だけを処理したとき、最後の平均表示はどうなる？",
+        "choices": [
+          "avg=0.000",
+          "avg=R error",
+          "avg=NA",
+          "avg=5.000"
+        ],
+        "answer": 0,
+        "explain": ": `R <= 0` は無効データとしてスキップし、有効件数が 0 なので `avg=NA` になります。"
+      }
+    ],
+    "11": [
+      {
+        "type": "mcq",
+        "q": "課題3の中心は？",
+        "choices": [
+          "関数化",
+          "ファイル処理",
+          "ポインタ",
+          "構造体"
+        ],
+        "answer": 0,
+        "explain": ": この回の中心テーマは関数化です。"
+      },
+      {
+        "type": "mcq",
+        "q": "関数の宣言で必要なのは？",
+        "choices": [
+          "戻り値型",
+          "必ずmain",
+          "必ず配列",
+          "必ずscanf"
+        ],
+        "answer": 0,
+        "explain": ": 戻り値型・関数名・引数が必要です。"
+      },
+      {
+        "type": "mcq",
+        "q": "関数の定義場所は基本的に？",
+        "choices": [
+          "mainの外",
+          "printfの中",
+          "forの中",
+          "コメントの中"
+        ],
+        "answer": 0,
+        "explain": ": 基本的には main の外に定義します。"
+      },
+      {
+        "type": "mcq",
+        "q": "関数のテストで有効なのは？",
+        "choices": [
+          "代表値で呼んで出力確認",
+          "気合",
+          "ランダムだけ",
+          "実行しない"
+        ],
+        "answer": 0,
+        "explain": ": まずは小さな例で確認するのが有効です。"
+      },
+      {
+        "type": "mcq",
+        "q": "current(V,R)=V/R のとき V=6,R=2 の結果は？",
+        "choices": [
+          "3",
+          "4",
+          "8",
+          "12"
+        ],
+        "answer": 0,
+        "explain": ": current(V, R) = V / R なので、6 / 2 = 3 です。"
+      }
+    ],
+    "12": [
+      {
+        "type": "mcq",
+        "q": "標準入力（stdin）として基本になるものはどれ？",
+        "choices": [
+          "キーボード",
+          "画面",
+          "プリンタ",
+          "result.txt"
+        ],
+        "answer": 0,
+        "explain": ": 標準入力（stdin）は、基本的にはキーボード入力です。"
+      },
+      {
+        "type": "mcq",
+        "q": "ファイル入出力の基本手順として正しい順番は？",
+        "choices": [
+          "fopen -> fscanf / fprintf -> fclose",
+          "fclose -> fopen -> fscanf",
+          "printf -> scanf -> return",
+          "return -> fopen -> fclose"
+        ],
+        "answer": 0,
+        "explain": ": まず開いて、読んだり書いたりして、最後に閉じます。"
+      },
+      {
+        "type": "mcq",
+        "q": "scanf で double を読み取るときの書式指定子は？",
+        "choices": [
+          "%d",
+          "%f",
+          "%lf",
+          "%c"
+        ],
+        "answer": 0,
+        "explain": ": double は scanf では %lf を使います。"
+      },
+      {
+        "type": "mcq",
+        "q": "書き込みモード \"w\" の意味として正しいのは？",
+        "choices": [
+          "追記",
+          "新規作成または上書きして書く",
+          "読み取り専用",
+          "バイナリ"
+        ],
+        "answer": 0,
+        "explain": ": \"w\" は新規作成または上書きです。追記は \"a\" です。"
+      },
+      {
+        "type": "mcq",
+        "q": "fprintf と printf の違いとして正しいのは？",
+        "choices": [
+          "fprintf は画面、printf はファイル",
+          "fprintf は FILE* を指定してファイルへ出力できる（書式は printf と同じ）",
+          "fprintf は入力専用",
+          "どちらも FILE* が必須"
+        ],
+        "answer": 0,
+        "explain": ": fprintf は出力先を FILE* で指定できます。printf は標準出力です。"
+      }
+    ],
+    "13": [
+      {
+        "type": "mcq",
+        "q": "課題4の中心要素は？",
+        "choices": [
+          "ファイル入出力",
+          "配列だけ",
+          "構造体",
+          "ポインタ"
+        ],
+        "answer": 0,
+        "explain": ": この回の中心テーマはファイル入出力です。"
+      },
+      {
+        "type": "mcq",
+        "q": "入力データをファイルにする利点は？",
+        "choices": [
+          "条件を変えて再実行しやすい",
+          "配列が不要になる",
+          "for文を書かなくてよくなる",
+          "エラー処理が不要になる"
+        ],
+        "answer": 0,
+        "explain": ": 条件を変えて再実行しやすく、再現性も上がります。"
+      },
+      {
+        "type": "mcq",
+        "q": "読み込み→計算→出力の流れで最初にやるのは？",
+        "choices": [
+          "ファイルを開く",
+          "平均を表示する",
+          "電流 I を計算する",
+          "ファイルを閉じる"
+        ],
+        "answer": 0,
+        "explain": ": まずファイルを開くので、`fopen` から始めます。"
+      },
+      {
+        "type": "mcq",
+        "q": "複数行データは何で処理しやすい？",
+        "choices": [
+          "ループ",
+          "if文だけ",
+          "return文だけ",
+          "関数名の変更だけ"
+        ],
+        "answer": 0,
+        "explain": ": while 文や for 文で処理しやすいです。"
+      },
+      {
+        "type": "mcq",
+        "q": "ファイルを閉じる関数は？",
+        "choices": [
+          "fclose",
+          "fopen",
+          "fprintf",
+          "scanf"
+        ],
+        "answer": 0,
+        "explain": ": 開いたファイルは最後に fclose で閉じます。"
+      }
+    ],
+    "14": [
+      {
+        "type": "mcq",
+        "q": "入力ファイルを読み取り用で開く関数は？",
+        "choices": [
+          "fopen",
+          "fprintf",
+          "fscanf",
+          "fclose"
+        ],
+        "answer": 0,
+        "explain": ": ファイルを開くときは fopen を使います。"
+      },
+      {
+        "type": "mcq",
+        "q": "`fopen(name, \"w\")` の意味として正しいのは？",
+        "choices": [
+          "読み取り専用で開く",
+          "追記で開く",
+          "書き込み用で開く",
+          "閉じる"
+        ],
+        "answer": 0,
+        "explain": ": \"w\" は書き込み用で、既存内容は上書きされます。"
+      },
+      {
+        "type": "mcq",
+        "q": "`while(fscanf(fin, \"%lf %lf\", &V, &R) == 2)` の `== 2` が表す意味は？",
+        "choices": [
+          "ファイルを2回開く",
+          "2個の値を正しく読み取れた",
+          "2行読み飛ばす",
+          "2バイト読む"
+        ],
+        "answer": 0,
+        "explain": ": V と R の 2 項目を読めたときだけ処理を続けます。"
+      },
+      {
+        "type": "mcq",
+        "q": "計算した電流 I を result.txt に書き出すのに使う関数は？",
+        "choices": [
+          "printf",
+          "scanf",
+          "fprintf",
+          "fopen"
+        ],
+        "answer": 0,
+        "explain": ": fprintf は出力先の FILE* を指定して書き込めます。"
+      },
+      {
+        "type": "mcq",
+        "q": "処理が終わったあと、開いたファイルを閉じる関数は？",
+        "choices": [
+          "fclose",
+          "finish",
+          "fileend",
+          "return"
+        ],
+        "answer": 0,
+        "explain": ": 開いたファイルは fclose で閉じます。"
+      }
+    ],
+    "15": [
+      {
+        "type": "mcq",
+        "q": "線形探索（Linear Search）の説明として正しいのは？",
+        "choices": [
+          "二分探索のこと",
+          "先頭から順に比較して探す",
+          "ランダムに探す",
+          "必ずO(1)で探せる"
+        ],
+        "answer": 0,
+        "explain": ": 線形探索は上から順に見ていく最も基本的な探索です。"
+      },
+      {
+        "type": "mcq",
+        "q": "配列 `a` の要素数を、その場で求める書き方として適切なのは？",
+        "choices": [
+          "sizeof(a)/sizeof(a[0])",
+          "sizeof(a[0])/sizeof(a)",
+          "length(a)",
+          "count(a)"
+        ],
+        "answer": 0,
+        "explain": ": 配列本体がその場にあるときは、`sizeof(a)/sizeof(a[0])` で要素数を求められます。"
+      },
+      {
+        "type": "mcq",
+        "q": "バブルソートの基本動作として正しいのは？",
+        "choices": [
+          "隣り合う要素を比較し、必要なら交換する",
+          "最大値だけを1回で見つける",
+          "必ず1回で並ぶ",
+          "要素を削除する"
+        ],
+        "answer": 0,
+        "explain": ": 隣接比較＋交換を繰り返して整列します。"
+      },
+      {
+        "type": "mcq",
+        "q": "2つの変数 a と b を交換する一般的な方法は？",
+        "choices": [
+          "a=b; b=a;",
+          "temp=a; a=b; b=temp;",
+          "a=a+b; b=a-b; a=a-b;",
+          "swap(a)"
+        ],
+        "answer": 0,
+        "explain": ": 一時変数 temp を使うのが最も読みやすく安全です。"
+      },
+      {
+        "type": "mcq",
+        "q": "struct を使う利点として最も適切なのは？",
+        "choices": [
+          "配列が不要になる",
+          "関連する値をひとまとめにして扱える",
+          "必ず高速になる",
+          "printfが不要になる"
+        ],
+        "answer": 0,
+        "explain": ": RLC定数や状態のように関連する値をまとめるのに向きます。"
+      }
+    ],
+    "0": [
+      {
+        "type": "mcq",
+        "q": "Windows の環境構築で最初に行う操作として正しいのは？",
+        "choices": [
+          "Prog1_Installer.exe を実行する",
+          "main.c をダブルクリックして導入する",
+          "ブラウザだけで完結する",
+          "スマホで実行する"
+        ],
+        "answer": 0,
+        "explain": ": Windows 向け手順では、配布された `Prog1_Installer.exe` を実行する流れになっています。"
+      },
+      {
+        "type": "mcq",
+        "q": "Prog1_Installer.exe の動作として正しいのは？",
+        "choices": [
+          "C:\\Prog1\\Prog1_Package を準備し、setup\\install.ps1 を自動実行する",
+          "main.c をダブルクリックして導入する",
+          "VS Code だけ入れればOK",
+          "MSYS2 は不要"
+        ],
+        "answer": 0,
+        "explain": ": インストーラーは `C:\\Prog1\\Prog1_Package` を準備したあと、`setup\\install.ps1` を自動実行します。"
+      },
+      {
+        "type": "mcq",
+        "q": "セットアップ完了後に自動で開くものは？",
+        "choices": [
+          "Lecture&CEmu_NoAnswers\\index.html",
+          "C:\\Windows\\System32",
+          "MSYS2 の設定画面",
+          "main.c"
+        ],
+        "answer": 0,
+        "explain": ": セットアップ完了後は、`Lecture&CEmu_NoAnswers\\index.html` が既定ブラウザで開く想定です。"
+      },
+      {
+        "type": "mcq",
+        "q": "動作確認でビルドを行うショートカットキーは？",
+        "choices": [
+          "Ctrl + Shift + B",
+          "Ctrl + B",
+          "F5",
+          "Ctrl + Shift + P"
+        ],
+        "answer": 0,
+        "explain": ": 動作確認の手順で『ビルド：Ctrl + Shift + B』とあります。"
+      },
+      {
+        "type": "mcq",
+        "q": "VS Code が日本語にならない場合に確認するファイルとして挙げられているのは？",
+        "choices": [
+          "%APPDATA%\\Code\\User\\locale.json",
+          "C:\\msys64\\locale.json",
+          "~/.vscode/locale.json",
+          "C:\\Windows\\locale.json"
+        ],
+        "answer": 0,
+        "explain": ": トラブルシュートに locale.json の場所と中身（{\\\"locale\\\":\\\"ja\\\"}）が示されています。"
+      }
+    ],
+    "-1": [
+      {
+        "type": "mcq",
+        "q": "成績評価は何で決まりますか？",
+        "choices": [
+          "出席＋課題（全4回）",
+          "期末試験のみ",
+          "小テストのみ",
+          "レポート1回のみ"
+        ],
+        "answer": 0,
+        "explain": ": スライドでは『出席＋課題（全4回）』で評価し、定期試験の代わりに課題で達成度を測るとしています。"
+      },
+      {
+        "type": "mcq",
+        "q": "出席の条件として正しいのはどれ？",
+        "choices": [
+          "2/3以上の出席が必要",
+          "1/2以上でOK",
+          "欠席は何回でもOK",
+          "出席は成績に無関係"
+        ],
+        "answer": 0,
+        "explain": ": 出席は『2/3以上』。15回なので6回以上欠席で不可（病欠・就活は考慮）と記載があります。"
+      },
+      {
+        "type": "mcq",
+        "q": "課題（レポート）は全部で何回あり、どう扱われますか？",
+        "choices": [
+          "全4回で、全ての提出が必要",
+          "全2回で、どれか1回でよい",
+          "全4回で、未提出でも可",
+          "全1回で、期末試験の代わりではない"
+        ],
+        "answer": 0,
+        "explain": ": 課題は全4回。4回の提出が揃わないと達成度を測れないため不可になる、と説明されています。"
+      },
+      {
+        "type": "mcq",
+        "q": "提出タイミングと得点の組み合わせとして正しいのは？",
+        "choices": [
+          "1次締め切り:25点／最終締め切り:20点／最終締め切り後:15点／未提出:0点",
+          "1次締め切り:20点／最終締め切り:25点／最終締め切り後:15点／未提出:0点",
+          "1次締め切り:25点／最終締め切り:15点／最終締め切り後:20点／未提出:0点",
+          "いつ出しても25点／未提出:0点"
+        ],
+        "answer": 0,
+        "explain": ": スライドの表1に、提出タイミング別に 25 / 20 / 15 / 0 点と示されています。"
+      },
+      {
+        "type": "mcq",
+        "q": "合計点と成績の関係として正しいのは？",
+        "choices": [
+          "60未満は不可、60以上で可（以降70/80で良・優）",
+          "60以上は不可、60未満で可",
+          "80以上が可、70以上は不可",
+          "点数では決まらない"
+        ],
+        "answer": 0,
+        "explain": ": スライドの表2で、60未満=不可、60以上=可、70以上=良、80以上=優と示されています。"
+      }
+    ],
+    "16": [
+      {
+        "type": "mcq",
+        "q": "自由振動（Vin=0）のRLC直列回路で、状態変数として自然なのは？",
+        "choices": [
+          "電荷qのみ",
+          "電流iとコンデンサ電圧Vc",
+          "抵抗Rのみ",
+          "周波数fのみ"
+        ],
+        "answer": 0,
+        "explain": ": 2次系なので状態が2つ必要です（例：iとVc）。"
+      },
+      {
+        "type": "mcq",
+        "q": "刻み幅Δtを大きくしすぎると起こりやすいのは？",
+        "choices": [
+          "計算が遅くなる",
+          "数値的不安定・誤差増大",
+          "必ず精度が上がる",
+          "共振が消える"
+        ],
+        "answer": 0,
+        "explain": ": Δtが大きいと誤差が増え、発散など不安定になりやすいです。"
+      },
+      {
+        "type": "mcq",
+        "q": "Rを大きくすると波形はどうなる？",
+        "choices": [
+          "減衰が強くなり早く収束",
+          "振幅が増える",
+          "周期がゼロになる",
+          "必ず発振が増える"
+        ],
+        "answer": 0,
+        "explain": ": 抵抗が大きいほどエネルギー損失が大きく減衰が強いです。"
+      },
+      {
+        "type": "mcq",
+        "q": "RLC直列回路の共振角周波数 \\(\\omega_0\\) として正しいのは？",
+        "choices": [
+          "\\(\\omega_0 = R / L\\)",
+          "\\(\\omega_0 = 1 / \\sqrt{LC}\\)",
+          "\\(\\omega_0 = L / C\\)",
+          "\\(\\omega_0 = RC\\)"
+        ],
+        "answer": 0,
+        "explain": ": 共振角周波数は \\(\\omega_0 = 1 / \\sqrt{LC}\\) です。"
+      },
+      {
+        "type": "mcq",
+        "q": "RK4の特徴として正しいものは？",
+        "choices": [
+          "1次精度",
+          "2次精度",
+          "4次精度",
+          "必ず厳密解を与える"
+        ],
+        "answer": 0,
+        "explain": ": RK4 は 4 次精度です。"
+      }
+    ]
+  },
+  "samples": {
+    "1": [
+      {
+        "title": "Hello, world（表示の流れ）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  // @bp 表示する\n  printf(\"Hello, world!\\n\");\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "開始",
+            "vars": {
+              "(開始)": ""
+            },
+            "stdout": ""
+          },
+          {
+            "at": "main開始",
+            "vars": {
+              "(main開始)": ""
+            },
+            "stdout": ""
+          },
+          {
+            "at": "表示する",
+            "vars": {
+              "(printf呼出)": ""
+            },
+            "stdout": "Hello, world!\n"
+          }
+        ]
+      },
+      {
+        "title": "整数の計算と出力（printf）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  int a = 3, b = 5;\n  // @bp 結果を表示\n  printf(\"%d\\n\", a + b);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "値を用意",
+            "vars": {
+              "a": 3,
+              "b": 5
+            },
+            "stdout": ""
+          },
+          {
+            "at": "結果を表示",
+            "vars": {
+              "a": 3,
+              "b": 5
+            },
+            "stdout": "8\n"
+          }
+        ]
+      },
+      {
+        "title": "コンパイル→実行のイメージ（擬似）",
+        "code": "// 実際はVSCode＋gccで実行します\n// ここでは手順の確認だけ",
+        "trace": [
+          {
+            "vars": {
+              "手順": "gcc main.c -o main.exe"
+            },
+            "stdout": ""
+          },
+          {
+            "vars": {
+              "手順": "./main.exe"
+            },
+            "stdout": "（実行結果が表示される）\n"
+          }
+        ]
+      }
+    ],
+    "2": [
+      {
+        "title": "変数とprintf（足し算）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  int a = 3;\n  // @bp bを用意\n  int b = 5;\n  // @bp 合計を計算\n  int s = a + b;\n  // @bp 結果を表示\n  printf(\"%d\\n\", s);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "aを用意",
+            "vars": {
+              "a": 3
+            },
+            "stdout": ""
+          },
+          {
+            "at": "bを用意",
+            "vars": {
+              "a": 3,
+              "b": 5
+            },
+            "stdout": ""
+          },
+          {
+            "at": "合計を計算",
+            "vars": {
+              "a": 3,
+              "b": 5,
+              "s": 8
+            },
+            "stdout": ""
+          },
+          {
+            "at": "結果を表示",
+            "vars": {
+              "a": 3,
+              "b": 5,
+              "s": 8
+            },
+            "stdout": "8\n"
+          }
+        ]
+      },
+      {
+        "title": "doubleと書式（面積）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  // @bp 半径を用意\n  double r = 2.0;\n  // @bp 面積を計算\n  double s = 3.14159 * r * r;\n  // @bp 結果を表示\n  printf(\"%.2f\\n\", s);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "半径を用意",
+            "vars": {
+              "r": 2.0
+            },
+            "stdout": ""
+          },
+          {
+            "at": "面積を計算",
+            "vars": {
+              "r": 2.0,
+              "s": 12.56636
+            },
+            "stdout": ""
+          },
+          {
+            "at": "結果を表示",
+            "vars": {
+              "r": 2.0,
+              "s": 12.56636
+            },
+            "stdout": "12.57\n"
+          }
+        ]
+      },
+      {
+        "title": "整数除算とキャスト",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  int a = 7, b = 2;\n  // @bp 整数除算を表示\n  printf(\"%d\\n\", a / b);\n  // @bp 実数除算を表示\n  printf(\"%.1f\\n\", (double)a / b);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "値を用意",
+            "vars": {
+              "a": 7,
+              "b": 2
+            },
+            "stdout": ""
+          },
+          {
+            "at": "整数除算を表示",
+            "vars": {
+              "a": 7,
+              "b": 2
+            },
+            "stdout": "3\n"
+          },
+          {
+            "at": "実数除算を表示",
+            "vars": {
+              "a": 7,
+              "b": 2
+            },
+            "stdout": "3\n3.5\n"
+          }
+        ]
+      }
+    ],
+    "3": [
+      {
+        "title": "if/else（偶数・奇数）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  int n = 7;\n\n  if (n % 2 == 0) {\n    printf(\"even\\n\");\n  } else {\n    // @bp 判定結果を表示\n    printf(\"odd\\n\");\n  }\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "値を用意",
+            "vars": {
+              "n": 7
+            },
+            "stdout": ""
+          },
+          {
+            "at": "判定結果を表示",
+            "vars": {
+              "n": 7
+            },
+            "stdout": "odd\n"
+          }
+        ]
+      },
+      {
+        "title": "for（1〜5の合計）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  // @bp 初期化\n  int sum = 0;\n\n  for (int i = 1; i <= 5; i++) {\n    // @bp 合計を更新\n    sum += i;\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "初期化",
+            "vars": {
+              "sum": 0,
+              "i": 1
+            },
+            "stdout": ""
+          },
+          {
+            "at": "合計を更新",
+            "vars": {
+              "sum": 1,
+              "i": 2
+            },
+            "stdout": ""
+          },
+          {
+            "at": "合計を更新",
+            "vars": {
+              "sum": 3,
+              "i": 3
+            },
+            "stdout": ""
+          },
+          {
+            "at": "合計を更新",
+            "vars": {
+              "sum": 6,
+              "i": 4
+            },
+            "stdout": ""
+          },
+          {
+            "at": "合計を更新",
+            "vars": {
+              "sum": 10,
+              "i": 5
+            },
+            "stdout": ""
+          },
+          {
+            "at": "合計を更新",
+            "vars": {
+              "sum": 15,
+              "i": 6
+            },
+            "stdout": ""
+          },
+          {
+            "at": "結果を表示",
+            "vars": {
+              "sum": 15
+            },
+            "stdout": "15\n"
+          }
+        ]
+      },
+      {
+        "title": "while（カウントダウン）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  // @bp 初期値を用意\n  int n = 3;\n\n  while (n > 0) {\n    // @bp 現在値を表示\n    printf(\"%d\\n\", n);\n    n--;\n  }\n\n  // @bp 終了を表示\n  printf(\"go!\\n\");\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "初期値を用意",
+            "vars": {
+              "n": 3
+            },
+            "stdout": ""
+          },
+          {
+            "at": "現在値を表示",
+            "vars": {
+              "n": 3
+            },
+            "stdout": "3\n"
+          },
+          {
+            "at": "現在値を表示",
+            "vars": {
+              "n": 2
+            },
+            "stdout": "3\n2\n"
+          },
+          {
+            "at": "現在値を表示",
+            "vars": {
+              "n": 1
+            },
+            "stdout": "3\n2\n1\n"
+          },
+          {
+            "at": "終了を表示",
+            "vars": {
+              "n": 0
+            },
+            "stdout": "3\n2\n1\ngo!\n"
+          }
+        ]
+      }
+    ],
+    "4": [
+      {
+        "title": "未完成コード（課題）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for (int k = 1; k <= 10; k++) {\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if ( ??? ) {\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    } else {\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}"
+      }
+    ],
+    "5": [
+      {
+        "title": "オームの法則（V=IR）：Iを計算",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  double V = 5.0, R = 10.0;\n  // @bp 電流を計算\n  double I = V / R;\n  // @bp 結果を表示\n  printf(\"I=%.3f A\\n\", I);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "値を用意",
+            "vars": {
+              "V": 5.0,
+              "R": 10.0
+            },
+            "stdout": ""
+          },
+          {
+            "at": "結果を表示",
+            "vars": {
+              "V": 5.0,
+              "R": 10.0,
+              "I": 0.5
+            },
+            "stdout": "I=0.500 A\n"
+          }
+        ]
+      },
+      {
+        "title": "条件分岐：許容電流を超えたら警告",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  double I = 0.8;\n\n  if (I > 0.5) {\n    // @bp 警告を表示\n    printf(\"WARN\\n\");\n  } else {\n    printf(\"OK\\n\");\n  }\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "警告を表示",
+            "vars": {
+              "I": 0.8
+            },
+            "stdout": "WARN\n"
+          }
+        ]
+      },
+      {
+        "title": "繰り返し：Rを変えてIを一覧表示",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  // @bp 電圧を用意\n  double V = 5.0;\n\n  for (int r = 5; r <= 15; r += 5) {\n    // @bp 各抵抗で表示\n    printf(\"R=%d I=%.2f\\n\", r, V / r);\n  }\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "各抵抗で表示",
+            "vars": {
+              "V": 5.0,
+              "r": 5
+            },
+            "stdout": "R=5 I=1.00\n"
+          },
+          {
+            "at": "各抵抗で表示",
+            "vars": {
+              "V": 5.0,
+              "r": 10
+            },
+            "stdout": "R=5 I=1.00\nR=10 I=0.50\n"
+          },
+          {
+            "at": "各抵抗で表示",
+            "vars": {
+              "V": 5.0,
+              "r": 15
+            },
+            "stdout": "R=5 I=1.00\nR=10 I=0.50\nR=15 I=0.33\n"
+          }
+        ]
+      }
+    ],
+    "6": [
+      {
+        "title": "配列の合計",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  int a[5] = {1, 2, 3, 4, 5};\n  // @bp 合計を初期化\n  int sum = 0;\n\n  for (int i = 0; i < 5; i++) {\n    // @bp 合計を更新\n    sum += a[i];\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "合計を初期化",
+            "vars": {
+              "i": 0,
+              "sum": 0
+            },
+            "stdout": ""
+          },
+          {
+            "at": "合計を更新",
+            "vars": {
+              "i": 1,
+              "sum": 1
+            },
+            "stdout": ""
+          },
+          {
+            "at": "合計を更新",
+            "vars": {
+              "i": 2,
+              "sum": 3
+            },
+            "stdout": ""
+          },
+          {
+            "at": "合計を更新",
+            "vars": {
+              "i": 3,
+              "sum": 6
+            },
+            "stdout": ""
+          },
+          {
+            "at": "合計を更新",
+            "vars": {
+              "i": 4,
+              "sum": 10
+            },
+            "stdout": ""
+          },
+          {
+            "at": "結果を表示",
+            "vars": {
+              "i": 5,
+              "sum": 15
+            },
+            "stdout": "15\n"
+          }
+        ]
+      },
+      {
+        "title": "最大値を探す",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  int a[4] = {3, 7, 2, 5};\n  // @bp 最大値を初期化\n  int max = a[0];\n\n  for (int i = 1; i < 4; i++) {\n    // @bp 最大値を確認\n    if (a[i] > max) {\n      max = a[i];\n    }\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", max);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "最大値を初期化",
+            "vars": {
+              "i": 1,
+              "max": 3
+            },
+            "stdout": ""
+          },
+          {
+            "at": "最大値を確認",
+            "vars": {
+              "i": 2,
+              "max": 7
+            },
+            "stdout": ""
+          },
+          {
+            "at": "最大値を確認",
+            "vars": {
+              "i": 3,
+              "max": 7
+            },
+            "stdout": ""
+          },
+          {
+            "at": "結果を表示",
+            "vars": {
+              "i": 4,
+              "max": 7
+            },
+            "stdout": "7\n"
+          }
+        ]
+      },
+      {
+        "title": "配列とprintf（一覧表示）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  int a[3] = {2, 4, 6};\n\n  for (int i = 0; i < 3; i++) {\n    // @bp 各要素を表示\n    printf(\"%d\\n\", a[i]);\n  }\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "各要素を表示",
+            "vars": {
+              "i": 0
+            },
+            "stdout": "2\n"
+          },
+          {
+            "at": "各要素を表示",
+            "vars": {
+              "i": 1
+            },
+            "stdout": "2\n4\n"
+          },
+          {
+            "at": "各要素を表示",
+            "vars": {
+              "i": 2
+            },
+            "stdout": "2\n4\n6\n"
+          }
+        ]
+      }
+    ],
+    "7": [
+      {
+        "title": "未完成コード（課題）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for (int k = 0; k < 5; k++) {\n    I[k] = ???;\n  }\n\n  // TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for (int k = 0; k < 5; k++) {\n    if (???) {\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    } else {\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}"
+      }
+    ],
+    "8": [
+      {
+        "title": "配列に計算結果を格納（I[k]=V/R[k]）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;\n  int R[5] = {5, 10, 15, 20, 25};\n  double I[5];\n\n  for (int k = 0; k < 5; k++) {\n    // @bp 配列に保存\n    I[k] = V / R[k];\n  }\n\n  // @bp 先頭と末尾を表示\n  printf(\"%.3f %.3f\\n\", I[0], I[4]);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "配列に保存",
+            "stdout": "",
+            "vars": {
+              "k": 0
+            }
+          },
+          {
+            "at": "配列に保存",
+            "stdout": "",
+            "vars": {
+              "k": 1
+            }
+          },
+          {
+            "at": "配列に保存",
+            "stdout": "",
+            "vars": {
+              "k": 2
+            }
+          },
+          {
+            "at": "配列に保存",
+            "stdout": "",
+            "vars": {
+              "k": 3
+            }
+          },
+          {
+            "at": "配列に保存",
+            "stdout": "",
+            "vars": {
+              "k": 4
+            }
+          },
+          {
+            "at": "先頭と末尾を表示",
+            "stdout": "1.000 0.200\n",
+            "vars": {
+              "I0": 1.0,
+              "I4": 0.2
+            }
+          }
+        ]
+      },
+      {
+        "title": "if判定＋カウント（OK/WARN）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  const double Imax = 0.60;\n  double I = 0.50;\n  int okCount = 0;\n\n  if (I > Imax) {\n    printf(\"WARN\\n\");\n  } else {\n    // @bp OKを表示\n    printf(\"OK\\n\");\n    okCount = okCount + 1;\n  }\n\n  // @bp 件数を表示\n  printf(\"OK=%d\\n\", okCount);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "OKを表示",
+            "stdout": "OK\n",
+            "vars": {
+              "I": 0.5,
+              "Imax": 0.6,
+              "okCount": 1
+            }
+          },
+          {
+            "at": "件数を表示",
+            "stdout": "OK\nOK=1\n",
+            "vars": {
+              "I": 0.5,
+              "Imax": 0.6,
+              "okCount": 1
+            }
+          }
+        ]
+      }
+    ],
+    "9": [
+      {
+        "title": "関数で2乗を計算",
+        "code": "#include <stdio.h>\n\ndouble square(double x) {\n  return x * x;\n}\n\nint main(void) {\n  // @bp 値を用意\n  double a = 3;\n  // @bp 計算結果を表示\n  printf(\"%.0f\\n\", square(a));\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "値を用意",
+            "vars": {
+              "a": 3.0
+            },
+            "stdout": ""
+          },
+          {
+            "at": "計算結果を表示",
+            "vars": {
+              "a": 3.0
+            },
+            "stdout": "9\n"
+          }
+        ]
+      },
+      {
+        "title": "関数でオームの法則（I=V/R）",
+        "code": "#include <stdio.h>\n\ndouble current(double V, double R) {\n  return V / R;\n}\n\nint main(void) {\n  // @bp 電流を表示\n  printf(\"%.2f\\n\", current(5, 10));\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "電流を表示",
+            "vars": {},
+            "stdout": "0.50\n"
+          }
+        ]
+      },
+      {
+        "title": "関数で配列の合計",
+        "code": "#include <stdio.h>\n\nint sum3(int a[3]) {\n  return a[0] + a[1] + a[2];\n}\n\nint main(void) {\n  int x[3] = {1, 2, 3};\n  // @bp 合計を表示\n  printf(\"%d\\n\", sum3(x));\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "合計を表示",
+            "vars": {
+              "x[0]": 1,
+              "x[1]": 2,
+              "x[2]": 3
+            },
+            "stdout": "6\n"
+          }
+        ]
+      }
+    ],
+    "10": [
+      {
+        "title": "未完成コード（課題）",
+        "code": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI) {\n  if (R <= 0) {\n    return 0;\n  }\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b) {\n  if (???) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;          // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b) {\n  if (???) return a;  // もし、a が b よりも小さければ、a を返す\n  return b;          // そうでない場合は、 b を返す\n}\n\nint main(void) {\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};  // 電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};  // 抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for (int k = 0; k < N; k++) {\n    double V = ???;        // TODO2-1: 電圧リストのk番目\n    double R = ???;        // TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if (!calcI_checked(V, R, &I)) {\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if (validCount == 0) {\n      maxI = I;\n      minI = I;\n    } else {\n      maxI = ???(maxI, I);  // TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);  // TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if (validCount > 0) {\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  } else {\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}"
+      }
+    ],
+    "11": [
+      {
+        "title": "関数 calcI の最小例",
+        "code": "#include <stdio.h>\n\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\nint main(void) {\n  // @bp 計算結果を表示\n  printf(\"%.3f\\n\", calcI(5.0, 10.0));\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "計算結果を表示",
+            "stdout": "0.500\n",
+            "vars": {}
+          }
+        ]
+      },
+      {
+        "title": "配列で複数ケースを処理（scanfなし）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  const int N = 3;\n  double V_list[3] = {5.0, 5.0, 5.0};\n  double R_list[3] = {5.0, 10.0, 0.0};\n\n  for (int k = 0; k < N; k++) {\n    // @bp 各ケースを表示\n    printf(\"%d %.1f %.1f\\n\", k, V_list[k], R_list[k]);\n  }\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "各ケースを表示",
+            "stdout": "0 5.0 5.0\n",
+            "vars": {
+              "k": 0
+            }
+          },
+          {
+            "at": "各ケースを表示",
+            "stdout": "0 5.0 5.0\n1 5.0 10.0\n",
+            "vars": {
+              "k": 1
+            }
+          },
+          {
+            "at": "各ケースを表示",
+            "stdout": "0 5.0 5.0\n1 5.0 10.0\n2 5.0 0.0\n",
+            "vars": {
+              "k": 2
+            }
+          }
+        ]
+      }
+    ],
+    "12": [
+      {
+        "title": "scanf（キーボード入力）の最小例",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  int x;\n  // @bp 入力を受け取る\n  printf(\"x ? \");\n  // ここではキーボードから 1 つ整数を入力する\n  if (scanf(\"%d\", &x) != 1) {\n    printf(\"input error\\n\");\n    return 0;\n  }\n  // @bp 結果を表示\n  printf(\"x=%d\\n\", x);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "入力を受け取る",
+            "vars": {
+              "x": 7
+            },
+            "stdout": "x ? 7\n"
+          },
+          {
+            "at": "結果を表示",
+            "vars": {
+              "x": 7
+            },
+            "stdout": "x ? 7\nx=7\n"
+          }
+        ]
+      },
+      {
+        "title": "scanfで2値入力→計算（V, R → I）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  double v, r;\n  // @bp 入力を受け取る\n  printf(\"V R ? \");\n  if (scanf(\"%lf %lf\", &v, &r) != 2) {\n    printf(\"input error\\n\");\n    return 0;\n  }\n  if (r <= 0) {\n    printf(\"R error\\n\");\n    return 0;\n  }\n  // @bp 電流を表示\n  printf(\"I=%.3f\\n\", v / r);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "入力を受け取る",
+            "vars": {
+              "v": 10.0,
+              "r": 5.0
+            },
+            "stdout": "V R ? 10 5\n"
+          },
+          {
+            "at": "電流を表示",
+            "vars": {
+              "v": 10.0,
+              "r": 5.0,
+              "I": 2.0
+            },
+            "stdout": "V R ? 10 5\nI=2.000\n"
+          }
+        ]
+      },
+      {
+        "title": "ファイル入力（fscanf）：正しい書き方 → 擬似データで実行",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  // VS Code で実行するときは、実際にファイルから読み込みます\n  // このツール上では、下の「擬似データ」部分が有効です\n  const char *inName = \"data.txt\";\n\n  double V[100], R[100];\n  int n = 0;\n\n  /* ----------------------------\n   * 【本来の実装】ファイルから読み込む（正しい書き方）\n   * 1行に V R（空白区切り）\n   * 例: 10 5\n   * ---------------------------- */\n  /*\n  FILE *fp = fopen(inName, \"r\");\n  if (fp == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  while (n < 100 && fscanf(fp, \"%lf %lf\", &V[n], &R[n]) == 2) {\n    n++;\n  }\n\n  fclose(fp);\n  */\n\n  /* ----------------------------\n   * 【ツール用】擬似的に配列から読み込む（data.txt相当）\n   * ※ data.txt の先頭数行と同じデータ\n   * ---------------------------- */\n  {\n    double v_dummy[] = {10, 12, 8, 15};\n    double r_dummy[] = {5, 0, 4, 7};\n    int dummy_n = (int)(sizeof(v_dummy) / sizeof(v_dummy[0]));\n\n    for (int i = 0; i < dummy_n && i < 100; i++) {\n      V[i] = v_dummy[i];\n      R[i] = r_dummy[i];\n    }\n    n = dummy_n;\n  }\n\n  // --- ここから共通処理（読み込んだデータを使う）---\n  double sumI = 0.0;\n  int valid = 0;\n\n  for (int i = 0; i < n; i++) {\n    if (R[i] <= 0) {\n      // @bp 各行を処理\n      printf(\"R error\\n\");\n      continue;\n    }\n    double I = V[i] / R[i];\n    // @bp 各行を処理\n    printf(\"I=%.3f\\n\", I);\n    sumI += I;\n    valid++;\n  }\n\n  // @bp 平均を表示\n  if (valid > 0) {\n    printf(\"avg=%.3f\\n\", sumI / valid);\n  } else {\n    printf(\"avg=NA\\n\");\n  }\n\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "各行を処理",
+            "vars": {
+              "i": 0,
+              "n": 4
+            },
+            "stdout": "I=2.000\n"
+          },
+          {
+            "at": "各行を処理",
+            "vars": {
+              "i": 1,
+              "n": 4
+            },
+            "stdout": "I=2.000\nR error\n"
+          },
+          {
+            "at": "各行を処理",
+            "vars": {
+              "i": 2,
+              "n": 4
+            },
+            "stdout": "I=2.000\nR error\nI=2.000\n"
+          },
+          {
+            "at": "各行を処理",
+            "vars": {
+              "i": 3,
+              "n": 4
+            },
+            "stdout": "I=2.000\nR error\nI=2.000\nI=2.143\n"
+          },
+          {
+            "at": "平均を表示",
+            "vars": {
+              "sumI": 6.142857,
+              "valid": 3
+            },
+            "stdout": "I=2.000\nR error\nI=2.000\nI=2.143\navg=2.048\n"
+          }
+        ]
+      },
+      {
+        "title": "ファイル出力（fprintf）：正しい書き方 → 画面に擬似出力",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  const char *outName = \"output12.txt\";\n\n  /* ----------------------------\n   * 【本来の実装】ファイルへ書き込む（正しい書き方）\n   * ---------------------------- */\n  /*\n  FILE *fp = fopen(outName, \"w\");\n  if (fp == NULL) {\n    printf(\"open error: %s\\n\", outName);\n    return 0;\n  }\n\n  // 例：I の計算結果を保存する\n  fprintf(fp, \"I=%.3f\\n\", 2.000);\n  fprintf(fp, \"I=%.3f\\n\", 2.143);\n\n  fclose(fp);\n  printf(\"%s に保存しました\\n\", outName);\n  return 0;\n  */\n\n  /* ----------------------------\n   * 【ツール用】擬似的に「保存する内容」を画面に表示\n   * ---------------------------- */\n  // @bp 保存先を表示\n  printf(\"[write] %s\\n\", outName);\n  // @bp 1件目を書き出し\n  printf(\"I=2.000\\n\");\n  // @bp 2件目を書き出し\n  printf(\"I=2.143\\n\");\n  // @bp 完了を表示\n  printf(\"(done)\\n\");\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "保存先を表示",
+            "vars": {
+              "outName": "output12.txt"
+            },
+            "stdout": "[write] output12.txt\n"
+          },
+          {
+            "at": "1件目を書き出し",
+            "vars": {
+              "outName": "output12.txt"
+            },
+            "stdout": "[write] output12.txt\nI=2.000\n"
+          },
+          {
+            "at": "2件目を書き出し",
+            "vars": {
+              "outName": "output12.txt"
+            },
+            "stdout": "[write] output12.txt\nI=2.000\nI=2.143\n"
+          },
+          {
+            "at": "完了を表示",
+            "vars": {},
+            "stdout": "[write] output12.txt\nI=2.000\nI=2.143\n(done)\n"
+          }
+        ]
+      },
+      {
+        "title": "構造体 `Stats` の最小確認",
+        "code": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\nint main(void) {\n  Stats st = {0.0, 0};\n\n  // @bp 値を更新\n  st.sumI += 1.2;\n  st.valid++;\n\n  // @bp 結果を表示\n  printf(\"sumI=%.1f valid=%d\\n\", st.sumI, st.valid);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "初期値を用意",
+            "vars": {
+              "sumI": 0.0,
+              "valid": 0
+            },
+            "stdout": ""
+          },
+          {
+            "at": "結果を表示",
+            "vars": {
+              "sumI": 1.2,
+              "valid": 1
+            },
+            "stdout": "sumI=1.2 valid=1\n"
+          }
+        ]
+      }
+    ],
+    "13": [
+      {
+        "title": "未完成コード（課題）",
+        "code": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name) {\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name) {\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout) {\n  Stats st = {0.0, 0};\n  double V, R;\n\n  // TODO2-1: 値をファイルから読み込み\n  while (???(fin, \"%lf %lf\", &V, &R) == 2) {\n    if (R <= 0) {\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st) {\n  if (st.valid > 0) {\n    printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  } else {\n    printf(\"avg=NA\\n\");\n  }\n}\n\nint main(void) {\n  const char *inName = \"data.txt\";\n  const char *outName = \"result.txt\";\n\n  FILE *fin = openInputFile(inName);\n  if (fin == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if (fout == NULL) {\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n  return 0;\n}"
+      }
+    ],
+    "14": [
+      {
+        "title": "ファイルを開く→値を表示→閉じる（最小）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  const char *inName = \"data.txt\";\n  // @bp ファイルを開く\n  FILE *fin = fopen(inName, \"r\");\n  if (fin == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  double V, R;\n\n  while (fscanf(fin, \"%lf %lf\", &V, &R) == 2) {\n    // @bp 1行を表示\n    printf(\"V=%.1f R=%.1f\\n\", V, R);\n  }\n\n  fclose(fin);\n  // @bp 完了を表示\n  printf(\"done\\n\");\n\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "ファイルを開く",
+            "vars": {
+              "inName": "data.txt"
+            },
+            "stdout": ""
+          },
+          {
+            "at": "1行を表示",
+            "vars": {
+              "V": 10.0,
+              "R": 5.0
+            },
+            "stdout": "V=10.0 R=5.0\n"
+          },
+          {
+            "at": "1行を表示",
+            "vars": {
+              "V": 10.0,
+              "R": 5.0
+            },
+            "stdout": "V=10.0 R=5.0\n"
+          },
+          {
+            "at": "1行を表示",
+            "vars": {
+              "V": 12.0,
+              "R": 0.0
+            },
+            "stdout": "V=10.0 R=5.0\nV=12.0 R=0.0\n"
+          },
+          {
+            "at": "1行を表示",
+            "vars": {
+              "V": 8.0,
+              "R": 4.0
+            },
+            "stdout": "V=10.0 R=5.0\nV=12.0 R=0.0\nV=8.0 R=4.0\n"
+          },
+          {
+            "at": "完了を表示",
+            "vars": {},
+            "stdout": "V=10.0 R=5.0\nV=12.0 R=0.0\nV=8.0 R=4.0\ndone\n"
+          }
+        ]
+      }
+    ],
+    "15": [
+      {
+        "title": "線形探索（見つけたら位置）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  int a[4] = {3, 7, 2, 5};\n  int key = 2, pos = -1;\n\n  for (int i = 0; i < 4; i++) {\n    // @bp 一致を確認\n    if (a[i] == key) {\n      pos = i;\n      break;\n    }\n  }\n\n  // @bp 位置を表示\n  printf(\"%d\\n\", pos);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "一致を確認",
+            "vars": {
+              "i": 0,
+              "pos": -1
+            },
+            "stdout": ""
+          },
+          {
+            "at": "一致を確認",
+            "vars": {
+              "i": 1,
+              "pos": -1
+            },
+            "stdout": ""
+          },
+          {
+            "at": "一致を確認",
+            "vars": {
+              "i": 2,
+              "pos": 2
+            },
+            "stdout": ""
+          },
+          {
+            "at": "位置を表示",
+            "vars": {
+              "pos": 2
+            },
+            "stdout": "2\n"
+          }
+        ]
+      },
+      {
+        "title": "バブルソート（2回だけのイメージ）",
+        "code": "#include <stdio.h>\n\nint main(void) {\n  int a[3] = {3, 1, 2};\n  // @bp 配列を用意\n  int n = (int)(sizeof(a) / sizeof(a[0]));  // 配列の要素数\n\n  // バブルソート（n=3なので外側は2回）\n  for (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - 1 - i; j++) {\n      if (a[j] > a[j + 1]) {\n        int tmp = a[j];\n        a[j] = a[j + 1];\n        a[j + 1] = tmp;\n      }\n    }\n  }\n\n  // 結果表示\n  // @bp 並べ替え結果を表示\n  for (int k = 0; k < n; k++) {\n    printf(\"%d\", a[k]);\n    if (k < n - 1) printf(\" \");\n  }\n  printf(\"\\n\");\n\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "配列を用意",
+            "vars": {
+              "a": "3, 1, 2"
+            },
+            "stdout": ""
+          },
+          {
+            "at": "並べ替え結果を表示",
+            "vars": {
+              "a": "1, 2, 3"
+            },
+            "stdout": "1 2 3\n"
+          }
+        ]
+      },
+      {
+        "title": "関数の復習：min関数",
+        "code": "#include <stdio.h>\n\nint min2(int a, int b) {\n  return (a < b) ? a : b;\n}\n\nint main(void) {\n  // @bp 最小値を表示\n  printf(\"%d\\n\", min2(3, 5));\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "最小値を表示",
+            "vars": {},
+            "stdout": "3\n"
+          }
+        ]
+      },
+      {
+        "title": "構造体（struct）：RLCの定数と状態をまとめる",
+        "code": "#include <stdio.h>\n\ntypedef struct {\n  double R, L, C;\n} RLCParam;\n\ntypedef struct {\n  double i;\n  double vc;\n} State;\n\nint main(void) {\n  // @bp 値を用意\n  RLCParam p = {10.0, 0.1, 0.0001};\n  State x = {0.0, 1.0};  // i0, Vc0\n\n  // @bp di/dtを計算\n  double didt = -(p.R / p.L) * x.i - (1.0 / p.L) * x.vc;\n  // @bp dVc/dtを計算\n  double dvcdt = (1.0 / p.C) * x.i;\n\n  // @bp 結果を表示\n  printf(\"di/dt=%.3f dVc/dt=%.3f\\n\", didt, dvcdt);\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "値を用意",
+            "vars": {
+              "p.R": 10.0,
+              "p.L": 0.1,
+              "p.C": 0.0001,
+              "x.i": 0.0,
+              "x.vc": 1.0
+            },
+            "stdout": ""
+          },
+          {
+            "at": "di/dtを計算",
+            "vars": {
+              "p.R": 10.0,
+              "p.L": 0.1,
+              "p.C": 0.0001,
+              "x.i": 0.0,
+              "x.vc": 1.0,
+              "didt": -10.0
+            },
+            "stdout": ""
+          },
+          {
+            "at": "dVc/dtを計算",
+            "vars": {
+              "p.R": 10.0,
+              "p.L": 0.1,
+              "p.C": 0.0001,
+              "x.i": 0.0,
+              "x.vc": 1.0,
+              "didt": -10.0,
+              "dvcdt": 0.0
+            },
+            "stdout": ""
+          },
+          {
+            "at": "結果を表示",
+            "vars": {
+              "didt": -10.0,
+              "dvcdt": 0.0
+            },
+            "stdout": "di/dt=-10.000 dVc/dt=0.000\n"
+          }
+        ]
+      }
+    ],
+    "0": [
+      {
+        "title": "環境確認：gcc --version（イメージ）",
+        "code": "// 端末（PowerShell）で次を実行して確認します。\n// gcc --version\n\n// このツール内ではコマンド実行はしません。",
+        "trace": [
+          {
+            "stdout": "$ gcc --version\ngcc ...\n",
+            "vars": {
+              "gcc": "installed"
+            }
+          }
+        ]
+      }
+    ],
+    "-1": [],
+    "16": [
+      {
+        "title": "RLC共振（RK4）",
+        "code": "#include <stdio.h>\n\n/*\n  RLC直列回路（自由振動）の状態方程式（Vin=0）\n    di/dt  = -(R/L) i - (1/L) Vc\n    dVc/dt = (1/C) i\n  状態 x = [ i, Vc ]\n*/\n\ntypedef struct {\n  double i;\n  double vc;\n} State;\n\nState f(State x, double R, double L, double C) {\n  State dx;\n  dx.i  = -(R / L) * x.i - (1.0 / L) * x.vc;\n  dx.vc = (1.0 / C) * x.i;\n  return dx;\n}\n\nState add(State a, State b, double k) {\n  State y;\n  y.i  = a.i  + k * b.i;\n  y.vc = a.vc + k * b.vc;\n  return y;\n}\n\nState rk4_step(State x, double dt, double R, double L, double C) {\n  State k1 = f(x, R, L, C);\n  State k2 = f(add(x, k1, dt / 2), R, L, C);\n  State k3 = f(add(x, k2, dt / 2), R, L, C);\n  State k4 = f(add(x, k3, dt),   R, L, C);\n\n  State next;\n  next.i  = x.i  + (dt / 6) * (k1.i  + 2 * k2.i  + 2 * k3.i  + k4.i);\n  next.vc = x.vc + (dt / 6) * (k1.vc + 2 * k2.vc + 2 * k3.vc + k4.vc);\n  return next;\n}\n\nint main(void) {\n  double R = 10.0, L = 0.01, C = 0.0001;\n  double dt = 0.0001;\n  int steps = 2000;\n\n  State x;\n  x.vc = 5.0;  // Vc(0)\n  x.i  = 0.0;  // i(0)\n\n  for (int n = 0; n <= steps; n++) {\n    double t = n * dt;\n    printf(\"%f,%f,%f\\n\", t, x.i, x.vc);  // CSV: t,i,Vc\n    x = rk4_step(x, dt, R, L, C);\n  }\n  return 0;\n}",
+        "trace": [
+          {
+            "at": "n=0",
+            "vars": {
+              "n": 0,
+              "t": 0.0,
+              "i": 0.0,
+              "Vc": 5.0
+            },
+            "stdout": "0.000000,0.000000,5.000000\n"
+          },
+          {
+            "at": "n=1",
+            "vars": {
+              "n": 1,
+              "t": 0.0001,
+              "i": -0.047502,
+              "Vc": 4.975833
+            },
+            "stdout": "0.000100,-0.047502,4.975833\n"
+          },
+          {
+            "at": "n=2",
+            "vars": {
+              "n": 2,
+              "t": 0.0002,
+              "i": -0.090032,
+              "Vc": 4.906655
+            },
+            "stdout": "0.000200,-0.090032,4.906655\n"
+          },
+          {
+            "at": "n=3",
+            "vars": {
+              "n": 3,
+              "t": 0.0003,
+              "i": -0.127659,
+              "Vc": 4.797405
+            },
+            "stdout": "0.000300,-0.127659,4.797405\n"
+          },
+          {
+            "at": "n=4",
+            "vars": {
+              "n": 4,
+              "t": 0.0004,
+              "i": -0.160491,
+              "Vc": 4.652936
+            },
+            "stdout": "0.000400,-0.160491,4.652936\n"
+          },
+          {
+            "at": "n=5",
+            "vars": {
+              "n": 5,
+              "t": 0.0005,
+              "i": -0.188673,
+              "Vc": 4.477974
+            },
+            "stdout": "0.000500,-0.188673,4.477974\n"
+          },
+          {
+            "at": "n=6",
+            "vars": {
+              "n": 6,
+              "t": 0.0006,
+              "i": -0.212379,
+              "Vc": 4.277083
+            },
+            "stdout": "0.000600,-0.212379,4.277083\n"
+          },
+          {
+            "at": "n=7",
+            "vars": {
+              "n": 7,
+              "t": 0.0007,
+              "i": -0.231809,
+              "Vc": 4.054642
+            },
+            "stdout": "0.000700,-0.231809,4.054642\n"
+          },
+          {
+            "at": "n=8",
+            "vars": {
+              "n": 8,
+              "t": 0.0008,
+              "i": -0.247187,
+              "Vc": 3.814816
+            },
+            "stdout": "0.000800,-0.247187,3.814816\n"
+          },
+          {
+            "at": "n=9",
+            "vars": {
+              "n": 9,
+              "t": 0.0009,
+              "i": -0.258751,
+              "Vc": 3.56154
+            },
+            "stdout": "0.000900,-0.258751,3.561540\n"
+          },
+          {
+            "at": "n=10",
+            "vars": {
+              "n": 10,
+              "t": 0.001,
+              "i": -0.266754,
+              "Vc": 3.298502
+            },
+            "stdout": "0.001000,-0.266754,3.298502\n"
+          },
+          {
+            "at": "n=11",
+            "vars": {
+              "n": 11,
+              "t": 0.0011,
+              "i": -0.271459,
+              "Vc": 3.029131
+            },
+            "stdout": "0.001100,-0.271459,3.029131\n"
+          },
+          {
+            "at": "n=12",
+            "vars": {
+              "n": 12,
+              "t": 0.0012,
+              "i": -0.273135,
+              "Vc": 2.756593
+            },
+            "stdout": "0.001200,-0.273135,2.756593\n"
+          },
+          {
+            "at": "n=13",
+            "vars": {
+              "n": 13,
+              "t": 0.0013,
+              "i": -0.272055,
+              "Vc": 2.48378
+            },
+            "stdout": "0.001300,-0.272055,2.483780\n"
+          },
+          {
+            "at": "n=14",
+            "vars": {
+              "n": 14,
+              "t": 0.0014,
+              "i": -0.268491,
+              "Vc": 2.213312
+            },
+            "stdout": "0.001400,-0.268491,2.213312\n"
+          },
+          {
+            "at": "n=15",
+            "vars": {
+              "n": 15,
+              "t": 0.0015,
+              "i": -0.262712,
+              "Vc": 1.947537
+            },
+            "stdout": "0.001500,-0.262712,1.947537\n"
+          },
+          {
+            "at": "n=16",
+            "vars": {
+              "n": 16,
+              "t": 0.0016,
+              "i": -0.254986,
+              "Vc": 1.688536
+            },
+            "stdout": "0.001600,-0.254986,1.688536\n"
+          },
+          {
+            "at": "n=17",
+            "vars": {
+              "n": 17,
+              "t": 0.0017,
+              "i": -0.245571,
+              "Vc": 1.438127
+            },
+            "stdout": "0.001700,-0.245571,1.438127\n"
+          },
+          {
+            "at": "n=18",
+            "vars": {
+              "n": 18,
+              "t": 0.0018,
+              "i": -0.234717,
+              "Vc": 1.197873
+            },
+            "stdout": "0.001800,-0.234717,1.197873\n"
+          },
+          {
+            "at": "n=19",
+            "vars": {
+              "n": 19,
+              "t": 0.0019,
+              "i": -0.222663,
+              "Vc": 0.969093
+            },
+            "stdout": "0.001900,-0.222663,0.969093\n"
+          },
+          {
+            "at": "n=20",
+            "vars": {
+              "n": 20,
+              "t": 0.002,
+              "i": -0.20964,
+              "Vc": 0.75287
+            },
+            "stdout": "0.002000,-0.209640,0.752870\n"
+          },
+          {
+            "at": "n=21",
+            "vars": {
+              "n": 21,
+              "t": 0.0021,
+              "i": -0.195863,
+              "Vc": 0.550064
+            },
+            "stdout": "0.002100,-0.195863,0.550064\n"
+          },
+          {
+            "at": "n=22",
+            "vars": {
+              "n": 22,
+              "t": 0.0022,
+              "i": -0.181534,
+              "Vc": 0.361328
+            },
+            "stdout": "0.002200,-0.181534,0.361328\n"
+          },
+          {
+            "at": "n=23",
+            "vars": {
+              "n": 23,
+              "t": 0.0023,
+              "i": -0.166843,
+              "Vc": 0.187117
+            },
+            "stdout": "0.002300,-0.166843,0.187117\n"
+          },
+          {
+            "at": "n=24",
+            "vars": {
+              "n": 24,
+              "t": 0.0024,
+              "i": -0.151963,
+              "Vc": 0.027704
+            },
+            "stdout": "0.002400,-0.151963,0.027704\n"
+          },
+          {
+            "at": "n=25",
+            "vars": {
+              "n": 25,
+              "t": 0.0025,
+              "i": -0.137055,
+              "Vc": -0.116801
+            },
+            "stdout": "0.002500,-0.137055,-0.116801\n"
+          },
+          {
+            "at": "n=26",
+            "vars": {
+              "n": 26,
+              "t": 0.0026,
+              "i": -0.122262,
+              "Vc": -0.246444
+            },
+            "stdout": "0.002600,-0.122262,-0.246444\n"
+          },
+          {
+            "at": "n=27",
+            "vars": {
+              "n": 27,
+              "t": 0.0027,
+              "i": -0.107714,
+              "Vc": -0.361407
+            },
+            "stdout": "0.002700,-0.107714,-0.361407\n"
+          },
+          {
+            "at": "n=28",
+            "vars": {
+              "n": 28,
+              "t": 0.0028,
+              "i": -0.093527,
+              "Vc": -0.461994
+            },
+            "stdout": "0.002800,-0.093527,-0.461994\n"
+          },
+          {
+            "at": "n=29",
+            "vars": {
+              "n": 29,
+              "t": 0.0029,
+              "i": -0.0798,
+              "Vc": -0.548615
+            },
+            "stdout": "0.002900,-0.079800,-0.548615\n"
+          },
+          {
+            "at": "n=30",
+            "vars": {
+              "n": 30,
+              "t": 0.003,
+              "i": -0.066621,
+              "Vc": -0.621777
+            },
+            "stdout": "0.003000,-0.066621,-0.621777\n"
+          },
+          {
+            "at": "n=31",
+            "vars": {
+              "n": 31,
+              "t": 0.0031,
+              "i": -0.054063,
+              "Vc": -0.682065
+            },
+            "stdout": "0.003100,-0.054063,-0.682065\n"
+          },
+          {
+            "at": "n=32",
+            "vars": {
+              "n": 32,
+              "t": 0.0032,
+              "i": -0.042185,
+              "Vc": -0.73013
+            },
+            "stdout": "0.003200,-0.042185,-0.730130\n"
+          },
+          {
+            "at": "n=33",
+            "vars": {
+              "n": 33,
+              "t": 0.0033,
+              "i": -0.031037,
+              "Vc": -0.766679
+            },
+            "stdout": "0.003300,-0.031037,-0.766679\n"
+          },
+          {
+            "at": "n=34",
+            "vars": {
+              "n": 34,
+              "t": 0.0034,
+              "i": -0.020655,
+              "Vc": -0.79246
+            },
+            "stdout": "0.003400,-0.020655,-0.792460\n"
+          },
+          {
+            "at": "n=35",
+            "vars": {
+              "n": 35,
+              "t": 0.0035,
+              "i": -0.011064,
+              "Vc": -0.808252
+            },
+            "stdout": "0.003500,-0.011064,-0.808252\n"
+          },
+          {
+            "at": "n=36",
+            "vars": {
+              "n": 36,
+              "t": 0.0036,
+              "i": -0.002281,
+              "Vc": -0.814857
+            },
+            "stdout": "0.003600,-0.002281,-0.814857\n"
+          },
+          {
+            "at": "n=37",
+            "vars": {
+              "n": 37,
+              "t": 0.0037,
+              "i": 0.005689,
+              "Vc": -0.813085
+            },
+            "stdout": "0.003700,0.005689,-0.813085\n"
+          },
+          {
+            "at": "n=38",
+            "vars": {
+              "n": 38,
+              "t": 0.0038,
+              "i": 0.012845,
+              "Vc": -0.803751
+            },
+            "stdout": "0.003800,0.012845,-0.803751\n"
+          },
+          {
+            "at": "n=39",
+            "vars": {
+              "n": 39,
+              "t": 0.0039,
+              "i": 0.019199,
+              "Vc": -0.787663
+            },
+            "stdout": "0.003900,0.019199,-0.787663\n"
+          },
+          {
+            "at": "n=40",
+            "vars": {
+              "n": 40,
+              "t": 0.004,
+              "i": 0.024765,
+              "Vc": -0.765616
+            },
+            "stdout": "0.004000,0.024765,-0.765616\n"
+          },
+          {
+            "at": "n=41",
+            "vars": {
+              "n": 41,
+              "t": 0.0041,
+              "i": 0.029566,
+              "Vc": -0.738387
+            },
+            "stdout": "0.004100,0.029566,-0.738387\n"
+          },
+          {
+            "at": "n=42",
+            "vars": {
+              "n": 42,
+              "t": 0.0042,
+              "i": 0.03363,
+              "Vc": -0.706729
+            },
+            "stdout": "0.004200,0.033630,-0.706729\n"
+          },
+          {
+            "at": "n=43",
+            "vars": {
+              "n": 43,
+              "t": 0.0043,
+              "i": 0.036986,
+              "Vc": -0.671364
+            },
+            "stdout": "0.004300,0.036986,-0.671364\n"
+          },
+          {
+            "at": "n=44",
+            "vars": {
+              "n": 44,
+              "t": 0.0044,
+              "i": 0.039672,
+              "Vc": -0.63298
+            },
+            "stdout": "0.004400,0.039672,-0.632980\n"
+          },
+          {
+            "at": "n=45",
+            "vars": {
+              "n": 45,
+              "t": 0.0045,
+              "i": 0.041725,
+              "Vc": -0.592231
+            },
+            "stdout": "0.004500,0.041725,-0.592231\n"
+          },
+          {
+            "at": "n=46",
+            "vars": {
+              "n": 46,
+              "t": 0.0046,
+              "i": 0.043185,
+              "Vc": -0.549728
+            },
+            "stdout": "0.004600,0.043185,-0.549728\n"
+          },
+          {
+            "at": "n=47",
+            "vars": {
+              "n": 47,
+              "t": 0.0047,
+              "i": 0.044097,
+              "Vc": -0.506043
+            },
+            "stdout": "0.004700,0.044097,-0.506043\n"
+          },
+          {
+            "at": "n=48",
+            "vars": {
+              "n": 48,
+              "t": 0.0048,
+              "i": 0.044502,
+              "Vc": -0.461704
+            },
+            "stdout": "0.004800,0.044502,-0.461704\n"
+          },
+          {
+            "at": "n=49",
+            "vars": {
+              "n": 49,
+              "t": 0.0049,
+              "i": 0.044445,
+              "Vc": -0.417194
+            },
+            "stdout": "0.004900,0.044445,-0.417194\n"
+          },
+          {
+            "at": "n=50",
+            "vars": {
+              "n": 50,
+              "t": 0.005,
+              "i": 0.043971,
+              "Vc": -0.372953
+            },
+            "stdout": "0.005000,0.043971,-0.372953\n"
+          },
+          {
+            "at": "n=51",
+            "vars": {
+              "n": 51,
+              "t": 0.0051,
+              "i": 0.043125,
+              "Vc": -0.329375
+            },
+            "stdout": "0.005100,0.043125,-0.329375\n"
+          },
+          {
+            "at": "n=52",
+            "vars": {
+              "n": 52,
+              "t": 0.0052,
+              "i": 0.041948,
+              "Vc": -0.286813
+            },
+            "stdout": "0.005200,0.041948,-0.286813\n"
+          },
+          {
+            "at": "n=53",
+            "vars": {
+              "n": 53,
+              "t": 0.0053,
+              "i": 0.040485,
+              "Vc": -0.245574
+            },
+            "stdout": "0.005300,0.040485,-0.245574\n"
+          },
+          {
+            "at": "n=54",
+            "vars": {
+              "n": 54,
+              "t": 0.0054,
+              "i": 0.038776,
+              "Vc": -0.205925
+            },
+            "stdout": "0.005400,0.038776,-0.205925\n"
+          },
+          {
+            "at": "n=55",
+            "vars": {
+              "n": 55,
+              "t": 0.0055,
+              "i": 0.036861,
+              "Vc": -0.16809
+            },
+            "stdout": "0.005500,0.036861,-0.168090\n"
+          },
+          {
+            "at": "n=56",
+            "vars": {
+              "n": 56,
+              "t": 0.0056,
+              "i": 0.034778,
+              "Vc": -0.132258
+            },
+            "stdout": "0.005600,0.034778,-0.132258\n"
+          },
+          {
+            "at": "n=57",
+            "vars": {
+              "n": 57,
+              "t": 0.0057,
+              "i": 0.032562,
+              "Vc": -0.098578
+            },
+            "stdout": "0.005700,0.032562,-0.098578\n"
+          },
+          {
+            "at": "n=58",
+            "vars": {
+              "n": 58,
+              "t": 0.0058,
+              "i": 0.030248,
+              "Vc": -0.067166
+            },
+            "stdout": "0.005800,0.030248,-0.067166\n"
+          },
+          {
+            "at": "n=59",
+            "vars": {
+              "n": 59,
+              "t": 0.0059,
+              "i": 0.027866,
+              "Vc": -0.038105
+            },
+            "stdout": "0.005900,0.027866,-0.038105\n"
+          },
+          {
+            "at": "n=60",
+            "vars": {
+              "n": 60,
+              "t": 0.006,
+              "i": 0.025446,
+              "Vc": -0.011446
+            },
+            "stdout": "0.006000,0.025446,-0.011446\n"
+          },
+          {
+            "at": "n=61",
+            "vars": {
+              "n": 61,
+              "t": 0.0061,
+              "i": 0.023014,
+              "Vc": 0.012784
+            },
+            "stdout": "0.006100,0.023014,0.012784\n"
+          },
+          {
+            "at": "n=62",
+            "vars": {
+              "n": 62,
+              "t": 0.0062,
+              "i": 0.020595,
+              "Vc": 0.034587
+            },
+            "stdout": "0.006200,0.020595,0.034587\n"
+          },
+          {
+            "at": "n=63",
+            "vars": {
+              "n": 63,
+              "t": 0.0063,
+              "i": 0.018211,
+              "Vc": 0.053986
+            },
+            "stdout": "0.006300,0.018211,0.053986\n"
+          },
+          {
+            "at": "n=64",
+            "vars": {
+              "n": 64,
+              "t": 0.0064,
+              "i": 0.01588,
+              "Vc": 0.071026
+            },
+            "stdout": "0.006400,0.015880,0.071026\n"
+          },
+          {
+            "at": "n=65",
+            "vars": {
+              "n": 65,
+              "t": 0.0065,
+              "i": 0.013619,
+              "Vc": 0.085769
+            },
+            "stdout": "0.006500,0.013619,0.085769\n"
+          },
+          {
+            "at": "n=66",
+            "vars": {
+              "n": 66,
+              "t": 0.0066,
+              "i": 0.011445,
+              "Vc": 0.098293
+            },
+            "stdout": "0.006600,0.011445,0.098293\n"
+          },
+          {
+            "at": "n=67",
+            "vars": {
+              "n": 67,
+              "t": 0.0067,
+              "i": 0.009368,
+              "Vc": 0.108691
+            },
+            "stdout": "0.006700,0.009368,0.108691\n"
+          },
+          {
+            "at": "n=68",
+            "vars": {
+              "n": 68,
+              "t": 0.0068,
+              "i": 0.0074,
+              "Vc": 0.117066
+            },
+            "stdout": "0.006800,0.007400,0.117066\n"
+          },
+          {
+            "at": "n=69",
+            "vars": {
+              "n": 69,
+              "t": 0.0069,
+              "i": 0.005549,
+              "Vc": 0.123531
+            },
+            "stdout": "0.006900,0.005549,0.123531\n"
+          },
+          {
+            "at": "n=70",
+            "vars": {
+              "n": 70,
+              "t": 0.007,
+              "i": 0.003822,
+              "Vc": 0.128206
+            },
+            "stdout": "0.007000,0.003822,0.128206\n"
+          },
+          {
+            "at": "n=71",
+            "vars": {
+              "n": 71,
+              "t": 0.0071,
+              "i": 0.002222,
+              "Vc": 0.131217
+            },
+            "stdout": "0.007100,0.002222,0.131217\n"
+          },
+          {
+            "at": "n=72",
+            "vars": {
+              "n": 72,
+              "t": 0.0072,
+              "i": 0.000754,
+              "Vc": 0.132694
+            },
+            "stdout": "0.007200,0.000754,0.132694\n"
+          },
+          {
+            "at": "n=73",
+            "vars": {
+              "n": 73,
+              "t": 0.0073,
+              "i": -0.000582,
+              "Vc": 0.132769
+            },
+            "stdout": "0.007300,-0.000582,0.132769\n"
+          },
+          {
+            "at": "n=74",
+            "vars": {
+              "n": 74,
+              "t": 0.0074,
+              "i": -0.001785,
+              "Vc": 0.131574
+            },
+            "stdout": "0.007400,-0.001785,0.131574\n"
+          },
+          {
+            "at": "n=75",
+            "vars": {
+              "n": 75,
+              "t": 0.0075,
+              "i": -0.002857,
+              "Vc": 0.129242
+            },
+            "stdout": "0.007500,-0.002857,0.129242\n"
+          },
+          {
+            "at": "n=76",
+            "vars": {
+              "n": 76,
+              "t": 0.0076,
+              "i": -0.0038,
+              "Vc": 0.125903
+            },
+            "stdout": "0.007600,-0.003800,0.125903\n"
+          },
+          {
+            "at": "n=77",
+            "vars": {
+              "n": 77,
+              "t": 0.0077,
+              "i": -0.004617,
+              "Vc": 0.121685
+            },
+            "stdout": "0.007700,-0.004617,0.121685\n"
+          },
+          {
+            "at": "n=78",
+            "vars": {
+              "n": 78,
+              "t": 0.0078,
+              "i": -0.005312,
+              "Vc": 0.116711
+            },
+            "stdout": "0.007800,-0.005312,0.116711\n"
+          },
+          {
+            "at": "n=79",
+            "vars": {
+              "n": 79,
+              "t": 0.0079,
+              "i": -0.00589,
+              "Vc": 0.1111
+            },
+            "stdout": "0.007900,-0.005890,0.111100\n"
+          },
+          {
+            "at": "n=80",
+            "vars": {
+              "n": 80,
+              "t": 0.008,
+              "i": -0.006358,
+              "Vc": 0.104967
+            },
+            "stdout": "0.008000,-0.006358,0.104967\n"
+          },
+          {
+            "at": "n=81",
+            "vars": {
+              "n": 81,
+              "t": 0.0081,
+              "i": -0.00672,
+              "Vc": 0.09842
+            },
+            "stdout": "0.008100,-0.006720,0.098420\n"
+          },
+          {
+            "at": "n=82",
+            "vars": {
+              "n": 82,
+              "t": 0.0082,
+              "i": -0.006984,
+              "Vc": 0.09156
+            },
+            "stdout": "0.008200,-0.006984,0.091560\n"
+          },
+          {
+            "at": "n=83",
+            "vars": {
+              "n": 83,
+              "t": 0.0083,
+              "i": -0.007157,
+              "Vc": 0.084482
+            },
+            "stdout": "0.008300,-0.007157,0.084482\n"
+          },
+          {
+            "at": "n=84",
+            "vars": {
+              "n": 84,
+              "t": 0.0084,
+              "i": -0.007245,
+              "Vc": 0.077274
+            },
+            "stdout": "0.008400,-0.007245,0.077274\n"
+          },
+          {
+            "at": "n=85",
+            "vars": {
+              "n": 85,
+              "t": 0.0085,
+              "i": -0.007256,
+              "Vc": 0.070018
+            },
+            "stdout": "0.008500,-0.007256,0.070018\n"
+          },
+          {
+            "at": "n=86",
+            "vars": {
+              "n": 86,
+              "t": 0.0086,
+              "i": -0.007197,
+              "Vc": 0.062786
+            },
+            "stdout": "0.008600,-0.007197,0.062786\n"
+          },
+          {
+            "at": "n=87",
+            "vars": {
+              "n": 87,
+              "t": 0.0087,
+              "i": -0.007075,
+              "Vc": 0.055646
+            },
+            "stdout": "0.008700,-0.007075,0.055646\n"
+          },
+          {
+            "at": "n=88",
+            "vars": {
+              "n": 88,
+              "t": 0.0088,
+              "i": -0.006897,
+              "Vc": 0.048656
+            },
+            "stdout": "0.008800,-0.006897,0.048656\n"
+          },
+          {
+            "at": "n=89",
+            "vars": {
+              "n": 89,
+              "t": 0.0089,
+              "i": -0.006671,
+              "Vc": 0.041868
+            },
+            "stdout": "0.008900,-0.006671,0.041868\n"
+          },
+          {
+            "at": "n=90",
+            "vars": {
+              "n": 90,
+              "t": 0.009,
+              "i": -0.006402,
+              "Vc": 0.035328
+            },
+            "stdout": "0.009000,-0.006402,0.035328\n"
+          },
+          {
+            "at": "n=91",
+            "vars": {
+              "n": 91,
+              "t": 0.0091,
+              "i": -0.006099,
+              "Vc": 0.029075
+            },
+            "stdout": "0.009100,-0.006099,0.029075\n"
+          },
+          {
+            "at": "n=92",
+            "vars": {
+              "n": 92,
+              "t": 0.0092,
+              "i": -0.005766,
+              "Vc": 0.023141
+            },
+            "stdout": "0.009200,-0.005766,0.023141\n"
+          },
+          {
+            "at": "n=93",
+            "vars": {
+              "n": 93,
+              "t": 0.0093,
+              "i": -0.00541,
+              "Vc": 0.017551
+            },
+            "stdout": "0.009300,-0.005410,0.017551\n"
+          },
+          {
+            "at": "n=94",
+            "vars": {
+              "n": 94,
+              "t": 0.0094,
+              "i": -0.005037,
+              "Vc": 0.012326
+            },
+            "stdout": "0.009400,-0.005037,0.012326\n"
+          },
+          {
+            "at": "n=95",
+            "vars": {
+              "n": 95,
+              "t": 0.0095,
+              "i": -0.004651,
+              "Vc": 0.007481
+            },
+            "stdout": "0.009500,-0.004651,0.007481\n"
+          },
+          {
+            "at": "n=96",
+            "vars": {
+              "n": 96,
+              "t": 0.0096,
+              "i": -0.004258,
+              "Vc": 0.003026
+            },
+            "stdout": "0.009600,-0.004258,0.003026\n"
+          },
+          {
+            "at": "n=97",
+            "vars": {
+              "n": 97,
+              "t": 0.0097,
+              "i": -0.003861,
+              "Vc": -0.001034
+            },
+            "stdout": "0.009700,-0.003861,-0.001034\n"
+          },
+          {
+            "at": "n=98",
+            "vars": {
+              "n": 98,
+              "t": 0.0098,
+              "i": -0.003466,
+              "Vc": -0.004697
+            },
+            "stdout": "0.009800,-0.003466,-0.004697\n"
+          },
+          {
+            "at": "n=99",
+            "vars": {
+              "n": 99,
+              "t": 0.0099,
+              "i": -0.003075,
+              "Vc": -0.007968
+            },
+            "stdout": "0.009900,-0.003075,-0.007968\n"
+          },
+          {
+            "at": "n=100",
+            "vars": {
+              "n": 100,
+              "t": 0.01,
+              "i": -0.002693,
+              "Vc": -0.010851
+            },
+            "stdout": "0.010000,-0.002693,-0.010851\n"
+          },
+          {
+            "at": "n=101",
+            "vars": {
+              "n": 101,
+              "t": 0.0101,
+              "i": -0.002321,
+              "Vc": -0.013357
+            },
+            "stdout": "0.010100,-0.002321,-0.013357\n"
+          },
+          {
+            "at": "n=102",
+            "vars": {
+              "n": 102,
+              "t": 0.0102,
+              "i": -0.001962,
+              "Vc": -0.015497
+            },
+            "stdout": "0.010200,-0.001962,-0.015497\n"
+          },
+          {
+            "at": "n=103",
+            "vars": {
+              "n": 103,
+              "t": 0.0103,
+              "i": -0.001619,
+              "Vc": -0.017286
+            },
+            "stdout": "0.010300,-0.001619,-0.017286\n"
+          },
+          {
+            "at": "n=104",
+            "vars": {
+              "n": 104,
+              "t": 0.0104,
+              "i": -0.001293,
+              "Vc": -0.018741
+            },
+            "stdout": "0.010400,-0.001293,-0.018741\n"
+          },
+          {
+            "at": "n=105",
+            "vars": {
+              "n": 105,
+              "t": 0.0105,
+              "i": -0.000986,
+              "Vc": -0.019879
+            },
+            "stdout": "0.010500,-0.000986,-0.019879\n"
+          },
+          {
+            "at": "n=106",
+            "vars": {
+              "n": 106,
+              "t": 0.0106,
+              "i": -0.000699,
+              "Vc": -0.02072
+            },
+            "stdout": "0.010600,-0.000699,-0.020720\n"
+          },
+          {
+            "at": "n=107",
+            "vars": {
+              "n": 107,
+              "t": 0.0107,
+              "i": -0.000432,
+              "Vc": -0.021283
+            },
+            "stdout": "0.010700,-0.000432,-0.021283\n"
+          },
+          {
+            "at": "n=108",
+            "vars": {
+              "n": 108,
+              "t": 0.0108,
+              "i": -0.000187,
+              "Vc": -0.021591
+            },
+            "stdout": "0.010800,-0.000187,-0.021591\n"
+          },
+          {
+            "at": "n=109",
+            "vars": {
+              "n": 109,
+              "t": 0.0109,
+              "i": 3.7e-05,
+              "Vc": -0.021664
+            },
+            "stdout": "0.010900,0.000037,-0.021664\n"
+          },
+          {
+            "at": "n=110",
+            "vars": {
+              "n": 110,
+              "t": 0.011,
+              "i": 0.000239,
+              "Vc": -0.021524
+            },
+            "stdout": "0.011000,0.000239,-0.021524\n"
+          },
+          {
+            "at": "n=111",
+            "vars": {
+              "n": 111,
+              "t": 0.0111,
+              "i": 0.00042,
+              "Vc": -0.021193
+            },
+            "stdout": "0.011100,0.000420,-0.021193\n"
+          },
+          {
+            "at": "n=112",
+            "vars": {
+              "n": 112,
+              "t": 0.0112,
+              "i": 0.000579,
+              "Vc": -0.020692
+            },
+            "stdout": "0.011200,0.000579,-0.020692\n"
+          },
+          {
+            "at": "n=113",
+            "vars": {
+              "n": 113,
+              "t": 0.0113,
+              "i": 0.000718,
+              "Vc": -0.020042
+            },
+            "stdout": "0.011300,0.000718,-0.020042\n"
+          },
+          {
+            "at": "n=114",
+            "vars": {
+              "n": 114,
+              "t": 0.0114,
+              "i": 0.000837,
+              "Vc": -0.019263
+            },
+            "stdout": "0.011400,0.000837,-0.019263\n"
+          },
+          {
+            "at": "n=115",
+            "vars": {
+              "n": 115,
+              "t": 0.0115,
+              "i": 0.000936,
+              "Vc": -0.018375
+            },
+            "stdout": "0.011500,0.000936,-0.018375\n"
+          },
+          {
+            "at": "n=116",
+            "vars": {
+              "n": 116,
+              "t": 0.0116,
+              "i": 0.001017,
+              "Vc": -0.017397
+            },
+            "stdout": "0.011600,0.001017,-0.017397\n"
+          },
+          {
+            "at": "n=117",
+            "vars": {
+              "n": 117,
+              "t": 0.0117,
+              "i": 0.001081,
+              "Vc": -0.016346
+            },
+            "stdout": "0.011700,0.001081,-0.016346\n"
+          },
+          {
+            "at": "n=118",
+            "vars": {
+              "n": 118,
+              "t": 0.0118,
+              "i": 0.001128,
+              "Vc": -0.01524
+            },
+            "stdout": "0.011800,0.001128,-0.015240\n"
+          },
+          {
+            "at": "n=119",
+            "vars": {
+              "n": 119,
+              "t": 0.0119,
+              "i": 0.00116,
+              "Vc": -0.014095
+            },
+            "stdout": "0.011900,0.001160,-0.014095\n"
+          },
+          {
+            "at": "n=120",
+            "vars": {
+              "n": 120,
+              "t": 0.012,
+              "i": 0.001179,
+              "Vc": -0.012924
+            },
+            "stdout": "0.012000,0.001179,-0.012924\n"
+          },
+          {
+            "at": "n=121",
+            "vars": {
+              "n": 121,
+              "t": 0.0121,
+              "i": 0.001184,
+              "Vc": -0.011742
+            },
+            "stdout": "0.012100,0.001184,-0.011742\n"
+          },
+          {
+            "at": "n=122",
+            "vars": {
+              "n": 122,
+              "t": 0.0122,
+              "i": 0.001177,
+              "Vc": -0.010561
+            },
+            "stdout": "0.012200,0.001177,-0.010561\n"
+          },
+          {
+            "at": "n=123",
+            "vars": {
+              "n": 123,
+              "t": 0.0123,
+              "i": 0.00116,
+              "Vc": -0.009391
+            },
+            "stdout": "0.012300,0.001160,-0.009391\n"
+          },
+          {
+            "at": "n=124",
+            "vars": {
+              "n": 124,
+              "t": 0.0124,
+              "i": 0.001133,
+              "Vc": -0.008244
+            },
+            "stdout": "0.012400,0.001133,-0.008244\n"
+          },
+          {
+            "at": "n=125",
+            "vars": {
+              "n": 125,
+              "t": 0.0125,
+              "i": 0.001098,
+              "Vc": -0.007128
+            },
+            "stdout": "0.012500,0.001098,-0.007128\n"
+          },
+          {
+            "at": "n=126",
+            "vars": {
+              "n": 126,
+              "t": 0.0126,
+              "i": 0.001056,
+              "Vc": -0.00605
+            },
+            "stdout": "0.012600,0.001056,-0.006050\n"
+          },
+          {
+            "at": "n=127",
+            "vars": {
+              "n": 127,
+              "t": 0.0127,
+              "i": 0.001008,
+              "Vc": -0.005017
+            },
+            "stdout": "0.012700,0.001008,-0.005017\n"
+          },
+          {
+            "at": "n=128",
+            "vars": {
+              "n": 128,
+              "t": 0.0128,
+              "i": 0.000955,
+              "Vc": -0.004034
+            },
+            "stdout": "0.012800,0.000955,-0.004034\n"
+          },
+          {
+            "at": "n=129",
+            "vars": {
+              "n": 129,
+              "t": 0.0129,
+              "i": 0.000898,
+              "Vc": -0.003107
+            },
+            "stdout": "0.012900,0.000898,-0.003107\n"
+          },
+          {
+            "at": "n=130",
+            "vars": {
+              "n": 130,
+              "t": 0.013,
+              "i": 0.000838,
+              "Vc": -0.002238
+            },
+            "stdout": "0.013000,0.000838,-0.002238\n"
+          },
+          {
+            "at": "n=131",
+            "vars": {
+              "n": 131,
+              "t": 0.0131,
+              "i": 0.000776,
+              "Vc": -0.001431
+            },
+            "stdout": "0.013100,0.000776,-0.001431\n"
+          },
+          {
+            "at": "n=132",
+            "vars": {
+              "n": 132,
+              "t": 0.0132,
+              "i": 0.000712,
+              "Vc": -0.000687
+            },
+            "stdout": "0.013200,0.000712,-0.000687\n"
+          },
+          {
+            "at": "n=133",
+            "vars": {
+              "n": 133,
+              "t": 0.0133,
+              "i": 0.000647,
+              "Vc": -8e-06
+            },
+            "stdout": "0.013300,0.000647,-0.000008\n"
+          },
+          {
+            "at": "n=134",
+            "vars": {
+              "n": 134,
+              "t": 0.0134,
+              "i": 0.000583,
+              "Vc": 0.000607
+            },
+            "stdout": "0.013400,0.000583,0.000607\n"
+          },
+          {
+            "at": "n=135",
+            "vars": {
+              "n": 135,
+              "t": 0.0135,
+              "i": 0.000519,
+              "Vc": 0.001158
+            },
+            "stdout": "0.013500,0.000519,0.001158\n"
+          },
+          {
+            "at": "n=136",
+            "vars": {
+              "n": 136,
+              "t": 0.0136,
+              "i": 0.000456,
+              "Vc": 0.001646
+            },
+            "stdout": "0.013600,0.000456,0.001646\n"
+          },
+          {
+            "at": "n=137",
+            "vars": {
+              "n": 137,
+              "t": 0.0137,
+              "i": 0.000395,
+              "Vc": 0.002071
+            },
+            "stdout": "0.013700,0.000395,0.002071\n"
+          },
+          {
+            "at": "n=138",
+            "vars": {
+              "n": 138,
+              "t": 0.0138,
+              "i": 0.000336,
+              "Vc": 0.002436
+            },
+            "stdout": "0.013800,0.000336,0.002436\n"
+          },
+          {
+            "at": "n=139",
+            "vars": {
+              "n": 139,
+              "t": 0.0139,
+              "i": 0.000279,
+              "Vc": 0.002743
+            },
+            "stdout": "0.013900,0.000279,0.002743\n"
+          },
+          {
+            "at": "n=140",
+            "vars": {
+              "n": 140,
+              "t": 0.014,
+              "i": 0.000225,
+              "Vc": 0.002995
+            },
+            "stdout": "0.014000,0.000225,0.002995\n"
+          },
+          {
+            "at": "n=141",
+            "vars": {
+              "n": 141,
+              "t": 0.0141,
+              "i": 0.000174,
+              "Vc": 0.003195
+            },
+            "stdout": "0.014100,0.000174,0.003195\n"
+          },
+          {
+            "at": "n=142",
+            "vars": {
+              "n": 142,
+              "t": 0.0142,
+              "i": 0.000127,
+              "Vc": 0.003345
+            },
+            "stdout": "0.014200,0.000127,0.003345\n"
+          },
+          {
+            "at": "n=143",
+            "vars": {
+              "n": 143,
+              "t": 0.0143,
+              "i": 8.2e-05,
+              "Vc": 0.003449
+            },
+            "stdout": "0.014300,0.000082,0.003449\n"
+          },
+          {
+            "at": "n=144",
+            "vars": {
+              "n": 144,
+              "t": 0.0144,
+              "i": 4.1e-05,
+              "Vc": 0.00351
+            },
+            "stdout": "0.014400,0.000041,0.003510\n"
+          },
+          {
+            "at": "n=145",
+            "vars": {
+              "n": 145,
+              "t": 0.0145,
+              "i": 4e-06,
+              "Vc": 0.003532
+            },
+            "stdout": "0.014500,0.000004,0.003532\n"
+          },
+          {
+            "at": "n=146",
+            "vars": {
+              "n": 146,
+              "t": 0.0146,
+              "i": -3e-05,
+              "Vc": 0.003519
+            },
+            "stdout": "0.014600,-0.000030,0.003519\n"
+          },
+          {
+            "at": "n=147",
+            "vars": {
+              "n": 147,
+              "t": 0.0147,
+              "i": -6.1e-05,
+              "Vc": 0.003473
+            },
+            "stdout": "0.014700,-0.000061,0.003473\n"
+          },
+          {
+            "at": "n=148",
+            "vars": {
+              "n": 148,
+              "t": 0.0148,
+              "i": -8.8e-05,
+              "Vc": 0.003399
+            },
+            "stdout": "0.014800,-0.000088,0.003399\n"
+          },
+          {
+            "at": "n=149",
+            "vars": {
+              "n": 149,
+              "t": 0.0149,
+              "i": -0.000111,
+              "Vc": 0.003299
+            },
+            "stdout": "0.014900,-0.000111,0.003299\n"
+          },
+          {
+            "at": "n=150",
+            "vars": {
+              "n": 150,
+              "t": 0.015,
+              "i": -0.000131,
+              "Vc": 0.003177
+            },
+            "stdout": "0.015000,-0.000131,0.003177\n"
+          },
+          {
+            "at": "n=151",
+            "vars": {
+              "n": 151,
+              "t": 0.0151,
+              "i": -0.000148,
+              "Vc": 0.003037
+            },
+            "stdout": "0.015100,-0.000148,0.003037\n"
+          },
+          {
+            "at": "n=152",
+            "vars": {
+              "n": 152,
+              "t": 0.0152,
+              "i": -0.000162,
+              "Vc": 0.002882
+            },
+            "stdout": "0.015200,-0.000162,0.002882\n"
+          },
+          {
+            "at": "n=153",
+            "vars": {
+              "n": 153,
+              "t": 0.0153,
+              "i": -0.000174,
+              "Vc": 0.002713
+            },
+            "stdout": "0.015300,-0.000174,0.002713\n"
+          },
+          {
+            "at": "n=154",
+            "vars": {
+              "n": 154,
+              "t": 0.0154,
+              "i": -0.000182,
+              "Vc": 0.002535
+            },
+            "stdout": "0.015400,-0.000182,0.002535\n"
+          },
+          {
+            "at": "n=155",
+            "vars": {
+              "n": 155,
+              "t": 0.0155,
+              "i": -0.000188,
+              "Vc": 0.00235
+            },
+            "stdout": "0.015500,-0.000188,0.002350\n"
+          },
+          {
+            "at": "n=156",
+            "vars": {
+              "n": 156,
+              "t": 0.0156,
+              "i": -0.000192,
+              "Vc": 0.00216
+            },
+            "stdout": "0.015600,-0.000192,0.002160\n"
+          },
+          {
+            "at": "n=157",
+            "vars": {
+              "n": 157,
+              "t": 0.0157,
+              "i": -0.000193,
+              "Vc": 0.001968
+            },
+            "stdout": "0.015700,-0.000193,0.001968\n"
+          },
+          {
+            "at": "n=158",
+            "vars": {
+              "n": 158,
+              "t": 0.0158,
+              "i": -0.000192,
+              "Vc": 0.001775
+            },
+            "stdout": "0.015800,-0.000192,0.001775\n"
+          },
+          {
+            "at": "n=159",
+            "vars": {
+              "n": 159,
+              "t": 0.0159,
+              "i": -0.00019,
+              "Vc": 0.001583
+            },
+            "stdout": "0.015900,-0.000190,0.001583\n"
+          },
+          {
+            "at": "n=160",
+            "vars": {
+              "n": 160,
+              "t": 0.016,
+              "i": -0.000186,
+              "Vc": 0.001395
+            },
+            "stdout": "0.016000,-0.000186,0.001395\n"
+          },
+          {
+            "at": "n=161",
+            "vars": {
+              "n": 161,
+              "t": 0.0161,
+              "i": -0.000181,
+              "Vc": 0.001212
+            },
+            "stdout": "0.016100,-0.000181,0.001212\n"
+          },
+          {
+            "at": "n=162",
+            "vars": {
+              "n": 162,
+              "t": 0.0162,
+              "i": -0.000174,
+              "Vc": 0.001034
+            },
+            "stdout": "0.016200,-0.000174,0.001034\n"
+          },
+          {
+            "at": "n=163",
+            "vars": {
+              "n": 163,
+              "t": 0.0163,
+              "i": -0.000167,
+              "Vc": 0.000864
+            },
+            "stdout": "0.016300,-0.000167,0.000864\n"
+          },
+          {
+            "at": "n=164",
+            "vars": {
+              "n": 164,
+              "t": 0.0164,
+              "i": -0.000158,
+              "Vc": 0.000701
+            },
+            "stdout": "0.016400,-0.000158,0.000701\n"
+          },
+          {
+            "at": "n=165",
+            "vars": {
+              "n": 165,
+              "t": 0.0165,
+              "i": -0.000149,
+              "Vc": 0.000547
+            },
+            "stdout": "0.016500,-0.000149,0.000547\n"
+          },
+          {
+            "at": "n=166",
+            "vars": {
+              "n": 166,
+              "t": 0.0166,
+              "i": -0.000139,
+              "Vc": 0.000403
+            },
+            "stdout": "0.016600,-0.000139,0.000403\n"
+          },
+          {
+            "at": "n=167",
+            "vars": {
+              "n": 167,
+              "t": 0.0167,
+              "i": -0.000129,
+              "Vc": 0.000269
+            },
+            "stdout": "0.016700,-0.000129,0.000269\n"
+          },
+          {
+            "at": "n=168",
+            "vars": {
+              "n": 168,
+              "t": 0.0168,
+              "i": -0.000119,
+              "Vc": 0.000144
+            },
+            "stdout": "0.016800,-0.000119,0.000144\n"
+          },
+          {
+            "at": "n=169",
+            "vars": {
+              "n": 169,
+              "t": 0.0169,
+              "i": -0.000108,
+              "Vc": 3.1e-05
+            },
+            "stdout": "0.016900,-0.000108,0.000031\n"
+          },
+          {
+            "at": "n=170",
+            "vars": {
+              "n": 170,
+              "t": 0.017,
+              "i": -9.8e-05,
+              "Vc": -7.2e-05
+            },
+            "stdout": "0.017000,-0.000098,-0.000072\n"
+          },
+          {
+            "at": "n=171",
+            "vars": {
+              "n": 171,
+              "t": 0.0171,
+              "i": -8.7e-05,
+              "Vc": -0.000165
+            },
+            "stdout": "0.017100,-0.000087,-0.000165\n"
+          },
+          {
+            "at": "n=172",
+            "vars": {
+              "n": 172,
+              "t": 0.0172,
+              "i": -7.7e-05,
+              "Vc": -0.000247
+            },
+            "stdout": "0.017200,-0.000077,-0.000247\n"
+          },
+          {
+            "at": "n=173",
+            "vars": {
+              "n": 173,
+              "t": 0.0173,
+              "i": -6.7e-05,
+              "Vc": -0.000319
+            },
+            "stdout": "0.017300,-0.000067,-0.000319\n"
+          },
+          {
+            "at": "n=174",
+            "vars": {
+              "n": 174,
+              "t": 0.0174,
+              "i": -5.7e-05,
+              "Vc": -0.000382
+            },
+            "stdout": "0.017400,-0.000057,-0.000382\n"
+          },
+          {
+            "at": "n=175",
+            "vars": {
+              "n": 175,
+              "t": 0.0175,
+              "i": -4.8e-05,
+              "Vc": -0.000434
+            },
+            "stdout": "0.017500,-0.000048,-0.000434\n"
+          },
+          {
+            "at": "n=176",
+            "vars": {
+              "n": 176,
+              "t": 0.0176,
+              "i": -3.9e-05,
+              "Vc": -0.000478
+            },
+            "stdout": "0.017600,-0.000039,-0.000478\n"
+          },
+          {
+            "at": "n=177",
+            "vars": {
+              "n": 177,
+              "t": 0.0177,
+              "i": -3.1e-05,
+              "Vc": -0.000513
+            },
+            "stdout": "0.017700,-0.000031,-0.000513\n"
+          },
+          {
+            "at": "n=178",
+            "vars": {
+              "n": 178,
+              "t": 0.0178,
+              "i": -2.3e-05,
+              "Vc": -0.000539
+            },
+            "stdout": "0.017800,-0.000023,-0.000539\n"
+          },
+          {
+            "at": "n=179",
+            "vars": {
+              "n": 179,
+              "t": 0.0179,
+              "i": -1.5e-05,
+              "Vc": -0.000558
+            },
+            "stdout": "0.017900,-0.000015,-0.000558\n"
+          },
+          {
+            "at": "n=180",
+            "vars": {
+              "n": 180,
+              "t": 0.018,
+              "i": -8e-06,
+              "Vc": -0.00057
+            },
+            "stdout": "0.018000,-0.000008,-0.000570\n"
+          },
+          {
+            "at": "n=181",
+            "vars": {
+              "n": 181,
+              "t": 0.0181,
+              "i": -2e-06,
+              "Vc": -0.000575
+            },
+            "stdout": "0.018100,-0.000002,-0.000575\n"
+          },
+          {
+            "at": "n=182",
+            "vars": {
+              "n": 182,
+              "t": 0.0182,
+              "i": 3e-06,
+              "Vc": -0.000575
+            },
+            "stdout": "0.018200,0.000003,-0.000575\n"
+          },
+          {
+            "at": "n=183",
+            "vars": {
+              "n": 183,
+              "t": 0.0183,
+              "i": 9e-06,
+              "Vc": -0.000569
+            },
+            "stdout": "0.018300,0.000009,-0.000569\n"
+          },
+          {
+            "at": "n=184",
+            "vars": {
+              "n": 184,
+              "t": 0.0184,
+              "i": 1.3e-05,
+              "Vc": -0.000558
+            },
+            "stdout": "0.018400,0.000013,-0.000558\n"
+          },
+          {
+            "at": "n=185",
+            "vars": {
+              "n": 185,
+              "t": 0.0185,
+              "i": 1.7e-05,
+              "Vc": -0.000543
+            },
+            "stdout": "0.018500,0.000017,-0.000543\n"
+          },
+          {
+            "at": "n=186",
+            "vars": {
+              "n": 186,
+              "t": 0.0186,
+              "i": 2.1e-05,
+              "Vc": -0.000524
+            },
+            "stdout": "0.018600,0.000021,-0.000524\n"
+          },
+          {
+            "at": "n=187",
+            "vars": {
+              "n": 187,
+              "t": 0.0187,
+              "i": 2.3e-05,
+              "Vc": -0.000502
+            },
+            "stdout": "0.018700,0.000023,-0.000502\n"
+          },
+          {
+            "at": "n=188",
+            "vars": {
+              "n": 188,
+              "t": 0.0188,
+              "i": 2.6e-05,
+              "Vc": -0.000477
+            },
+            "stdout": "0.018800,0.000026,-0.000477\n"
+          },
+          {
+            "at": "n=189",
+            "vars": {
+              "n": 189,
+              "t": 0.0189,
+              "i": 2.8e-05,
+              "Vc": -0.00045
+            },
+            "stdout": "0.018900,0.000028,-0.000450\n"
+          },
+          {
+            "at": "n=190",
+            "vars": {
+              "n": 190,
+              "t": 0.019,
+              "i": 2.9e-05,
+              "Vc": -0.000421
+            },
+            "stdout": "0.019000,0.000029,-0.000421\n"
+          },
+          {
+            "at": "n=191",
+            "vars": {
+              "n": 191,
+              "t": 0.0191,
+              "i": 3e-05,
+              "Vc": -0.000392
+            },
+            "stdout": "0.019100,0.000030,-0.000392\n"
+          },
+          {
+            "at": "n=192",
+            "vars": {
+              "n": 192,
+              "t": 0.0192,
+              "i": 3.1e-05,
+              "Vc": -0.000361
+            },
+            "stdout": "0.019200,0.000031,-0.000361\n"
+          },
+          {
+            "at": "n=193",
+            "vars": {
+              "n": 193,
+              "t": 0.0193,
+              "i": 3.1e-05,
+              "Vc": -0.000329
+            },
+            "stdout": "0.019300,0.000031,-0.000329\n"
+          },
+          {
+            "at": "n=194",
+            "vars": {
+              "n": 194,
+              "t": 0.0194,
+              "i": 3.1e-05,
+              "Vc": -0.000298
+            },
+            "stdout": "0.019400,0.000031,-0.000298\n"
+          },
+          {
+            "at": "n=195",
+            "vars": {
+              "n": 195,
+              "t": 0.0195,
+              "i": 3.1e-05,
+              "Vc": -0.000267
+            },
+            "stdout": "0.019500,0.000031,-0.000267\n"
+          },
+          {
+            "at": "n=196",
+            "vars": {
+              "n": 196,
+              "t": 0.0196,
+              "i": 3.1e-05,
+              "Vc": -0.000236
+            },
+            "stdout": "0.019600,0.000031,-0.000236\n"
+          },
+          {
+            "at": "n=197",
+            "vars": {
+              "n": 197,
+              "t": 0.0197,
+              "i": 3e-05,
+              "Vc": -0.000206
+            },
+            "stdout": "0.019700,0.000030,-0.000206\n"
+          },
+          {
+            "at": "n=198",
+            "vars": {
+              "n": 198,
+              "t": 0.0198,
+              "i": 2.9e-05,
+              "Vc": -0.000176
+            },
+            "stdout": "0.019800,0.000029,-0.000176\n"
+          },
+          {
+            "at": "n=199",
+            "vars": {
+              "n": 199,
+              "t": 0.0199,
+              "i": 2.8e-05,
+              "Vc": -0.000148
+            },
+            "stdout": "0.019900,0.000028,-0.000148\n"
+          },
+          {
+            "at": "n=200",
+            "vars": {
+              "n": 200,
+              "t": 0.02,
+              "i": 2.6e-05,
+              "Vc": -0.000121
+            },
+            "stdout": "0.020000,0.000026,-0.000121\n"
+          },
+          {
+            "at": "n=201",
+            "vars": {
+              "n": 201,
+              "t": 0.0201,
+              "i": 2.5e-05,
+              "Vc": -9.6e-05
+            },
+            "stdout": "0.020100,0.000025,-0.000096\n"
+          },
+          {
+            "at": "n=202",
+            "vars": {
+              "n": 202,
+              "t": 0.0202,
+              "i": 2.3e-05,
+              "Vc": -7.2e-05
+            },
+            "stdout": "0.020200,0.000023,-0.000072\n"
+          },
+          {
+            "at": "n=203",
+            "vars": {
+              "n": 203,
+              "t": 0.0203,
+              "i": 2.2e-05,
+              "Vc": -5e-05
+            },
+            "stdout": "0.020300,0.000022,-0.000050\n"
+          },
+          {
+            "at": "n=204",
+            "vars": {
+              "n": 204,
+              "t": 0.0204,
+              "i": 2e-05,
+              "Vc": -2.9e-05
+            },
+            "stdout": "0.020400,0.000020,-0.000029\n"
+          },
+          {
+            "at": "n=205",
+            "vars": {
+              "n": 205,
+              "t": 0.0205,
+              "i": 1.8e-05,
+              "Vc": -1e-05
+            },
+            "stdout": "0.020500,0.000018,-0.000010\n"
+          },
+          {
+            "at": "n=206",
+            "vars": {
+              "n": 206,
+              "t": 0.0206,
+              "i": 1.6e-05,
+              "Vc": 7e-06
+            },
+            "stdout": "0.020600,0.000016,0.000007\n"
+          },
+          {
+            "at": "n=207",
+            "vars": {
+              "n": 207,
+              "t": 0.0207,
+              "i": 1.5e-05,
+              "Vc": 2.3e-05
+            },
+            "stdout": "0.020700,0.000015,0.000023\n"
+          },
+          {
+            "at": "n=208",
+            "vars": {
+              "n": 208,
+              "t": 0.0208,
+              "i": 1.3e-05,
+              "Vc": 3.7e-05
+            },
+            "stdout": "0.020800,0.000013,0.000037\n"
+          },
+          {
+            "at": "n=209",
+            "vars": {
+              "n": 209,
+              "t": 0.0209,
+              "i": 1.1e-05,
+              "Vc": 4.9e-05
+            },
+            "stdout": "0.020900,0.000011,0.000049\n"
+          },
+          {
+            "at": "n=210",
+            "vars": {
+              "n": 210,
+              "t": 0.021,
+              "i": 1e-05,
+              "Vc": 6e-05
+            },
+            "stdout": "0.021000,0.000010,0.000060\n"
+          },
+          {
+            "at": "n=211",
+            "vars": {
+              "n": 211,
+              "t": 0.0211,
+              "i": 8e-06,
+              "Vc": 6.9e-05
+            },
+            "stdout": "0.021100,0.000008,0.000069\n"
+          },
+          {
+            "at": "n=212",
+            "vars": {
+              "n": 212,
+              "t": 0.0212,
+              "i": 7e-06,
+              "Vc": 7.6e-05
+            },
+            "stdout": "0.021200,0.000007,0.000076\n"
+          },
+          {
+            "at": "n=213",
+            "vars": {
+              "n": 213,
+              "t": 0.0213,
+              "i": 5e-06,
+              "Vc": 8.2e-05
+            },
+            "stdout": "0.021300,0.000005,0.000082\n"
+          },
+          {
+            "at": "n=214",
+            "vars": {
+              "n": 214,
+              "t": 0.0214,
+              "i": 4e-06,
+              "Vc": 8.7e-05
+            },
+            "stdout": "0.021400,0.000004,0.000087\n"
+          },
+          {
+            "at": "n=215",
+            "vars": {
+              "n": 215,
+              "t": 0.0215,
+              "i": 3e-06,
+              "Vc": 9e-05
+            },
+            "stdout": "0.021500,0.000003,0.000090\n"
+          },
+          {
+            "at": "n=216",
+            "vars": {
+              "n": 216,
+              "t": 0.0216,
+              "i": 2e-06,
+              "Vc": 9.3e-05
+            },
+            "stdout": "0.021600,0.000002,0.000093\n"
+          },
+          {
+            "at": "n=217",
+            "vars": {
+              "n": 217,
+              "t": 0.0217,
+              "i": 1e-06,
+              "Vc": 9.4e-05
+            },
+            "stdout": "0.021700,0.000001,0.000094\n"
+          },
+          {
+            "at": "n=218",
+            "vars": {
+              "n": 218,
+              "t": 0.0218,
+              "i": -0.0,
+              "Vc": 9.4e-05
+            },
+            "stdout": "0.021800,-0.000000,0.000094\n"
+          },
+          {
+            "at": "n=219",
+            "vars": {
+              "n": 219,
+              "t": 0.0219,
+              "i": -1e-06,
+              "Vc": 9.3e-05
+            },
+            "stdout": "0.021900,-0.000001,0.000093\n"
+          },
+          {
+            "at": "n=220",
+            "vars": {
+              "n": 220,
+              "t": 0.022,
+              "i": -2e-06,
+              "Vc": 9.2e-05
+            },
+            "stdout": "0.022000,-0.000002,0.000092\n"
+          },
+          {
+            "at": "n=221",
+            "vars": {
+              "n": 221,
+              "t": 0.0221,
+              "i": -3e-06,
+              "Vc": 8.9e-05
+            },
+            "stdout": "0.022100,-0.000003,0.000089\n"
+          },
+          {
+            "at": "n=222",
+            "vars": {
+              "n": 222,
+              "t": 0.0222,
+              "i": -3e-06,
+              "Vc": 8.6e-05
+            },
+            "stdout": "0.022200,-0.000003,0.000086\n"
+          },
+          {
+            "at": "n=223",
+            "vars": {
+              "n": 223,
+              "t": 0.0223,
+              "i": -4e-06,
+              "Vc": 8.3e-05
+            },
+            "stdout": "0.022300,-0.000004,0.000083\n"
+          },
+          {
+            "at": "n=224",
+            "vars": {
+              "n": 224,
+              "t": 0.0224,
+              "i": -4e-06,
+              "Vc": 7.9e-05
+            },
+            "stdout": "0.022400,-0.000004,0.000079\n"
+          },
+          {
+            "at": "n=225",
+            "vars": {
+              "n": 225,
+              "t": 0.0225,
+              "i": -4e-06,
+              "Vc": 7.5e-05
+            },
+            "stdout": "0.022500,-0.000004,0.000075\n"
+          },
+          {
+            "at": "n=226",
+            "vars": {
+              "n": 226,
+              "t": 0.0226,
+              "i": -5e-06,
+              "Vc": 7e-05
+            },
+            "stdout": "0.022600,-0.000005,0.000070\n"
+          },
+          {
+            "at": "n=227",
+            "vars": {
+              "n": 227,
+              "t": 0.0227,
+              "i": -5e-06,
+              "Vc": 6.5e-05
+            },
+            "stdout": "0.022700,-0.000005,0.000065\n"
+          },
+          {
+            "at": "n=228",
+            "vars": {
+              "n": 228,
+              "t": 0.0228,
+              "i": -5e-06,
+              "Vc": 6e-05
+            },
+            "stdout": "0.022800,-0.000005,0.000060\n"
+          },
+          {
+            "at": "n=229",
+            "vars": {
+              "n": 229,
+              "t": 0.0229,
+              "i": -5e-06,
+              "Vc": 5.5e-05
+            },
+            "stdout": "0.022900,-0.000005,0.000055\n"
+          },
+          {
+            "at": "n=230",
+            "vars": {
+              "n": 230,
+              "t": 0.023,
+              "i": -5e-06,
+              "Vc": 5e-05
+            },
+            "stdout": "0.023000,-0.000005,0.000050\n"
+          },
+          {
+            "at": "n=231",
+            "vars": {
+              "n": 231,
+              "t": 0.0231,
+              "i": -5e-06,
+              "Vc": 4.5e-05
+            },
+            "stdout": "0.023100,-0.000005,0.000045\n"
+          },
+          {
+            "at": "n=232",
+            "vars": {
+              "n": 232,
+              "t": 0.0232,
+              "i": -5e-06,
+              "Vc": 4e-05
+            },
+            "stdout": "0.023200,-0.000005,0.000040\n"
+          },
+          {
+            "at": "n=233",
+            "vars": {
+              "n": 233,
+              "t": 0.0233,
+              "i": -5e-06,
+              "Vc": 3.5e-05
+            },
+            "stdout": "0.023300,-0.000005,0.000035\n"
+          },
+          {
+            "at": "n=234",
+            "vars": {
+              "n": 234,
+              "t": 0.0234,
+              "i": -5e-06,
+              "Vc": 3e-05
+            },
+            "stdout": "0.023400,-0.000005,0.000030\n"
+          },
+          {
+            "at": "n=235",
+            "vars": {
+              "n": 235,
+              "t": 0.0235,
+              "i": -5e-06,
+              "Vc": 2.5e-05
+            },
+            "stdout": "0.023500,-0.000005,0.000025\n"
+          },
+          {
+            "at": "n=236",
+            "vars": {
+              "n": 236,
+              "t": 0.0236,
+              "i": -4e-06,
+              "Vc": 2.1e-05
+            },
+            "stdout": "0.023600,-0.000004,0.000021\n"
+          },
+          {
+            "at": "n=237",
+            "vars": {
+              "n": 237,
+              "t": 0.0237,
+              "i": -4e-06,
+              "Vc": 1.7e-05
+            },
+            "stdout": "0.023700,-0.000004,0.000017\n"
+          },
+          {
+            "at": "n=238",
+            "vars": {
+              "n": 238,
+              "t": 0.0238,
+              "i": -4e-06,
+              "Vc": 1.3e-05
+            },
+            "stdout": "0.023800,-0.000004,0.000013\n"
+          },
+          {
+            "at": "n=239",
+            "vars": {
+              "n": 239,
+              "t": 0.0239,
+              "i": -4e-06,
+              "Vc": 9e-06
+            },
+            "stdout": "0.023900,-0.000004,0.000009\n"
+          },
+          {
+            "at": "n=240",
+            "vars": {
+              "n": 240,
+              "t": 0.024,
+              "i": -3e-06,
+              "Vc": 6e-06
+            },
+            "stdout": "0.024000,-0.000003,0.000006\n"
+          },
+          {
+            "at": "n=241",
+            "vars": {
+              "n": 241,
+              "t": 0.0241,
+              "i": -3e-06,
+              "Vc": 2e-06
+            },
+            "stdout": "0.024100,-0.000003,0.000002\n"
+          },
+          {
+            "at": "n=242",
+            "vars": {
+              "n": 242,
+              "t": 0.0242,
+              "i": -3e-06,
+              "Vc": -0.0
+            },
+            "stdout": "0.024200,-0.000003,-0.000000\n"
+          },
+          {
+            "at": "n=243",
+            "vars": {
+              "n": 243,
+              "t": 0.0243,
+              "i": -2e-06,
+              "Vc": -3e-06
+            },
+            "stdout": "0.024300,-0.000002,-0.000003\n"
+          },
+          {
+            "at": "n=244",
+            "vars": {
+              "n": 244,
+              "t": 0.0244,
+              "i": -2e-06,
+              "Vc": -5e-06
+            },
+            "stdout": "0.024400,-0.000002,-0.000005\n"
+          },
+          {
+            "at": "n=245",
+            "vars": {
+              "n": 245,
+              "t": 0.0245,
+              "i": -2e-06,
+              "Vc": -7e-06
+            },
+            "stdout": "0.024500,-0.000002,-0.000007\n"
+          },
+          {
+            "at": "n=246",
+            "vars": {
+              "n": 246,
+              "t": 0.0246,
+              "i": -2e-06,
+              "Vc": -9e-06
+            },
+            "stdout": "0.024600,-0.000002,-0.000009\n"
+          },
+          {
+            "at": "n=247",
+            "vars": {
+              "n": 247,
+              "t": 0.0247,
+              "i": -1e-06,
+              "Vc": -1.1e-05
+            },
+            "stdout": "0.024700,-0.000001,-0.000011\n"
+          },
+          {
+            "at": "n=248",
+            "vars": {
+              "n": 248,
+              "t": 0.0248,
+              "i": -1e-06,
+              "Vc": -1.2e-05
+            },
+            "stdout": "0.024800,-0.000001,-0.000012\n"
+          },
+          {
+            "at": "n=249",
+            "vars": {
+              "n": 249,
+              "t": 0.0249,
+              "i": -1e-06,
+              "Vc": -1.3e-05
+            },
+            "stdout": "0.024900,-0.000001,-0.000013\n"
+          },
+          {
+            "at": "n=250",
+            "vars": {
+              "n": 250,
+              "t": 0.025,
+              "i": -1e-06,
+              "Vc": -1.4e-05
+            },
+            "stdout": "0.025000,-0.000001,-0.000014\n"
+          },
+          {
+            "at": "n=251",
+            "vars": {
+              "n": 251,
+              "t": 0.0251,
+              "i": -1e-06,
+              "Vc": -1.5e-05
+            },
+            "stdout": "0.025100,-0.000001,-0.000015\n"
+          },
+          {
+            "at": "n=252",
+            "vars": {
+              "n": 252,
+              "t": 0.0252,
+              "i": -0.0,
+              "Vc": -1.5e-05
+            },
+            "stdout": "0.025200,-0.000000,-0.000015\n"
+          },
+          {
+            "at": "n=253",
+            "vars": {
+              "n": 253,
+              "t": 0.0253,
+              "i": -0.0,
+              "Vc": -1.5e-05
+            },
+            "stdout": "0.025300,-0.000000,-0.000015\n"
+          },
+          {
+            "at": "n=254",
+            "vars": {
+              "n": 254,
+              "t": 0.0254,
+              "i": 0.0,
+              "Vc": -1.5e-05
+            },
+            "stdout": "0.025400,0.000000,-0.000015\n"
+          },
+          {
+            "at": "n=255",
+            "vars": {
+              "n": 255,
+              "t": 0.0255,
+              "i": 0.0,
+              "Vc": -1.5e-05
+            },
+            "stdout": "0.025500,0.000000,-0.000015\n"
+          },
+          {
+            "at": "n=256",
+            "vars": {
+              "n": 256,
+              "t": 0.0256,
+              "i": 0.0,
+              "Vc": -1.5e-05
+            },
+            "stdout": "0.025600,0.000000,-0.000015\n"
+          },
+          {
+            "at": "n=257",
+            "vars": {
+              "n": 257,
+              "t": 0.0257,
+              "i": 0.0,
+              "Vc": -1.5e-05
+            },
+            "stdout": "0.025700,0.000000,-0.000015\n"
+          },
+          {
+            "at": "n=258",
+            "vars": {
+              "n": 258,
+              "t": 0.0258,
+              "i": 0.0,
+              "Vc": -1.4e-05
+            },
+            "stdout": "0.025800,0.000000,-0.000014\n"
+          },
+          {
+            "at": "n=259",
+            "vars": {
+              "n": 259,
+              "t": 0.0259,
+              "i": 1e-06,
+              "Vc": -1.4e-05
+            },
+            "stdout": "0.025900,0.000001,-0.000014\n"
+          },
+          {
+            "at": "n=260",
+            "vars": {
+              "n": 260,
+              "t": 0.026,
+              "i": 1e-06,
+              "Vc": -1.3e-05
+            },
+            "stdout": "0.026000,0.000001,-0.000013\n"
+          },
+          {
+            "at": "n=261",
+            "vars": {
+              "n": 261,
+              "t": 0.0261,
+              "i": 1e-06,
+              "Vc": -1.2e-05
+            },
+            "stdout": "0.026100,0.000001,-0.000012\n"
+          },
+          {
+            "at": "n=262",
+            "vars": {
+              "n": 262,
+              "t": 0.0262,
+              "i": 1e-06,
+              "Vc": -1.2e-05
+            },
+            "stdout": "0.026200,0.000001,-0.000012\n"
+          },
+          {
+            "at": "n=263",
+            "vars": {
+              "n": 263,
+              "t": 0.0263,
+              "i": 1e-06,
+              "Vc": -1.1e-05
+            },
+            "stdout": "0.026300,0.000001,-0.000011\n"
+          },
+          {
+            "at": "n=264",
+            "vars": {
+              "n": 264,
+              "t": 0.0264,
+              "i": 1e-06,
+              "Vc": -1e-05
+            },
+            "stdout": "0.026400,0.000001,-0.000010\n"
+          },
+          {
+            "at": "n=265",
+            "vars": {
+              "n": 265,
+              "t": 0.0265,
+              "i": 1e-06,
+              "Vc": -9e-06
+            },
+            "stdout": "0.026500,0.000001,-0.000009\n"
+          },
+          {
+            "at": "n=266",
+            "vars": {
+              "n": 266,
+              "t": 0.0266,
+              "i": 1e-06,
+              "Vc": -8e-06
+            },
+            "stdout": "0.026600,0.000001,-0.000008\n"
+          },
+          {
+            "at": "n=267",
+            "vars": {
+              "n": 267,
+              "t": 0.0267,
+              "i": 1e-06,
+              "Vc": -8e-06
+            },
+            "stdout": "0.026700,0.000001,-0.000008\n"
+          },
+          {
+            "at": "n=268",
+            "vars": {
+              "n": 268,
+              "t": 0.0268,
+              "i": 1e-06,
+              "Vc": -7e-06
+            },
+            "stdout": "0.026800,0.000001,-0.000007\n"
+          },
+          {
+            "at": "n=269",
+            "vars": {
+              "n": 269,
+              "t": 0.0269,
+              "i": 1e-06,
+              "Vc": -6e-06
+            },
+            "stdout": "0.026900,0.000001,-0.000006\n"
+          },
+          {
+            "at": "n=270",
+            "vars": {
+              "n": 270,
+              "t": 0.027,
+              "i": 1e-06,
+              "Vc": -5e-06
+            },
+            "stdout": "0.027000,0.000001,-0.000005\n"
+          },
+          {
+            "at": "n=271",
+            "vars": {
+              "n": 271,
+              "t": 0.0271,
+              "i": 1e-06,
+              "Vc": -4e-06
+            },
+            "stdout": "0.027100,0.000001,-0.000004\n"
+          },
+          {
+            "at": "n=272",
+            "vars": {
+              "n": 272,
+              "t": 0.0272,
+              "i": 1e-06,
+              "Vc": -4e-06
+            },
+            "stdout": "0.027200,0.000001,-0.000004\n"
+          },
+          {
+            "at": "n=273",
+            "vars": {
+              "n": 273,
+              "t": 0.0273,
+              "i": 1e-06,
+              "Vc": -3e-06
+            },
+            "stdout": "0.027300,0.000001,-0.000003\n"
+          },
+          {
+            "at": "n=274",
+            "vars": {
+              "n": 274,
+              "t": 0.0274,
+              "i": 1e-06,
+              "Vc": -2e-06
+            },
+            "stdout": "0.027400,0.000001,-0.000002\n"
+          },
+          {
+            "at": "n=275",
+            "vars": {
+              "n": 275,
+              "t": 0.0275,
+              "i": 1e-06,
+              "Vc": -2e-06
+            },
+            "stdout": "0.027500,0.000001,-0.000002\n"
+          },
+          {
+            "at": "n=276",
+            "vars": {
+              "n": 276,
+              "t": 0.0276,
+              "i": 1e-06,
+              "Vc": -1e-06
+            },
+            "stdout": "0.027600,0.000001,-0.000001\n"
+          },
+          {
+            "at": "n=277",
+            "vars": {
+              "n": 277,
+              "t": 0.0277,
+              "i": 1e-06,
+              "Vc": -1e-06
+            },
+            "stdout": "0.027700,0.000001,-0.000001\n"
+          },
+          {
+            "at": "n=278",
+            "vars": {
+              "n": 278,
+              "t": 0.0278,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.027800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=279",
+            "vars": {
+              "n": 279,
+              "t": 0.0279,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.027900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=280",
+            "vars": {
+              "n": 280,
+              "t": 0.028,
+              "i": 0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.028000,0.000000,0.000001\n"
+          },
+          {
+            "at": "n=281",
+            "vars": {
+              "n": 281,
+              "t": 0.0281,
+              "i": 0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.028100,0.000000,0.000001\n"
+          },
+          {
+            "at": "n=282",
+            "vars": {
+              "n": 282,
+              "t": 0.0282,
+              "i": 0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.028200,0.000000,0.000001\n"
+          },
+          {
+            "at": "n=283",
+            "vars": {
+              "n": 283,
+              "t": 0.0283,
+              "i": 0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.028300,0.000000,0.000002\n"
+          },
+          {
+            "at": "n=284",
+            "vars": {
+              "n": 284,
+              "t": 0.0284,
+              "i": 0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.028400,0.000000,0.000002\n"
+          },
+          {
+            "at": "n=285",
+            "vars": {
+              "n": 285,
+              "t": 0.0285,
+              "i": 0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.028500,0.000000,0.000002\n"
+          },
+          {
+            "at": "n=286",
+            "vars": {
+              "n": 286,
+              "t": 0.0286,
+              "i": 0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.028600,0.000000,0.000002\n"
+          },
+          {
+            "at": "n=287",
+            "vars": {
+              "n": 287,
+              "t": 0.0287,
+              "i": 0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.028700,0.000000,0.000002\n"
+          },
+          {
+            "at": "n=288",
+            "vars": {
+              "n": 288,
+              "t": 0.0288,
+              "i": 0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.028800,0.000000,0.000002\n"
+          },
+          {
+            "at": "n=289",
+            "vars": {
+              "n": 289,
+              "t": 0.0289,
+              "i": 0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.028900,0.000000,0.000002\n"
+          },
+          {
+            "at": "n=290",
+            "vars": {
+              "n": 290,
+              "t": 0.029,
+              "i": 0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.029000,0.000000,0.000002\n"
+          },
+          {
+            "at": "n=291",
+            "vars": {
+              "n": 291,
+              "t": 0.0291,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.029100,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=292",
+            "vars": {
+              "n": 292,
+              "t": 0.0292,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.029200,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=293",
+            "vars": {
+              "n": 293,
+              "t": 0.0293,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.029300,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=294",
+            "vars": {
+              "n": 294,
+              "t": 0.0294,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.029400,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=295",
+            "vars": {
+              "n": 295,
+              "t": 0.0295,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.029500,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=296",
+            "vars": {
+              "n": 296,
+              "t": 0.0296,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.029600,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=297",
+            "vars": {
+              "n": 297,
+              "t": 0.0297,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.029700,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=298",
+            "vars": {
+              "n": 298,
+              "t": 0.0298,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.029800,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=299",
+            "vars": {
+              "n": 299,
+              "t": 0.0299,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.029900,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=300",
+            "vars": {
+              "n": 300,
+              "t": 0.03,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.030000,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=301",
+            "vars": {
+              "n": 301,
+              "t": 0.0301,
+              "i": -0.0,
+              "Vc": 2e-06
+            },
+            "stdout": "0.030100,-0.000000,0.000002\n"
+          },
+          {
+            "at": "n=302",
+            "vars": {
+              "n": 302,
+              "t": 0.0302,
+              "i": -0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.030200,-0.000000,0.000001\n"
+          },
+          {
+            "at": "n=303",
+            "vars": {
+              "n": 303,
+              "t": 0.0303,
+              "i": -0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.030300,-0.000000,0.000001\n"
+          },
+          {
+            "at": "n=304",
+            "vars": {
+              "n": 304,
+              "t": 0.0304,
+              "i": -0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.030400,-0.000000,0.000001\n"
+          },
+          {
+            "at": "n=305",
+            "vars": {
+              "n": 305,
+              "t": 0.0305,
+              "i": -0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.030500,-0.000000,0.000001\n"
+          },
+          {
+            "at": "n=306",
+            "vars": {
+              "n": 306,
+              "t": 0.0306,
+              "i": -0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.030600,-0.000000,0.000001\n"
+          },
+          {
+            "at": "n=307",
+            "vars": {
+              "n": 307,
+              "t": 0.0307,
+              "i": -0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.030700,-0.000000,0.000001\n"
+          },
+          {
+            "at": "n=308",
+            "vars": {
+              "n": 308,
+              "t": 0.0308,
+              "i": -0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.030800,-0.000000,0.000001\n"
+          },
+          {
+            "at": "n=309",
+            "vars": {
+              "n": 309,
+              "t": 0.0309,
+              "i": -0.0,
+              "Vc": 1e-06
+            },
+            "stdout": "0.030900,-0.000000,0.000001\n"
+          },
+          {
+            "at": "n=310",
+            "vars": {
+              "n": 310,
+              "t": 0.031,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.031000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=311",
+            "vars": {
+              "n": 311,
+              "t": 0.0311,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.031100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=312",
+            "vars": {
+              "n": 312,
+              "t": 0.0312,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.031200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=313",
+            "vars": {
+              "n": 313,
+              "t": 0.0313,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.031300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=314",
+            "vars": {
+              "n": 314,
+              "t": 0.0314,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.031400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=315",
+            "vars": {
+              "n": 315,
+              "t": 0.0315,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.031500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=316",
+            "vars": {
+              "n": 316,
+              "t": 0.0316,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.031600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=317",
+            "vars": {
+              "n": 317,
+              "t": 0.0317,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.031700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=318",
+            "vars": {
+              "n": 318,
+              "t": 0.0318,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.031800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=319",
+            "vars": {
+              "n": 319,
+              "t": 0.0319,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.031900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=320",
+            "vars": {
+              "n": 320,
+              "t": 0.032,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.032000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=321",
+            "vars": {
+              "n": 321,
+              "t": 0.0321,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.032100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=322",
+            "vars": {
+              "n": 322,
+              "t": 0.0322,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.032200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=323",
+            "vars": {
+              "n": 323,
+              "t": 0.0323,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.032300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=324",
+            "vars": {
+              "n": 324,
+              "t": 0.0324,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.032400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=325",
+            "vars": {
+              "n": 325,
+              "t": 0.0325,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.032500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=326",
+            "vars": {
+              "n": 326,
+              "t": 0.0326,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.032600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=327",
+            "vars": {
+              "n": 327,
+              "t": 0.0327,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.032700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=328",
+            "vars": {
+              "n": 328,
+              "t": 0.0328,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.032800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=329",
+            "vars": {
+              "n": 329,
+              "t": 0.0329,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.032900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=330",
+            "vars": {
+              "n": 330,
+              "t": 0.033,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.033000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=331",
+            "vars": {
+              "n": 331,
+              "t": 0.0331,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.033100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=332",
+            "vars": {
+              "n": 332,
+              "t": 0.0332,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.033200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=333",
+            "vars": {
+              "n": 333,
+              "t": 0.0333,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.033300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=334",
+            "vars": {
+              "n": 334,
+              "t": 0.0334,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.033400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=335",
+            "vars": {
+              "n": 335,
+              "t": 0.0335,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.033500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=336",
+            "vars": {
+              "n": 336,
+              "t": 0.0336,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.033600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=337",
+            "vars": {
+              "n": 337,
+              "t": 0.0337,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.033700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=338",
+            "vars": {
+              "n": 338,
+              "t": 0.0338,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.033800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=339",
+            "vars": {
+              "n": 339,
+              "t": 0.0339,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.033900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=340",
+            "vars": {
+              "n": 340,
+              "t": 0.034,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.034000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=341",
+            "vars": {
+              "n": 341,
+              "t": 0.0341,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.034100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=342",
+            "vars": {
+              "n": 342,
+              "t": 0.0342,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.034200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=343",
+            "vars": {
+              "n": 343,
+              "t": 0.0343,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.034300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=344",
+            "vars": {
+              "n": 344,
+              "t": 0.0344,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.034400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=345",
+            "vars": {
+              "n": 345,
+              "t": 0.0345,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.034500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=346",
+            "vars": {
+              "n": 346,
+              "t": 0.0346,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.034600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=347",
+            "vars": {
+              "n": 347,
+              "t": 0.0347,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.034700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=348",
+            "vars": {
+              "n": 348,
+              "t": 0.0348,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.034800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=349",
+            "vars": {
+              "n": 349,
+              "t": 0.0349,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.034900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=350",
+            "vars": {
+              "n": 350,
+              "t": 0.035,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.035000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=351",
+            "vars": {
+              "n": 351,
+              "t": 0.0351,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.035100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=352",
+            "vars": {
+              "n": 352,
+              "t": 0.0352,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.035200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=353",
+            "vars": {
+              "n": 353,
+              "t": 0.0353,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.035300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=354",
+            "vars": {
+              "n": 354,
+              "t": 0.0354,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.035400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=355",
+            "vars": {
+              "n": 355,
+              "t": 0.0355,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.035500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=356",
+            "vars": {
+              "n": 356,
+              "t": 0.0356,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.035600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=357",
+            "vars": {
+              "n": 357,
+              "t": 0.0357,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.035700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=358",
+            "vars": {
+              "n": 358,
+              "t": 0.0358,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.035800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=359",
+            "vars": {
+              "n": 359,
+              "t": 0.0359,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.035900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=360",
+            "vars": {
+              "n": 360,
+              "t": 0.036,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.036000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=361",
+            "vars": {
+              "n": 361,
+              "t": 0.0361,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.036100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=362",
+            "vars": {
+              "n": 362,
+              "t": 0.0362,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.036200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=363",
+            "vars": {
+              "n": 363,
+              "t": 0.0363,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.036300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=364",
+            "vars": {
+              "n": 364,
+              "t": 0.0364,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.036400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=365",
+            "vars": {
+              "n": 365,
+              "t": 0.0365,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.036500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=366",
+            "vars": {
+              "n": 366,
+              "t": 0.0366,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.036600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=367",
+            "vars": {
+              "n": 367,
+              "t": 0.0367,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.036700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=368",
+            "vars": {
+              "n": 368,
+              "t": 0.0368,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.036800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=369",
+            "vars": {
+              "n": 369,
+              "t": 0.0369,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.036900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=370",
+            "vars": {
+              "n": 370,
+              "t": 0.037,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.037000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=371",
+            "vars": {
+              "n": 371,
+              "t": 0.0371,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.037100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=372",
+            "vars": {
+              "n": 372,
+              "t": 0.0372,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.037200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=373",
+            "vars": {
+              "n": 373,
+              "t": 0.0373,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.037300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=374",
+            "vars": {
+              "n": 374,
+              "t": 0.0374,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.037400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=375",
+            "vars": {
+              "n": 375,
+              "t": 0.0375,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.037500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=376",
+            "vars": {
+              "n": 376,
+              "t": 0.0376,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.037600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=377",
+            "vars": {
+              "n": 377,
+              "t": 0.0377,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.037700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=378",
+            "vars": {
+              "n": 378,
+              "t": 0.0378,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.037800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=379",
+            "vars": {
+              "n": 379,
+              "t": 0.0379,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.037900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=380",
+            "vars": {
+              "n": 380,
+              "t": 0.038,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.038000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=381",
+            "vars": {
+              "n": 381,
+              "t": 0.0381,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.038100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=382",
+            "vars": {
+              "n": 382,
+              "t": 0.0382,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.038200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=383",
+            "vars": {
+              "n": 383,
+              "t": 0.0383,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.038300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=384",
+            "vars": {
+              "n": 384,
+              "t": 0.0384,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.038400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=385",
+            "vars": {
+              "n": 385,
+              "t": 0.0385,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.038500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=386",
+            "vars": {
+              "n": 386,
+              "t": 0.0386,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.038600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=387",
+            "vars": {
+              "n": 387,
+              "t": 0.0387,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.038700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=388",
+            "vars": {
+              "n": 388,
+              "t": 0.0388,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.038800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=389",
+            "vars": {
+              "n": 389,
+              "t": 0.0389,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.038900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=390",
+            "vars": {
+              "n": 390,
+              "t": 0.039,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.039000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=391",
+            "vars": {
+              "n": 391,
+              "t": 0.0391,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.039100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=392",
+            "vars": {
+              "n": 392,
+              "t": 0.0392,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.039200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=393",
+            "vars": {
+              "n": 393,
+              "t": 0.0393,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.039300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=394",
+            "vars": {
+              "n": 394,
+              "t": 0.0394,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.039400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=395",
+            "vars": {
+              "n": 395,
+              "t": 0.0395,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.039500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=396",
+            "vars": {
+              "n": 396,
+              "t": 0.0396,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.039600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=397",
+            "vars": {
+              "n": 397,
+              "t": 0.0397,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.039700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=398",
+            "vars": {
+              "n": 398,
+              "t": 0.0398,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.039800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=399",
+            "vars": {
+              "n": 399,
+              "t": 0.0399,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.039900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=400",
+            "vars": {
+              "n": 400,
+              "t": 0.04,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.040000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=401",
+            "vars": {
+              "n": 401,
+              "t": 0.0401,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.040100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=402",
+            "vars": {
+              "n": 402,
+              "t": 0.0402,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.040200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=403",
+            "vars": {
+              "n": 403,
+              "t": 0.0403,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.040300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=404",
+            "vars": {
+              "n": 404,
+              "t": 0.0404,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.040400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=405",
+            "vars": {
+              "n": 405,
+              "t": 0.0405,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.040500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=406",
+            "vars": {
+              "n": 406,
+              "t": 0.0406,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.040600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=407",
+            "vars": {
+              "n": 407,
+              "t": 0.0407,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.040700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=408",
+            "vars": {
+              "n": 408,
+              "t": 0.0408,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.040800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=409",
+            "vars": {
+              "n": 409,
+              "t": 0.0409,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.040900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=410",
+            "vars": {
+              "n": 410,
+              "t": 0.041,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.041000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=411",
+            "vars": {
+              "n": 411,
+              "t": 0.0411,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.041100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=412",
+            "vars": {
+              "n": 412,
+              "t": 0.0412,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.041200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=413",
+            "vars": {
+              "n": 413,
+              "t": 0.0413,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.041300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=414",
+            "vars": {
+              "n": 414,
+              "t": 0.0414,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.041400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=415",
+            "vars": {
+              "n": 415,
+              "t": 0.0415,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.041500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=416",
+            "vars": {
+              "n": 416,
+              "t": 0.0416,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.041600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=417",
+            "vars": {
+              "n": 417,
+              "t": 0.0417,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.041700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=418",
+            "vars": {
+              "n": 418,
+              "t": 0.0418,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.041800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=419",
+            "vars": {
+              "n": 419,
+              "t": 0.0419,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.041900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=420",
+            "vars": {
+              "n": 420,
+              "t": 0.042,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.042000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=421",
+            "vars": {
+              "n": 421,
+              "t": 0.0421,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.042100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=422",
+            "vars": {
+              "n": 422,
+              "t": 0.0422,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.042200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=423",
+            "vars": {
+              "n": 423,
+              "t": 0.0423,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.042300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=424",
+            "vars": {
+              "n": 424,
+              "t": 0.0424,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.042400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=425",
+            "vars": {
+              "n": 425,
+              "t": 0.0425,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.042500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=426",
+            "vars": {
+              "n": 426,
+              "t": 0.0426,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.042600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=427",
+            "vars": {
+              "n": 427,
+              "t": 0.0427,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.042700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=428",
+            "vars": {
+              "n": 428,
+              "t": 0.0428,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.042800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=429",
+            "vars": {
+              "n": 429,
+              "t": 0.0429,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.042900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=430",
+            "vars": {
+              "n": 430,
+              "t": 0.043,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.043000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=431",
+            "vars": {
+              "n": 431,
+              "t": 0.0431,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.043100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=432",
+            "vars": {
+              "n": 432,
+              "t": 0.0432,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.043200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=433",
+            "vars": {
+              "n": 433,
+              "t": 0.0433,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.043300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=434",
+            "vars": {
+              "n": 434,
+              "t": 0.0434,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.043400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=435",
+            "vars": {
+              "n": 435,
+              "t": 0.0435,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.043500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=436",
+            "vars": {
+              "n": 436,
+              "t": 0.0436,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.043600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=437",
+            "vars": {
+              "n": 437,
+              "t": 0.0437,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.043700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=438",
+            "vars": {
+              "n": 438,
+              "t": 0.0438,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.043800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=439",
+            "vars": {
+              "n": 439,
+              "t": 0.0439,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.043900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=440",
+            "vars": {
+              "n": 440,
+              "t": 0.044,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.044000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=441",
+            "vars": {
+              "n": 441,
+              "t": 0.0441,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.044100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=442",
+            "vars": {
+              "n": 442,
+              "t": 0.0442,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.044200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=443",
+            "vars": {
+              "n": 443,
+              "t": 0.0443,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.044300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=444",
+            "vars": {
+              "n": 444,
+              "t": 0.0444,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.044400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=445",
+            "vars": {
+              "n": 445,
+              "t": 0.0445,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.044500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=446",
+            "vars": {
+              "n": 446,
+              "t": 0.0446,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.044600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=447",
+            "vars": {
+              "n": 447,
+              "t": 0.0447,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.044700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=448",
+            "vars": {
+              "n": 448,
+              "t": 0.0448,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.044800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=449",
+            "vars": {
+              "n": 449,
+              "t": 0.0449,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.044900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=450",
+            "vars": {
+              "n": 450,
+              "t": 0.045,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.045000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=451",
+            "vars": {
+              "n": 451,
+              "t": 0.0451,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.045100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=452",
+            "vars": {
+              "n": 452,
+              "t": 0.0452,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.045200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=453",
+            "vars": {
+              "n": 453,
+              "t": 0.0453,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.045300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=454",
+            "vars": {
+              "n": 454,
+              "t": 0.0454,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.045400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=455",
+            "vars": {
+              "n": 455,
+              "t": 0.0455,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.045500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=456",
+            "vars": {
+              "n": 456,
+              "t": 0.0456,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.045600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=457",
+            "vars": {
+              "n": 457,
+              "t": 0.0457,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.045700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=458",
+            "vars": {
+              "n": 458,
+              "t": 0.0458,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.045800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=459",
+            "vars": {
+              "n": 459,
+              "t": 0.0459,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.045900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=460",
+            "vars": {
+              "n": 460,
+              "t": 0.046,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.046000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=461",
+            "vars": {
+              "n": 461,
+              "t": 0.0461,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.046100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=462",
+            "vars": {
+              "n": 462,
+              "t": 0.0462,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.046200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=463",
+            "vars": {
+              "n": 463,
+              "t": 0.0463,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.046300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=464",
+            "vars": {
+              "n": 464,
+              "t": 0.0464,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.046400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=465",
+            "vars": {
+              "n": 465,
+              "t": 0.0465,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.046500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=466",
+            "vars": {
+              "n": 466,
+              "t": 0.0466,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.046600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=467",
+            "vars": {
+              "n": 467,
+              "t": 0.0467,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.046700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=468",
+            "vars": {
+              "n": 468,
+              "t": 0.0468,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.046800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=469",
+            "vars": {
+              "n": 469,
+              "t": 0.0469,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.046900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=470",
+            "vars": {
+              "n": 470,
+              "t": 0.047,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.047000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=471",
+            "vars": {
+              "n": 471,
+              "t": 0.0471,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.047100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=472",
+            "vars": {
+              "n": 472,
+              "t": 0.0472,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.047200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=473",
+            "vars": {
+              "n": 473,
+              "t": 0.0473,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.047300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=474",
+            "vars": {
+              "n": 474,
+              "t": 0.0474,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.047400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=475",
+            "vars": {
+              "n": 475,
+              "t": 0.0475,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.047500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=476",
+            "vars": {
+              "n": 476,
+              "t": 0.0476,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.047600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=477",
+            "vars": {
+              "n": 477,
+              "t": 0.0477,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.047700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=478",
+            "vars": {
+              "n": 478,
+              "t": 0.0478,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.047800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=479",
+            "vars": {
+              "n": 479,
+              "t": 0.0479,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.047900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=480",
+            "vars": {
+              "n": 480,
+              "t": 0.048,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.048000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=481",
+            "vars": {
+              "n": 481,
+              "t": 0.0481,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.048100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=482",
+            "vars": {
+              "n": 482,
+              "t": 0.0482,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.048200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=483",
+            "vars": {
+              "n": 483,
+              "t": 0.0483,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.048300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=484",
+            "vars": {
+              "n": 484,
+              "t": 0.0484,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.048400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=485",
+            "vars": {
+              "n": 485,
+              "t": 0.0485,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.048500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=486",
+            "vars": {
+              "n": 486,
+              "t": 0.0486,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.048600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=487",
+            "vars": {
+              "n": 487,
+              "t": 0.0487,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.048700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=488",
+            "vars": {
+              "n": 488,
+              "t": 0.0488,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.048800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=489",
+            "vars": {
+              "n": 489,
+              "t": 0.0489,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.048900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=490",
+            "vars": {
+              "n": 490,
+              "t": 0.049,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.049000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=491",
+            "vars": {
+              "n": 491,
+              "t": 0.0491,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.049100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=492",
+            "vars": {
+              "n": 492,
+              "t": 0.0492,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.049200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=493",
+            "vars": {
+              "n": 493,
+              "t": 0.0493,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.049300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=494",
+            "vars": {
+              "n": 494,
+              "t": 0.0494,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.049400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=495",
+            "vars": {
+              "n": 495,
+              "t": 0.0495,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.049500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=496",
+            "vars": {
+              "n": 496,
+              "t": 0.0496,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.049600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=497",
+            "vars": {
+              "n": 497,
+              "t": 0.0497,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.049700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=498",
+            "vars": {
+              "n": 498,
+              "t": 0.0498,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.049800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=499",
+            "vars": {
+              "n": 499,
+              "t": 0.0499,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.049900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=500",
+            "vars": {
+              "n": 500,
+              "t": 0.05,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.050000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=501",
+            "vars": {
+              "n": 501,
+              "t": 0.0501,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.050100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=502",
+            "vars": {
+              "n": 502,
+              "t": 0.0502,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.050200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=503",
+            "vars": {
+              "n": 503,
+              "t": 0.0503,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.050300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=504",
+            "vars": {
+              "n": 504,
+              "t": 0.0504,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.050400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=505",
+            "vars": {
+              "n": 505,
+              "t": 0.0505,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.050500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=506",
+            "vars": {
+              "n": 506,
+              "t": 0.0506,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.050600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=507",
+            "vars": {
+              "n": 507,
+              "t": 0.0507,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.050700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=508",
+            "vars": {
+              "n": 508,
+              "t": 0.0508,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.050800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=509",
+            "vars": {
+              "n": 509,
+              "t": 0.0509,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.050900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=510",
+            "vars": {
+              "n": 510,
+              "t": 0.051,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.051000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=511",
+            "vars": {
+              "n": 511,
+              "t": 0.0511,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.051100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=512",
+            "vars": {
+              "n": 512,
+              "t": 0.0512,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.051200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=513",
+            "vars": {
+              "n": 513,
+              "t": 0.0513,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.051300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=514",
+            "vars": {
+              "n": 514,
+              "t": 0.0514,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.051400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=515",
+            "vars": {
+              "n": 515,
+              "t": 0.0515,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.051500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=516",
+            "vars": {
+              "n": 516,
+              "t": 0.0516,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.051600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=517",
+            "vars": {
+              "n": 517,
+              "t": 0.0517,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.051700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=518",
+            "vars": {
+              "n": 518,
+              "t": 0.0518,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.051800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=519",
+            "vars": {
+              "n": 519,
+              "t": 0.0519,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.051900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=520",
+            "vars": {
+              "n": 520,
+              "t": 0.052,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.052000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=521",
+            "vars": {
+              "n": 521,
+              "t": 0.0521,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.052100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=522",
+            "vars": {
+              "n": 522,
+              "t": 0.0522,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.052200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=523",
+            "vars": {
+              "n": 523,
+              "t": 0.0523,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.052300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=524",
+            "vars": {
+              "n": 524,
+              "t": 0.0524,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.052400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=525",
+            "vars": {
+              "n": 525,
+              "t": 0.0525,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.052500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=526",
+            "vars": {
+              "n": 526,
+              "t": 0.0526,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.052600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=527",
+            "vars": {
+              "n": 527,
+              "t": 0.0527,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.052700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=528",
+            "vars": {
+              "n": 528,
+              "t": 0.0528,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.052800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=529",
+            "vars": {
+              "n": 529,
+              "t": 0.0529,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.052900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=530",
+            "vars": {
+              "n": 530,
+              "t": 0.053,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.053000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=531",
+            "vars": {
+              "n": 531,
+              "t": 0.0531,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.053100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=532",
+            "vars": {
+              "n": 532,
+              "t": 0.0532,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.053200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=533",
+            "vars": {
+              "n": 533,
+              "t": 0.0533,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.053300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=534",
+            "vars": {
+              "n": 534,
+              "t": 0.0534,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.053400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=535",
+            "vars": {
+              "n": 535,
+              "t": 0.0535,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.053500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=536",
+            "vars": {
+              "n": 536,
+              "t": 0.0536,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.053600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=537",
+            "vars": {
+              "n": 537,
+              "t": 0.0537,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.053700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=538",
+            "vars": {
+              "n": 538,
+              "t": 0.0538,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.053800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=539",
+            "vars": {
+              "n": 539,
+              "t": 0.0539,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.053900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=540",
+            "vars": {
+              "n": 540,
+              "t": 0.054,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.054000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=541",
+            "vars": {
+              "n": 541,
+              "t": 0.0541,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.054100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=542",
+            "vars": {
+              "n": 542,
+              "t": 0.0542,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.054200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=543",
+            "vars": {
+              "n": 543,
+              "t": 0.0543,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.054300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=544",
+            "vars": {
+              "n": 544,
+              "t": 0.0544,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.054400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=545",
+            "vars": {
+              "n": 545,
+              "t": 0.0545,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.054500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=546",
+            "vars": {
+              "n": 546,
+              "t": 0.0546,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.054600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=547",
+            "vars": {
+              "n": 547,
+              "t": 0.0547,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.054700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=548",
+            "vars": {
+              "n": 548,
+              "t": 0.0548,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.054800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=549",
+            "vars": {
+              "n": 549,
+              "t": 0.0549,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.054900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=550",
+            "vars": {
+              "n": 550,
+              "t": 0.055,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.055000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=551",
+            "vars": {
+              "n": 551,
+              "t": 0.0551,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.055100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=552",
+            "vars": {
+              "n": 552,
+              "t": 0.0552,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.055200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=553",
+            "vars": {
+              "n": 553,
+              "t": 0.0553,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.055300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=554",
+            "vars": {
+              "n": 554,
+              "t": 0.0554,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.055400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=555",
+            "vars": {
+              "n": 555,
+              "t": 0.0555,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.055500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=556",
+            "vars": {
+              "n": 556,
+              "t": 0.0556,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.055600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=557",
+            "vars": {
+              "n": 557,
+              "t": 0.0557,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.055700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=558",
+            "vars": {
+              "n": 558,
+              "t": 0.0558,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.055800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=559",
+            "vars": {
+              "n": 559,
+              "t": 0.0559,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.055900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=560",
+            "vars": {
+              "n": 560,
+              "t": 0.056,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.056000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=561",
+            "vars": {
+              "n": 561,
+              "t": 0.0561,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.056100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=562",
+            "vars": {
+              "n": 562,
+              "t": 0.0562,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.056200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=563",
+            "vars": {
+              "n": 563,
+              "t": 0.0563,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.056300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=564",
+            "vars": {
+              "n": 564,
+              "t": 0.0564,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.056400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=565",
+            "vars": {
+              "n": 565,
+              "t": 0.0565,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.056500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=566",
+            "vars": {
+              "n": 566,
+              "t": 0.0566,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.056600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=567",
+            "vars": {
+              "n": 567,
+              "t": 0.0567,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.056700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=568",
+            "vars": {
+              "n": 568,
+              "t": 0.0568,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.056800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=569",
+            "vars": {
+              "n": 569,
+              "t": 0.0569,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.056900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=570",
+            "vars": {
+              "n": 570,
+              "t": 0.057,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.057000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=571",
+            "vars": {
+              "n": 571,
+              "t": 0.0571,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.057100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=572",
+            "vars": {
+              "n": 572,
+              "t": 0.0572,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.057200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=573",
+            "vars": {
+              "n": 573,
+              "t": 0.0573,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.057300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=574",
+            "vars": {
+              "n": 574,
+              "t": 0.0574,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.057400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=575",
+            "vars": {
+              "n": 575,
+              "t": 0.0575,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.057500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=576",
+            "vars": {
+              "n": 576,
+              "t": 0.0576,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.057600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=577",
+            "vars": {
+              "n": 577,
+              "t": 0.0577,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.057700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=578",
+            "vars": {
+              "n": 578,
+              "t": 0.0578,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.057800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=579",
+            "vars": {
+              "n": 579,
+              "t": 0.0579,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.057900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=580",
+            "vars": {
+              "n": 580,
+              "t": 0.058,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.058000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=581",
+            "vars": {
+              "n": 581,
+              "t": 0.0581,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.058100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=582",
+            "vars": {
+              "n": 582,
+              "t": 0.0582,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.058200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=583",
+            "vars": {
+              "n": 583,
+              "t": 0.0583,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.058300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=584",
+            "vars": {
+              "n": 584,
+              "t": 0.0584,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.058400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=585",
+            "vars": {
+              "n": 585,
+              "t": 0.0585,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.058500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=586",
+            "vars": {
+              "n": 586,
+              "t": 0.0586,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.058600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=587",
+            "vars": {
+              "n": 587,
+              "t": 0.0587,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.058700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=588",
+            "vars": {
+              "n": 588,
+              "t": 0.0588,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.058800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=589",
+            "vars": {
+              "n": 589,
+              "t": 0.0589,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.058900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=590",
+            "vars": {
+              "n": 590,
+              "t": 0.059,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.059000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=591",
+            "vars": {
+              "n": 591,
+              "t": 0.0591,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.059100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=592",
+            "vars": {
+              "n": 592,
+              "t": 0.0592,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.059200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=593",
+            "vars": {
+              "n": 593,
+              "t": 0.0593,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.059300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=594",
+            "vars": {
+              "n": 594,
+              "t": 0.0594,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.059400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=595",
+            "vars": {
+              "n": 595,
+              "t": 0.0595,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.059500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=596",
+            "vars": {
+              "n": 596,
+              "t": 0.0596,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.059600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=597",
+            "vars": {
+              "n": 597,
+              "t": 0.0597,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.059700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=598",
+            "vars": {
+              "n": 598,
+              "t": 0.0598,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.059800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=599",
+            "vars": {
+              "n": 599,
+              "t": 0.0599,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.059900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=600",
+            "vars": {
+              "n": 600,
+              "t": 0.06,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.060000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=601",
+            "vars": {
+              "n": 601,
+              "t": 0.0601,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.060100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=602",
+            "vars": {
+              "n": 602,
+              "t": 0.0602,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.060200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=603",
+            "vars": {
+              "n": 603,
+              "t": 0.0603,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.060300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=604",
+            "vars": {
+              "n": 604,
+              "t": 0.0604,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.060400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=605",
+            "vars": {
+              "n": 605,
+              "t": 0.0605,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.060500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=606",
+            "vars": {
+              "n": 606,
+              "t": 0.0606,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.060600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=607",
+            "vars": {
+              "n": 607,
+              "t": 0.0607,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.060700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=608",
+            "vars": {
+              "n": 608,
+              "t": 0.0608,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.060800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=609",
+            "vars": {
+              "n": 609,
+              "t": 0.0609,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.060900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=610",
+            "vars": {
+              "n": 610,
+              "t": 0.061,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.061000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=611",
+            "vars": {
+              "n": 611,
+              "t": 0.0611,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.061100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=612",
+            "vars": {
+              "n": 612,
+              "t": 0.0612,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.061200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=613",
+            "vars": {
+              "n": 613,
+              "t": 0.0613,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.061300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=614",
+            "vars": {
+              "n": 614,
+              "t": 0.0614,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.061400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=615",
+            "vars": {
+              "n": 615,
+              "t": 0.0615,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.061500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=616",
+            "vars": {
+              "n": 616,
+              "t": 0.0616,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.061600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=617",
+            "vars": {
+              "n": 617,
+              "t": 0.0617,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.061700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=618",
+            "vars": {
+              "n": 618,
+              "t": 0.0618,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.061800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=619",
+            "vars": {
+              "n": 619,
+              "t": 0.0619,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.061900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=620",
+            "vars": {
+              "n": 620,
+              "t": 0.062,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.062000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=621",
+            "vars": {
+              "n": 621,
+              "t": 0.0621,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.062100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=622",
+            "vars": {
+              "n": 622,
+              "t": 0.0622,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.062200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=623",
+            "vars": {
+              "n": 623,
+              "t": 0.0623,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.062300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=624",
+            "vars": {
+              "n": 624,
+              "t": 0.0624,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.062400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=625",
+            "vars": {
+              "n": 625,
+              "t": 0.0625,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.062500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=626",
+            "vars": {
+              "n": 626,
+              "t": 0.0626,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.062600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=627",
+            "vars": {
+              "n": 627,
+              "t": 0.0627,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.062700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=628",
+            "vars": {
+              "n": 628,
+              "t": 0.0628,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.062800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=629",
+            "vars": {
+              "n": 629,
+              "t": 0.0629,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.062900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=630",
+            "vars": {
+              "n": 630,
+              "t": 0.063,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.063000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=631",
+            "vars": {
+              "n": 631,
+              "t": 0.0631,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.063100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=632",
+            "vars": {
+              "n": 632,
+              "t": 0.0632,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.063200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=633",
+            "vars": {
+              "n": 633,
+              "t": 0.0633,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.063300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=634",
+            "vars": {
+              "n": 634,
+              "t": 0.0634,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.063400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=635",
+            "vars": {
+              "n": 635,
+              "t": 0.0635,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.063500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=636",
+            "vars": {
+              "n": 636,
+              "t": 0.0636,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.063600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=637",
+            "vars": {
+              "n": 637,
+              "t": 0.0637,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.063700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=638",
+            "vars": {
+              "n": 638,
+              "t": 0.0638,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.063800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=639",
+            "vars": {
+              "n": 639,
+              "t": 0.0639,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.063900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=640",
+            "vars": {
+              "n": 640,
+              "t": 0.064,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.064000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=641",
+            "vars": {
+              "n": 641,
+              "t": 0.0641,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.064100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=642",
+            "vars": {
+              "n": 642,
+              "t": 0.0642,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.064200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=643",
+            "vars": {
+              "n": 643,
+              "t": 0.0643,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.064300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=644",
+            "vars": {
+              "n": 644,
+              "t": 0.0644,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.064400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=645",
+            "vars": {
+              "n": 645,
+              "t": 0.0645,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.064500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=646",
+            "vars": {
+              "n": 646,
+              "t": 0.0646,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.064600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=647",
+            "vars": {
+              "n": 647,
+              "t": 0.0647,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.064700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=648",
+            "vars": {
+              "n": 648,
+              "t": 0.0648,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.064800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=649",
+            "vars": {
+              "n": 649,
+              "t": 0.0649,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.064900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=650",
+            "vars": {
+              "n": 650,
+              "t": 0.065,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.065000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=651",
+            "vars": {
+              "n": 651,
+              "t": 0.0651,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.065100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=652",
+            "vars": {
+              "n": 652,
+              "t": 0.0652,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.065200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=653",
+            "vars": {
+              "n": 653,
+              "t": 0.0653,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.065300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=654",
+            "vars": {
+              "n": 654,
+              "t": 0.0654,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.065400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=655",
+            "vars": {
+              "n": 655,
+              "t": 0.0655,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.065500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=656",
+            "vars": {
+              "n": 656,
+              "t": 0.0656,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.065600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=657",
+            "vars": {
+              "n": 657,
+              "t": 0.0657,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.065700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=658",
+            "vars": {
+              "n": 658,
+              "t": 0.0658,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.065800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=659",
+            "vars": {
+              "n": 659,
+              "t": 0.0659,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.065900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=660",
+            "vars": {
+              "n": 660,
+              "t": 0.066,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.066000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=661",
+            "vars": {
+              "n": 661,
+              "t": 0.0661,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.066100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=662",
+            "vars": {
+              "n": 662,
+              "t": 0.0662,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.066200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=663",
+            "vars": {
+              "n": 663,
+              "t": 0.0663,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.066300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=664",
+            "vars": {
+              "n": 664,
+              "t": 0.0664,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.066400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=665",
+            "vars": {
+              "n": 665,
+              "t": 0.0665,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.066500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=666",
+            "vars": {
+              "n": 666,
+              "t": 0.0666,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.066600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=667",
+            "vars": {
+              "n": 667,
+              "t": 0.0667,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.066700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=668",
+            "vars": {
+              "n": 668,
+              "t": 0.0668,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.066800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=669",
+            "vars": {
+              "n": 669,
+              "t": 0.0669,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.066900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=670",
+            "vars": {
+              "n": 670,
+              "t": 0.067,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.067000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=671",
+            "vars": {
+              "n": 671,
+              "t": 0.0671,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.067100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=672",
+            "vars": {
+              "n": 672,
+              "t": 0.0672,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.067200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=673",
+            "vars": {
+              "n": 673,
+              "t": 0.0673,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.067300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=674",
+            "vars": {
+              "n": 674,
+              "t": 0.0674,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.067400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=675",
+            "vars": {
+              "n": 675,
+              "t": 0.0675,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.067500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=676",
+            "vars": {
+              "n": 676,
+              "t": 0.0676,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.067600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=677",
+            "vars": {
+              "n": 677,
+              "t": 0.0677,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.067700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=678",
+            "vars": {
+              "n": 678,
+              "t": 0.0678,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.067800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=679",
+            "vars": {
+              "n": 679,
+              "t": 0.0679,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.067900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=680",
+            "vars": {
+              "n": 680,
+              "t": 0.068,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.068000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=681",
+            "vars": {
+              "n": 681,
+              "t": 0.0681,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.068100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=682",
+            "vars": {
+              "n": 682,
+              "t": 0.0682,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.068200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=683",
+            "vars": {
+              "n": 683,
+              "t": 0.0683,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.068300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=684",
+            "vars": {
+              "n": 684,
+              "t": 0.0684,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.068400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=685",
+            "vars": {
+              "n": 685,
+              "t": 0.0685,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.068500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=686",
+            "vars": {
+              "n": 686,
+              "t": 0.0686,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.068600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=687",
+            "vars": {
+              "n": 687,
+              "t": 0.0687,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.068700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=688",
+            "vars": {
+              "n": 688,
+              "t": 0.0688,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.068800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=689",
+            "vars": {
+              "n": 689,
+              "t": 0.0689,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.068900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=690",
+            "vars": {
+              "n": 690,
+              "t": 0.069,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.069000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=691",
+            "vars": {
+              "n": 691,
+              "t": 0.0691,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.069100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=692",
+            "vars": {
+              "n": 692,
+              "t": 0.0692,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.069200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=693",
+            "vars": {
+              "n": 693,
+              "t": 0.0693,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.069300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=694",
+            "vars": {
+              "n": 694,
+              "t": 0.0694,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.069400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=695",
+            "vars": {
+              "n": 695,
+              "t": 0.0695,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.069500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=696",
+            "vars": {
+              "n": 696,
+              "t": 0.0696,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.069600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=697",
+            "vars": {
+              "n": 697,
+              "t": 0.0697,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.069700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=698",
+            "vars": {
+              "n": 698,
+              "t": 0.0698,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.069800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=699",
+            "vars": {
+              "n": 699,
+              "t": 0.0699,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.069900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=700",
+            "vars": {
+              "n": 700,
+              "t": 0.07,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.070000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=701",
+            "vars": {
+              "n": 701,
+              "t": 0.0701,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.070100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=702",
+            "vars": {
+              "n": 702,
+              "t": 0.0702,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.070200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=703",
+            "vars": {
+              "n": 703,
+              "t": 0.0703,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.070300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=704",
+            "vars": {
+              "n": 704,
+              "t": 0.0704,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.070400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=705",
+            "vars": {
+              "n": 705,
+              "t": 0.0705,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.070500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=706",
+            "vars": {
+              "n": 706,
+              "t": 0.0706,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.070600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=707",
+            "vars": {
+              "n": 707,
+              "t": 0.0707,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.070700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=708",
+            "vars": {
+              "n": 708,
+              "t": 0.0708,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.070800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=709",
+            "vars": {
+              "n": 709,
+              "t": 0.0709,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.070900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=710",
+            "vars": {
+              "n": 710,
+              "t": 0.071,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.071000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=711",
+            "vars": {
+              "n": 711,
+              "t": 0.0711,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.071100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=712",
+            "vars": {
+              "n": 712,
+              "t": 0.0712,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.071200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=713",
+            "vars": {
+              "n": 713,
+              "t": 0.0713,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.071300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=714",
+            "vars": {
+              "n": 714,
+              "t": 0.0714,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.071400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=715",
+            "vars": {
+              "n": 715,
+              "t": 0.0715,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.071500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=716",
+            "vars": {
+              "n": 716,
+              "t": 0.0716,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.071600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=717",
+            "vars": {
+              "n": 717,
+              "t": 0.0717,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.071700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=718",
+            "vars": {
+              "n": 718,
+              "t": 0.0718,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.071800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=719",
+            "vars": {
+              "n": 719,
+              "t": 0.0719,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.071900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=720",
+            "vars": {
+              "n": 720,
+              "t": 0.072,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.072000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=721",
+            "vars": {
+              "n": 721,
+              "t": 0.0721,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.072100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=722",
+            "vars": {
+              "n": 722,
+              "t": 0.0722,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.072200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=723",
+            "vars": {
+              "n": 723,
+              "t": 0.0723,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.072300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=724",
+            "vars": {
+              "n": 724,
+              "t": 0.0724,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.072400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=725",
+            "vars": {
+              "n": 725,
+              "t": 0.0725,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.072500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=726",
+            "vars": {
+              "n": 726,
+              "t": 0.0726,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.072600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=727",
+            "vars": {
+              "n": 727,
+              "t": 0.0727,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.072700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=728",
+            "vars": {
+              "n": 728,
+              "t": 0.0728,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.072800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=729",
+            "vars": {
+              "n": 729,
+              "t": 0.0729,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.072900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=730",
+            "vars": {
+              "n": 730,
+              "t": 0.073,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.073000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=731",
+            "vars": {
+              "n": 731,
+              "t": 0.0731,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.073100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=732",
+            "vars": {
+              "n": 732,
+              "t": 0.0732,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.073200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=733",
+            "vars": {
+              "n": 733,
+              "t": 0.0733,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.073300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=734",
+            "vars": {
+              "n": 734,
+              "t": 0.0734,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.073400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=735",
+            "vars": {
+              "n": 735,
+              "t": 0.0735,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.073500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=736",
+            "vars": {
+              "n": 736,
+              "t": 0.0736,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.073600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=737",
+            "vars": {
+              "n": 737,
+              "t": 0.0737,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.073700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=738",
+            "vars": {
+              "n": 738,
+              "t": 0.0738,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.073800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=739",
+            "vars": {
+              "n": 739,
+              "t": 0.0739,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.073900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=740",
+            "vars": {
+              "n": 740,
+              "t": 0.074,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.074000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=741",
+            "vars": {
+              "n": 741,
+              "t": 0.0741,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.074100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=742",
+            "vars": {
+              "n": 742,
+              "t": 0.0742,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.074200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=743",
+            "vars": {
+              "n": 743,
+              "t": 0.0743,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.074300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=744",
+            "vars": {
+              "n": 744,
+              "t": 0.0744,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.074400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=745",
+            "vars": {
+              "n": 745,
+              "t": 0.0745,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.074500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=746",
+            "vars": {
+              "n": 746,
+              "t": 0.0746,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.074600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=747",
+            "vars": {
+              "n": 747,
+              "t": 0.0747,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.074700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=748",
+            "vars": {
+              "n": 748,
+              "t": 0.0748,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.074800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=749",
+            "vars": {
+              "n": 749,
+              "t": 0.0749,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.074900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=750",
+            "vars": {
+              "n": 750,
+              "t": 0.075,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.075000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=751",
+            "vars": {
+              "n": 751,
+              "t": 0.0751,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.075100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=752",
+            "vars": {
+              "n": 752,
+              "t": 0.0752,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.075200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=753",
+            "vars": {
+              "n": 753,
+              "t": 0.0753,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.075300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=754",
+            "vars": {
+              "n": 754,
+              "t": 0.0754,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.075400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=755",
+            "vars": {
+              "n": 755,
+              "t": 0.0755,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.075500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=756",
+            "vars": {
+              "n": 756,
+              "t": 0.0756,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.075600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=757",
+            "vars": {
+              "n": 757,
+              "t": 0.0757,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.075700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=758",
+            "vars": {
+              "n": 758,
+              "t": 0.0758,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.075800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=759",
+            "vars": {
+              "n": 759,
+              "t": 0.0759,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.075900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=760",
+            "vars": {
+              "n": 760,
+              "t": 0.076,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.076000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=761",
+            "vars": {
+              "n": 761,
+              "t": 0.0761,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.076100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=762",
+            "vars": {
+              "n": 762,
+              "t": 0.0762,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.076200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=763",
+            "vars": {
+              "n": 763,
+              "t": 0.0763,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.076300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=764",
+            "vars": {
+              "n": 764,
+              "t": 0.0764,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.076400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=765",
+            "vars": {
+              "n": 765,
+              "t": 0.0765,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.076500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=766",
+            "vars": {
+              "n": 766,
+              "t": 0.0766,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.076600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=767",
+            "vars": {
+              "n": 767,
+              "t": 0.0767,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.076700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=768",
+            "vars": {
+              "n": 768,
+              "t": 0.0768,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.076800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=769",
+            "vars": {
+              "n": 769,
+              "t": 0.0769,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.076900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=770",
+            "vars": {
+              "n": 770,
+              "t": 0.077,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.077000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=771",
+            "vars": {
+              "n": 771,
+              "t": 0.0771,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.077100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=772",
+            "vars": {
+              "n": 772,
+              "t": 0.0772,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.077200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=773",
+            "vars": {
+              "n": 773,
+              "t": 0.0773,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.077300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=774",
+            "vars": {
+              "n": 774,
+              "t": 0.0774,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.077400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=775",
+            "vars": {
+              "n": 775,
+              "t": 0.0775,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.077500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=776",
+            "vars": {
+              "n": 776,
+              "t": 0.0776,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.077600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=777",
+            "vars": {
+              "n": 777,
+              "t": 0.0777,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.077700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=778",
+            "vars": {
+              "n": 778,
+              "t": 0.0778,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.077800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=779",
+            "vars": {
+              "n": 779,
+              "t": 0.0779,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.077900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=780",
+            "vars": {
+              "n": 780,
+              "t": 0.078,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.078000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=781",
+            "vars": {
+              "n": 781,
+              "t": 0.0781,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.078100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=782",
+            "vars": {
+              "n": 782,
+              "t": 0.0782,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.078200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=783",
+            "vars": {
+              "n": 783,
+              "t": 0.0783,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.078300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=784",
+            "vars": {
+              "n": 784,
+              "t": 0.0784,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.078400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=785",
+            "vars": {
+              "n": 785,
+              "t": 0.0785,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.078500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=786",
+            "vars": {
+              "n": 786,
+              "t": 0.0786,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.078600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=787",
+            "vars": {
+              "n": 787,
+              "t": 0.0787,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.078700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=788",
+            "vars": {
+              "n": 788,
+              "t": 0.0788,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.078800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=789",
+            "vars": {
+              "n": 789,
+              "t": 0.0789,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.078900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=790",
+            "vars": {
+              "n": 790,
+              "t": 0.079,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.079000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=791",
+            "vars": {
+              "n": 791,
+              "t": 0.0791,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.079100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=792",
+            "vars": {
+              "n": 792,
+              "t": 0.0792,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.079200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=793",
+            "vars": {
+              "n": 793,
+              "t": 0.0793,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.079300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=794",
+            "vars": {
+              "n": 794,
+              "t": 0.0794,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.079400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=795",
+            "vars": {
+              "n": 795,
+              "t": 0.0795,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.079500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=796",
+            "vars": {
+              "n": 796,
+              "t": 0.0796,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.079600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=797",
+            "vars": {
+              "n": 797,
+              "t": 0.0797,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.079700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=798",
+            "vars": {
+              "n": 798,
+              "t": 0.0798,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.079800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=799",
+            "vars": {
+              "n": 799,
+              "t": 0.0799,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.079900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=800",
+            "vars": {
+              "n": 800,
+              "t": 0.08,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.080000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=801",
+            "vars": {
+              "n": 801,
+              "t": 0.0801,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.080100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=802",
+            "vars": {
+              "n": 802,
+              "t": 0.0802,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.080200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=803",
+            "vars": {
+              "n": 803,
+              "t": 0.0803,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.080300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=804",
+            "vars": {
+              "n": 804,
+              "t": 0.0804,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.080400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=805",
+            "vars": {
+              "n": 805,
+              "t": 0.0805,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.080500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=806",
+            "vars": {
+              "n": 806,
+              "t": 0.0806,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.080600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=807",
+            "vars": {
+              "n": 807,
+              "t": 0.0807,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.080700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=808",
+            "vars": {
+              "n": 808,
+              "t": 0.0808,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.080800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=809",
+            "vars": {
+              "n": 809,
+              "t": 0.0809,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.080900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=810",
+            "vars": {
+              "n": 810,
+              "t": 0.081,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.081000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=811",
+            "vars": {
+              "n": 811,
+              "t": 0.0811,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.081100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=812",
+            "vars": {
+              "n": 812,
+              "t": 0.0812,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.081200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=813",
+            "vars": {
+              "n": 813,
+              "t": 0.0813,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.081300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=814",
+            "vars": {
+              "n": 814,
+              "t": 0.0814,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.081400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=815",
+            "vars": {
+              "n": 815,
+              "t": 0.0815,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.081500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=816",
+            "vars": {
+              "n": 816,
+              "t": 0.0816,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.081600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=817",
+            "vars": {
+              "n": 817,
+              "t": 0.0817,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.081700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=818",
+            "vars": {
+              "n": 818,
+              "t": 0.0818,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.081800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=819",
+            "vars": {
+              "n": 819,
+              "t": 0.0819,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.081900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=820",
+            "vars": {
+              "n": 820,
+              "t": 0.082,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.082000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=821",
+            "vars": {
+              "n": 821,
+              "t": 0.0821,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.082100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=822",
+            "vars": {
+              "n": 822,
+              "t": 0.0822,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.082200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=823",
+            "vars": {
+              "n": 823,
+              "t": 0.0823,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.082300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=824",
+            "vars": {
+              "n": 824,
+              "t": 0.0824,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.082400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=825",
+            "vars": {
+              "n": 825,
+              "t": 0.0825,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.082500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=826",
+            "vars": {
+              "n": 826,
+              "t": 0.0826,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.082600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=827",
+            "vars": {
+              "n": 827,
+              "t": 0.0827,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.082700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=828",
+            "vars": {
+              "n": 828,
+              "t": 0.0828,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.082800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=829",
+            "vars": {
+              "n": 829,
+              "t": 0.0829,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.082900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=830",
+            "vars": {
+              "n": 830,
+              "t": 0.083,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.083000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=831",
+            "vars": {
+              "n": 831,
+              "t": 0.0831,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.083100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=832",
+            "vars": {
+              "n": 832,
+              "t": 0.0832,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.083200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=833",
+            "vars": {
+              "n": 833,
+              "t": 0.0833,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.083300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=834",
+            "vars": {
+              "n": 834,
+              "t": 0.0834,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.083400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=835",
+            "vars": {
+              "n": 835,
+              "t": 0.0835,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.083500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=836",
+            "vars": {
+              "n": 836,
+              "t": 0.0836,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.083600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=837",
+            "vars": {
+              "n": 837,
+              "t": 0.0837,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.083700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=838",
+            "vars": {
+              "n": 838,
+              "t": 0.0838,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.083800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=839",
+            "vars": {
+              "n": 839,
+              "t": 0.0839,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.083900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=840",
+            "vars": {
+              "n": 840,
+              "t": 0.084,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.084000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=841",
+            "vars": {
+              "n": 841,
+              "t": 0.0841,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.084100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=842",
+            "vars": {
+              "n": 842,
+              "t": 0.0842,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.084200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=843",
+            "vars": {
+              "n": 843,
+              "t": 0.0843,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.084300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=844",
+            "vars": {
+              "n": 844,
+              "t": 0.0844,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.084400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=845",
+            "vars": {
+              "n": 845,
+              "t": 0.0845,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.084500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=846",
+            "vars": {
+              "n": 846,
+              "t": 0.0846,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.084600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=847",
+            "vars": {
+              "n": 847,
+              "t": 0.0847,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.084700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=848",
+            "vars": {
+              "n": 848,
+              "t": 0.0848,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.084800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=849",
+            "vars": {
+              "n": 849,
+              "t": 0.0849,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.084900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=850",
+            "vars": {
+              "n": 850,
+              "t": 0.085,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.085000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=851",
+            "vars": {
+              "n": 851,
+              "t": 0.0851,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.085100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=852",
+            "vars": {
+              "n": 852,
+              "t": 0.0852,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.085200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=853",
+            "vars": {
+              "n": 853,
+              "t": 0.0853,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.085300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=854",
+            "vars": {
+              "n": 854,
+              "t": 0.0854,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.085400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=855",
+            "vars": {
+              "n": 855,
+              "t": 0.0855,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.085500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=856",
+            "vars": {
+              "n": 856,
+              "t": 0.0856,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.085600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=857",
+            "vars": {
+              "n": 857,
+              "t": 0.0857,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.085700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=858",
+            "vars": {
+              "n": 858,
+              "t": 0.0858,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.085800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=859",
+            "vars": {
+              "n": 859,
+              "t": 0.0859,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.085900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=860",
+            "vars": {
+              "n": 860,
+              "t": 0.086,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.086000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=861",
+            "vars": {
+              "n": 861,
+              "t": 0.0861,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.086100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=862",
+            "vars": {
+              "n": 862,
+              "t": 0.0862,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.086200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=863",
+            "vars": {
+              "n": 863,
+              "t": 0.0863,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.086300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=864",
+            "vars": {
+              "n": 864,
+              "t": 0.0864,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.086400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=865",
+            "vars": {
+              "n": 865,
+              "t": 0.0865,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.086500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=866",
+            "vars": {
+              "n": 866,
+              "t": 0.0866,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.086600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=867",
+            "vars": {
+              "n": 867,
+              "t": 0.0867,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.086700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=868",
+            "vars": {
+              "n": 868,
+              "t": 0.0868,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.086800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=869",
+            "vars": {
+              "n": 869,
+              "t": 0.0869,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.086900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=870",
+            "vars": {
+              "n": 870,
+              "t": 0.087,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.087000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=871",
+            "vars": {
+              "n": 871,
+              "t": 0.0871,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.087100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=872",
+            "vars": {
+              "n": 872,
+              "t": 0.0872,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.087200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=873",
+            "vars": {
+              "n": 873,
+              "t": 0.0873,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.087300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=874",
+            "vars": {
+              "n": 874,
+              "t": 0.0874,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.087400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=875",
+            "vars": {
+              "n": 875,
+              "t": 0.0875,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.087500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=876",
+            "vars": {
+              "n": 876,
+              "t": 0.0876,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.087600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=877",
+            "vars": {
+              "n": 877,
+              "t": 0.0877,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.087700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=878",
+            "vars": {
+              "n": 878,
+              "t": 0.0878,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.087800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=879",
+            "vars": {
+              "n": 879,
+              "t": 0.0879,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.087900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=880",
+            "vars": {
+              "n": 880,
+              "t": 0.088,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.088000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=881",
+            "vars": {
+              "n": 881,
+              "t": 0.0881,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.088100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=882",
+            "vars": {
+              "n": 882,
+              "t": 0.0882,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.088200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=883",
+            "vars": {
+              "n": 883,
+              "t": 0.0883,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.088300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=884",
+            "vars": {
+              "n": 884,
+              "t": 0.0884,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.088400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=885",
+            "vars": {
+              "n": 885,
+              "t": 0.0885,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.088500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=886",
+            "vars": {
+              "n": 886,
+              "t": 0.0886,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.088600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=887",
+            "vars": {
+              "n": 887,
+              "t": 0.0887,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.088700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=888",
+            "vars": {
+              "n": 888,
+              "t": 0.0888,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.088800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=889",
+            "vars": {
+              "n": 889,
+              "t": 0.0889,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.088900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=890",
+            "vars": {
+              "n": 890,
+              "t": 0.089,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.089000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=891",
+            "vars": {
+              "n": 891,
+              "t": 0.0891,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.089100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=892",
+            "vars": {
+              "n": 892,
+              "t": 0.0892,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.089200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=893",
+            "vars": {
+              "n": 893,
+              "t": 0.0893,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.089300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=894",
+            "vars": {
+              "n": 894,
+              "t": 0.0894,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.089400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=895",
+            "vars": {
+              "n": 895,
+              "t": 0.0895,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.089500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=896",
+            "vars": {
+              "n": 896,
+              "t": 0.0896,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.089600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=897",
+            "vars": {
+              "n": 897,
+              "t": 0.0897,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.089700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=898",
+            "vars": {
+              "n": 898,
+              "t": 0.0898,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.089800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=899",
+            "vars": {
+              "n": 899,
+              "t": 0.0899,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.089900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=900",
+            "vars": {
+              "n": 900,
+              "t": 0.09,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.090000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=901",
+            "vars": {
+              "n": 901,
+              "t": 0.0901,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.090100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=902",
+            "vars": {
+              "n": 902,
+              "t": 0.0902,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.090200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=903",
+            "vars": {
+              "n": 903,
+              "t": 0.0903,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.090300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=904",
+            "vars": {
+              "n": 904,
+              "t": 0.0904,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.090400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=905",
+            "vars": {
+              "n": 905,
+              "t": 0.0905,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.090500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=906",
+            "vars": {
+              "n": 906,
+              "t": 0.0906,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.090600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=907",
+            "vars": {
+              "n": 907,
+              "t": 0.0907,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.090700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=908",
+            "vars": {
+              "n": 908,
+              "t": 0.0908,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.090800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=909",
+            "vars": {
+              "n": 909,
+              "t": 0.0909,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.090900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=910",
+            "vars": {
+              "n": 910,
+              "t": 0.091,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.091000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=911",
+            "vars": {
+              "n": 911,
+              "t": 0.0911,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.091100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=912",
+            "vars": {
+              "n": 912,
+              "t": 0.0912,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.091200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=913",
+            "vars": {
+              "n": 913,
+              "t": 0.0913,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.091300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=914",
+            "vars": {
+              "n": 914,
+              "t": 0.0914,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.091400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=915",
+            "vars": {
+              "n": 915,
+              "t": 0.0915,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.091500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=916",
+            "vars": {
+              "n": 916,
+              "t": 0.0916,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.091600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=917",
+            "vars": {
+              "n": 917,
+              "t": 0.0917,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.091700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=918",
+            "vars": {
+              "n": 918,
+              "t": 0.0918,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.091800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=919",
+            "vars": {
+              "n": 919,
+              "t": 0.0919,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.091900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=920",
+            "vars": {
+              "n": 920,
+              "t": 0.092,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.092000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=921",
+            "vars": {
+              "n": 921,
+              "t": 0.0921,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.092100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=922",
+            "vars": {
+              "n": 922,
+              "t": 0.0922,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.092200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=923",
+            "vars": {
+              "n": 923,
+              "t": 0.0923,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.092300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=924",
+            "vars": {
+              "n": 924,
+              "t": 0.0924,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.092400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=925",
+            "vars": {
+              "n": 925,
+              "t": 0.0925,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.092500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=926",
+            "vars": {
+              "n": 926,
+              "t": 0.0926,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.092600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=927",
+            "vars": {
+              "n": 927,
+              "t": 0.0927,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.092700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=928",
+            "vars": {
+              "n": 928,
+              "t": 0.0928,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.092800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=929",
+            "vars": {
+              "n": 929,
+              "t": 0.0929,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.092900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=930",
+            "vars": {
+              "n": 930,
+              "t": 0.093,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.093000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=931",
+            "vars": {
+              "n": 931,
+              "t": 0.0931,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.093100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=932",
+            "vars": {
+              "n": 932,
+              "t": 0.0932,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.093200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=933",
+            "vars": {
+              "n": 933,
+              "t": 0.0933,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.093300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=934",
+            "vars": {
+              "n": 934,
+              "t": 0.0934,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.093400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=935",
+            "vars": {
+              "n": 935,
+              "t": 0.0935,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.093500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=936",
+            "vars": {
+              "n": 936,
+              "t": 0.0936,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.093600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=937",
+            "vars": {
+              "n": 937,
+              "t": 0.0937,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.093700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=938",
+            "vars": {
+              "n": 938,
+              "t": 0.0938,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.093800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=939",
+            "vars": {
+              "n": 939,
+              "t": 0.0939,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.093900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=940",
+            "vars": {
+              "n": 940,
+              "t": 0.094,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.094000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=941",
+            "vars": {
+              "n": 941,
+              "t": 0.0941,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.094100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=942",
+            "vars": {
+              "n": 942,
+              "t": 0.0942,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.094200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=943",
+            "vars": {
+              "n": 943,
+              "t": 0.0943,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.094300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=944",
+            "vars": {
+              "n": 944,
+              "t": 0.0944,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.094400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=945",
+            "vars": {
+              "n": 945,
+              "t": 0.0945,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.094500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=946",
+            "vars": {
+              "n": 946,
+              "t": 0.0946,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.094600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=947",
+            "vars": {
+              "n": 947,
+              "t": 0.0947,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.094700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=948",
+            "vars": {
+              "n": 948,
+              "t": 0.0948,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.094800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=949",
+            "vars": {
+              "n": 949,
+              "t": 0.0949,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.094900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=950",
+            "vars": {
+              "n": 950,
+              "t": 0.095,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.095000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=951",
+            "vars": {
+              "n": 951,
+              "t": 0.0951,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.095100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=952",
+            "vars": {
+              "n": 952,
+              "t": 0.0952,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.095200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=953",
+            "vars": {
+              "n": 953,
+              "t": 0.0953,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.095300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=954",
+            "vars": {
+              "n": 954,
+              "t": 0.0954,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.095400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=955",
+            "vars": {
+              "n": 955,
+              "t": 0.0955,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.095500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=956",
+            "vars": {
+              "n": 956,
+              "t": 0.0956,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.095600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=957",
+            "vars": {
+              "n": 957,
+              "t": 0.0957,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.095700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=958",
+            "vars": {
+              "n": 958,
+              "t": 0.0958,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.095800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=959",
+            "vars": {
+              "n": 959,
+              "t": 0.0959,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.095900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=960",
+            "vars": {
+              "n": 960,
+              "t": 0.096,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.096000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=961",
+            "vars": {
+              "n": 961,
+              "t": 0.0961,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.096100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=962",
+            "vars": {
+              "n": 962,
+              "t": 0.0962,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.096200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=963",
+            "vars": {
+              "n": 963,
+              "t": 0.0963,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.096300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=964",
+            "vars": {
+              "n": 964,
+              "t": 0.0964,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.096400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=965",
+            "vars": {
+              "n": 965,
+              "t": 0.0965,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.096500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=966",
+            "vars": {
+              "n": 966,
+              "t": 0.0966,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.096600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=967",
+            "vars": {
+              "n": 967,
+              "t": 0.0967,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.096700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=968",
+            "vars": {
+              "n": 968,
+              "t": 0.0968,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.096800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=969",
+            "vars": {
+              "n": 969,
+              "t": 0.0969,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.096900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=970",
+            "vars": {
+              "n": 970,
+              "t": 0.097,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.097000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=971",
+            "vars": {
+              "n": 971,
+              "t": 0.0971,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.097100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=972",
+            "vars": {
+              "n": 972,
+              "t": 0.0972,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.097200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=973",
+            "vars": {
+              "n": 973,
+              "t": 0.0973,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.097300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=974",
+            "vars": {
+              "n": 974,
+              "t": 0.0974,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.097400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=975",
+            "vars": {
+              "n": 975,
+              "t": 0.0975,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.097500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=976",
+            "vars": {
+              "n": 976,
+              "t": 0.0976,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.097600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=977",
+            "vars": {
+              "n": 977,
+              "t": 0.0977,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.097700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=978",
+            "vars": {
+              "n": 978,
+              "t": 0.0978,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.097800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=979",
+            "vars": {
+              "n": 979,
+              "t": 0.0979,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.097900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=980",
+            "vars": {
+              "n": 980,
+              "t": 0.098,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.098000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=981",
+            "vars": {
+              "n": 981,
+              "t": 0.0981,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.098100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=982",
+            "vars": {
+              "n": 982,
+              "t": 0.0982,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.098200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=983",
+            "vars": {
+              "n": 983,
+              "t": 0.0983,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.098300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=984",
+            "vars": {
+              "n": 984,
+              "t": 0.0984,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.098400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=985",
+            "vars": {
+              "n": 985,
+              "t": 0.0985,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.098500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=986",
+            "vars": {
+              "n": 986,
+              "t": 0.0986,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.098600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=987",
+            "vars": {
+              "n": 987,
+              "t": 0.0987,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.098700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=988",
+            "vars": {
+              "n": 988,
+              "t": 0.0988,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.098800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=989",
+            "vars": {
+              "n": 989,
+              "t": 0.0989,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.098900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=990",
+            "vars": {
+              "n": 990,
+              "t": 0.099,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.099000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=991",
+            "vars": {
+              "n": 991,
+              "t": 0.0991,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.099100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=992",
+            "vars": {
+              "n": 992,
+              "t": 0.0992,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.099200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=993",
+            "vars": {
+              "n": 993,
+              "t": 0.0993,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.099300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=994",
+            "vars": {
+              "n": 994,
+              "t": 0.0994,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.099400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=995",
+            "vars": {
+              "n": 995,
+              "t": 0.0995,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.099500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=996",
+            "vars": {
+              "n": 996,
+              "t": 0.0996,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.099600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=997",
+            "vars": {
+              "n": 997,
+              "t": 0.0997,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.099700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=998",
+            "vars": {
+              "n": 998,
+              "t": 0.0998,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.099800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=999",
+            "vars": {
+              "n": 999,
+              "t": 0.0999,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.099900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1000",
+            "vars": {
+              "n": 1000,
+              "t": 0.1,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.100000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1001",
+            "vars": {
+              "n": 1001,
+              "t": 0.1001,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.100100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1002",
+            "vars": {
+              "n": 1002,
+              "t": 0.1002,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.100200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1003",
+            "vars": {
+              "n": 1003,
+              "t": 0.1003,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.100300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1004",
+            "vars": {
+              "n": 1004,
+              "t": 0.1004,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.100400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1005",
+            "vars": {
+              "n": 1005,
+              "t": 0.1005,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.100500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1006",
+            "vars": {
+              "n": 1006,
+              "t": 0.1006,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.100600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1007",
+            "vars": {
+              "n": 1007,
+              "t": 0.1007,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.100700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1008",
+            "vars": {
+              "n": 1008,
+              "t": 0.1008,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.100800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1009",
+            "vars": {
+              "n": 1009,
+              "t": 0.1009,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.100900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1010",
+            "vars": {
+              "n": 1010,
+              "t": 0.101,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.101000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1011",
+            "vars": {
+              "n": 1011,
+              "t": 0.1011,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.101100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1012",
+            "vars": {
+              "n": 1012,
+              "t": 0.1012,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.101200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1013",
+            "vars": {
+              "n": 1013,
+              "t": 0.1013,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.101300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1014",
+            "vars": {
+              "n": 1014,
+              "t": 0.1014,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.101400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1015",
+            "vars": {
+              "n": 1015,
+              "t": 0.1015,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.101500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1016",
+            "vars": {
+              "n": 1016,
+              "t": 0.1016,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.101600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1017",
+            "vars": {
+              "n": 1017,
+              "t": 0.1017,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.101700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1018",
+            "vars": {
+              "n": 1018,
+              "t": 0.1018,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.101800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1019",
+            "vars": {
+              "n": 1019,
+              "t": 0.1019,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.101900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1020",
+            "vars": {
+              "n": 1020,
+              "t": 0.102,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.102000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1021",
+            "vars": {
+              "n": 1021,
+              "t": 0.1021,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.102100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1022",
+            "vars": {
+              "n": 1022,
+              "t": 0.1022,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.102200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1023",
+            "vars": {
+              "n": 1023,
+              "t": 0.1023,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.102300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1024",
+            "vars": {
+              "n": 1024,
+              "t": 0.1024,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.102400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1025",
+            "vars": {
+              "n": 1025,
+              "t": 0.1025,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.102500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1026",
+            "vars": {
+              "n": 1026,
+              "t": 0.1026,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.102600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1027",
+            "vars": {
+              "n": 1027,
+              "t": 0.1027,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.102700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1028",
+            "vars": {
+              "n": 1028,
+              "t": 0.1028,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.102800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1029",
+            "vars": {
+              "n": 1029,
+              "t": 0.1029,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.102900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1030",
+            "vars": {
+              "n": 1030,
+              "t": 0.103,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.103000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1031",
+            "vars": {
+              "n": 1031,
+              "t": 0.1031,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.103100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1032",
+            "vars": {
+              "n": 1032,
+              "t": 0.1032,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.103200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1033",
+            "vars": {
+              "n": 1033,
+              "t": 0.1033,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.103300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1034",
+            "vars": {
+              "n": 1034,
+              "t": 0.1034,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.103400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1035",
+            "vars": {
+              "n": 1035,
+              "t": 0.1035,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.103500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1036",
+            "vars": {
+              "n": 1036,
+              "t": 0.1036,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.103600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1037",
+            "vars": {
+              "n": 1037,
+              "t": 0.1037,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.103700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1038",
+            "vars": {
+              "n": 1038,
+              "t": 0.1038,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.103800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1039",
+            "vars": {
+              "n": 1039,
+              "t": 0.1039,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.103900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1040",
+            "vars": {
+              "n": 1040,
+              "t": 0.104,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.104000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1041",
+            "vars": {
+              "n": 1041,
+              "t": 0.1041,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.104100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1042",
+            "vars": {
+              "n": 1042,
+              "t": 0.1042,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.104200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1043",
+            "vars": {
+              "n": 1043,
+              "t": 0.1043,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.104300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1044",
+            "vars": {
+              "n": 1044,
+              "t": 0.1044,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.104400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1045",
+            "vars": {
+              "n": 1045,
+              "t": 0.1045,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.104500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1046",
+            "vars": {
+              "n": 1046,
+              "t": 0.1046,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.104600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1047",
+            "vars": {
+              "n": 1047,
+              "t": 0.1047,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.104700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1048",
+            "vars": {
+              "n": 1048,
+              "t": 0.1048,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.104800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1049",
+            "vars": {
+              "n": 1049,
+              "t": 0.1049,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.104900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1050",
+            "vars": {
+              "n": 1050,
+              "t": 0.105,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.105000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1051",
+            "vars": {
+              "n": 1051,
+              "t": 0.1051,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.105100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1052",
+            "vars": {
+              "n": 1052,
+              "t": 0.1052,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.105200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1053",
+            "vars": {
+              "n": 1053,
+              "t": 0.1053,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.105300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1054",
+            "vars": {
+              "n": 1054,
+              "t": 0.1054,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.105400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1055",
+            "vars": {
+              "n": 1055,
+              "t": 0.1055,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.105500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1056",
+            "vars": {
+              "n": 1056,
+              "t": 0.1056,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.105600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1057",
+            "vars": {
+              "n": 1057,
+              "t": 0.1057,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.105700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1058",
+            "vars": {
+              "n": 1058,
+              "t": 0.1058,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.105800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1059",
+            "vars": {
+              "n": 1059,
+              "t": 0.1059,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.105900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1060",
+            "vars": {
+              "n": 1060,
+              "t": 0.106,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.106000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1061",
+            "vars": {
+              "n": 1061,
+              "t": 0.1061,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.106100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1062",
+            "vars": {
+              "n": 1062,
+              "t": 0.1062,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.106200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1063",
+            "vars": {
+              "n": 1063,
+              "t": 0.1063,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.106300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1064",
+            "vars": {
+              "n": 1064,
+              "t": 0.1064,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.106400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1065",
+            "vars": {
+              "n": 1065,
+              "t": 0.1065,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.106500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1066",
+            "vars": {
+              "n": 1066,
+              "t": 0.1066,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.106600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1067",
+            "vars": {
+              "n": 1067,
+              "t": 0.1067,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.106700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1068",
+            "vars": {
+              "n": 1068,
+              "t": 0.1068,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.106800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1069",
+            "vars": {
+              "n": 1069,
+              "t": 0.1069,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.106900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1070",
+            "vars": {
+              "n": 1070,
+              "t": 0.107,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.107000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1071",
+            "vars": {
+              "n": 1071,
+              "t": 0.1071,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.107100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1072",
+            "vars": {
+              "n": 1072,
+              "t": 0.1072,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.107200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1073",
+            "vars": {
+              "n": 1073,
+              "t": 0.1073,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.107300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1074",
+            "vars": {
+              "n": 1074,
+              "t": 0.1074,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.107400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1075",
+            "vars": {
+              "n": 1075,
+              "t": 0.1075,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.107500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1076",
+            "vars": {
+              "n": 1076,
+              "t": 0.1076,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.107600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1077",
+            "vars": {
+              "n": 1077,
+              "t": 0.1077,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.107700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1078",
+            "vars": {
+              "n": 1078,
+              "t": 0.1078,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.107800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1079",
+            "vars": {
+              "n": 1079,
+              "t": 0.1079,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.107900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1080",
+            "vars": {
+              "n": 1080,
+              "t": 0.108,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.108000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1081",
+            "vars": {
+              "n": 1081,
+              "t": 0.1081,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.108100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1082",
+            "vars": {
+              "n": 1082,
+              "t": 0.1082,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.108200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1083",
+            "vars": {
+              "n": 1083,
+              "t": 0.1083,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.108300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1084",
+            "vars": {
+              "n": 1084,
+              "t": 0.1084,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.108400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1085",
+            "vars": {
+              "n": 1085,
+              "t": 0.1085,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.108500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1086",
+            "vars": {
+              "n": 1086,
+              "t": 0.1086,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.108600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1087",
+            "vars": {
+              "n": 1087,
+              "t": 0.1087,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.108700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1088",
+            "vars": {
+              "n": 1088,
+              "t": 0.1088,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.108800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1089",
+            "vars": {
+              "n": 1089,
+              "t": 0.1089,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.108900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1090",
+            "vars": {
+              "n": 1090,
+              "t": 0.109,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.109000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1091",
+            "vars": {
+              "n": 1091,
+              "t": 0.1091,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.109100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1092",
+            "vars": {
+              "n": 1092,
+              "t": 0.1092,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.109200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1093",
+            "vars": {
+              "n": 1093,
+              "t": 0.1093,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.109300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1094",
+            "vars": {
+              "n": 1094,
+              "t": 0.1094,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.109400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1095",
+            "vars": {
+              "n": 1095,
+              "t": 0.1095,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.109500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1096",
+            "vars": {
+              "n": 1096,
+              "t": 0.1096,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.109600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1097",
+            "vars": {
+              "n": 1097,
+              "t": 0.1097,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.109700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1098",
+            "vars": {
+              "n": 1098,
+              "t": 0.1098,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.109800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1099",
+            "vars": {
+              "n": 1099,
+              "t": 0.1099,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.109900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1100",
+            "vars": {
+              "n": 1100,
+              "t": 0.11,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.110000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1101",
+            "vars": {
+              "n": 1101,
+              "t": 0.1101,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.110100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1102",
+            "vars": {
+              "n": 1102,
+              "t": 0.1102,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.110200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1103",
+            "vars": {
+              "n": 1103,
+              "t": 0.1103,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.110300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1104",
+            "vars": {
+              "n": 1104,
+              "t": 0.1104,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.110400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1105",
+            "vars": {
+              "n": 1105,
+              "t": 0.1105,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.110500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1106",
+            "vars": {
+              "n": 1106,
+              "t": 0.1106,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.110600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1107",
+            "vars": {
+              "n": 1107,
+              "t": 0.1107,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.110700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1108",
+            "vars": {
+              "n": 1108,
+              "t": 0.1108,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.110800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1109",
+            "vars": {
+              "n": 1109,
+              "t": 0.1109,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.110900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1110",
+            "vars": {
+              "n": 1110,
+              "t": 0.111,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.111000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1111",
+            "vars": {
+              "n": 1111,
+              "t": 0.1111,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.111100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1112",
+            "vars": {
+              "n": 1112,
+              "t": 0.1112,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.111200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1113",
+            "vars": {
+              "n": 1113,
+              "t": 0.1113,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.111300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1114",
+            "vars": {
+              "n": 1114,
+              "t": 0.1114,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.111400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1115",
+            "vars": {
+              "n": 1115,
+              "t": 0.1115,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.111500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1116",
+            "vars": {
+              "n": 1116,
+              "t": 0.1116,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.111600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1117",
+            "vars": {
+              "n": 1117,
+              "t": 0.1117,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.111700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1118",
+            "vars": {
+              "n": 1118,
+              "t": 0.1118,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.111800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1119",
+            "vars": {
+              "n": 1119,
+              "t": 0.1119,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.111900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1120",
+            "vars": {
+              "n": 1120,
+              "t": 0.112,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.112000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1121",
+            "vars": {
+              "n": 1121,
+              "t": 0.1121,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.112100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1122",
+            "vars": {
+              "n": 1122,
+              "t": 0.1122,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.112200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1123",
+            "vars": {
+              "n": 1123,
+              "t": 0.1123,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.112300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1124",
+            "vars": {
+              "n": 1124,
+              "t": 0.1124,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.112400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1125",
+            "vars": {
+              "n": 1125,
+              "t": 0.1125,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.112500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1126",
+            "vars": {
+              "n": 1126,
+              "t": 0.1126,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.112600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1127",
+            "vars": {
+              "n": 1127,
+              "t": 0.1127,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.112700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1128",
+            "vars": {
+              "n": 1128,
+              "t": 0.1128,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.112800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1129",
+            "vars": {
+              "n": 1129,
+              "t": 0.1129,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.112900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1130",
+            "vars": {
+              "n": 1130,
+              "t": 0.113,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.113000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1131",
+            "vars": {
+              "n": 1131,
+              "t": 0.1131,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.113100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1132",
+            "vars": {
+              "n": 1132,
+              "t": 0.1132,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.113200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1133",
+            "vars": {
+              "n": 1133,
+              "t": 0.1133,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.113300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1134",
+            "vars": {
+              "n": 1134,
+              "t": 0.1134,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.113400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1135",
+            "vars": {
+              "n": 1135,
+              "t": 0.1135,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.113500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1136",
+            "vars": {
+              "n": 1136,
+              "t": 0.1136,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.113600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1137",
+            "vars": {
+              "n": 1137,
+              "t": 0.1137,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.113700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1138",
+            "vars": {
+              "n": 1138,
+              "t": 0.1138,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.113800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1139",
+            "vars": {
+              "n": 1139,
+              "t": 0.1139,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.113900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1140",
+            "vars": {
+              "n": 1140,
+              "t": 0.114,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.114000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1141",
+            "vars": {
+              "n": 1141,
+              "t": 0.1141,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.114100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1142",
+            "vars": {
+              "n": 1142,
+              "t": 0.1142,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.114200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1143",
+            "vars": {
+              "n": 1143,
+              "t": 0.1143,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.114300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1144",
+            "vars": {
+              "n": 1144,
+              "t": 0.1144,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.114400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1145",
+            "vars": {
+              "n": 1145,
+              "t": 0.1145,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.114500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1146",
+            "vars": {
+              "n": 1146,
+              "t": 0.1146,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.114600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1147",
+            "vars": {
+              "n": 1147,
+              "t": 0.1147,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.114700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1148",
+            "vars": {
+              "n": 1148,
+              "t": 0.1148,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.114800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1149",
+            "vars": {
+              "n": 1149,
+              "t": 0.1149,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.114900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1150",
+            "vars": {
+              "n": 1150,
+              "t": 0.115,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.115000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1151",
+            "vars": {
+              "n": 1151,
+              "t": 0.1151,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.115100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1152",
+            "vars": {
+              "n": 1152,
+              "t": 0.1152,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.115200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1153",
+            "vars": {
+              "n": 1153,
+              "t": 0.1153,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.115300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1154",
+            "vars": {
+              "n": 1154,
+              "t": 0.1154,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.115400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1155",
+            "vars": {
+              "n": 1155,
+              "t": 0.1155,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.115500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1156",
+            "vars": {
+              "n": 1156,
+              "t": 0.1156,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.115600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1157",
+            "vars": {
+              "n": 1157,
+              "t": 0.1157,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.115700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1158",
+            "vars": {
+              "n": 1158,
+              "t": 0.1158,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.115800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1159",
+            "vars": {
+              "n": 1159,
+              "t": 0.1159,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.115900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1160",
+            "vars": {
+              "n": 1160,
+              "t": 0.116,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.116000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1161",
+            "vars": {
+              "n": 1161,
+              "t": 0.1161,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.116100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1162",
+            "vars": {
+              "n": 1162,
+              "t": 0.1162,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.116200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1163",
+            "vars": {
+              "n": 1163,
+              "t": 0.1163,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.116300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1164",
+            "vars": {
+              "n": 1164,
+              "t": 0.1164,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.116400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1165",
+            "vars": {
+              "n": 1165,
+              "t": 0.1165,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.116500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1166",
+            "vars": {
+              "n": 1166,
+              "t": 0.1166,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.116600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1167",
+            "vars": {
+              "n": 1167,
+              "t": 0.1167,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.116700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1168",
+            "vars": {
+              "n": 1168,
+              "t": 0.1168,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.116800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1169",
+            "vars": {
+              "n": 1169,
+              "t": 0.1169,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.116900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1170",
+            "vars": {
+              "n": 1170,
+              "t": 0.117,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.117000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1171",
+            "vars": {
+              "n": 1171,
+              "t": 0.1171,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.117100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1172",
+            "vars": {
+              "n": 1172,
+              "t": 0.1172,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.117200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1173",
+            "vars": {
+              "n": 1173,
+              "t": 0.1173,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.117300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1174",
+            "vars": {
+              "n": 1174,
+              "t": 0.1174,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.117400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1175",
+            "vars": {
+              "n": 1175,
+              "t": 0.1175,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.117500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1176",
+            "vars": {
+              "n": 1176,
+              "t": 0.1176,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.117600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1177",
+            "vars": {
+              "n": 1177,
+              "t": 0.1177,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.117700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1178",
+            "vars": {
+              "n": 1178,
+              "t": 0.1178,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.117800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1179",
+            "vars": {
+              "n": 1179,
+              "t": 0.1179,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.117900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1180",
+            "vars": {
+              "n": 1180,
+              "t": 0.118,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.118000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1181",
+            "vars": {
+              "n": 1181,
+              "t": 0.1181,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.118100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1182",
+            "vars": {
+              "n": 1182,
+              "t": 0.1182,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.118200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1183",
+            "vars": {
+              "n": 1183,
+              "t": 0.1183,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.118300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1184",
+            "vars": {
+              "n": 1184,
+              "t": 0.1184,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.118400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1185",
+            "vars": {
+              "n": 1185,
+              "t": 0.1185,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.118500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1186",
+            "vars": {
+              "n": 1186,
+              "t": 0.1186,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.118600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1187",
+            "vars": {
+              "n": 1187,
+              "t": 0.1187,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.118700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1188",
+            "vars": {
+              "n": 1188,
+              "t": 0.1188,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.118800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1189",
+            "vars": {
+              "n": 1189,
+              "t": 0.1189,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.118900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1190",
+            "vars": {
+              "n": 1190,
+              "t": 0.119,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.119000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1191",
+            "vars": {
+              "n": 1191,
+              "t": 0.1191,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.119100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1192",
+            "vars": {
+              "n": 1192,
+              "t": 0.1192,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.119200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1193",
+            "vars": {
+              "n": 1193,
+              "t": 0.1193,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.119300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1194",
+            "vars": {
+              "n": 1194,
+              "t": 0.1194,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.119400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1195",
+            "vars": {
+              "n": 1195,
+              "t": 0.1195,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.119500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1196",
+            "vars": {
+              "n": 1196,
+              "t": 0.1196,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.119600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1197",
+            "vars": {
+              "n": 1197,
+              "t": 0.1197,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.119700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1198",
+            "vars": {
+              "n": 1198,
+              "t": 0.1198,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.119800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1199",
+            "vars": {
+              "n": 1199,
+              "t": 0.1199,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.119900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1200",
+            "vars": {
+              "n": 1200,
+              "t": 0.12,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.120000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1201",
+            "vars": {
+              "n": 1201,
+              "t": 0.1201,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.120100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1202",
+            "vars": {
+              "n": 1202,
+              "t": 0.1202,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.120200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1203",
+            "vars": {
+              "n": 1203,
+              "t": 0.1203,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.120300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1204",
+            "vars": {
+              "n": 1204,
+              "t": 0.1204,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.120400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1205",
+            "vars": {
+              "n": 1205,
+              "t": 0.1205,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.120500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1206",
+            "vars": {
+              "n": 1206,
+              "t": 0.1206,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.120600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1207",
+            "vars": {
+              "n": 1207,
+              "t": 0.1207,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.120700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1208",
+            "vars": {
+              "n": 1208,
+              "t": 0.1208,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.120800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1209",
+            "vars": {
+              "n": 1209,
+              "t": 0.1209,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.120900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1210",
+            "vars": {
+              "n": 1210,
+              "t": 0.121,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.121000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1211",
+            "vars": {
+              "n": 1211,
+              "t": 0.1211,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.121100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1212",
+            "vars": {
+              "n": 1212,
+              "t": 0.1212,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.121200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1213",
+            "vars": {
+              "n": 1213,
+              "t": 0.1213,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.121300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1214",
+            "vars": {
+              "n": 1214,
+              "t": 0.1214,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.121400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1215",
+            "vars": {
+              "n": 1215,
+              "t": 0.1215,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.121500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1216",
+            "vars": {
+              "n": 1216,
+              "t": 0.1216,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.121600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1217",
+            "vars": {
+              "n": 1217,
+              "t": 0.1217,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.121700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1218",
+            "vars": {
+              "n": 1218,
+              "t": 0.1218,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.121800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1219",
+            "vars": {
+              "n": 1219,
+              "t": 0.1219,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.121900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1220",
+            "vars": {
+              "n": 1220,
+              "t": 0.122,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.122000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1221",
+            "vars": {
+              "n": 1221,
+              "t": 0.1221,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.122100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1222",
+            "vars": {
+              "n": 1222,
+              "t": 0.1222,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.122200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1223",
+            "vars": {
+              "n": 1223,
+              "t": 0.1223,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.122300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1224",
+            "vars": {
+              "n": 1224,
+              "t": 0.1224,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.122400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1225",
+            "vars": {
+              "n": 1225,
+              "t": 0.1225,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.122500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1226",
+            "vars": {
+              "n": 1226,
+              "t": 0.1226,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.122600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1227",
+            "vars": {
+              "n": 1227,
+              "t": 0.1227,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.122700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1228",
+            "vars": {
+              "n": 1228,
+              "t": 0.1228,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.122800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1229",
+            "vars": {
+              "n": 1229,
+              "t": 0.1229,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.122900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1230",
+            "vars": {
+              "n": 1230,
+              "t": 0.123,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.123000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1231",
+            "vars": {
+              "n": 1231,
+              "t": 0.1231,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.123100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1232",
+            "vars": {
+              "n": 1232,
+              "t": 0.1232,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.123200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1233",
+            "vars": {
+              "n": 1233,
+              "t": 0.1233,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.123300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1234",
+            "vars": {
+              "n": 1234,
+              "t": 0.1234,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.123400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1235",
+            "vars": {
+              "n": 1235,
+              "t": 0.1235,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.123500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1236",
+            "vars": {
+              "n": 1236,
+              "t": 0.1236,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.123600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1237",
+            "vars": {
+              "n": 1237,
+              "t": 0.1237,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.123700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1238",
+            "vars": {
+              "n": 1238,
+              "t": 0.1238,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.123800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1239",
+            "vars": {
+              "n": 1239,
+              "t": 0.1239,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.123900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1240",
+            "vars": {
+              "n": 1240,
+              "t": 0.124,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.124000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1241",
+            "vars": {
+              "n": 1241,
+              "t": 0.1241,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.124100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1242",
+            "vars": {
+              "n": 1242,
+              "t": 0.1242,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.124200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1243",
+            "vars": {
+              "n": 1243,
+              "t": 0.1243,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.124300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1244",
+            "vars": {
+              "n": 1244,
+              "t": 0.1244,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.124400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1245",
+            "vars": {
+              "n": 1245,
+              "t": 0.1245,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.124500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1246",
+            "vars": {
+              "n": 1246,
+              "t": 0.1246,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.124600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1247",
+            "vars": {
+              "n": 1247,
+              "t": 0.1247,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.124700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1248",
+            "vars": {
+              "n": 1248,
+              "t": 0.1248,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.124800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1249",
+            "vars": {
+              "n": 1249,
+              "t": 0.1249,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.124900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1250",
+            "vars": {
+              "n": 1250,
+              "t": 0.125,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.125000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1251",
+            "vars": {
+              "n": 1251,
+              "t": 0.1251,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.125100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1252",
+            "vars": {
+              "n": 1252,
+              "t": 0.1252,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.125200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1253",
+            "vars": {
+              "n": 1253,
+              "t": 0.1253,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.125300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1254",
+            "vars": {
+              "n": 1254,
+              "t": 0.1254,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.125400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1255",
+            "vars": {
+              "n": 1255,
+              "t": 0.1255,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.125500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1256",
+            "vars": {
+              "n": 1256,
+              "t": 0.1256,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.125600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1257",
+            "vars": {
+              "n": 1257,
+              "t": 0.1257,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.125700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1258",
+            "vars": {
+              "n": 1258,
+              "t": 0.1258,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.125800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1259",
+            "vars": {
+              "n": 1259,
+              "t": 0.1259,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.125900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1260",
+            "vars": {
+              "n": 1260,
+              "t": 0.126,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.126000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1261",
+            "vars": {
+              "n": 1261,
+              "t": 0.1261,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.126100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1262",
+            "vars": {
+              "n": 1262,
+              "t": 0.1262,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.126200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1263",
+            "vars": {
+              "n": 1263,
+              "t": 0.1263,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.126300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1264",
+            "vars": {
+              "n": 1264,
+              "t": 0.1264,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.126400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1265",
+            "vars": {
+              "n": 1265,
+              "t": 0.1265,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.126500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1266",
+            "vars": {
+              "n": 1266,
+              "t": 0.1266,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.126600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1267",
+            "vars": {
+              "n": 1267,
+              "t": 0.1267,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.126700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1268",
+            "vars": {
+              "n": 1268,
+              "t": 0.1268,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.126800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1269",
+            "vars": {
+              "n": 1269,
+              "t": 0.1269,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.126900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1270",
+            "vars": {
+              "n": 1270,
+              "t": 0.127,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.127000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1271",
+            "vars": {
+              "n": 1271,
+              "t": 0.1271,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.127100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1272",
+            "vars": {
+              "n": 1272,
+              "t": 0.1272,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.127200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1273",
+            "vars": {
+              "n": 1273,
+              "t": 0.1273,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.127300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1274",
+            "vars": {
+              "n": 1274,
+              "t": 0.1274,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.127400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1275",
+            "vars": {
+              "n": 1275,
+              "t": 0.1275,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.127500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1276",
+            "vars": {
+              "n": 1276,
+              "t": 0.1276,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.127600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1277",
+            "vars": {
+              "n": 1277,
+              "t": 0.1277,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.127700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1278",
+            "vars": {
+              "n": 1278,
+              "t": 0.1278,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.127800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1279",
+            "vars": {
+              "n": 1279,
+              "t": 0.1279,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.127900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1280",
+            "vars": {
+              "n": 1280,
+              "t": 0.128,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.128000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1281",
+            "vars": {
+              "n": 1281,
+              "t": 0.1281,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.128100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1282",
+            "vars": {
+              "n": 1282,
+              "t": 0.1282,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.128200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1283",
+            "vars": {
+              "n": 1283,
+              "t": 0.1283,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.128300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1284",
+            "vars": {
+              "n": 1284,
+              "t": 0.1284,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.128400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1285",
+            "vars": {
+              "n": 1285,
+              "t": 0.1285,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.128500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1286",
+            "vars": {
+              "n": 1286,
+              "t": 0.1286,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.128600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1287",
+            "vars": {
+              "n": 1287,
+              "t": 0.1287,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.128700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1288",
+            "vars": {
+              "n": 1288,
+              "t": 0.1288,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.128800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1289",
+            "vars": {
+              "n": 1289,
+              "t": 0.1289,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.128900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1290",
+            "vars": {
+              "n": 1290,
+              "t": 0.129,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.129000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1291",
+            "vars": {
+              "n": 1291,
+              "t": 0.1291,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.129100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1292",
+            "vars": {
+              "n": 1292,
+              "t": 0.1292,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.129200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1293",
+            "vars": {
+              "n": 1293,
+              "t": 0.1293,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.129300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1294",
+            "vars": {
+              "n": 1294,
+              "t": 0.1294,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.129400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1295",
+            "vars": {
+              "n": 1295,
+              "t": 0.1295,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.129500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1296",
+            "vars": {
+              "n": 1296,
+              "t": 0.1296,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.129600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1297",
+            "vars": {
+              "n": 1297,
+              "t": 0.1297,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.129700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1298",
+            "vars": {
+              "n": 1298,
+              "t": 0.1298,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.129800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1299",
+            "vars": {
+              "n": 1299,
+              "t": 0.1299,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.129900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1300",
+            "vars": {
+              "n": 1300,
+              "t": 0.13,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.130000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1301",
+            "vars": {
+              "n": 1301,
+              "t": 0.1301,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.130100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1302",
+            "vars": {
+              "n": 1302,
+              "t": 0.1302,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.130200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1303",
+            "vars": {
+              "n": 1303,
+              "t": 0.1303,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.130300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1304",
+            "vars": {
+              "n": 1304,
+              "t": 0.1304,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.130400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1305",
+            "vars": {
+              "n": 1305,
+              "t": 0.1305,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.130500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1306",
+            "vars": {
+              "n": 1306,
+              "t": 0.1306,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.130600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1307",
+            "vars": {
+              "n": 1307,
+              "t": 0.1307,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.130700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1308",
+            "vars": {
+              "n": 1308,
+              "t": 0.1308,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.130800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1309",
+            "vars": {
+              "n": 1309,
+              "t": 0.1309,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.130900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1310",
+            "vars": {
+              "n": 1310,
+              "t": 0.131,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.131000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1311",
+            "vars": {
+              "n": 1311,
+              "t": 0.1311,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.131100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1312",
+            "vars": {
+              "n": 1312,
+              "t": 0.1312,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.131200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1313",
+            "vars": {
+              "n": 1313,
+              "t": 0.1313,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.131300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1314",
+            "vars": {
+              "n": 1314,
+              "t": 0.1314,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.131400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1315",
+            "vars": {
+              "n": 1315,
+              "t": 0.1315,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.131500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1316",
+            "vars": {
+              "n": 1316,
+              "t": 0.1316,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.131600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1317",
+            "vars": {
+              "n": 1317,
+              "t": 0.1317,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.131700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1318",
+            "vars": {
+              "n": 1318,
+              "t": 0.1318,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.131800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1319",
+            "vars": {
+              "n": 1319,
+              "t": 0.1319,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.131900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1320",
+            "vars": {
+              "n": 1320,
+              "t": 0.132,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.132000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1321",
+            "vars": {
+              "n": 1321,
+              "t": 0.1321,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.132100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1322",
+            "vars": {
+              "n": 1322,
+              "t": 0.1322,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.132200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1323",
+            "vars": {
+              "n": 1323,
+              "t": 0.1323,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.132300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1324",
+            "vars": {
+              "n": 1324,
+              "t": 0.1324,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.132400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1325",
+            "vars": {
+              "n": 1325,
+              "t": 0.1325,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.132500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1326",
+            "vars": {
+              "n": 1326,
+              "t": 0.1326,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.132600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1327",
+            "vars": {
+              "n": 1327,
+              "t": 0.1327,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.132700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1328",
+            "vars": {
+              "n": 1328,
+              "t": 0.1328,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.132800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1329",
+            "vars": {
+              "n": 1329,
+              "t": 0.1329,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.132900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1330",
+            "vars": {
+              "n": 1330,
+              "t": 0.133,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.133000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1331",
+            "vars": {
+              "n": 1331,
+              "t": 0.1331,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.133100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1332",
+            "vars": {
+              "n": 1332,
+              "t": 0.1332,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.133200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1333",
+            "vars": {
+              "n": 1333,
+              "t": 0.1333,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.133300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1334",
+            "vars": {
+              "n": 1334,
+              "t": 0.1334,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.133400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1335",
+            "vars": {
+              "n": 1335,
+              "t": 0.1335,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.133500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1336",
+            "vars": {
+              "n": 1336,
+              "t": 0.1336,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.133600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1337",
+            "vars": {
+              "n": 1337,
+              "t": 0.1337,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.133700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1338",
+            "vars": {
+              "n": 1338,
+              "t": 0.1338,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.133800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1339",
+            "vars": {
+              "n": 1339,
+              "t": 0.1339,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.133900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1340",
+            "vars": {
+              "n": 1340,
+              "t": 0.134,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.134000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1341",
+            "vars": {
+              "n": 1341,
+              "t": 0.1341,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.134100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1342",
+            "vars": {
+              "n": 1342,
+              "t": 0.1342,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.134200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1343",
+            "vars": {
+              "n": 1343,
+              "t": 0.1343,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.134300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1344",
+            "vars": {
+              "n": 1344,
+              "t": 0.1344,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.134400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1345",
+            "vars": {
+              "n": 1345,
+              "t": 0.1345,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.134500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1346",
+            "vars": {
+              "n": 1346,
+              "t": 0.1346,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.134600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1347",
+            "vars": {
+              "n": 1347,
+              "t": 0.1347,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.134700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1348",
+            "vars": {
+              "n": 1348,
+              "t": 0.1348,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.134800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1349",
+            "vars": {
+              "n": 1349,
+              "t": 0.1349,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.134900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1350",
+            "vars": {
+              "n": 1350,
+              "t": 0.135,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.135000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1351",
+            "vars": {
+              "n": 1351,
+              "t": 0.1351,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.135100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1352",
+            "vars": {
+              "n": 1352,
+              "t": 0.1352,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.135200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1353",
+            "vars": {
+              "n": 1353,
+              "t": 0.1353,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.135300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1354",
+            "vars": {
+              "n": 1354,
+              "t": 0.1354,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.135400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1355",
+            "vars": {
+              "n": 1355,
+              "t": 0.1355,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.135500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1356",
+            "vars": {
+              "n": 1356,
+              "t": 0.1356,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.135600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1357",
+            "vars": {
+              "n": 1357,
+              "t": 0.1357,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.135700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1358",
+            "vars": {
+              "n": 1358,
+              "t": 0.1358,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.135800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1359",
+            "vars": {
+              "n": 1359,
+              "t": 0.1359,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.135900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1360",
+            "vars": {
+              "n": 1360,
+              "t": 0.136,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.136000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1361",
+            "vars": {
+              "n": 1361,
+              "t": 0.1361,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.136100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1362",
+            "vars": {
+              "n": 1362,
+              "t": 0.1362,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.136200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1363",
+            "vars": {
+              "n": 1363,
+              "t": 0.1363,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.136300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1364",
+            "vars": {
+              "n": 1364,
+              "t": 0.1364,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.136400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1365",
+            "vars": {
+              "n": 1365,
+              "t": 0.1365,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.136500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1366",
+            "vars": {
+              "n": 1366,
+              "t": 0.1366,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.136600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1367",
+            "vars": {
+              "n": 1367,
+              "t": 0.1367,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.136700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1368",
+            "vars": {
+              "n": 1368,
+              "t": 0.1368,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.136800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1369",
+            "vars": {
+              "n": 1369,
+              "t": 0.1369,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.136900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1370",
+            "vars": {
+              "n": 1370,
+              "t": 0.137,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.137000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1371",
+            "vars": {
+              "n": 1371,
+              "t": 0.1371,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.137100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1372",
+            "vars": {
+              "n": 1372,
+              "t": 0.1372,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.137200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1373",
+            "vars": {
+              "n": 1373,
+              "t": 0.1373,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.137300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1374",
+            "vars": {
+              "n": 1374,
+              "t": 0.1374,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.137400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1375",
+            "vars": {
+              "n": 1375,
+              "t": 0.1375,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.137500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1376",
+            "vars": {
+              "n": 1376,
+              "t": 0.1376,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.137600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1377",
+            "vars": {
+              "n": 1377,
+              "t": 0.1377,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.137700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1378",
+            "vars": {
+              "n": 1378,
+              "t": 0.1378,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.137800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1379",
+            "vars": {
+              "n": 1379,
+              "t": 0.1379,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.137900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1380",
+            "vars": {
+              "n": 1380,
+              "t": 0.138,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.138000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1381",
+            "vars": {
+              "n": 1381,
+              "t": 0.1381,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.138100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1382",
+            "vars": {
+              "n": 1382,
+              "t": 0.1382,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.138200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1383",
+            "vars": {
+              "n": 1383,
+              "t": 0.1383,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.138300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1384",
+            "vars": {
+              "n": 1384,
+              "t": 0.1384,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.138400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1385",
+            "vars": {
+              "n": 1385,
+              "t": 0.1385,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.138500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1386",
+            "vars": {
+              "n": 1386,
+              "t": 0.1386,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.138600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1387",
+            "vars": {
+              "n": 1387,
+              "t": 0.1387,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.138700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1388",
+            "vars": {
+              "n": 1388,
+              "t": 0.1388,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.138800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1389",
+            "vars": {
+              "n": 1389,
+              "t": 0.1389,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.138900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1390",
+            "vars": {
+              "n": 1390,
+              "t": 0.139,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.139000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1391",
+            "vars": {
+              "n": 1391,
+              "t": 0.1391,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.139100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1392",
+            "vars": {
+              "n": 1392,
+              "t": 0.1392,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.139200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1393",
+            "vars": {
+              "n": 1393,
+              "t": 0.1393,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.139300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1394",
+            "vars": {
+              "n": 1394,
+              "t": 0.1394,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.139400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1395",
+            "vars": {
+              "n": 1395,
+              "t": 0.1395,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.139500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1396",
+            "vars": {
+              "n": 1396,
+              "t": 0.1396,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.139600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1397",
+            "vars": {
+              "n": 1397,
+              "t": 0.1397,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.139700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1398",
+            "vars": {
+              "n": 1398,
+              "t": 0.1398,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.139800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1399",
+            "vars": {
+              "n": 1399,
+              "t": 0.1399,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.139900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1400",
+            "vars": {
+              "n": 1400,
+              "t": 0.14,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.140000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1401",
+            "vars": {
+              "n": 1401,
+              "t": 0.1401,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.140100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1402",
+            "vars": {
+              "n": 1402,
+              "t": 0.1402,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.140200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1403",
+            "vars": {
+              "n": 1403,
+              "t": 0.1403,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.140300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1404",
+            "vars": {
+              "n": 1404,
+              "t": 0.1404,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.140400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1405",
+            "vars": {
+              "n": 1405,
+              "t": 0.1405,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.140500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1406",
+            "vars": {
+              "n": 1406,
+              "t": 0.1406,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.140600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1407",
+            "vars": {
+              "n": 1407,
+              "t": 0.1407,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.140700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1408",
+            "vars": {
+              "n": 1408,
+              "t": 0.1408,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.140800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1409",
+            "vars": {
+              "n": 1409,
+              "t": 0.1409,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.140900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1410",
+            "vars": {
+              "n": 1410,
+              "t": 0.141,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.141000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1411",
+            "vars": {
+              "n": 1411,
+              "t": 0.1411,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.141100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1412",
+            "vars": {
+              "n": 1412,
+              "t": 0.1412,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.141200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1413",
+            "vars": {
+              "n": 1413,
+              "t": 0.1413,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.141300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1414",
+            "vars": {
+              "n": 1414,
+              "t": 0.1414,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.141400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1415",
+            "vars": {
+              "n": 1415,
+              "t": 0.1415,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.141500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1416",
+            "vars": {
+              "n": 1416,
+              "t": 0.1416,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.141600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1417",
+            "vars": {
+              "n": 1417,
+              "t": 0.1417,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.141700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1418",
+            "vars": {
+              "n": 1418,
+              "t": 0.1418,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.141800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1419",
+            "vars": {
+              "n": 1419,
+              "t": 0.1419,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.141900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1420",
+            "vars": {
+              "n": 1420,
+              "t": 0.142,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.142000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1421",
+            "vars": {
+              "n": 1421,
+              "t": 0.1421,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.142100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1422",
+            "vars": {
+              "n": 1422,
+              "t": 0.1422,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.142200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1423",
+            "vars": {
+              "n": 1423,
+              "t": 0.1423,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.142300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1424",
+            "vars": {
+              "n": 1424,
+              "t": 0.1424,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.142400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1425",
+            "vars": {
+              "n": 1425,
+              "t": 0.1425,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.142500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1426",
+            "vars": {
+              "n": 1426,
+              "t": 0.1426,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.142600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1427",
+            "vars": {
+              "n": 1427,
+              "t": 0.1427,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.142700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1428",
+            "vars": {
+              "n": 1428,
+              "t": 0.1428,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.142800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1429",
+            "vars": {
+              "n": 1429,
+              "t": 0.1429,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.142900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1430",
+            "vars": {
+              "n": 1430,
+              "t": 0.143,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.143000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1431",
+            "vars": {
+              "n": 1431,
+              "t": 0.1431,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.143100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1432",
+            "vars": {
+              "n": 1432,
+              "t": 0.1432,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.143200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1433",
+            "vars": {
+              "n": 1433,
+              "t": 0.1433,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.143300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1434",
+            "vars": {
+              "n": 1434,
+              "t": 0.1434,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.143400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1435",
+            "vars": {
+              "n": 1435,
+              "t": 0.1435,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.143500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1436",
+            "vars": {
+              "n": 1436,
+              "t": 0.1436,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.143600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1437",
+            "vars": {
+              "n": 1437,
+              "t": 0.1437,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.143700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1438",
+            "vars": {
+              "n": 1438,
+              "t": 0.1438,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.143800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1439",
+            "vars": {
+              "n": 1439,
+              "t": 0.1439,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.143900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1440",
+            "vars": {
+              "n": 1440,
+              "t": 0.144,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.144000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1441",
+            "vars": {
+              "n": 1441,
+              "t": 0.1441,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.144100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1442",
+            "vars": {
+              "n": 1442,
+              "t": 0.1442,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.144200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1443",
+            "vars": {
+              "n": 1443,
+              "t": 0.1443,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.144300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1444",
+            "vars": {
+              "n": 1444,
+              "t": 0.1444,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.144400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1445",
+            "vars": {
+              "n": 1445,
+              "t": 0.1445,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.144500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1446",
+            "vars": {
+              "n": 1446,
+              "t": 0.1446,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.144600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1447",
+            "vars": {
+              "n": 1447,
+              "t": 0.1447,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.144700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1448",
+            "vars": {
+              "n": 1448,
+              "t": 0.1448,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.144800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1449",
+            "vars": {
+              "n": 1449,
+              "t": 0.1449,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.144900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1450",
+            "vars": {
+              "n": 1450,
+              "t": 0.145,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.145000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1451",
+            "vars": {
+              "n": 1451,
+              "t": 0.1451,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.145100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1452",
+            "vars": {
+              "n": 1452,
+              "t": 0.1452,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.145200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1453",
+            "vars": {
+              "n": 1453,
+              "t": 0.1453,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.145300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1454",
+            "vars": {
+              "n": 1454,
+              "t": 0.1454,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.145400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1455",
+            "vars": {
+              "n": 1455,
+              "t": 0.1455,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.145500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1456",
+            "vars": {
+              "n": 1456,
+              "t": 0.1456,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.145600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1457",
+            "vars": {
+              "n": 1457,
+              "t": 0.1457,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.145700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1458",
+            "vars": {
+              "n": 1458,
+              "t": 0.1458,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.145800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1459",
+            "vars": {
+              "n": 1459,
+              "t": 0.1459,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.145900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1460",
+            "vars": {
+              "n": 1460,
+              "t": 0.146,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.146000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1461",
+            "vars": {
+              "n": 1461,
+              "t": 0.1461,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.146100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1462",
+            "vars": {
+              "n": 1462,
+              "t": 0.1462,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.146200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1463",
+            "vars": {
+              "n": 1463,
+              "t": 0.1463,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.146300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1464",
+            "vars": {
+              "n": 1464,
+              "t": 0.1464,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.146400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1465",
+            "vars": {
+              "n": 1465,
+              "t": 0.1465,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.146500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1466",
+            "vars": {
+              "n": 1466,
+              "t": 0.1466,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.146600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1467",
+            "vars": {
+              "n": 1467,
+              "t": 0.1467,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.146700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1468",
+            "vars": {
+              "n": 1468,
+              "t": 0.1468,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.146800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1469",
+            "vars": {
+              "n": 1469,
+              "t": 0.1469,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.146900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1470",
+            "vars": {
+              "n": 1470,
+              "t": 0.147,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.147000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1471",
+            "vars": {
+              "n": 1471,
+              "t": 0.1471,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.147100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1472",
+            "vars": {
+              "n": 1472,
+              "t": 0.1472,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.147200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1473",
+            "vars": {
+              "n": 1473,
+              "t": 0.1473,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.147300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1474",
+            "vars": {
+              "n": 1474,
+              "t": 0.1474,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.147400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1475",
+            "vars": {
+              "n": 1475,
+              "t": 0.1475,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.147500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1476",
+            "vars": {
+              "n": 1476,
+              "t": 0.1476,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.147600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1477",
+            "vars": {
+              "n": 1477,
+              "t": 0.1477,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.147700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1478",
+            "vars": {
+              "n": 1478,
+              "t": 0.1478,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.147800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1479",
+            "vars": {
+              "n": 1479,
+              "t": 0.1479,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.147900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1480",
+            "vars": {
+              "n": 1480,
+              "t": 0.148,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.148000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1481",
+            "vars": {
+              "n": 1481,
+              "t": 0.1481,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.148100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1482",
+            "vars": {
+              "n": 1482,
+              "t": 0.1482,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.148200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1483",
+            "vars": {
+              "n": 1483,
+              "t": 0.1483,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.148300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1484",
+            "vars": {
+              "n": 1484,
+              "t": 0.1484,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.148400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1485",
+            "vars": {
+              "n": 1485,
+              "t": 0.1485,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.148500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1486",
+            "vars": {
+              "n": 1486,
+              "t": 0.1486,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.148600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1487",
+            "vars": {
+              "n": 1487,
+              "t": 0.1487,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.148700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1488",
+            "vars": {
+              "n": 1488,
+              "t": 0.1488,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.148800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1489",
+            "vars": {
+              "n": 1489,
+              "t": 0.1489,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.148900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1490",
+            "vars": {
+              "n": 1490,
+              "t": 0.149,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.149000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1491",
+            "vars": {
+              "n": 1491,
+              "t": 0.1491,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.149100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1492",
+            "vars": {
+              "n": 1492,
+              "t": 0.1492,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.149200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1493",
+            "vars": {
+              "n": 1493,
+              "t": 0.1493,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.149300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1494",
+            "vars": {
+              "n": 1494,
+              "t": 0.1494,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.149400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1495",
+            "vars": {
+              "n": 1495,
+              "t": 0.1495,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.149500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1496",
+            "vars": {
+              "n": 1496,
+              "t": 0.1496,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.149600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1497",
+            "vars": {
+              "n": 1497,
+              "t": 0.1497,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.149700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1498",
+            "vars": {
+              "n": 1498,
+              "t": 0.1498,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.149800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1499",
+            "vars": {
+              "n": 1499,
+              "t": 0.1499,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.149900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1500",
+            "vars": {
+              "n": 1500,
+              "t": 0.15,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.150000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1501",
+            "vars": {
+              "n": 1501,
+              "t": 0.1501,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.150100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1502",
+            "vars": {
+              "n": 1502,
+              "t": 0.1502,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.150200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1503",
+            "vars": {
+              "n": 1503,
+              "t": 0.1503,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.150300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1504",
+            "vars": {
+              "n": 1504,
+              "t": 0.1504,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.150400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1505",
+            "vars": {
+              "n": 1505,
+              "t": 0.1505,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.150500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1506",
+            "vars": {
+              "n": 1506,
+              "t": 0.1506,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.150600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1507",
+            "vars": {
+              "n": 1507,
+              "t": 0.1507,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.150700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1508",
+            "vars": {
+              "n": 1508,
+              "t": 0.1508,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.150800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1509",
+            "vars": {
+              "n": 1509,
+              "t": 0.1509,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.150900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1510",
+            "vars": {
+              "n": 1510,
+              "t": 0.151,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.151000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1511",
+            "vars": {
+              "n": 1511,
+              "t": 0.1511,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.151100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1512",
+            "vars": {
+              "n": 1512,
+              "t": 0.1512,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.151200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1513",
+            "vars": {
+              "n": 1513,
+              "t": 0.1513,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.151300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1514",
+            "vars": {
+              "n": 1514,
+              "t": 0.1514,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.151400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1515",
+            "vars": {
+              "n": 1515,
+              "t": 0.1515,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.151500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1516",
+            "vars": {
+              "n": 1516,
+              "t": 0.1516,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.151600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1517",
+            "vars": {
+              "n": 1517,
+              "t": 0.1517,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.151700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1518",
+            "vars": {
+              "n": 1518,
+              "t": 0.1518,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.151800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1519",
+            "vars": {
+              "n": 1519,
+              "t": 0.1519,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.151900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1520",
+            "vars": {
+              "n": 1520,
+              "t": 0.152,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.152000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1521",
+            "vars": {
+              "n": 1521,
+              "t": 0.1521,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.152100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1522",
+            "vars": {
+              "n": 1522,
+              "t": 0.1522,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.152200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1523",
+            "vars": {
+              "n": 1523,
+              "t": 0.1523,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.152300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1524",
+            "vars": {
+              "n": 1524,
+              "t": 0.1524,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.152400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1525",
+            "vars": {
+              "n": 1525,
+              "t": 0.1525,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.152500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1526",
+            "vars": {
+              "n": 1526,
+              "t": 0.1526,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.152600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1527",
+            "vars": {
+              "n": 1527,
+              "t": 0.1527,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.152700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1528",
+            "vars": {
+              "n": 1528,
+              "t": 0.1528,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.152800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1529",
+            "vars": {
+              "n": 1529,
+              "t": 0.1529,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.152900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1530",
+            "vars": {
+              "n": 1530,
+              "t": 0.153,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.153000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1531",
+            "vars": {
+              "n": 1531,
+              "t": 0.1531,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.153100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1532",
+            "vars": {
+              "n": 1532,
+              "t": 0.1532,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.153200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1533",
+            "vars": {
+              "n": 1533,
+              "t": 0.1533,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.153300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1534",
+            "vars": {
+              "n": 1534,
+              "t": 0.1534,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.153400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1535",
+            "vars": {
+              "n": 1535,
+              "t": 0.1535,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.153500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1536",
+            "vars": {
+              "n": 1536,
+              "t": 0.1536,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.153600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1537",
+            "vars": {
+              "n": 1537,
+              "t": 0.1537,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.153700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1538",
+            "vars": {
+              "n": 1538,
+              "t": 0.1538,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.153800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1539",
+            "vars": {
+              "n": 1539,
+              "t": 0.1539,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.153900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1540",
+            "vars": {
+              "n": 1540,
+              "t": 0.154,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.154000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1541",
+            "vars": {
+              "n": 1541,
+              "t": 0.1541,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.154100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1542",
+            "vars": {
+              "n": 1542,
+              "t": 0.1542,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.154200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1543",
+            "vars": {
+              "n": 1543,
+              "t": 0.1543,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.154300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1544",
+            "vars": {
+              "n": 1544,
+              "t": 0.1544,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.154400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1545",
+            "vars": {
+              "n": 1545,
+              "t": 0.1545,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.154500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1546",
+            "vars": {
+              "n": 1546,
+              "t": 0.1546,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.154600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1547",
+            "vars": {
+              "n": 1547,
+              "t": 0.1547,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.154700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1548",
+            "vars": {
+              "n": 1548,
+              "t": 0.1548,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.154800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1549",
+            "vars": {
+              "n": 1549,
+              "t": 0.1549,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.154900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1550",
+            "vars": {
+              "n": 1550,
+              "t": 0.155,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.155000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1551",
+            "vars": {
+              "n": 1551,
+              "t": 0.1551,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.155100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1552",
+            "vars": {
+              "n": 1552,
+              "t": 0.1552,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.155200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1553",
+            "vars": {
+              "n": 1553,
+              "t": 0.1553,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.155300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1554",
+            "vars": {
+              "n": 1554,
+              "t": 0.1554,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.155400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1555",
+            "vars": {
+              "n": 1555,
+              "t": 0.1555,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.155500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1556",
+            "vars": {
+              "n": 1556,
+              "t": 0.1556,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.155600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1557",
+            "vars": {
+              "n": 1557,
+              "t": 0.1557,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.155700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1558",
+            "vars": {
+              "n": 1558,
+              "t": 0.1558,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.155800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1559",
+            "vars": {
+              "n": 1559,
+              "t": 0.1559,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.155900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1560",
+            "vars": {
+              "n": 1560,
+              "t": 0.156,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.156000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1561",
+            "vars": {
+              "n": 1561,
+              "t": 0.1561,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.156100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1562",
+            "vars": {
+              "n": 1562,
+              "t": 0.1562,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.156200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1563",
+            "vars": {
+              "n": 1563,
+              "t": 0.1563,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.156300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1564",
+            "vars": {
+              "n": 1564,
+              "t": 0.1564,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.156400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1565",
+            "vars": {
+              "n": 1565,
+              "t": 0.1565,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.156500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1566",
+            "vars": {
+              "n": 1566,
+              "t": 0.1566,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.156600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1567",
+            "vars": {
+              "n": 1567,
+              "t": 0.1567,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.156700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1568",
+            "vars": {
+              "n": 1568,
+              "t": 0.1568,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.156800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1569",
+            "vars": {
+              "n": 1569,
+              "t": 0.1569,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.156900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1570",
+            "vars": {
+              "n": 1570,
+              "t": 0.157,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.157000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1571",
+            "vars": {
+              "n": 1571,
+              "t": 0.1571,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.157100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1572",
+            "vars": {
+              "n": 1572,
+              "t": 0.1572,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.157200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1573",
+            "vars": {
+              "n": 1573,
+              "t": 0.1573,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.157300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1574",
+            "vars": {
+              "n": 1574,
+              "t": 0.1574,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.157400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1575",
+            "vars": {
+              "n": 1575,
+              "t": 0.1575,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.157500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1576",
+            "vars": {
+              "n": 1576,
+              "t": 0.1576,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.157600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1577",
+            "vars": {
+              "n": 1577,
+              "t": 0.1577,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.157700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1578",
+            "vars": {
+              "n": 1578,
+              "t": 0.1578,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.157800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1579",
+            "vars": {
+              "n": 1579,
+              "t": 0.1579,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.157900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1580",
+            "vars": {
+              "n": 1580,
+              "t": 0.158,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.158000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1581",
+            "vars": {
+              "n": 1581,
+              "t": 0.1581,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.158100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1582",
+            "vars": {
+              "n": 1582,
+              "t": 0.1582,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.158200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1583",
+            "vars": {
+              "n": 1583,
+              "t": 0.1583,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.158300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1584",
+            "vars": {
+              "n": 1584,
+              "t": 0.1584,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.158400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1585",
+            "vars": {
+              "n": 1585,
+              "t": 0.1585,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.158500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1586",
+            "vars": {
+              "n": 1586,
+              "t": 0.1586,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.158600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1587",
+            "vars": {
+              "n": 1587,
+              "t": 0.1587,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.158700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1588",
+            "vars": {
+              "n": 1588,
+              "t": 0.1588,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.158800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1589",
+            "vars": {
+              "n": 1589,
+              "t": 0.1589,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.158900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1590",
+            "vars": {
+              "n": 1590,
+              "t": 0.159,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.159000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1591",
+            "vars": {
+              "n": 1591,
+              "t": 0.1591,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.159100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1592",
+            "vars": {
+              "n": 1592,
+              "t": 0.1592,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.159200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1593",
+            "vars": {
+              "n": 1593,
+              "t": 0.1593,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.159300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1594",
+            "vars": {
+              "n": 1594,
+              "t": 0.1594,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.159400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1595",
+            "vars": {
+              "n": 1595,
+              "t": 0.1595,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.159500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1596",
+            "vars": {
+              "n": 1596,
+              "t": 0.1596,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.159600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1597",
+            "vars": {
+              "n": 1597,
+              "t": 0.1597,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.159700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1598",
+            "vars": {
+              "n": 1598,
+              "t": 0.1598,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.159800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1599",
+            "vars": {
+              "n": 1599,
+              "t": 0.1599,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.159900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1600",
+            "vars": {
+              "n": 1600,
+              "t": 0.16,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.160000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1601",
+            "vars": {
+              "n": 1601,
+              "t": 0.1601,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.160100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1602",
+            "vars": {
+              "n": 1602,
+              "t": 0.1602,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.160200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1603",
+            "vars": {
+              "n": 1603,
+              "t": 0.1603,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.160300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1604",
+            "vars": {
+              "n": 1604,
+              "t": 0.1604,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.160400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1605",
+            "vars": {
+              "n": 1605,
+              "t": 0.1605,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.160500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1606",
+            "vars": {
+              "n": 1606,
+              "t": 0.1606,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.160600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1607",
+            "vars": {
+              "n": 1607,
+              "t": 0.1607,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.160700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1608",
+            "vars": {
+              "n": 1608,
+              "t": 0.1608,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.160800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1609",
+            "vars": {
+              "n": 1609,
+              "t": 0.1609,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.160900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1610",
+            "vars": {
+              "n": 1610,
+              "t": 0.161,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.161000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1611",
+            "vars": {
+              "n": 1611,
+              "t": 0.1611,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.161100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1612",
+            "vars": {
+              "n": 1612,
+              "t": 0.1612,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.161200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1613",
+            "vars": {
+              "n": 1613,
+              "t": 0.1613,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.161300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1614",
+            "vars": {
+              "n": 1614,
+              "t": 0.1614,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.161400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1615",
+            "vars": {
+              "n": 1615,
+              "t": 0.1615,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.161500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1616",
+            "vars": {
+              "n": 1616,
+              "t": 0.1616,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.161600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1617",
+            "vars": {
+              "n": 1617,
+              "t": 0.1617,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.161700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1618",
+            "vars": {
+              "n": 1618,
+              "t": 0.1618,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.161800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1619",
+            "vars": {
+              "n": 1619,
+              "t": 0.1619,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.161900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1620",
+            "vars": {
+              "n": 1620,
+              "t": 0.162,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.162000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1621",
+            "vars": {
+              "n": 1621,
+              "t": 0.1621,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.162100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1622",
+            "vars": {
+              "n": 1622,
+              "t": 0.1622,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.162200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1623",
+            "vars": {
+              "n": 1623,
+              "t": 0.1623,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.162300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1624",
+            "vars": {
+              "n": 1624,
+              "t": 0.1624,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.162400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1625",
+            "vars": {
+              "n": 1625,
+              "t": 0.1625,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.162500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1626",
+            "vars": {
+              "n": 1626,
+              "t": 0.1626,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.162600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1627",
+            "vars": {
+              "n": 1627,
+              "t": 0.1627,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.162700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1628",
+            "vars": {
+              "n": 1628,
+              "t": 0.1628,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.162800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1629",
+            "vars": {
+              "n": 1629,
+              "t": 0.1629,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.162900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1630",
+            "vars": {
+              "n": 1630,
+              "t": 0.163,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.163000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1631",
+            "vars": {
+              "n": 1631,
+              "t": 0.1631,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.163100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1632",
+            "vars": {
+              "n": 1632,
+              "t": 0.1632,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.163200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1633",
+            "vars": {
+              "n": 1633,
+              "t": 0.1633,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.163300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1634",
+            "vars": {
+              "n": 1634,
+              "t": 0.1634,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.163400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1635",
+            "vars": {
+              "n": 1635,
+              "t": 0.1635,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.163500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1636",
+            "vars": {
+              "n": 1636,
+              "t": 0.1636,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.163600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1637",
+            "vars": {
+              "n": 1637,
+              "t": 0.1637,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.163700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1638",
+            "vars": {
+              "n": 1638,
+              "t": 0.1638,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.163800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1639",
+            "vars": {
+              "n": 1639,
+              "t": 0.1639,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.163900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1640",
+            "vars": {
+              "n": 1640,
+              "t": 0.164,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.164000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1641",
+            "vars": {
+              "n": 1641,
+              "t": 0.1641,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.164100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1642",
+            "vars": {
+              "n": 1642,
+              "t": 0.1642,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.164200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1643",
+            "vars": {
+              "n": 1643,
+              "t": 0.1643,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.164300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1644",
+            "vars": {
+              "n": 1644,
+              "t": 0.1644,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.164400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1645",
+            "vars": {
+              "n": 1645,
+              "t": 0.1645,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.164500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1646",
+            "vars": {
+              "n": 1646,
+              "t": 0.1646,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.164600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1647",
+            "vars": {
+              "n": 1647,
+              "t": 0.1647,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.164700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1648",
+            "vars": {
+              "n": 1648,
+              "t": 0.1648,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.164800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1649",
+            "vars": {
+              "n": 1649,
+              "t": 0.1649,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.164900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1650",
+            "vars": {
+              "n": 1650,
+              "t": 0.165,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.165000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1651",
+            "vars": {
+              "n": 1651,
+              "t": 0.1651,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.165100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1652",
+            "vars": {
+              "n": 1652,
+              "t": 0.1652,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.165200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1653",
+            "vars": {
+              "n": 1653,
+              "t": 0.1653,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.165300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1654",
+            "vars": {
+              "n": 1654,
+              "t": 0.1654,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.165400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1655",
+            "vars": {
+              "n": 1655,
+              "t": 0.1655,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.165500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1656",
+            "vars": {
+              "n": 1656,
+              "t": 0.1656,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.165600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1657",
+            "vars": {
+              "n": 1657,
+              "t": 0.1657,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.165700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1658",
+            "vars": {
+              "n": 1658,
+              "t": 0.1658,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.165800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1659",
+            "vars": {
+              "n": 1659,
+              "t": 0.1659,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.165900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1660",
+            "vars": {
+              "n": 1660,
+              "t": 0.166,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.166000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1661",
+            "vars": {
+              "n": 1661,
+              "t": 0.1661,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.166100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1662",
+            "vars": {
+              "n": 1662,
+              "t": 0.1662,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.166200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1663",
+            "vars": {
+              "n": 1663,
+              "t": 0.1663,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.166300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1664",
+            "vars": {
+              "n": 1664,
+              "t": 0.1664,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.166400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1665",
+            "vars": {
+              "n": 1665,
+              "t": 0.1665,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.166500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1666",
+            "vars": {
+              "n": 1666,
+              "t": 0.1666,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.166600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1667",
+            "vars": {
+              "n": 1667,
+              "t": 0.1667,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.166700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1668",
+            "vars": {
+              "n": 1668,
+              "t": 0.1668,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.166800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1669",
+            "vars": {
+              "n": 1669,
+              "t": 0.1669,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.166900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1670",
+            "vars": {
+              "n": 1670,
+              "t": 0.167,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.167000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1671",
+            "vars": {
+              "n": 1671,
+              "t": 0.1671,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.167100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1672",
+            "vars": {
+              "n": 1672,
+              "t": 0.1672,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.167200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1673",
+            "vars": {
+              "n": 1673,
+              "t": 0.1673,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.167300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1674",
+            "vars": {
+              "n": 1674,
+              "t": 0.1674,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.167400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1675",
+            "vars": {
+              "n": 1675,
+              "t": 0.1675,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.167500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1676",
+            "vars": {
+              "n": 1676,
+              "t": 0.1676,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.167600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1677",
+            "vars": {
+              "n": 1677,
+              "t": 0.1677,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.167700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1678",
+            "vars": {
+              "n": 1678,
+              "t": 0.1678,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.167800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1679",
+            "vars": {
+              "n": 1679,
+              "t": 0.1679,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.167900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1680",
+            "vars": {
+              "n": 1680,
+              "t": 0.168,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.168000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1681",
+            "vars": {
+              "n": 1681,
+              "t": 0.1681,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.168100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1682",
+            "vars": {
+              "n": 1682,
+              "t": 0.1682,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.168200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1683",
+            "vars": {
+              "n": 1683,
+              "t": 0.1683,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.168300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1684",
+            "vars": {
+              "n": 1684,
+              "t": 0.1684,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.168400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1685",
+            "vars": {
+              "n": 1685,
+              "t": 0.1685,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.168500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1686",
+            "vars": {
+              "n": 1686,
+              "t": 0.1686,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.168600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1687",
+            "vars": {
+              "n": 1687,
+              "t": 0.1687,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.168700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1688",
+            "vars": {
+              "n": 1688,
+              "t": 0.1688,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.168800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1689",
+            "vars": {
+              "n": 1689,
+              "t": 0.1689,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.168900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1690",
+            "vars": {
+              "n": 1690,
+              "t": 0.169,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.169000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1691",
+            "vars": {
+              "n": 1691,
+              "t": 0.1691,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.169100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1692",
+            "vars": {
+              "n": 1692,
+              "t": 0.1692,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.169200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1693",
+            "vars": {
+              "n": 1693,
+              "t": 0.1693,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.169300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1694",
+            "vars": {
+              "n": 1694,
+              "t": 0.1694,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.169400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1695",
+            "vars": {
+              "n": 1695,
+              "t": 0.1695,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.169500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1696",
+            "vars": {
+              "n": 1696,
+              "t": 0.1696,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.169600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1697",
+            "vars": {
+              "n": 1697,
+              "t": 0.1697,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.169700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1698",
+            "vars": {
+              "n": 1698,
+              "t": 0.1698,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.169800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1699",
+            "vars": {
+              "n": 1699,
+              "t": 0.1699,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.169900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1700",
+            "vars": {
+              "n": 1700,
+              "t": 0.17,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.170000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1701",
+            "vars": {
+              "n": 1701,
+              "t": 0.1701,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.170100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1702",
+            "vars": {
+              "n": 1702,
+              "t": 0.1702,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.170200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1703",
+            "vars": {
+              "n": 1703,
+              "t": 0.1703,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.170300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1704",
+            "vars": {
+              "n": 1704,
+              "t": 0.1704,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.170400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1705",
+            "vars": {
+              "n": 1705,
+              "t": 0.1705,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.170500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1706",
+            "vars": {
+              "n": 1706,
+              "t": 0.1706,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.170600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1707",
+            "vars": {
+              "n": 1707,
+              "t": 0.1707,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.170700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1708",
+            "vars": {
+              "n": 1708,
+              "t": 0.1708,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.170800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1709",
+            "vars": {
+              "n": 1709,
+              "t": 0.1709,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.170900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1710",
+            "vars": {
+              "n": 1710,
+              "t": 0.171,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.171000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1711",
+            "vars": {
+              "n": 1711,
+              "t": 0.1711,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.171100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1712",
+            "vars": {
+              "n": 1712,
+              "t": 0.1712,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.171200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1713",
+            "vars": {
+              "n": 1713,
+              "t": 0.1713,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.171300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1714",
+            "vars": {
+              "n": 1714,
+              "t": 0.1714,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.171400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1715",
+            "vars": {
+              "n": 1715,
+              "t": 0.1715,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.171500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1716",
+            "vars": {
+              "n": 1716,
+              "t": 0.1716,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.171600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1717",
+            "vars": {
+              "n": 1717,
+              "t": 0.1717,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.171700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1718",
+            "vars": {
+              "n": 1718,
+              "t": 0.1718,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.171800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1719",
+            "vars": {
+              "n": 1719,
+              "t": 0.1719,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.171900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1720",
+            "vars": {
+              "n": 1720,
+              "t": 0.172,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.172000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1721",
+            "vars": {
+              "n": 1721,
+              "t": 0.1721,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.172100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1722",
+            "vars": {
+              "n": 1722,
+              "t": 0.1722,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.172200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1723",
+            "vars": {
+              "n": 1723,
+              "t": 0.1723,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.172300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1724",
+            "vars": {
+              "n": 1724,
+              "t": 0.1724,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.172400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1725",
+            "vars": {
+              "n": 1725,
+              "t": 0.1725,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.172500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1726",
+            "vars": {
+              "n": 1726,
+              "t": 0.1726,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.172600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1727",
+            "vars": {
+              "n": 1727,
+              "t": 0.1727,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.172700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1728",
+            "vars": {
+              "n": 1728,
+              "t": 0.1728,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.172800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1729",
+            "vars": {
+              "n": 1729,
+              "t": 0.1729,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.172900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1730",
+            "vars": {
+              "n": 1730,
+              "t": 0.173,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.173000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1731",
+            "vars": {
+              "n": 1731,
+              "t": 0.1731,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.173100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1732",
+            "vars": {
+              "n": 1732,
+              "t": 0.1732,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.173200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1733",
+            "vars": {
+              "n": 1733,
+              "t": 0.1733,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.173300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1734",
+            "vars": {
+              "n": 1734,
+              "t": 0.1734,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.173400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1735",
+            "vars": {
+              "n": 1735,
+              "t": 0.1735,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.173500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1736",
+            "vars": {
+              "n": 1736,
+              "t": 0.1736,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.173600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1737",
+            "vars": {
+              "n": 1737,
+              "t": 0.1737,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.173700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1738",
+            "vars": {
+              "n": 1738,
+              "t": 0.1738,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.173800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1739",
+            "vars": {
+              "n": 1739,
+              "t": 0.1739,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.173900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1740",
+            "vars": {
+              "n": 1740,
+              "t": 0.174,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.174000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1741",
+            "vars": {
+              "n": 1741,
+              "t": 0.1741,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.174100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1742",
+            "vars": {
+              "n": 1742,
+              "t": 0.1742,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.174200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1743",
+            "vars": {
+              "n": 1743,
+              "t": 0.1743,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.174300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1744",
+            "vars": {
+              "n": 1744,
+              "t": 0.1744,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.174400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1745",
+            "vars": {
+              "n": 1745,
+              "t": 0.1745,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.174500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1746",
+            "vars": {
+              "n": 1746,
+              "t": 0.1746,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.174600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1747",
+            "vars": {
+              "n": 1747,
+              "t": 0.1747,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.174700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1748",
+            "vars": {
+              "n": 1748,
+              "t": 0.1748,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.174800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1749",
+            "vars": {
+              "n": 1749,
+              "t": 0.1749,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.174900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1750",
+            "vars": {
+              "n": 1750,
+              "t": 0.175,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.175000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1751",
+            "vars": {
+              "n": 1751,
+              "t": 0.1751,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.175100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1752",
+            "vars": {
+              "n": 1752,
+              "t": 0.1752,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.175200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1753",
+            "vars": {
+              "n": 1753,
+              "t": 0.1753,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.175300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1754",
+            "vars": {
+              "n": 1754,
+              "t": 0.1754,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.175400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1755",
+            "vars": {
+              "n": 1755,
+              "t": 0.1755,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.175500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1756",
+            "vars": {
+              "n": 1756,
+              "t": 0.1756,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.175600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1757",
+            "vars": {
+              "n": 1757,
+              "t": 0.1757,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.175700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1758",
+            "vars": {
+              "n": 1758,
+              "t": 0.1758,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.175800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1759",
+            "vars": {
+              "n": 1759,
+              "t": 0.1759,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.175900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1760",
+            "vars": {
+              "n": 1760,
+              "t": 0.176,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.176000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1761",
+            "vars": {
+              "n": 1761,
+              "t": 0.1761,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.176100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1762",
+            "vars": {
+              "n": 1762,
+              "t": 0.1762,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.176200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1763",
+            "vars": {
+              "n": 1763,
+              "t": 0.1763,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.176300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1764",
+            "vars": {
+              "n": 1764,
+              "t": 0.1764,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.176400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1765",
+            "vars": {
+              "n": 1765,
+              "t": 0.1765,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.176500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1766",
+            "vars": {
+              "n": 1766,
+              "t": 0.1766,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.176600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1767",
+            "vars": {
+              "n": 1767,
+              "t": 0.1767,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.176700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1768",
+            "vars": {
+              "n": 1768,
+              "t": 0.1768,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.176800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1769",
+            "vars": {
+              "n": 1769,
+              "t": 0.1769,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.176900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1770",
+            "vars": {
+              "n": 1770,
+              "t": 0.177,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.177000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1771",
+            "vars": {
+              "n": 1771,
+              "t": 0.1771,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.177100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1772",
+            "vars": {
+              "n": 1772,
+              "t": 0.1772,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.177200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1773",
+            "vars": {
+              "n": 1773,
+              "t": 0.1773,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.177300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1774",
+            "vars": {
+              "n": 1774,
+              "t": 0.1774,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.177400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1775",
+            "vars": {
+              "n": 1775,
+              "t": 0.1775,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.177500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1776",
+            "vars": {
+              "n": 1776,
+              "t": 0.1776,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.177600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1777",
+            "vars": {
+              "n": 1777,
+              "t": 0.1777,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.177700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1778",
+            "vars": {
+              "n": 1778,
+              "t": 0.1778,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.177800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1779",
+            "vars": {
+              "n": 1779,
+              "t": 0.1779,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.177900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1780",
+            "vars": {
+              "n": 1780,
+              "t": 0.178,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.178000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1781",
+            "vars": {
+              "n": 1781,
+              "t": 0.1781,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.178100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1782",
+            "vars": {
+              "n": 1782,
+              "t": 0.1782,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.178200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1783",
+            "vars": {
+              "n": 1783,
+              "t": 0.1783,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.178300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1784",
+            "vars": {
+              "n": 1784,
+              "t": 0.1784,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.178400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1785",
+            "vars": {
+              "n": 1785,
+              "t": 0.1785,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.178500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1786",
+            "vars": {
+              "n": 1786,
+              "t": 0.1786,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.178600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1787",
+            "vars": {
+              "n": 1787,
+              "t": 0.1787,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.178700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1788",
+            "vars": {
+              "n": 1788,
+              "t": 0.1788,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.178800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1789",
+            "vars": {
+              "n": 1789,
+              "t": 0.1789,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.178900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1790",
+            "vars": {
+              "n": 1790,
+              "t": 0.179,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.179000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1791",
+            "vars": {
+              "n": 1791,
+              "t": 0.1791,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.179100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1792",
+            "vars": {
+              "n": 1792,
+              "t": 0.1792,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.179200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1793",
+            "vars": {
+              "n": 1793,
+              "t": 0.1793,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.179300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1794",
+            "vars": {
+              "n": 1794,
+              "t": 0.1794,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.179400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1795",
+            "vars": {
+              "n": 1795,
+              "t": 0.1795,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.179500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1796",
+            "vars": {
+              "n": 1796,
+              "t": 0.1796,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.179600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1797",
+            "vars": {
+              "n": 1797,
+              "t": 0.1797,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.179700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1798",
+            "vars": {
+              "n": 1798,
+              "t": 0.1798,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.179800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1799",
+            "vars": {
+              "n": 1799,
+              "t": 0.1799,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.179900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1800",
+            "vars": {
+              "n": 1800,
+              "t": 0.18,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.180000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1801",
+            "vars": {
+              "n": 1801,
+              "t": 0.1801,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.180100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1802",
+            "vars": {
+              "n": 1802,
+              "t": 0.1802,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.180200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1803",
+            "vars": {
+              "n": 1803,
+              "t": 0.1803,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.180300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1804",
+            "vars": {
+              "n": 1804,
+              "t": 0.1804,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.180400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1805",
+            "vars": {
+              "n": 1805,
+              "t": 0.1805,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.180500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1806",
+            "vars": {
+              "n": 1806,
+              "t": 0.1806,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.180600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1807",
+            "vars": {
+              "n": 1807,
+              "t": 0.1807,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.180700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1808",
+            "vars": {
+              "n": 1808,
+              "t": 0.1808,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.180800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1809",
+            "vars": {
+              "n": 1809,
+              "t": 0.1809,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.180900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1810",
+            "vars": {
+              "n": 1810,
+              "t": 0.181,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.181000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1811",
+            "vars": {
+              "n": 1811,
+              "t": 0.1811,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.181100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1812",
+            "vars": {
+              "n": 1812,
+              "t": 0.1812,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.181200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1813",
+            "vars": {
+              "n": 1813,
+              "t": 0.1813,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.181300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1814",
+            "vars": {
+              "n": 1814,
+              "t": 0.1814,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.181400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1815",
+            "vars": {
+              "n": 1815,
+              "t": 0.1815,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.181500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1816",
+            "vars": {
+              "n": 1816,
+              "t": 0.1816,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.181600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1817",
+            "vars": {
+              "n": 1817,
+              "t": 0.1817,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.181700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1818",
+            "vars": {
+              "n": 1818,
+              "t": 0.1818,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.181800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1819",
+            "vars": {
+              "n": 1819,
+              "t": 0.1819,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.181900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1820",
+            "vars": {
+              "n": 1820,
+              "t": 0.182,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.182000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1821",
+            "vars": {
+              "n": 1821,
+              "t": 0.1821,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.182100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1822",
+            "vars": {
+              "n": 1822,
+              "t": 0.1822,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.182200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1823",
+            "vars": {
+              "n": 1823,
+              "t": 0.1823,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.182300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1824",
+            "vars": {
+              "n": 1824,
+              "t": 0.1824,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.182400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1825",
+            "vars": {
+              "n": 1825,
+              "t": 0.1825,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.182500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1826",
+            "vars": {
+              "n": 1826,
+              "t": 0.1826,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.182600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1827",
+            "vars": {
+              "n": 1827,
+              "t": 0.1827,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.182700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1828",
+            "vars": {
+              "n": 1828,
+              "t": 0.1828,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.182800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1829",
+            "vars": {
+              "n": 1829,
+              "t": 0.1829,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.182900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1830",
+            "vars": {
+              "n": 1830,
+              "t": 0.183,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.183000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1831",
+            "vars": {
+              "n": 1831,
+              "t": 0.1831,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.183100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1832",
+            "vars": {
+              "n": 1832,
+              "t": 0.1832,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.183200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1833",
+            "vars": {
+              "n": 1833,
+              "t": 0.1833,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.183300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1834",
+            "vars": {
+              "n": 1834,
+              "t": 0.1834,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.183400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1835",
+            "vars": {
+              "n": 1835,
+              "t": 0.1835,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.183500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1836",
+            "vars": {
+              "n": 1836,
+              "t": 0.1836,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.183600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1837",
+            "vars": {
+              "n": 1837,
+              "t": 0.1837,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.183700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1838",
+            "vars": {
+              "n": 1838,
+              "t": 0.1838,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.183800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1839",
+            "vars": {
+              "n": 1839,
+              "t": 0.1839,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.183900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1840",
+            "vars": {
+              "n": 1840,
+              "t": 0.184,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.184000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1841",
+            "vars": {
+              "n": 1841,
+              "t": 0.1841,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.184100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1842",
+            "vars": {
+              "n": 1842,
+              "t": 0.1842,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.184200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1843",
+            "vars": {
+              "n": 1843,
+              "t": 0.1843,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.184300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1844",
+            "vars": {
+              "n": 1844,
+              "t": 0.1844,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.184400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1845",
+            "vars": {
+              "n": 1845,
+              "t": 0.1845,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.184500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1846",
+            "vars": {
+              "n": 1846,
+              "t": 0.1846,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.184600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1847",
+            "vars": {
+              "n": 1847,
+              "t": 0.1847,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.184700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1848",
+            "vars": {
+              "n": 1848,
+              "t": 0.1848,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.184800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1849",
+            "vars": {
+              "n": 1849,
+              "t": 0.1849,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.184900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1850",
+            "vars": {
+              "n": 1850,
+              "t": 0.185,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.185000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1851",
+            "vars": {
+              "n": 1851,
+              "t": 0.1851,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.185100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1852",
+            "vars": {
+              "n": 1852,
+              "t": 0.1852,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.185200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1853",
+            "vars": {
+              "n": 1853,
+              "t": 0.1853,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.185300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1854",
+            "vars": {
+              "n": 1854,
+              "t": 0.1854,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.185400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1855",
+            "vars": {
+              "n": 1855,
+              "t": 0.1855,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.185500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1856",
+            "vars": {
+              "n": 1856,
+              "t": 0.1856,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.185600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1857",
+            "vars": {
+              "n": 1857,
+              "t": 0.1857,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.185700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1858",
+            "vars": {
+              "n": 1858,
+              "t": 0.1858,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.185800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1859",
+            "vars": {
+              "n": 1859,
+              "t": 0.1859,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.185900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1860",
+            "vars": {
+              "n": 1860,
+              "t": 0.186,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.186000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1861",
+            "vars": {
+              "n": 1861,
+              "t": 0.1861,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.186100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1862",
+            "vars": {
+              "n": 1862,
+              "t": 0.1862,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.186200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1863",
+            "vars": {
+              "n": 1863,
+              "t": 0.1863,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.186300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1864",
+            "vars": {
+              "n": 1864,
+              "t": 0.1864,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.186400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1865",
+            "vars": {
+              "n": 1865,
+              "t": 0.1865,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.186500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1866",
+            "vars": {
+              "n": 1866,
+              "t": 0.1866,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.186600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1867",
+            "vars": {
+              "n": 1867,
+              "t": 0.1867,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.186700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1868",
+            "vars": {
+              "n": 1868,
+              "t": 0.1868,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.186800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1869",
+            "vars": {
+              "n": 1869,
+              "t": 0.1869,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.186900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1870",
+            "vars": {
+              "n": 1870,
+              "t": 0.187,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.187000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1871",
+            "vars": {
+              "n": 1871,
+              "t": 0.1871,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.187100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1872",
+            "vars": {
+              "n": 1872,
+              "t": 0.1872,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.187200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1873",
+            "vars": {
+              "n": 1873,
+              "t": 0.1873,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.187300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1874",
+            "vars": {
+              "n": 1874,
+              "t": 0.1874,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.187400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1875",
+            "vars": {
+              "n": 1875,
+              "t": 0.1875,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.187500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1876",
+            "vars": {
+              "n": 1876,
+              "t": 0.1876,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.187600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1877",
+            "vars": {
+              "n": 1877,
+              "t": 0.1877,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.187700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1878",
+            "vars": {
+              "n": 1878,
+              "t": 0.1878,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.187800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1879",
+            "vars": {
+              "n": 1879,
+              "t": 0.1879,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.187900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1880",
+            "vars": {
+              "n": 1880,
+              "t": 0.188,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.188000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1881",
+            "vars": {
+              "n": 1881,
+              "t": 0.1881,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.188100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1882",
+            "vars": {
+              "n": 1882,
+              "t": 0.1882,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.188200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1883",
+            "vars": {
+              "n": 1883,
+              "t": 0.1883,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.188300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1884",
+            "vars": {
+              "n": 1884,
+              "t": 0.1884,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.188400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1885",
+            "vars": {
+              "n": 1885,
+              "t": 0.1885,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.188500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1886",
+            "vars": {
+              "n": 1886,
+              "t": 0.1886,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.188600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1887",
+            "vars": {
+              "n": 1887,
+              "t": 0.1887,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.188700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1888",
+            "vars": {
+              "n": 1888,
+              "t": 0.1888,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.188800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1889",
+            "vars": {
+              "n": 1889,
+              "t": 0.1889,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.188900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1890",
+            "vars": {
+              "n": 1890,
+              "t": 0.189,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.189000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1891",
+            "vars": {
+              "n": 1891,
+              "t": 0.1891,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.189100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1892",
+            "vars": {
+              "n": 1892,
+              "t": 0.1892,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.189200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1893",
+            "vars": {
+              "n": 1893,
+              "t": 0.1893,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.189300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1894",
+            "vars": {
+              "n": 1894,
+              "t": 0.1894,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.189400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1895",
+            "vars": {
+              "n": 1895,
+              "t": 0.1895,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.189500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1896",
+            "vars": {
+              "n": 1896,
+              "t": 0.1896,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.189600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1897",
+            "vars": {
+              "n": 1897,
+              "t": 0.1897,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.189700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1898",
+            "vars": {
+              "n": 1898,
+              "t": 0.1898,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.189800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1899",
+            "vars": {
+              "n": 1899,
+              "t": 0.1899,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.189900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1900",
+            "vars": {
+              "n": 1900,
+              "t": 0.19,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.190000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1901",
+            "vars": {
+              "n": 1901,
+              "t": 0.1901,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.190100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1902",
+            "vars": {
+              "n": 1902,
+              "t": 0.1902,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.190200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1903",
+            "vars": {
+              "n": 1903,
+              "t": 0.1903,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.190300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1904",
+            "vars": {
+              "n": 1904,
+              "t": 0.1904,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.190400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1905",
+            "vars": {
+              "n": 1905,
+              "t": 0.1905,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.190500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1906",
+            "vars": {
+              "n": 1906,
+              "t": 0.1906,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.190600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1907",
+            "vars": {
+              "n": 1907,
+              "t": 0.1907,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.190700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1908",
+            "vars": {
+              "n": 1908,
+              "t": 0.1908,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.190800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1909",
+            "vars": {
+              "n": 1909,
+              "t": 0.1909,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.190900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1910",
+            "vars": {
+              "n": 1910,
+              "t": 0.191,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.191000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1911",
+            "vars": {
+              "n": 1911,
+              "t": 0.1911,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.191100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1912",
+            "vars": {
+              "n": 1912,
+              "t": 0.1912,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.191200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1913",
+            "vars": {
+              "n": 1913,
+              "t": 0.1913,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.191300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1914",
+            "vars": {
+              "n": 1914,
+              "t": 0.1914,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.191400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1915",
+            "vars": {
+              "n": 1915,
+              "t": 0.1915,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.191500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1916",
+            "vars": {
+              "n": 1916,
+              "t": 0.1916,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.191600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1917",
+            "vars": {
+              "n": 1917,
+              "t": 0.1917,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.191700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1918",
+            "vars": {
+              "n": 1918,
+              "t": 0.1918,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.191800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1919",
+            "vars": {
+              "n": 1919,
+              "t": 0.1919,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.191900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1920",
+            "vars": {
+              "n": 1920,
+              "t": 0.192,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.192000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1921",
+            "vars": {
+              "n": 1921,
+              "t": 0.1921,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.192100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1922",
+            "vars": {
+              "n": 1922,
+              "t": 0.1922,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.192200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1923",
+            "vars": {
+              "n": 1923,
+              "t": 0.1923,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.192300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1924",
+            "vars": {
+              "n": 1924,
+              "t": 0.1924,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.192400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1925",
+            "vars": {
+              "n": 1925,
+              "t": 0.1925,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.192500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1926",
+            "vars": {
+              "n": 1926,
+              "t": 0.1926,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.192600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1927",
+            "vars": {
+              "n": 1927,
+              "t": 0.1927,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.192700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1928",
+            "vars": {
+              "n": 1928,
+              "t": 0.1928,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.192800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1929",
+            "vars": {
+              "n": 1929,
+              "t": 0.1929,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.192900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1930",
+            "vars": {
+              "n": 1930,
+              "t": 0.193,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.193000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1931",
+            "vars": {
+              "n": 1931,
+              "t": 0.1931,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.193100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1932",
+            "vars": {
+              "n": 1932,
+              "t": 0.1932,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.193200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1933",
+            "vars": {
+              "n": 1933,
+              "t": 0.1933,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.193300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1934",
+            "vars": {
+              "n": 1934,
+              "t": 0.1934,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.193400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1935",
+            "vars": {
+              "n": 1935,
+              "t": 0.1935,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.193500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1936",
+            "vars": {
+              "n": 1936,
+              "t": 0.1936,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.193600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1937",
+            "vars": {
+              "n": 1937,
+              "t": 0.1937,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.193700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1938",
+            "vars": {
+              "n": 1938,
+              "t": 0.1938,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.193800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1939",
+            "vars": {
+              "n": 1939,
+              "t": 0.1939,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.193900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1940",
+            "vars": {
+              "n": 1940,
+              "t": 0.194,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.194000,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1941",
+            "vars": {
+              "n": 1941,
+              "t": 0.1941,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.194100,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1942",
+            "vars": {
+              "n": 1942,
+              "t": 0.1942,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.194200,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1943",
+            "vars": {
+              "n": 1943,
+              "t": 0.1943,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.194300,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1944",
+            "vars": {
+              "n": 1944,
+              "t": 0.1944,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.194400,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1945",
+            "vars": {
+              "n": 1945,
+              "t": 0.1945,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.194500,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1946",
+            "vars": {
+              "n": 1946,
+              "t": 0.1946,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.194600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1947",
+            "vars": {
+              "n": 1947,
+              "t": 0.1947,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.194700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1948",
+            "vars": {
+              "n": 1948,
+              "t": 0.1948,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.194800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1949",
+            "vars": {
+              "n": 1949,
+              "t": 0.1949,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.194900,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1950",
+            "vars": {
+              "n": 1950,
+              "t": 0.195,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.195000,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1951",
+            "vars": {
+              "n": 1951,
+              "t": 0.1951,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.195100,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1952",
+            "vars": {
+              "n": 1952,
+              "t": 0.1952,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.195200,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1953",
+            "vars": {
+              "n": 1953,
+              "t": 0.1953,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.195300,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1954",
+            "vars": {
+              "n": 1954,
+              "t": 0.1954,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.195400,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1955",
+            "vars": {
+              "n": 1955,
+              "t": 0.1955,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.195500,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1956",
+            "vars": {
+              "n": 1956,
+              "t": 0.1956,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.195600,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1957",
+            "vars": {
+              "n": 1957,
+              "t": 0.1957,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.195700,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1958",
+            "vars": {
+              "n": 1958,
+              "t": 0.1958,
+              "i": 0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.195800,0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1959",
+            "vars": {
+              "n": 1959,
+              "t": 0.1959,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.195900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1960",
+            "vars": {
+              "n": 1960,
+              "t": 0.196,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.196000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1961",
+            "vars": {
+              "n": 1961,
+              "t": 0.1961,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.196100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1962",
+            "vars": {
+              "n": 1962,
+              "t": 0.1962,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.196200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1963",
+            "vars": {
+              "n": 1963,
+              "t": 0.1963,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.196300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1964",
+            "vars": {
+              "n": 1964,
+              "t": 0.1964,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.196400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1965",
+            "vars": {
+              "n": 1965,
+              "t": 0.1965,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.196500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1966",
+            "vars": {
+              "n": 1966,
+              "t": 0.1966,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.196600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1967",
+            "vars": {
+              "n": 1967,
+              "t": 0.1967,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.196700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1968",
+            "vars": {
+              "n": 1968,
+              "t": 0.1968,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.196800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1969",
+            "vars": {
+              "n": 1969,
+              "t": 0.1969,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.196900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1970",
+            "vars": {
+              "n": 1970,
+              "t": 0.197,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.197000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1971",
+            "vars": {
+              "n": 1971,
+              "t": 0.1971,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.197100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1972",
+            "vars": {
+              "n": 1972,
+              "t": 0.1972,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.197200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1973",
+            "vars": {
+              "n": 1973,
+              "t": 0.1973,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.197300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1974",
+            "vars": {
+              "n": 1974,
+              "t": 0.1974,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.197400,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1975",
+            "vars": {
+              "n": 1975,
+              "t": 0.1975,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.197500,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1976",
+            "vars": {
+              "n": 1976,
+              "t": 0.1976,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.197600,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1977",
+            "vars": {
+              "n": 1977,
+              "t": 0.1977,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.197700,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1978",
+            "vars": {
+              "n": 1978,
+              "t": 0.1978,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.197800,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1979",
+            "vars": {
+              "n": 1979,
+              "t": 0.1979,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.197900,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1980",
+            "vars": {
+              "n": 1980,
+              "t": 0.198,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.198000,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1981",
+            "vars": {
+              "n": 1981,
+              "t": 0.1981,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.198100,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1982",
+            "vars": {
+              "n": 1982,
+              "t": 0.1982,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.198200,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1983",
+            "vars": {
+              "n": 1983,
+              "t": 0.1983,
+              "i": -0.0,
+              "Vc": 0.0
+            },
+            "stdout": "0.198300,-0.000000,0.000000\n"
+          },
+          {
+            "at": "n=1984",
+            "vars": {
+              "n": 1984,
+              "t": 0.1984,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.198400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1985",
+            "vars": {
+              "n": 1985,
+              "t": 0.1985,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.198500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1986",
+            "vars": {
+              "n": 1986,
+              "t": 0.1986,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.198600,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1987",
+            "vars": {
+              "n": 1987,
+              "t": 0.1987,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.198700,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1988",
+            "vars": {
+              "n": 1988,
+              "t": 0.1988,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.198800,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1989",
+            "vars": {
+              "n": 1989,
+              "t": 0.1989,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.198900,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1990",
+            "vars": {
+              "n": 1990,
+              "t": 0.199,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.199000,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1991",
+            "vars": {
+              "n": 1991,
+              "t": 0.1991,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.199100,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1992",
+            "vars": {
+              "n": 1992,
+              "t": 0.1992,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.199200,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1993",
+            "vars": {
+              "n": 1993,
+              "t": 0.1993,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.199300,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1994",
+            "vars": {
+              "n": 1994,
+              "t": 0.1994,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.199400,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1995",
+            "vars": {
+              "n": 1995,
+              "t": 0.1995,
+              "i": -0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.199500,-0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1996",
+            "vars": {
+              "n": 1996,
+              "t": 0.1996,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.199600,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1997",
+            "vars": {
+              "n": 1997,
+              "t": 0.1997,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.199700,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1998",
+            "vars": {
+              "n": 1998,
+              "t": 0.1998,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.199800,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=1999",
+            "vars": {
+              "n": 1999,
+              "t": 0.1999,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.199900,0.000000,-0.000000\n"
+          },
+          {
+            "at": "n=2000",
+            "vars": {
+              "n": 2000,
+              "t": 0.2,
+              "i": 0.0,
+              "Vc": -0.0
+            },
+            "stdout": "0.200000,0.000000,-0.000000\n"
+          }
+        ]
+      }
+    ]
+  },
+  "textbook": {
+    "title": "C言語 新版 ゼロからはじめるプログラミング",
+    "isbn": "9784798174655",
+    "publisher": "翔泳社",
+    "url": "https://www.shoeisha.co.jp/book/detail/9784798174655",
+    "toc": [
+      {
+        "id": "ch1",
+        "title": "第1章 C言語に触れる",
+        "page": null
+      },
+      {
+        "id": "1-1",
+        "title": "1-1 C言語に触れる",
+        "page": null
+      },
+      {
+        "id": "1-2",
+        "title": "1-2 C言語のプログラム構成",
+        "page": null
+      },
+      {
+        "id": "1-3",
+        "title": "1-3 プログラムの作成と実行",
+        "page": null
+      },
+      {
+        "id": "ch2",
+        "title": "第2章 C言語の基本",
+        "page": null
+      },
+      {
+        "id": "2-1",
+        "title": "2-1 出力",
+        "page": null
+      },
+      {
+        "id": "2-2",
+        "title": "2-2 変数",
+        "page": null
+      },
+      {
+        "id": "2-3",
+        "title": "2-3 算術演算子と式",
+        "page": null
+      },
+      {
+        "id": "2-4",
+        "title": "2-4 演算と型",
+        "page": null
+      },
+      {
+        "id": "ch3",
+        "title": "第3章 条件分岐と繰り返し",
+        "page": null
+      },
+      {
+        "id": "3-1",
+        "title": "3-1 条件分岐",
+        "page": null
+      },
+      {
+        "id": "3-2",
+        "title": "3-2 論理演算子",
+        "page": null
+      },
+      {
+        "id": "3-3",
+        "title": "3-3 処理の繰り返し",
+        "page": null
+      },
+      {
+        "id": "3-4",
+        "title": "3-4 配列",
+        "page": null
+      },
+      {
+        "id": "ch4",
+        "title": "第4章 関数",
+        "page": null
+      },
+      {
+        "id": "4-1",
+        "title": "4-1 関数とは",
+        "page": null
+      },
+      {
+        "id": "4-2",
+        "title": "4-2 関数の引数",
+        "page": null
+      },
+      {
+        "id": "4-3",
+        "title": "4-3 関数の戻り値",
+        "page": null
+      },
+      {
+        "id": "ch7",
+        "title": "第7章 一歩進んだC言語プログラミング",
+        "page": null
+      },
+      {
+        "id": "7-1",
+        "title": "7-1 ファイル入出力",
+        "page": null
+      },
+      {
+        "id": "ch8",
+        "title": "第8章 データ構造とアルゴリズム",
+        "page": null
+      },
+      {
+        "id": "8-1",
+        "title": "8-1 アルゴリズムと計算量",
+        "page": null
+      },
+      {
+        "id": "8-2",
+        "title": "8-2 データの格納",
+        "page": null
+      },
+      {
+        "id": "8-3",
+        "title": "8-3 整列（ソート）",
+        "page": null
+      }
+    ],
+    "note": "※出版社ページの目次にはページ番号が掲載されていないため、このツールではページ番号は空欄です。"
+  },
+  "answers": {
+    "5": [
+      {
+        "title": "解答例：演習課題1（scanfなし）",
+        "code": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 1; k <= 10; k++){\n    int R = 5 * k;\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = V / R;\n\n    // TODO2: 判定して表示（WARN/OK）\n    if(I > Imax){\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    }else{\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}\n",
+        "trace": [
+          {
+            "stdout": "",
+            "vars": {
+              "(開始)": "",
+              "V": "5.0",
+              "Imax": "0.6",
+              "okCount": "0"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n",
+            "vars": {
+              "k": "1",
+              "R": "5",
+              "I": "1.0",
+              "okCount": "0"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n   10   0.500   OK\n",
+            "vars": {
+              "k": "2",
+              "R": "10",
+              "I": "0.5",
+              "okCount": "1"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n   10   0.500   OK\n   15   0.333   OK\n",
+            "vars": {
+              "k": "3",
+              "R": "15",
+              "I": "0.333333",
+              "okCount": "2"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n   10   0.500   OK\n   15   0.333   OK\n   20   0.250   OK\n",
+            "vars": {
+              "k": "4",
+              "R": "20",
+              "I": "0.25",
+              "okCount": "3"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n   10   0.500   OK\n   15   0.333   OK\n   20   0.250   OK\n   25   0.200   OK\n",
+            "vars": {
+              "k": "5",
+              "R": "25",
+              "I": "0.2",
+              "okCount": "4"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n   10   0.500   OK\n   15   0.333   OK\n   20   0.250   OK\n   25   0.200   OK\n   30   0.167   OK\n",
+            "vars": {
+              "k": "6",
+              "R": "30",
+              "I": "0.166667",
+              "okCount": "5"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n   10   0.500   OK\n   15   0.333   OK\n   20   0.250   OK\n   25   0.200   OK\n   30   0.167   OK\n   35   0.143   OK\n",
+            "vars": {
+              "k": "7",
+              "R": "35",
+              "I": "0.142857",
+              "okCount": "6"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n   10   0.500   OK\n   15   0.333   OK\n   20   0.250   OK\n   25   0.200   OK\n   30   0.167   OK\n   35   0.143   OK\n   40   0.125   OK\n",
+            "vars": {
+              "k": "8",
+              "R": "40",
+              "I": "0.125",
+              "okCount": "7"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n   10   0.500   OK\n   15   0.333   OK\n   20   0.250   OK\n   25   0.200   OK\n   30   0.167   OK\n   35   0.143   OK\n   40   0.125   OK\n   45   0.111   OK\n",
+            "vars": {
+              "k": "9",
+              "R": "45",
+              "I": "0.111111",
+              "okCount": "8"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n   10   0.500   OK\n   15   0.333   OK\n   20   0.250   OK\n   25   0.200   OK\n   30   0.167   OK\n   35   0.143   OK\n   40   0.125   OK\n   45   0.111   OK\n   50   0.100   OK\n",
+            "vars": {
+              "k": "10",
+              "R": "50",
+              "I": "0.1",
+              "okCount": "9"
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nR(ohm)   I(A)    judge\n-------------------------\n    5   1.000   WARN\n   10   0.500   OK\n   15   0.333   OK\n   20   0.250   OK\n   25   0.200   OK\n   30   0.167   OK\n   35   0.143   OK\n   40   0.125   OK\n   45   0.111   OK\n   50   0.100   OK\n-------------------------\nOK=9 / 10\n",
+            "vars": {
+              "okCount": "9"
+            }
+          }
+        ]
+      }
+    ],
+    "8": [
+      {
+        "title": "解答例：演習課題2（配列）",
+        "code": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[5] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納（I[k] = V / R[k]）\n  for(int k = 0; k < 5; k++){\n    I[k] = V / R[k];\n  }\n\n  // TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 0; k < 5; k++){\n    if(I[k] > Imax){\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    }else{\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}\n",
+        "trace": [
+          {
+            "stdout": "",
+            "vars": {}
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nk  R(ohm)   I(A)    judge\n-------------------------\n0     5   1.000   WARN\n",
+            "vars": {
+              "k": 0,
+              "R[k]": 5,
+              "I[k]": 1.0,
+              "okCount": 0
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nk  R(ohm)   I(A)    judge\n-------------------------\n0     5   1.000   WARN\n1    10   0.500   OK\n",
+            "vars": {
+              "k": 1,
+              "R[k]": 10,
+              "I[k]": 0.5,
+              "okCount": 1
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nk  R(ohm)   I(A)    judge\n-------------------------\n0     5   1.000   WARN\n1    10   0.500   OK\n2    15   0.333   OK\n",
+            "vars": {
+              "k": 2,
+              "R[k]": 15,
+              "I[k]": 0.333333,
+              "okCount": 2
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nk  R(ohm)   I(A)    judge\n-------------------------\n0     5   1.000   WARN\n1    10   0.500   OK\n2    15   0.333   OK\n3    20   0.250   OK\n",
+            "vars": {
+              "k": 3,
+              "R[k]": 20,
+              "I[k]": 0.25,
+              "okCount": 3
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nk  R(ohm)   I(A)    judge\n-------------------------\n0     5   1.000   WARN\n1    10   0.500   OK\n2    15   0.333   OK\n3    20   0.250   OK\n4    25   0.200   OK\n",
+            "vars": {
+              "k": 4,
+              "R[k]": 25,
+              "I[k]": 0.2,
+              "okCount": 4
+            }
+          },
+          {
+            "stdout": "V=5.0V  Imax=0.60A\n-------------------------\nk  R(ohm)   I(A)    judge\n-------------------------\n0     5   1.000   WARN\n1    10   0.500   OK\n2    15   0.333   OK\n3    20   0.250   OK\n4    25   0.200   OK\n-------------------------\nOK=4 / 5\n",
+            "vars": {
+              "okCount": 4
+            }
+          }
+        ]
+      }
+    ],
+    "11": [
+      {
+        "title": "解答例：演習課題3（関数＋配列）",
+        "code": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(a > b) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;            // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(a < b) return a;  // もし、a が b よりも小さければ、a を返す\n  return b;            // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};  // 電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};  // 抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = V_list[k];  // TODO2-1: 電圧リストのk番目\n    double R = R_list[k];  // TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = maxValue(maxI, I);  // TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = minValue(minI, I);  // TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n",
+        "trace": [
+          {
+            "stdout": "",
+            "vars": {
+              "sumI": 0.0,
+              "validCount": 0
+            }
+          },
+          {
+            "stdout": "case 1: V=5.0 R=5.0 -> I=1.000\n",
+            "vars": {
+              "k": 0,
+              "V": 5.0,
+              "R": 5.0,
+              "I": 1.0,
+              "outI": 1.0,
+              "sumI": 1.0,
+              "validCount": 1,
+              "maxI": 1.0,
+              "minI": 1.0
+            }
+          },
+          {
+            "stdout": "case 1: V=5.0 R=5.0 -> I=1.000\ncase 2: V=5.0 R=10.0 -> I=0.500\n",
+            "vars": {
+              "k": 1,
+              "V": 5.0,
+              "R": 10.0,
+              "I": 0.5,
+              "outI": 0.5,
+              "sumI": 1.5,
+              "validCount": 2,
+              "maxI": 1.0,
+              "minI": 0.5
+            }
+          },
+          {
+            "stdout": "case 1: V=5.0 R=5.0 -> I=1.000\ncase 2: V=5.0 R=10.0 -> I=0.500\ncase 3: V=5.0 R=0.0 -> R error\ncase 4: V=12.0 R=6.0 -> I=2.000\n",
+            "vars": {
+              "k": 3,
+              "V": 12.0,
+              "R": 6.0,
+              "I": 2.0,
+              "outI": 2.0,
+              "sumI": 3.5,
+              "validCount": 3,
+              "maxI": 2.0,
+              "minI": 0.5
+            }
+          },
+          {
+            "stdout": "case 1: V=5.0 R=5.0 -> I=1.000\ncase 2: V=5.0 R=10.0 -> I=0.500\ncase 3: V=5.0 R=0.0 -> R error\ncase 4: V=12.0 R=6.0 -> I=2.000\ncase 5: V=9.0 R=3.0 -> I=3.000\navg=1.625\nmax=3.000\nmin=0.500\n",
+            "vars": {
+              "sumI": 6.5,
+              "validCount": 4,
+              "maxI": 3.0,
+              "minI": 0.5,
+              "outI": 3.0,
+              "avg": 1.625
+            }
+          }
+        ]
+      }
+    ],
+    "14": [
+      {
+        "title": "演習課題4 解答例（ファイル入力）",
+        "code": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name){\n  FILE *fin = fopen(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name){\n  FILE *fout = fopen(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout){\n  Stats st = {0.0, 0};\n  double V, R;\n\n// TODO2-1: 値をファイルから読み込み\n  while(fscanf(fin, \"%lf %lf\", &V, &R) == 2){\n    if(R <= 0){\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    fprintf(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st){\n  if(st.valid > 0) printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  else          printf(\"avg=NA\\n\");\n}\n\nint main(void){\n  const char *inName = \"data.txt\";\n  const char *outName = \"result.txt\";\n\n  FILE *fin = openInputFile(inName);\n  if(fin == NULL){\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if(fout == NULL){\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  fclose(fin);       //TODO3-1: ファイルを閉じる\n  fclose(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  printSummary(st);\n\n  return 0;\n}\n",
+        "trace": [
+          {
+            "stdout": "",
+            "vars": {
+              "inName": "data.txt",
+              "outName": "result.txt"
+            }
+          },
+          {
+            "stdout": "I=2.000 (write)\n",
+            "vars": {
+              "V": 10.0,
+              "R": 5.0,
+              "I": 2.0,
+              "sumI": 2.0,
+              "valid": 1
+            }
+          },
+          {
+            "stdout": "I=1.000 (write)\n",
+            "vars": {
+              "V": 10.0,
+              "R": 10.0,
+              "I": 1.0,
+              "sumI": 3.0,
+              "valid": 2
+            }
+          },
+          {
+            "stdout": "skip (R error)\n",
+            "vars": {
+              "V": 12.0,
+              "R": 0.0,
+              "sumI": 3.0,
+              "valid": 2
+            }
+          },
+          {
+            "stdout": "",
+            "vars": {
+              "sumI": 3.0,
+              "valid": 2
+            }
+          },
+          {
+            "stdout": "avg=1.500\n",
+            "vars": {
+              "avg": 1.5
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "starterCode": {
+    "7": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for(int k = 0; k < 5; k++){\n    I[k] = ???;\n  }\n// TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 0; k < 5; k++){\n    if(???){\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    }else{\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}\n"
+  },
+  "tasks": {
+    "7": "【演習課題2：配列でオームの法則】\n配列R(5要素)から I配列を計算し、ifでOK/WARN判定しながら一覧表示とOK件数の集計を行う。scanfは使わない。\n",
+    "8": "【演習課題2（解説）】\n未完成コードの「Rの配列サイズ」を正しい値にし、完成版コード（解答例）を確認する。\n"
+  }
+};

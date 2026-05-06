@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Windows + VS Code + C言語（gcc）環境構築 手順書</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #111827;
+      --muted: #6b7280;
+      --card: #f9fafb;
+      --border: #e5e7eb;
+      --accent: #2563eb;
+      --codebg: #0b1020;
+      --codefg: #e5e7eb;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", sans-serif;
+      color: var(--fg);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+    header {
+      padding: 28px 18px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #eff6ff 0%, #ffffff 70%);
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 18px 40px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .card {
+      margin-top: 18px;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    h2 {
+      margin: 22px 0 10px;
+      font-size: 18px;
+    }
+    h3 {
+      margin: 16px 0 8px;
+      font-size: 16px;
+    }
+    ol, ul {
+      margin: 8px 0 8px 1.2em;
+    }
+    li { margin: 6px 0; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.95em;
+    }
+    pre {
+      margin: 10px 0;
+      padding: 12px 14px;
+      overflow: auto;
+      background: var(--codebg);
+      color: var(--codefg);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    pre code { font-size: 0.92em; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+    .note {
+      border-left: 4px solid var(--accent);
+      padding: 10px 12px;
+      background: #ffffff;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    .warn {
+      border-left: 4px solid #f59e0b;
+      padding: 10px 12px;
+      background: #fff7ed;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    .ok {
+      border-left: 4px solid #10b981;
+      padding: 10px 12px;
+      background: #ecfdf5;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 16px 18px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Windows + VS Code + C言語（gcc）環境構築 手順書</h1>
+      <p class="sub">対象：Windows 10 / 11　｜　配布物：<strong>Prog1_Installer.exe</strong>　｜　推奨配置：<strong>C:\Prog1</strong>　｜　更新日：2026/04/20</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h2>この手順で入るもの</h2>
+      <ul>
+        <li>Visual Studio Code（VS Code）</li>
+        <li>VS Code 日本語化（Japanese Language Pack）</li>
+        <li>C言語用拡張（C/C++）</li>
+        <li>MSYS2（開発環境）</li>
+        <li>gcc / gdb / make（C言語のコンパイル・デバッグ・ビルド）</li>
+      </ul>
+      <div class="note">
+        <strong>ポイント：</strong>この手順は <code>Prog1_Installer.exe</code> を実行するだけで一括導入します（インターネット接続が必要です）。
+      </div>
+    </div>
+
+    <h2>準備（最初に1回だけ）</h2>
+    <ol>
+      <li>配布された <code>Prog1_Installer.exe</code> を保存します</li>
+      <li>インターネット接続がある状態で作業を始めます</li>
+    </ol>
+
+    <h2>インストール手順</h2>
+    <ol>
+      <li>
+        <strong>Prog1_Installer.exe を実行</strong><span class="tag">必須</span>
+        <ul>
+          <li>配布された <code>Prog1_Installer.exe</code> をダブルクリックします</li>
+          <li>Windows の確認画面が表示された場合は、<strong>実行</strong> または <strong>はい</strong> を選びます</li>
+        </ul>
+      </li>
+      <li>
+        配布データを自動展開
+        <ul>
+          <li>インストーラーが <strong>C:\Prog1\Prog1_Package</strong> を自動で準備します</li>
+          <li><code>Lecture&amp;CEmu_NoAnswers</code> / <code>Programming1</code> / <code>setup</code> を配置します</li>
+        </ul>
+      </li>
+      <li>
+        セットアップを自動実行
+        <pre><code>C:\Prog1\Prog1_Package\setup\install.ps1 を自動実行
+VS Code / MSYS2 / gcc / 拡張機能 を順に導入</code></pre>
+      </li>
+      <li>
+        実行が完了するまで待つ
+        <div class="warn">
+          <strong>注意：</strong>MSYS2 の更新（pacman）が複数回走ることがあります。途中で少し時間がかかる場合がありますが、そのまま待ってください。
+        </div>
+      </li>
+      <li>
+        <strong>教材が自動で開くことを確認</strong>
+        <div class="ok">
+          <strong>完了の目安：</strong><code>C:\Prog1\Prog1_Package\Lecture&amp;CEmu_NoAnswers\index.html</code> が既定ブラウザで開けばOKです。
+        </div>
+      </li>
+    </ol>
+
+    <h2>動作確認（ビルド＆実行）</h2>
+    <ol>
+      <li><code>C:\Prog1\Prog1_Package\Programming1\Session00</code> フォルダを VS Code で開く</li>
+      <li><code>main.c</code> を開く</li>
+      <li><strong>ビルド：</strong><code>Ctrl + Shift + B</code>（<code>main.exe</code> が作成されます）</li>
+      <li><strong>デバッグ実行：</strong><code>F5</code></li>
+    </ol>
+
+    <h2>よくあるトラブル</h2>
+
+    <h3>1) winget が見つからない / インストールに失敗する</h3>
+    <ul>
+      <li>Microsoft Store の <strong>App Installer</strong> を更新してください（winget が含まれます）。</li>
+    </ul>
+
+    <h3>2) VS Code が日本語にならない</h3>
+    <ul>
+      <li>VS Code を一度完全に終了して起動し直してください。</li>
+      <li>それでも英語のままの場合、次のファイルが存在するか確認してください：<br/>
+        <code>%APPDATA%\Code\User\locale.json</code>（中身：<code>{"locale":"ja"}</code>）
+      </li>
+    </ul>
+
+    <h3>3) C/C++ 拡張が入らない（code コマンドが見つからない）</h3>
+    <ul>
+      <li>一度 VS Code を起動してから、もう一度 <code>Prog1_Installer.exe</code> を実行してください。</li>
+      <li>手動の場合：VS Code の拡張機能から次を検索してインストールします
+        <ul>
+          <li><code>Japanese Language Pack</code>（ID: <code>MS-CEINTL.vscode-language-pack-ja</code>）</li>
+          <li><code>C/C++</code>（ID: <code>ms-vscode.cpptools</code>）</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>4) コンパイルできない（gcc が無い）</h3>
+    <ul>
+      <li>MSYS2 の導入が不完全な可能性があります。もう一度 <code>Prog1_Installer.exe</code> を実行してください。</li>
+      <li>VS Code のタスクは既定で <code>C:\msys64\mingw64\bin\gcc.exe</code> を参照します。</li>
+    </ul>
+
+    <div class="card">
+      <h2>問い合わせの前に</h2>
+      <ul>
+        <li><code>Prog1_Installer.exe</code> は最後まで完了しましたか？</li>
+        <li>Windows の確認画面が出た場合に <strong>実行</strong> / <strong>はい</strong> を選びましたか？</li>
+        <li>インストール完了後に VS Code を再起動しましたか？</li>
+        <li><code>C:\Prog1\Prog1_Package\Programming1\Session00</code> を VS Code で開いていますか？</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    この手順書は Windows 用の <code>Prog1_Installer.exe</code> 配布を前提にしています。配布物の名前や保存先を変える場合は、このページも合わせて更新してください。
+  </footer>
+</body>
+</html>
