@@ -105,6 +105,11 @@
         viewSlides: $('viewSlides'),
         viewQuiz: $('viewQuiz'),
         viewSample: $('viewSample'),
+        sessionLock: $('sessionLock'),
+        lockPass: $('lockPass'),
+        lockSubmit: $('lockSubmit'),
+        lockError: $('lockError'),
+        mainContent: [$('viewSlides'), $('viewSample'), document.querySelector('.toolbar'), document.querySelector('.session-note')],
 
         // Slides
         slideImg: $('slideImg'),
@@ -145,6 +150,8 @@
         isPlaying: false,
         playInterval: null,
         bpMap: {},
+        revealedAnswer: false,
+        unlockedSessions: {},
       };
 
       // Ensure marked is configured to support fenced code blocks and language classes
@@ -161,6 +168,9 @@
       // Pre-sort sessions
       syncSessionTitlesFromMd(DATA.sessions);
       this.sessions = [...DATA.sessions].sort((a, b) => a.no - b.no);
+
+      this.el.lockSubmit.onclick = () => this.tryUnlock();
+      this.el.lockPass.onkeydown = (e) => { if (e.key === 'Enter') this.tryUnlock(); };
 
       this.renderSessionList();
       this.renderHeroSessionSelect();
@@ -259,10 +269,48 @@
       this.state.md.idx = 0;
       this.state.traceIdx = -1;
       this.stopSamplePlay();
+      this.state.revealedAnswer = false;
 
       this.highlightSession();
       this.renderAll();
-      this.setTab('slides');
+      
+      const isLocked = this.isExplainSession(s) && !this.state.unlockedSessions[s.no];
+      if (isLocked) {
+        this.showLockScreen();
+      } else {
+        this.hideLockScreen();
+        this.setTab('slides');
+      }
+    }
+
+    showLockScreen() {
+      if (!this.el.sessionLock) return;
+      const s = this.state.session;
+      const kNo = (s.no === 5 ? 1 : s.no === 8 ? 2 : s.no === 11 ? 3 : s.no === 14 ? 4 : 0);
+
+      this.el.sessionLock.classList.remove('hidden');
+      this.el.sessionLock.innerHTML = `
+        <div class="lock-card">
+          <div class="lock-icon">🔒</div>
+          <h3>課題 ${kNo} の解説・解答</h3>
+          <p>このセッションは解説回です。内容を確認するには「制限エリア（解説ポータル）」へ移動してください。</p>
+          <div style="margin: 30px 0;">
+            <a href="secret/index.html" class="reveal-button" style="text-decoration:none; display:inline-block;">解説ポータルを開く</a>
+          </div>
+          <p class="small" style="color:var(--muted); font-size:0.85rem;">※閲覧には講義で案内されたパスワードが必要です。</p>
+        </div>
+      `;
+      this.el.mainContent.forEach(el => el?.classList?.add('hidden'));
+    }
+
+    hideLockScreen() {
+      if (!this.el.sessionLock) return;
+      this.el.sessionLock.classList.add('hidden');
+      this.el.mainContent.forEach(el => el?.classList?.remove('hidden'));
+    }
+
+    tryUnlock() {
+      // Logic removed as explain sessions now redirect to secret portal
     }
 
     tabLabel(name) {
@@ -870,6 +918,7 @@ async renderMermaid(mdBox) {
       // reset runtime
       this.state.traceIdx = -1;
       // show first
+      this.state.revealedAnswer = false;
       this.showSample();
     }
 
@@ -899,6 +948,28 @@ async renderMermaid(mdBox) {
       });
 
       this.renderSampleTrace(sample);
+
+      // Reveal logic for Answer samples in Explanation sessions
+      const isAnswer = String(sample.title || '').includes('解答例');
+      const shouldHide = this.isExplainSession(this.state.session) && isAnswer;
+
+      if (shouldHide && !this.state.revealedAnswer) {
+        const overlay = document.createElement('div');
+        overlay.className = 'answer-reveal-overlay';
+        overlay.innerHTML = `
+          <div class="reveal-content">
+            <p>このプログラムの解答はスライドに記載されています。<br>自分で考えてから確認しましょう。</p>
+            <button class="reveal-button">解答を表示して動かす</button>
+          </div>
+        `;
+        overlay.querySelector('.reveal-button').onclick = () => {
+          overlay.remove();
+          this.state.revealedAnswer = true;
+        };
+        // Position relative for overlay
+        this.el.sampleCode.style.position = 'relative';
+        this.el.sampleCode.appendChild(overlay);
+      }
     }
 
 	    updateSampleControls(sample, trace) {

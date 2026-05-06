@@ -126,11 +126,8 @@ code {
   font-weight: 700;
 }
 
+
 .status-card {
-  padding: 14px 20px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -188,9 +185,8 @@ code {
 }
 
 .workspace {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
   gap: 24px;
   margin-top: 24px;
 }
@@ -204,7 +200,7 @@ code {
 }
 
 .panel-head {
-  padding: 24px 24px 16px;
+  padding: 16px 20px 12px;
 }
 
 .panel-head--row {
@@ -231,15 +227,15 @@ code {
 }
 
 .panel--sessions,
-.panel--samples,
-.panel--guide {
-  min-height: 400px;
+.panel--sessions,
+.panel--samples {
+  min-height: auto;
 }
 
 .panel--sessions {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  max-height: 600px;
 }
 
 .panel--editor,
@@ -249,21 +245,11 @@ code {
   grid-column: 1 / -1;
 }
 
-.session-list,
 .sample-list,
 .guide-scroll {
   padding: 0 20px 24px;
 }
 
-.session-list {
-  display: grid;
-  gap: 10px;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-}
-
-.session-button,
 .sample-button {
   width: 100%;
   padding: 14px 18px;
@@ -276,13 +262,11 @@ code {
   transition: all 0.2s ease;
 }
 
-.session-button:hover,
 .sample-button:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-.session-button.is-active,
 .sample-button.is-active {
   border-color: var(--accent);
   background: rgba(16, 185, 129, 0.1);
@@ -290,16 +274,30 @@ code {
 }
 
 .sample-select-wrap {
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
+  padding: 12px 20px 16px;
+  background: rgba(16, 185, 129, 0.05);
   border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.select-item {
+  flex: 1;
+  min-width: 280px;
+}
+
+.sample-select-wrap label {
+  white-space: nowrap;
 }
 
 .sample-select-cemu {
-  width: 100%;
-  margin-top: 8px;
-  padding: 12px 14px;
-  border-radius: 12px;
+  max-width: 400px;
+  margin-top: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
   background: #0b1220;
   color: #fff;
   border: 1px solid var(--border);
@@ -342,6 +340,53 @@ code {
   border: 1px solid var(--border);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.02);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  padding: 0 20px 20px;
+}
+
+.feature-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: all 0.2s;
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.feature-badge {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.feature-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.empty-notice {
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .guide-section {
@@ -470,16 +515,19 @@ code {
 }
 
   <style>
-    .nav-back {
-      position: absolute; top: 20px; left: 20px; z-index: 100;
-      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+    .cemu-close-btn {
+      position: absolute; top: 40px; right: 40px; z-index: 9999;
+      color: var(--muted); text-decoration: none; font-size: 0.95rem;
       display: flex; align-items: center; gap: 8px;
-      padding: 8px 16px; background: rgba(255,255,255,0.05); border-radius: 100px;
-      backdrop-filter: blur(10px); border: 1px solid var(--border);
-      transition: all 0.3s;
+      padding: 10px 24px; background: rgba(255,255,255,0.05); border-radius: 12px;
+      backdrop-filter: blur(20px); border: 1px solid var(--border);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      pointer-events: auto;
     }
-    .nav-back:hover { color: #fff; background: rgba(255,255,255,0.1); border-color: var(--accent-blue); }
+    .cemu-close-btn:hover { color: #fca5a5; background: rgba(239, 68, 68, 0.1); border-color: #ef4444; transform: translateY(-2px); }
+    .cemu-close-btn svg { width: 18px; height: 18px; }
   </style>
 </head>
 <body>
@@ -487,7 +535,10 @@ code {
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
   </div>
-  <a href="../index.html" class="nav-back">← Back to Portal</a>
+  <a href="../index.html" class="cemu-close-btn">
+    <span>閉じる</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+  </a>
   <div class="app-shell">
 	    <header class="hero">
 	      <div class="hero-copy">
@@ -500,13 +551,18 @@ code {
     <main class="workspace">
 	      <aside id="sessionsPanel" class="panel panel--sessions">
         <div class="panel-head">
-	          <h2>講義・サンプル</h2>
-          <p>回とプログラムを選択</p>
+	          <h2>講義 ＞ サンプルコードを選択</h2>
+          <p>まず講義回を選び、次に実行するサンプルを選択してください。</p>
         </div>
-	        <nav id="sessionList" class="session-list" aria-label="講義一覧"></nav>
         <div class="sample-select-wrap">
-          <label class="status-label">サンプル選択</label>
-          <select id="sampleSelect" class="sample-select-cemu"></select>
+          <div class="select-item">
+            <label class="status-label">ステップ 1: 講義を選択</label>
+            <select id="sessionSelect" class="sample-select-cemu"></select>
+          </div>
+          <div class="select-item">
+            <label class="status-label">ステップ 2: サンプルコードを選択</label>
+            <select id="sampleSelect" class="sample-select-cemu"></select>
+          </div>
         </div>
       </aside>
 
@@ -3176,7 +3232,7 @@ return main();
     saveButton: document.getElementById("saveButton"),
     sessionsPanel: document.getElementById("sessionsPanel"),
     samplesPanel: document.getElementById("samplesPanel"),
-    sessionList: document.getElementById("sessionList"),
+    sessionSelect: document.getElementById("sessionSelect"),
     sampleSelect: document.getElementById("sampleSelect"),
     samplePanelTitle: document.getElementById("samplePanelTitle"),
     samplePanelDesc: document.getElementById("samplePanelDesc"),
@@ -3467,16 +3523,16 @@ return main();
 
   const renderSessions = () => {
     const sessions = getSessions();
-    el.sessionList.innerHTML = sessions
-      .map(
-        (session) => `
-          <button class="session-button ${session.sessionNo === state.currentSessionNo ? "is-active" : ""}" data-session="${session.sessionNo}">
-            <strong>第${session.sessionNo}回</strong><br>
-            <span>${session.title}</span>
-          </button>
-        `,
-      )
-      .join("");
+    if (!el.sessionSelect) return;
+
+    el.sessionSelect.innerHTML = "";
+    sessions.forEach((session) => {
+      const opt = document.createElement("option");
+      opt.value = session.sessionNo;
+      opt.textContent = `第${session.sessionNo}回：${session.title}`;
+      if (session.sessionNo === state.currentSessionNo) opt.selected = true;
+      el.sessionSelect.appendChild(opt);
+    });
   };
 
   const renderSamples = () => {
@@ -3502,13 +3558,20 @@ return main();
     el.samplePanelTitle.textContent = "使用機能・関数";
     el.samplePanelDesc.textContent = sample.title;
 
+    if (!sample.features || sample.features.length === 0) {
+      el.functionList.innerHTML = `<div class="empty-notice">このプログラムで使われている主な機能の解説はありません。</div>`;
+      return;
+    }
+
     el.functionList.innerHTML = `
-      <h3>使用関数・機能</h3>
-      ${
-        sample.features.length
-          ? `<ul>${sample.features.map((name) => `<li><strong>${name}</strong>: ${featureDocs[name] || "このサンプルで使われる文法です。"}</li>`).join("")}</ul>`
-          : "<p>このサンプルでは補助的な関数情報はありません。</p>"
-      }
+      <div class="feature-grid">
+        ${sample.features.map((name) => `
+          <div class="feature-item">
+            <span class="feature-badge">${name}</span>
+            <p class="feature-desc">${featureDocs[name] || "このサンプルで使われる文法・関数です。"}</p>
+          </div>
+        `).join("")}
+      </div>
     `;
   };
 
@@ -3620,8 +3683,11 @@ return main();
     state.currentSessionNo = sessionNo;
     const session = getCurrentSession();
     if (!session) return;
-    state.currentSampleId = sampleId || state.currentSampleId;
-    if (!session.samples.some((sample) => sample.id === state.currentSampleId)) {
+
+    if (sampleId) {
+      state.currentSampleId = sampleId;
+    } else {
+      // 講義切り替え時は常に最初のサンプルを選択
       state.currentSampleId = session.samples[0]?.id || null;
     }
     renderSessions();
@@ -3724,10 +3790,9 @@ return main();
   };
 
   const bindEvents = () => {
-    el.sessionList.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-session]");
-      if (!button) return;
-      applySampleSelection(Number(button.dataset.session));
+    el.sessionSelect.addEventListener("change", () => {
+      applySampleSelection(Number(el.sessionSelect.value));
+      resetCurrentSample();
     });
 
     el.sampleSelect.addEventListener("change", () => {
@@ -3735,6 +3800,7 @@ return main();
       renderGuide();
       renderEditor();
       renderDiagnostics();
+      resetCurrentSample();
       schedulePersist();
     });
 
