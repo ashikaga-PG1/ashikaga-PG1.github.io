@@ -515,16 +515,19 @@ code {
 }
 
   <style>
-    .nav-back {
-      position: absolute; top: 20px; left: 20px; z-index: 100;
-      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+    .cemu-close-btn {
+      position: absolute; top: 40px; right: 40px; z-index: 9999;
+      color: var(--muted); text-decoration: none; font-size: 0.95rem;
       display: flex; align-items: center; gap: 8px;
-      padding: 8px 16px; background: rgba(255,255,255,0.05); border-radius: 100px;
-      backdrop-filter: blur(10px); border: 1px solid var(--border);
-      transition: all 0.3s;
+      padding: 10px 24px; background: rgba(255,255,255,0.05); border-radius: 12px;
+      backdrop-filter: blur(20px); border: 1px solid var(--border);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      pointer-events: auto;
     }
-    .nav-back:hover { color: #fff; background: rgba(255,255,255,0.1); border-color: var(--accent-blue); }
+    .cemu-close-btn:hover { color: #fca5a5; background: rgba(239, 68, 68, 0.1); border-color: #ef4444; transform: translateY(-2px); }
+    .cemu-close-btn svg { width: 18px; height: 18px; }
   </style>
 </head>
 <body>
@@ -532,7 +535,10 @@ code {
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
   </div>
-  <a href="../index.html" class="nav-back">← Back to Portal</a>
+  <a href="../index.html" class="cemu-close-btn">
+    <span>閉じる</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+  </a>
   <div class="app-shell">
 	    <header class="hero">
 	      <div class="hero-copy">
@@ -3677,8 +3683,11 @@ return main();
     state.currentSessionNo = sessionNo;
     const session = getCurrentSession();
     if (!session) return;
-    state.currentSampleId = sampleId || state.currentSampleId;
-    if (!session.samples.some((sample) => sample.id === state.currentSampleId)) {
+
+    if (sampleId) {
+      state.currentSampleId = sampleId;
+    } else {
+      // 講義切り替え時は常に最初のサンプルを選択
       state.currentSampleId = session.samples[0]?.id || null;
     }
     renderSessions();
