@@ -189,7 +189,7 @@ code {
 
 .workspace {
   display: grid;
-  grid-template-columns: 320px 380px 1fr;
+  grid-template-columns: 320px 1fr;
   align-items: start;
   gap: 24px;
   margin-top: 24px;
@@ -287,6 +287,31 @@ code {
   border-color: var(--accent);
   background: rgba(16, 185, 129, 0.1);
   box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+}
+
+.sample-select-wrap {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid var(--border);
+}
+
+.sample-select-cemu {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #0b1220;
+  color: #fff;
+  border: 1px solid var(--border);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sample-select-cemu:hover {
+  border-color: var(--accent);
 }
 
 .badge {
@@ -475,30 +500,24 @@ code {
     <main class="workspace">
 	      <aside id="sessionsPanel" class="panel panel--sessions">
         <div class="panel-head">
-	          <h2>講義一覧</h2>
-          <p>第1回から第15回まで</p>
+	          <h2>講義・サンプル</h2>
+          <p>回とプログラムを選択</p>
         </div>
 	        <nav id="sessionList" class="session-list" aria-label="講義一覧"></nav>
+        <div class="sample-select-wrap">
+          <label class="status-label">サンプル選択</label>
+          <select id="sampleSelect" class="sample-select-cemu"></select>
+        </div>
       </aside>
 
 	      <section id="samplesPanel" class="panel panel--samples">
         <div class="panel-head">
-          <h2 id="samplePanelTitle">サンプル一覧</h2>
-          <p id="samplePanelDesc">読み込み中</p>
+          <h2 id="samplePanelTitle">使用機能・関数</h2>
+          <p id="samplePanelDesc">このコードの主なポイント</p>
         </div>
-        <div id="sampleList" class="sample-list"></div>
+        <div id="functionList" class="guide-section"></div>
       </section>
 
-      <section class="panel panel--guide">
-        <div class="panel-head">
-          <h2 id="guideTitle">説明・ヒント</h2>
-          <p id="guideSubtitle">読み込み中</p>
-        </div>
-        <div class="guide-scroll">
-          <div id="sampleMeta" class="meta-grid"></div>
-          <div id="functionList" class="guide-section"></div>
-        </div>
-      </section>
 
 	      <section class="panel panel--editor">
 	        <div class="panel-head panel-head--row">
@@ -3158,12 +3177,9 @@ return main();
     sessionsPanel: document.getElementById("sessionsPanel"),
     samplesPanel: document.getElementById("samplesPanel"),
     sessionList: document.getElementById("sessionList"),
-    sampleList: document.getElementById("sampleList"),
+    sampleSelect: document.getElementById("sampleSelect"),
     samplePanelTitle: document.getElementById("samplePanelTitle"),
     samplePanelDesc: document.getElementById("samplePanelDesc"),
-    guideTitle: document.getElementById("guideTitle"),
-    guideSubtitle: document.getElementById("guideSubtitle"),
-    sampleMeta: document.getElementById("sampleMeta"),
     functionList: document.getElementById("functionList"),
     editorTitle: document.getElementById("editorTitle"),
     editorSubtitle: document.getElementById("editorSubtitle"),
@@ -3465,19 +3481,16 @@ return main();
 
   const renderSamples = () => {
     const session = getCurrentSession();
-    if (!session) return;
-    el.samplePanelTitle.textContent = `サンプル一覧: 第${session.sessionNo}回`;
-    el.samplePanelDesc.textContent = session.title;
-    el.sampleList.innerHTML = session.samples
-      .map(
-        (sample) => `
-          <button class="sample-button ${sample.id === state.currentSampleId ? "is-active" : ""}" data-sample="${sample.id}">
-            <span class="sample-title">${sample.title}</span>
-            <span class="sample-meta">${badgeHtml(sample)} ${sample.features.map((name) => `<span class="badge">${name}</span>`).join(" ")}</span>
-          </button>
-        `,
-      )
-      .join("");
+    if (!session || !el.sampleSelect) return;
+
+    el.sampleSelect.innerHTML = "";
+    session.samples.forEach((sample) => {
+      const opt = document.createElement("option");
+      opt.value = sample.id;
+      opt.textContent = sample.title;
+      if (sample.id === state.currentSampleId) opt.selected = true;
+      el.sampleSelect.appendChild(opt);
+    });
     syncSessionPanelHeight();
   };
 
@@ -3486,27 +3499,8 @@ return main();
     const sample = getCurrentSample();
     if (!session || !sample) return;
 
-    el.guideTitle.textContent = sample.title;
-    el.guideSubtitle.textContent = session.description || session.title;
-
-    el.sampleMeta.innerHTML = `
-      <article class="meta-card">
-        <span class="meta-label">回</span>
-        <strong>第${session.sessionNo}回</strong>
-      </article>
-      <article class="meta-card">
-        <span class="meta-label">タイトル</span>
-        <strong>${sample.title}</strong>
-      </article>
-      <article class="meta-card">
-        <span class="meta-label">モード</span>
-        <strong>${modeLabel(sample.mode)}</strong>
-      </article>
-      <article class="meta-card">
-        <span class="meta-label">関数数</span>
-        <strong>${sample.features.length}</strong>
-      </article>
-    `;
+    el.samplePanelTitle.textContent = "使用機能・関数";
+    el.samplePanelDesc.textContent = sample.title;
 
     el.functionList.innerHTML = `
       <h3>使用関数・機能</h3>
@@ -3736,11 +3730,8 @@ return main();
       applySampleSelection(Number(button.dataset.session));
     });
 
-    el.sampleList.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-sample]");
-      if (!button) return;
-      state.currentSampleId = button.dataset.sample;
-      renderSamples();
+    el.sampleSelect.addEventListener("change", () => {
+      state.currentSampleId = el.sampleSelect.value;
       renderGuide();
       renderEditor();
       renderDiagnostics();
