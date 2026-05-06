@@ -70,10 +70,7 @@ code {
 }
 
 .hero {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 40px 50px;
+  padding: 60px 50px;
   border-radius: 32px;
   color: #fff;
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
@@ -81,10 +78,12 @@ code {
   backdrop-filter: blur(20px);
   box-shadow: var(--shadow);
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .hero-copy {
-  max-width: 800px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .eyebrow {
@@ -471,17 +470,6 @@ code {
 	        <h1>C Learning Emulator</h1>
 	        <p id="appSubtitle" class="hero-text">第1回〜第15回のサンプルコードを、ブラウザだけで練習するための独立学習環境です。</p>
       </div>
-	      <div class="hero-actions">
-	        <div class="status-card">
-	          <span class="status-label">保存状態</span>
-	          <strong id="saveStatus">読込中</strong>
-	        </div>
-		        <div class="status-card">
-		          <span class="status-label">実行モード</span>
-		          <strong id="modeStatus">-</strong>
-		        </div>
-		        <a class="action-button hero-link" href="https://github.com/tana1980/Prog1_Package_master/blob/master/CEmu/help.html" target="_blank" rel="noopener">ヘルプ</a>
-		      </div>
 		    </header>
 
     <main class="workspace">
@@ -3163,8 +3151,6 @@ return main();
 
   const el = {
     appSubtitle: document.getElementById("appSubtitle"),
-    saveStatus: document.getElementById("saveStatus"),
-    modeStatus: document.getElementById("modeStatus"),
     checkButton: document.getElementById("checkButton"),
     runButton: document.getElementById("runButton"),
     resetButton: document.getElementById("resetButton"),
@@ -3502,8 +3488,6 @@ return main();
 
     el.guideTitle.textContent = sample.title;
     el.guideSubtitle.textContent = session.description || session.title;
-    el.appSubtitle.textContent = `${session.title} の ${sample.title} を開いています。`;
-    el.modeStatus.textContent = `${modeLabel(sample.mode)} / file:// 対応`;
 
     el.sampleMeta.innerHTML = `
       <article class="meta-card">
@@ -3816,7 +3800,6 @@ return main();
   } catch (error) {
     el.runtimeOutput.textContent = `起動に失敗しました:\n${error instanceof Error ? error.message : String(error)}`;
     el.runSummary.textContent = "起動失敗";
-    el.saveStatus.textContent = "起動失敗";
   }
 })();
 
