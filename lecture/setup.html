@@ -358,6 +358,31 @@
             </div>
         </section>
 
+        <!-- 6. 動作確認 -->
+        <section class="summary-block">
+            <h2>6. 動作確認</h2>
+            <p>すべてが正しく設定されたか、以下のコードをコピーして実行してみましょう。</p>
+            
+            <div class="point-box" style="background: rgba(15, 23, 42, 0.4); border-color: var(--accent-blue);">
+                <div class="point-title" style="color: var(--accent-blue);">📄 verification.c</div>
+                <div class="code-snippet">
+                    <span style="color: #f472b6;">#include</span> &lt;stdio.h&gt;<br><br>
+                    <span style="color: #f472b6;">int</span> main(<span style="color: #f472b6;">void</span>) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;printf(<span style="color: var(--accent-cyan)">"Hello, C Programming!\n"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f472b6;">return</span> 0;<br>
+                    }
+                </div>
+            </div>
+
+            <h3>実行手順の再確認</h3>
+            <ol style="font-size:0.9rem; color:var(--text-muted); padding-left:20px;">
+                <li>VSCodeで新しいファイルを作り、<code>verification.c</code> という名前で保存する。</li>
+                <li>ターミナルを開き、<code>gcc verification.c -o test.exe</code> と打つ。</li>
+                <li>エラーが出なければ、<code>./test.exe</code> と打って実行する。</li>
+                <li>画面に <strong>Hello, C Programming!</strong> と表示されれば成功です！</li>
+            </ol>
+        </section>
+
         <footer style="text-align:center; padding-top:40px; color:var(--text-muted); font-size:0.8rem; border-top:1px solid var(--card-border);">
             <p>Programming 1 Setup Guide &copy; 2026</p>
         </footer>
