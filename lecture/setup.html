@@ -239,25 +239,48 @@
         <!-- 2. パスの通し方 -->
         <section class="summary-block">
             <h2>2. パスの設定（環境変数）</h2>
-            <p>VSCodeからGCCコンパイラを使えるように設定します。これをしないと「gccが見つかりません」等のエラーが出ます。</p>
+            <p>VSCodeからGCCコンパイラを使えるように設定します。自分がインストールした方法に合わせて、追加する「パス」を選んでください。</p>
             
+            <div class="grid">
+                <div class="download-card">
+                    <h3>A. Code::Blocks同梱版</h3>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">「mingwが入っているもの」をインストールした人</p>
+                    <div class="code-snippet" style="color:var(--accent-cyan); font-size:0.8rem;">
+                        C:\Program Files\CodeBlocks\MinGW\bin
+                    </div>
+                </div>
+                <div class="download-card">
+                    <h3>B. MSYS2 (pacman)</h3>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">MSYS2を導入してコマンドでgccを入れた人</p>
+                    <div class="code-snippet" style="color:var(--accent-cyan); font-size:0.8rem;">
+                        C:\msys64\mingw64\bin<br>
+                        <span style="color:var(--text-muted); font-size:0.7rem;">※ または C:\msys64\ucrt64\bin</span>
+                    </div>
+                </div>
+            </div>
+
             <ul class="step-list">
                 <li class="step-item">
                     <div class="step-number">1</div>
-                    <strong>インストール先を確認</strong><br>
-                    通常は <code>C:\Program Files\CodeBlocks\MinGW\bin</code> にあります。このアドレスをコピーしておきます。
+                    <strong>環境変数の設定を開く</strong><br>
+                    Windowsキーを押し、検索窓に「環境変数」と入力。「システム環境変数の編集」をクリックします。
                 </li>
                 <li class="step-item">
                     <div class="step-number">2</div>
-                    <strong>環境変数の設定を開く</strong><br>
-                    Windowsメニューで「環境変数」と検索し、「システム環境変数の編集」を開きます。
+                    <strong>Pathを編集</strong><br>
+                    「環境変数」ボタンを押し、システム環境変数の「Path」を選択して「編集」をクリックします。
                 </li>
                 <li class="step-item">
                     <div class="step-number">3</div>
-                    <strong>Pathを編集</strong><br>
-                    「環境変数」ボタンを押し、システム環境変数の「Path」を選んで「編集」をクリック。「新規」で先ほどのアドレスを貼り付けます。
+                    <strong>新規追加</strong><br>
+                    「新規」を押し、上記 A または B のパスを貼り付けて「OK」で閉じます。
                 </li>
             </ul>
+
+            <div class="point-box" style="margin-top:20px;">
+                <div class="point-title">💡 設定後の注意</div>
+                <p style="font-size:0.9rem;">環境変数を設定した後は、<strong>VSCodeを一度完全に閉じて再起動</strong>してください。再起動しないと設定が反映されません。</p>
+            </div>
         </section>
 
         <!-- 3. Windowsの設定 -->
