@@ -105,6 +105,11 @@
         viewSlides: $('viewSlides'),
         viewQuiz: $('viewQuiz'),
         viewSample: $('viewSample'),
+        sessionLock: $('sessionLock'),
+        lockPass: $('lockPass'),
+        lockSubmit: $('lockSubmit'),
+        lockError: $('lockError'),
+        mainContent: [$('viewSlides'), $('viewSample'), document.querySelector('.toolbar'), document.querySelector('.session-note')],
 
         // Slides
         slideImg: $('slideImg'),
@@ -146,6 +151,7 @@
         playInterval: null,
         bpMap: {},
         revealedAnswer: false,
+        unlockedSessions: {},
       };
 
       // Ensure marked is configured to support fenced code blocks and language classes
@@ -162,6 +168,9 @@
       // Pre-sort sessions
       syncSessionTitlesFromMd(DATA.sessions);
       this.sessions = [...DATA.sessions].sort((a, b) => a.no - b.no);
+
+      this.el.lockSubmit.onclick = () => this.tryUnlock();
+      this.el.lockPass.onkeydown = (e) => { if (e.key === 'Enter') this.tryUnlock(); };
 
       this.renderSessionList();
       this.renderHeroSessionSelect();
@@ -260,10 +269,46 @@
       this.state.md.idx = 0;
       this.state.traceIdx = -1;
       this.stopSamplePlay();
+      this.state.revealedAnswer = false;
 
       this.highlightSession();
       this.renderAll();
-      this.setTab('slides');
+      
+      const isLocked = this.isExplainSession(s) && !this.state.unlockedSessions[s.no];
+      if (isLocked) {
+        this.showLockScreen();
+      } else {
+        this.hideLockScreen();
+        this.setTab('slides');
+      }
+    }
+
+    showLockScreen() {
+      if (!this.el.sessionLock) return;
+      this.el.sessionLock.classList.remove('hidden');
+      this.el.lockPass.value = '';
+      this.el.lockError.textContent = '';
+      this.el.mainContent.forEach(el => el?.classList?.add('hidden'));
+    }
+
+    hideLockScreen() {
+      if (!this.el.sessionLock) return;
+      this.el.sessionLock.classList.add('hidden');
+      this.el.mainContent.forEach(el => el?.classList?.remove('hidden'));
+    }
+
+    tryUnlock() {
+      const pass = this.el.lockPass.value;
+      // Fixed password for now, can be changed later
+      if (pass === 'pg1') {
+        const s = this.state.session;
+        this.state.unlockedSessions[s.no] = true;
+        this.hideLockScreen();
+        this.setTab('slides');
+        this.renderAll();
+      } else {
+        this.el.lockError.textContent = 'パスワードが違います';
+      }
     }
 
     tabLabel(name) {

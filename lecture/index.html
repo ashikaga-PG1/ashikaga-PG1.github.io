@@ -470,6 +470,18 @@
             <button id="tabSample" class="tab">サンプル実験</button>
           </div>
         </div>
+        <div id="sessionLock" class="session-lock hidden">
+          <div class="lock-card">
+            <div class="lock-icon">🔒</div>
+            <h3>この回は閲覧制限されています</h3>
+            <p>授業で案内されたパスワードを入力してください。</p>
+            <div class="lock-input-group">
+              <input type="password" id="lockPass" placeholder="Password..." autocomplete="off">
+              <button id="lockSubmit">解除</button>
+            </div>
+            <div id="lockError" class="lock-error"></div>
+          </div>
+        </div>
 
         <section id="viewSlides" class="view">
           <div class="subhead">
