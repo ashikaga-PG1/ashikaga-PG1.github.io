@@ -133,7 +133,7 @@ a{color:var(--link);}
    Generic Containers
    ============================= */
 .view{margin-top:12px;}
-.hidden{display:none;}
+.hidden{display:none !important;}
 .subhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
 .slidewrap{
   margin-top:10px;
