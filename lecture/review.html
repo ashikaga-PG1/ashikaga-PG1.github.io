@@ -262,6 +262,36 @@
             </div>
         </section>
 
+        <!-- 6. 総合サンプル -->
+        <section class="summary-block">
+            <h2>6. 総合サンプル（1〜5の組み合わせ）</h2>
+            <p>1から10まで数え上げ、それぞれが偶数か奇数かを判定して表示するプログラムです。</p>
+            <div class="code-snippet">
+                <span class="kw">#include</span> &lt;stdio.h&gt;<br><br>
+                <span class="kw">int</span> main(<span class="kw">void</span>) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for</span> (<span class="kw">int</span> i = 1; i <= 10; i++) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if</span> (i % 2 == 0) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span style="color:var(--accent-cyan)">"%d は偶数です\n"</span>, i);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <span class="kw">else</span> {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<span style="color:var(--accent-cyan)">"%d は奇数です\n"</span>, i);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> 0;<br>
+                }
+            </div>
+            <div class="point-box" style="background: rgba(34, 211, 238, 0.05); border-color: rgba(34, 211, 238, 0.3);">
+                <div class="point-title" style="color: var(--accent-cyan);">💡 学習のポイント</div>
+                <ul style="font-size:0.9rem; padding-left:20px;">
+                    <li><code>i % 2 == 0</code> : 2で割った余りが0 ➔ 偶数の判定</li>
+                    <li><code>for</code> ➔ <code>if/else</code> の入れ子構造（ネスト）を理解しましょう。</li>
+                </ul>
+            </div>
+        </section>
+
+        <div style="text-align:center; margin-bottom:40px; font-size:0.85rem; color:var(--text-muted);">
+            <p>※ 環境により、改行記号などのバックスラッシュ（\）が円記号（¥）として表示されることがありますが、プログラム上の意味は同じです。</p>
+        </div>
+
         <footer style="text-align:center; padding-top:40px; color:var(--text-muted); font-size:0.8rem; border-top:1px solid var(--card-border);">
             <p>Programming 1 Knowledge Reference (S01-S04) &copy; 2026</p>
         </footer>
