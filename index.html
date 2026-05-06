@@ -76,7 +76,7 @@
         </section>
 
         <nav class="entry-grid">
-            <!-- 1. Lecture Tool -->
+            <!-- 1. Assignment & Lecture -->
             <a href="lecture/index.html" class="portal-card lecture-card">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -84,13 +84,42 @@
                     </svg>
                 </div>
                 <div class="card-content">
-                    <h2>Lecture Tool</h2>
-                    <p>講義スライドやサンプルコードの閲覧。課題の確認もこちらから行います。</p>
-                    <span class="action-label">資料を閲覧する &rarr;</span>
+                    <h2>Assignment & Lecture</h2>
+                    <p>講義スライド、サンプルコード、および課題の確認・解答解説はこちらから。</p>
+                    <span class="action-label">課題と資料を確認する &rarr;</span>
                 </div>
             </a>
 
-            <!-- 2. Circuit Quest -->
+            <!-- 2. Environment & Review -->
+            <a href="lecture/setup.html" class="portal-card review-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>Environment & Review</h2>
+                    <p>環境構築手順（VSCode/GCC）と、基本構文・制御構造の要点まとめ。</p>
+                    <span class="action-label">環境と要点を確認する &rarr;</span>
+                </div>
+            </a>
+
+            <!-- 3. C Emulator -->
+            <a href="emulator/index.html" class="portal-card emulator-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>C Emulator</h2>
+                    <p>ブラウザ上でC言語を即座に実行できる練習環境。ちょっとした動作確認に。</p>
+                    <span class="action-label">エミュレータを起動する &rarr;</span>
+                </div>
+            </a>
+
+            <!-- 4. Circuit Quest -->
             <a href="game/index.html" class="portal-card game-card">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -99,36 +128,8 @@
                 </div>
                 <div class="card-content">
                     <h2>Circuit Quest</h2>
-                    <p>電気回路のデバッグをテーマにしたC言語学習ゲーム。各チャプターをクリアしましょう。</p>
+                    <p>電気回路のデバッグをテーマにした学習ゲーム。遊びながら論理力を鍛えます。</p>
                     <span class="action-label">クエストを開始する &rarr;</span>
-                </div>
-            </a>
-
-            <!-- 3. Answer Area (Secret) -->
-            <a href="lecture/secret/index.html" class="portal-card secret-card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="card-content">
-                    <h2>Answer Area</h2>
-                    <p>課題の解説・解答例を掲載している制限エリアです。講義内パスワードが必要です。</p>
-                    <span class="action-label">制限エリアに入る &rarr;</span>
-                </div>
-            </a>
-
-            <!-- 4. Review -->
-            <a href="lecture/setup.html" class="portal-card review-card">
-                <div class="card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.082.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.082.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="card-content">
-                    <h2>Knowledge Review</h2>
-                    <p>開発環境の構築手順（VSCode/GCC）と、プログラミングの重要ポイントをまとめて復習できます。</p>
-                    <span class="action-label">環境構築・要点を確認する &rarr;</span>
                 </div>
             </a>
         </nav>

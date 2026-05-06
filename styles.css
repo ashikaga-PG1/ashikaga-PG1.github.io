@@ -115,7 +115,7 @@ body {
 /* Entry Grid */
 .entry-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
     margin-bottom: 60px;
 }
@@ -252,6 +252,22 @@ body {
 }
 .review-card:hover .action-label {
     color: #a78bfa;
+}
+
+.emulator-card:hover {
+    border-color: rgba(31, 107, 82, 0.4);
+    box-shadow: 0 30px 60px rgba(31, 107, 82, 0.15);
+}
+.emulator-card .card-icon {
+    background: rgba(31, 107, 82, 0.1);
+    color: #1f6b52;
+}
+.emulator-card:hover .card-icon {
+    background: #1f6b52;
+    color: white;
+}
+.emulator-card:hover .action-label {
+    color: #34d399;
 }
 
 /* Responsive Adjustments */
