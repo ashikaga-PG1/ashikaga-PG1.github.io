@@ -285,9 +285,21 @@
 
     showLockScreen() {
       if (!this.el.sessionLock) return;
+      const s = this.state.session;
+      const kNo = (s.no === 5 ? 1 : s.no === 8 ? 2 : s.no === 11 ? 3 : s.no === 14 ? 4 : 0);
+
       this.el.sessionLock.classList.remove('hidden');
-      this.el.lockPass.value = '';
-      this.el.lockError.textContent = '';
+      this.el.sessionLock.innerHTML = `
+        <div class="lock-card">
+          <div class="lock-icon">🔒</div>
+          <h3>課題 ${kNo} の解説・解答</h3>
+          <p>このセッションは解説回です。内容を確認するには「制限エリア（解説ポータル）」へ移動してください。</p>
+          <div style="margin: 30px 0;">
+            <a href="secret/index.html" class="reveal-button" style="text-decoration:none; display:inline-block;">解説ポータルを開く</a>
+          </div>
+          <p class="small" style="color:var(--muted); font-size:0.85rem;">※閲覧には講義で案内されたパスワードが必要です。</p>
+        </div>
+      `;
       this.el.mainContent.forEach(el => el?.classList?.add('hidden'));
     }
 
@@ -298,25 +310,7 @@
     }
 
     tryUnlock() {
-      const pass = this.el.lockPass.value;
-      const s = this.state.session;
-      if (!s) return;
-
-      const passMap = {
-        5: 'aB7xR9m2',
-        8: 'kP4tW5nQ',
-        11: 'vE2sY8zG',
-        14: 'hJ9cM6dL'
-      };
-
-      if (pass === passMap[s.no]) {
-        this.state.unlockedSessions[s.no] = true;
-        this.hideLockScreen();
-        this.setTab('slides');
-        this.renderAll();
-      } else {
-        this.el.lockError.textContent = 'パスワードが違います';
-      }
+      // Logic removed as explain sessions now redirect to secret portal
     }
 
     tabLabel(name) {
