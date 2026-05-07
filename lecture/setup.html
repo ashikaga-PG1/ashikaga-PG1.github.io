@@ -346,60 +346,111 @@
             </div>
         </section>
 
-        <!-- 5. VSCodeの使い方 -->
+        <!-- 5. ファイルの配置 -->
         <section class="summary-block">
-            <h2>5. VSCodeの基本操作</h2>
-            <p>プログラミングを開始する際の基本的な流れです。</p>
-            
-            <div class="grid">
-                <div>
-                    <h3>1. フォルダを開く</h3>
-                    <p style="font-size:0.9rem; color:var(--text-muted)">「ファイル ➔ フォルダを開く」で、自分の作業用フォルダを必ず指定します。1ファイルだけで作業せず、フォルダ単位で管理するのが基本です。</p>
-                </div>
-                <div>
-                    <h3>2. ファイル作成と保存</h3>
-                    <p style="font-size:0.9rem; color:var(--text-muted)">新しいファイルを作成し、必ず <code>main.c</code> のように <strong>.c</strong> を付けて保存します。保存は <code>Ctrl + S</code> です。</p>
-                </div>
+            <h2>5. ファイルの配置</h2>
+            <p>以下のフォルダ構成になるように、ファイルを <code>C:\Prog1_Package_regular</code> に配置してください。</p>
+
+            <div class="code-snippet" style="color: var(--accent-cyan); line-height: 2.2;">
+                <span style="color: var(--accent-gold);">C:\Prog1_Package_regular\</span><br>
+                ├── <span style="color: var(--text-muted);">.vscode\</span><br>
+                │&nbsp;&nbsp;&nbsp;└── <a href="setup_files/.vscode/c_cpp_properties.json" download style="color:#60a5fa; text-decoration:none;">c_cpp_properties.json</a> <span style="color:var(--text-muted); font-size:0.75rem;">← IntelliSense 設定</span><br>
+                ├── <a href="setup_files/Prog1.code-workspace" download style="color:#60a5fa; text-decoration:none;">Prog1.code-workspace</a> <span style="color:var(--text-muted); font-size:0.75rem;">← ダブルクリックでVSCodeが開く</span><br>
+                └── <a href="setup_files/sample.c" download style="color:#60a5fa; text-decoration:none;">sample.c</a> <span style="color:var(--text-muted); font-size:0.75rem;">← 動作確認用サンプル</span>
             </div>
 
-            <h3>3. ターミナルで実行</h3>
-            <p style="font-size:0.9rem;">VSCode下部のターミナル（表示されない場合は <code>Ctrl + Shift + @</code>）で以下のコマンドを打ちます。</p>
-            <div class="code-snippet" style="color: #60a5fa;">
-                # コンパイル（ビルド）<br>
-                gcc main.c -o app.exe<br><br>
-                # 実行<br>
-                ./app.exe
+            <div class="point-box" style="margin-top: 20px;">
+                <div class="point-title">💡 配置手順</div>
+                <p style="font-size:0.9rem;">
+                    1. <code>C:\Prog1_Package_regular</code> フォルダを作成します<br>
+                    2. 上のリンクを<strong>右クリック →「名前を付けてリンク先を保存」</strong>でダウンロードします<br>
+                    3. <code>.vscode</code> フォルダがなければ作成し、<code>c_cpp_properties.json</code> を入れます<br>
+                    4. <code>Prog1.code-workspace</code> と <code>sample.c</code> はフォルダ直下に置きます
+                </p>
             </div>
         </section>
 
-        <!-- 6. 動作確認 -->
+        <!-- 6. VSCodeの使い方 -->
         <section class="summary-block">
-            <h2>6. 動作確認</h2>
-            <p>すべてが正しく設定されたか、以下のコードをコピーして実行してみましょう。</p>
-            
+            <h2>6. VSCodeの基本操作</h2>
+            <p>プログラミングを開始する際の基本的な流れです。</p>
+
+            <ul class="step-list">
+                <li class="step-item">
+                    <div class="step-number">1</div>
+                    <strong>ワークスペースを開く</strong><br>
+                    <code>C:\Prog1_Package_regular</code> フォルダにある <strong>Prog1.code-workspace</strong> をダブルクリックします。VSCode が起動し、作業フォルダが自動で開きます。
+                </li>
+                <li class="step-item">
+                    <div class="step-number">2</div>
+                    <strong>ファイルを作成して保存</strong><br>
+                    エクスプローラーの空白部分を右クリック →「新しいファイル」で、<code>学籍番号_日付.c</code>（例：<code>12345_0507.c</code>）という名前で保存します。
+                </li>
+                <li class="step-item">
+                    <div class="step-number">3</div>
+                    <strong>▶ ボタンで実行</strong><br>
+                    エディタ右上の <strong>▶（三角ボタン）</strong> をクリックします。<br>
+                    <span style="color:var(--accent-gold);">初回のみ</span>、コンパイラの選択画面が出ます → <strong>「C/C++: gcc.exe」</strong> を選んでください。
+                </li>
+                <li class="step-item">
+                    <div class="step-number">4</div>
+                    <strong>デバッグ実行</strong><br>
+                    ▶ 横の <strong>▽</strong> をクリックすると、「C/C++ ファイルのデバッグ」も選べます。ブレークポイントを置いて変数の中身を確認できます。
+                </li>
+            </ul>
+
+            <div class="point-box">
+                <div class="point-title">💡 毎回の作業のポイント</div>
+                <p style="font-size:0.9rem;">
+                    必ず <strong>Prog1.code-workspace</strong> からVSCodeを開いてください。<br>
+                    「ファイル → フォルダを開く」ではなく、ワークスペースファイルを使うことで、設定が自動的に適用されます。
+                </p>
+            </div>
+        </section>
+
+        <!-- 7. 動作確認 -->
+        <section class="summary-block">
+            <h2>7. 動作確認</h2>
+            <p>すべてが正しく設定されたか確認しましょう。</p>
+
+            <ul class="step-list">
+                <li class="step-item">
+                    <div class="step-number">1</div>
+                    <strong>Prog1.code-workspace を開く</strong><br>
+                    <code>C:\Prog1_Package_regular</code> フォルダ内の <strong>Prog1.code-workspace</strong> をダブルクリックします。
+                </li>
+                <li class="step-item">
+                    <div class="step-number">2</div>
+                    <strong>sample.c を開く</strong><br>
+                    エクスプローラーに表示されている <code>sample.c</code> をクリックします。
+                </li>
+                <li class="step-item">
+                    <div class="step-number">3</div>
+                    <strong>▶ ボタンで実行</strong><br>
+                    エディタ右上の ▶ をクリックし、<strong>「C/C++: gcc.exe」</strong>を選択します。
+                </li>
+                <li class="step-item">
+                    <div class="step-number">4</div>
+                    <strong>結果を確認</strong><br>
+                    ターミナルに <strong>Hello, C language!</strong> と表示されれば成功です！
+                </li>
+            </ul>
+
             <div class="point-box" style="background: rgba(15, 23, 42, 0.4); border-color: var(--accent-blue);">
-                <div class="point-title" style="color: var(--accent-blue);">📄 verification.c</div>
+                <div class="point-title" style="color: var(--accent-blue);">📄 sample.c の内容</div>
                 <div class="code-snippet">
                     <span style="color: #f472b6;">#include</span> &lt;stdio.h&gt;<br><br>
                     <span style="color: #f472b6;">int</span> main(<span style="color: #f472b6;">void</span>) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;printf(<span style="color: var(--accent-cyan)">"Hello, C Programming!\n"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;printf(<span style="color: var(--accent-cyan)">"Hello, C language!\n"</span>);<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f472b6;">return</span> 0;<br>
                     }
                 </div>
             </div>
-
-            <h3>実行手順の再確認</h3>
-            <ol style="font-size:0.9rem; color:var(--text-muted); padding-left:20px;">
-                <li>VSCodeで新しいファイルを作り、<code>verification.c</code> という名前で保存する。</li>
-                <li>ターミナルを開き、<code>gcc verification.c -o test.exe</code> と打つ。</li>
-                <li>エラーが出なければ、<code>./test.exe</code> と打って実行する。</li>
-                <li>画面に <strong>Hello, C Programming!</strong> と表示されれば成功です！</li>
-            </ol>
         </section>
 
-        <!-- 7. 参考資料 -->
+        <!-- 8. 参考資料 -->
         <section class="summary-block">
-            <h2>7. 参考資料</h2>
+            <h2>8. 参考資料</h2>
             <p>環境構築に関して、非常に分かりやすくまとめられている外部資料です。手順の補足として活用してください。</p>
             <div class="download-card" style="margin-top:20px; border-left:4px solid var(--accent-gold);">
                 <div class="point-title" style="color:var(--accent-gold); margin-bottom:5px;">📖 外部解説記事 (Qiita)</div>
