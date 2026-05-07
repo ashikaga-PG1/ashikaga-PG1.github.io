@@ -70,7 +70,6 @@
 | 70 以上 | 良 |
 | 80 以上 | 優 |
 
-![](assets/img/sessionPre/slide04.png)
 
 ---
 :::set layout=2col side=left w=40 gap=16 fit=cover opacity=0.5
