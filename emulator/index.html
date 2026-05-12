@@ -3657,6 +3657,13 @@ return main();
       state.freeInputState.code = DEFAULT_FREE_INPUT_CODE;
       state.freeInputState.lastModified = Date.now();
     }
+    
+    // Explicitly enable buttons for Free Input Mode
+    if (el.checkButton) el.checkButton.disabled = false;
+    if (el.runButton) el.runButton.disabled = false;
+    if (el.saveButton) el.saveButton.disabled = false;
+    if (el.helpButton) el.helpButton.disabled = false;
+    
     renderEditor();
     renderDiagnostics();
   };
@@ -4245,12 +4252,23 @@ return main();
     });
 
     el.helpButton.addEventListener("click", () => {
+      console.log("Help button clicked");
       renderHelpList();
-      el.helpOverlay.classList.add("is-visible");
+      if (el.helpOverlay) {
+        el.helpOverlay.style.display = "flex";
+        el.helpOverlay.classList.add("is-visible");
+      }
     });
 
     el.helpCloseBtn.addEventListener("click", () => {
-      el.helpOverlay.classList.remove("is-visible");
+      if (el.helpOverlay) {
+        el.helpOverlay.classList.remove("is-visible");
+        setTimeout(() => {
+          if (!el.helpOverlay.classList.contains("is-visible")) {
+            el.helpOverlay.style.display = "none";
+          }
+        }, 300);
+      }
     });
 
     el.helpOverlay.addEventListener("click", (e) => {
