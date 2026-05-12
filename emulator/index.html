@@ -3472,6 +3472,7 @@ return main();
       splitTopLevel,
       parseStructDefinitions,
       transpileProgram,
+      escapeHTML,
     },
   };
 })(window);
@@ -3479,7 +3480,8 @@ return main();
 
 /* --- CEmu App Logic --- */
 (function () {
-  const { syntaxCheck, executeProgram } = window.CEmuRuntime;
+  const { syntaxCheck, executeProgram, __internal } = window.CEmuRuntime;
+  const { escapeHTML } = __internal;
   const STATE_KEY = "cemu-state-v1";
   const FREE_STATE_KEY = "cemu-free-input-v1";
   const MODE_KEY = "cemu-current-mode-v1";
