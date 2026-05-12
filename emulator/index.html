@@ -532,7 +532,138 @@ code {
     }
     .cemu-close-btn:hover { color: #fca5a5; background: rgba(239, 68, 68, 0.1); border-color: #ef4444; transform: translateY(-2px); }
     .cemu-close-btn svg { width: 18px; height: 18px; }
+
+    /* Mode Selector Styles */
+    .mode-selector {
+      display: flex;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(16, 185, 129, 0.05);
+      border-bottom: 1px solid var(--border);
+      border-radius: 20px 20px 0 0;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+    }
+    .mode-button {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--fg);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 700;
+    }
+    .mode-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .mode-button--active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+    .save-status-indicator {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .save-status-indicator::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--muted);
+    }
+    .save-status-indicator--saved::before { background: var(--accent); }
+    .save-status-indicator--saving::before { background: var(--accent-blue); }
+
+    /* Help Modal Styles */
+    .help-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .help-overlay.is-visible {
+      display: flex;
+      opacity: 1;
+    }
+    .help-modal {
+      background: #1a1a1a;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 640px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+      transform: translateY(20px);
+      transition: transform 0.3s;
+    }
+    .help-overlay.is-visible .help-modal {
+      transform: translateY(0);
+    }
+    .help-modal h2 { 
+      margin-bottom: 24px; 
+      color: var(--accent); 
+      font-size: 1.8rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+    .help-list { 
+      display: flex; 
+      flex-direction: column;
+      gap: 12px; 
+    }
+    .help-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .help-item code { 
+      color: var(--accent-blue); 
+      font-weight: bold; 
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+    }
+    .help-item span {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .help-close-btn {
+      margin-top: 32px;
+      width: 100%;
+      padding: 16px;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .help-close-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
   </style>
+
 </head>
 <body>
   <div class="background-container">
@@ -552,7 +683,20 @@ code {
       </div>
 		    </header>
 
+    <div class="mode-selector">
+      <button id="modeButtonSample" class="mode-button mode-button--active" data-mode="sample">
+        サンプルモード
+      </button>
+      <button id="modeButtonFree" class="mode-button" data-mode="free">
+        フリー入力モード
+      </button>
+      <button id="helpButton" class="mode-button" style="margin-left: auto; border-color: var(--accent-blue);">
+        ヘルプ（対応関数）
+      </button>
+    </div>
+
     <main class="workspace">
+
 	      <aside id="sessionsPanel" class="panel panel--sessions">
         <div class="panel-head">
 	          <h2>講義 ＞ サンプルコードを選択</h2>
@@ -593,7 +737,11 @@ code {
 	            <button id="resetButton" class="action-button">初期化</button>
 	            <button id="saveButton" class="action-button">保存</button>
 	          </div>
+            <div id="saveStatus" class="save-status-indicator">
+              準備完了
+            </div>
 	          <div id="checkStatus" class="editor-check-status editor-check-status--idle" aria-live="polite">
+
 	            <strong>診断結果</strong>
 	            <span>まだチェックしていません。</span>
 	            <p>プレースホルダ、対応外構文、簡易シンタックスチェックを表示します。</p>
@@ -2439,6 +2587,13 @@ window.__CEMU_DATA__ = {
   const SUPPORTED_FILES = new Set(["input.csv", "output.csv"]);
 
   const normalizeSource = (source) => String(source || "").replace(/\r\n/g, "\n");
+  const escapeHTML = (text) =>
+    String(text || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
 
   const BRACKET_PAIRS = { ")": "(", "]": "[", "}": "{" };
   const STATEMENT_CONTINUATION_PATTERN = /(?:[+\-*/%=&|^~?:,(\[]|->)\s*$/;
@@ -3111,6 +3266,82 @@ window.__CEMU_DATA__ = {
     };
   };
 
+  const findAdvancedSyntaxErrors = (text) => {
+    const { cleaned } = scanSource(text);
+    const warnings = [];
+    const errors = [];
+    const lines = cleaned.split("\n");
+    const { splitTopLevel } = global.CEmuRuntime.__internal;
+
+    lines.forEach((line, i) => {
+      const row = i + 1;
+      const trimmed = line.trim();
+      if (!trimmed) return;
+
+      // 1. Assignment in condition
+      const condMatch = line.match(/\b(if|while|for)\s*\((.*)\)/);
+      if (condMatch) {
+        const type = condMatch[1];
+        const content = condMatch[2];
+        if (/(?<![=<>!])=(?![=])/.test(content)) {
+          if (type === "for") {
+            const parts = content.split(";");
+            if (parts.length > 1 && /(?<![=<>!])=(?![=])/.test(parts[1])) {
+              warnings.push(`${row}行目: for の条件部（2番目）で代入 (=) が行われています。比較 (==) の間違いではありませんか？`);
+            }
+          } else {
+            warnings.push(`${row}行目: ${type} の条件式内で代入 (=) が行われています。比較 (==) の間違いではありませんか？`);
+          }
+        }
+      }
+
+      // 2. Suspicious semicolon
+      if (/\b(if|while|for)\s*\([^)]*\)\s*;/.test(line)) {
+        warnings.push(`${row}行目: ${line.match(/\b(if|while|for)/)[0]} の直後にセミコロンがあります。`);
+      }
+
+      // 3. scanf & check
+      const scanfMatch = line.match(/\bscanf\s*\(\s*"([^"]*)"\s*,\s*([^)]+)\)/);
+      if (scanfMatch) {
+        const args = scanfMatch[2].split(",");
+        args.forEach((arg) => {
+          const name = arg.trim();
+          if (/^[A-Za-z_]\w*$/.test(name)) {
+            warnings.push(`${row}行目: scanf で変数 ${name} に & が付いていません。`);
+          }
+        });
+      }
+
+      // 4. printf/scanf argument count check
+      const callMatch = line.match(/\b(printf|scanf|fscanf|fprintf)\s*\((.*)\)/);
+      if (callMatch) {
+        const func = callMatch[1];
+        const content = callMatch[2];
+        const commaIndex = content.indexOf(",");
+        if (commaIndex !== -1) {
+          const fmtPart = content.substring(0, commaIndex).trim();
+          if (fmtPart.startsWith('"') && fmtPart.endsWith('"')) {
+            const fmt = fmtPart.substring(1, fmtPart.length - 1);
+            const specifiers = (fmt.match(/%(?![%])[0-9.]*[dfsc]/g) || []).length;
+            const argPart = content.substring(commaIndex + 1).trim();
+            if (argPart) {
+              const actualArgs = splitTopLevel(argPart).length;
+              if (specifiers !== actualArgs) {
+                warnings.push(`${row}行目: ${func} の書式指定子の数 (${specifiers}) と引数の数 (${actualArgs}) が一致しません。`);
+              }
+            }
+          }
+        }
+      }
+    });
+
+    if (/\bvoid\s+main\s*\(/.test(cleaned)) {
+      warnings.push("main 関数の戻り値は int にすることが推奨されます。");
+    }
+
+    return { errors, warnings };
+  };
+
   const syntaxCheck = (source, options = {}) => {
     const text = normalizeSource(source);
     const errors = [];
@@ -3124,11 +3355,19 @@ window.__CEMU_DATA__ = {
       errors.push("コードが空です。");
     }
 
-    for (const match of text.matchAll(/#include\s*<([^>]+)>/g)) {
-      if (match[1] !== SUPPORTED_HEADER) {
-        errors.push(`#include <${match[1]}> は未対応です。`);
+    text.split("\n").forEach((line, i) => {
+      const trimmed = line.trim();
+      if (trimmed.startsWith("#")) {
+        const match = trimmed.match(/^#include\s*[<"]([^>"]+)[>"]$/);
+        if (match) {
+          if (match[1] !== SUPPORTED_HEADER) {
+            errors.push(`${i + 1}行目: #include <${match[1]}> は未対応です。本環境では <stdio.h> のみが利用可能です。`);
+          }
+        } else {
+          errors.push(`${i + 1}行目: プリプロセッサ命令の形式が正しくありません。: ${trimmed}`);
+        }
       }
-    }
+    });
 
     if (/\?\?\?|\[\?\]|\(\?\)/.test(text)) {
       errors.push("??? や ? が残っています。");
@@ -3147,6 +3386,10 @@ window.__CEMU_DATA__ = {
     if (!/\bmain\s*\(/.test(scanned.cleaned)) {
       errors.push("main 関数が見つかりません。");
     }
+
+    const advanced = findAdvancedSyntaxErrors(text);
+    errors.push(...advanced.errors);
+    warnings.push(...advanced.warnings);
 
     try {
       transpileProgram(text);
@@ -3227,6 +3470,11 @@ return main();
 (function () {
   const { syntaxCheck, executeProgram } = window.CEmuRuntime;
   const STATE_KEY = "cemu-state-v1";
+  const FREE_STATE_KEY = "cemu-free-input-v1";
+  const MODE_KEY = "cemu-current-mode-v1";
+
+  const DEFAULT_FREE_INPUT_CODE = `#include <stdio.h>\n\nint main(void) {\n  printf("Hello, world!\\n");\n  return 0;\n}`;
+
 
   const el = {
     appSubtitle: document.getElementById("appSubtitle"),
@@ -3252,7 +3500,16 @@ return main();
     outputCsvEditor: document.getElementById("outputCsvEditor"),
     runSummary: document.getElementById("runSummary"),
     diagnosticList: document.getElementById("diagnosticList"),
+    saveStatus: document.getElementById("saveStatus"),
+    modeButtonSample: document.getElementById("modeButtonSample"),
+    modeButtonFree: document.getElementById("modeButtonFree"),
+    helpButton: document.getElementById("helpButton"),
+    helpOverlay: document.getElementById("helpOverlay"),
+    helpList: document.getElementById("helpList"),
+    helpCloseBtn: document.getElementById("helpCloseBtn"),
   };
+
+
 
   const state = {
     data: null,
@@ -3267,7 +3524,20 @@ return main();
     },
     saveTimer: null,
     sessionPanelResizeBound: false,
+
+    // Free Input Mode State
+    currentMode: "sample",
+    freeInputState: {
+      code: "",
+      stdin: "",
+      inputCsv: "",
+      outputCsv: "",
+      runtimeOutput: "",
+      lastModified: 0,
+    },
+    autoSaveTimer: null,
   };
+
 
   const loadPersistedState = () => {
     try {
@@ -3284,6 +3554,16 @@ return main();
           ...(parsed.collapsedPanels || {}),
         };
       }
+
+      // Load mode
+      const savedMode = localStorage.getItem(MODE_KEY);
+      state.currentMode = savedMode === "free" ? "free" : "sample";
+
+      // Load free input state
+      const freeRaw = localStorage.getItem(FREE_STATE_KEY);
+      if (freeRaw) {
+        state.freeInputState = JSON.parse(freeRaw);
+      }
     } catch (_) {
       state.drafts = {};
     }
@@ -3291,27 +3571,43 @@ return main();
 
   const persistState = () => {
     try {
-      localStorage.setItem(
-        STATE_KEY,
-        JSON.stringify({
-          currentSessionNo: state.currentSessionNo,
-          currentSampleId: state.currentSampleId,
-          drafts: state.drafts,
-          studentId: state.studentId,
-          collapsedPanels: state.collapsedPanels,
-        }),
-      );
-      el.saveStatus.textContent = "保存済み";
+      if (state.currentMode === "sample") {
+        localStorage.setItem(
+          STATE_KEY,
+          JSON.stringify({
+            currentSessionNo: state.currentSessionNo,
+            currentSampleId: state.currentSampleId,
+            drafts: state.drafts,
+            studentId: state.studentId,
+            collapsedPanels: state.collapsedPanels,
+          }),
+        );
+      } else {
+        localStorage.setItem(FREE_STATE_KEY, JSON.stringify(state.freeInputState));
+      }
+      localStorage.setItem(MODE_KEY, state.currentMode);
+
+      if (el.saveStatus) {
+        el.saveStatus.textContent = "保存済み";
+        el.saveStatus.classList.add("save-status-indicator--saved");
+        el.saveStatus.classList.remove("save-status-indicator--saving");
+      }
     } catch (_) {
-      el.saveStatus.textContent = "保存失敗";
+      if (el.saveStatus) el.saveStatus.textContent = "保存失敗";
     }
   };
 
+
   const schedulePersist = () => {
-    el.saveStatus.textContent = "保存待ち";
+    if (el.saveStatus) {
+      el.saveStatus.textContent = "保存中...";
+      el.saveStatus.classList.add("save-status-indicator--saving");
+      el.saveStatus.classList.remove("save-status-indicator--saved");
+    }
     if (state.saveTimer) clearTimeout(state.saveTimer);
-    state.saveTimer = window.setTimeout(persistState, 200);
+    state.saveTimer = window.setTimeout(persistState, 500);
   };
+
 
   const persistNow = () => {
     if (state.saveTimer) {
@@ -3320,6 +3616,59 @@ return main();
     }
     persistState();
   };
+
+  const updateUIVisibility = (mode) => {
+    const isFree = mode === "free";
+    if (el.sessionsPanel) el.sessionsPanel.style.display = isFree ? "none" : "flex";
+    if (el.samplesPanel) el.samplesPanel.style.display = isFree ? "none" : "block";
+  };
+
+  const updatePageTitle = (mode) => {
+    const isFree = mode === "free";
+    if (el.appSubtitle) {
+      el.appSubtitle.textContent = isFree
+        ? "任意のCコードを自由に入力・実行できます。"
+        : "第1回〜第15回のサンプルコードを、ブラウザだけで練習するための独立学習環境です。";
+    }
+  };
+
+  const updateModeIndicator = (mode) => {
+    if (el.modeButtonSample) {
+      el.modeButtonSample.classList.toggle("mode-button--active", mode === "sample");
+    }
+    if (el.modeButtonFree) {
+      el.modeButtonFree.classList.toggle("mode-button--active", mode === "free");
+    }
+  };
+
+  const initializeFreeInputMode = () => {
+    if (!state.freeInputState.code) {
+      state.freeInputState.code = DEFAULT_FREE_INPUT_CODE;
+      state.freeInputState.lastModified = Date.now();
+    }
+    renderEditor();
+    renderDiagnostics();
+  };
+
+  const switchMode = (newMode) => {
+    if (state.currentMode === newMode) return;
+    persistNow();
+    state.currentMode = newMode;
+    
+    updateUIVisibility(newMode);
+    updatePageTitle(newMode);
+    updateModeIndicator(newMode);
+    
+    if (newMode === "free") {
+      initializeFreeInputMode();
+    } else {
+      renderGuide();
+      renderEditor();
+      renderDiagnostics();
+    }
+    persistState();
+  };
+
 
   const getSessions = () => state.data?.sessions || [];
 
@@ -3567,6 +3916,15 @@ return main();
     `;
   };
 
+  const scheduleAutoSave = () => {
+    if (state.currentMode !== "free") return;
+    if (state.autoSaveTimer) clearTimeout(state.autoSaveTimer);
+    state.autoSaveTimer = window.setTimeout(() => {
+      persistState();
+    }, 3000);
+  };
+
+
   const CHECK_STATUS_CLASS_NAMES = [
     "editor-check-status--idle",
     "editor-check-status--ok",
@@ -3611,36 +3969,55 @@ return main();
   };
 
   const renderEditor = () => {
-    const sample = getCurrentSample();
-    const session = getCurrentSession();
-    if (!sample || !session) return;
-    setDraftFromSample(sample);
-    const draft = draftFor(sample.id);
-    const formattedCode = formatCodeForEditor(draft.code);
-    if (formattedCode !== draft.code) {
-      draft.code = formattedCode;
+    if (state.currentMode === "free") {
+
+      el.editorTitle.textContent = "コード (フリー入力)";
+      el.editorSubtitle.textContent = "任意のCコードを自由に入力・実行できます。";
+      el.codeEditor.value = state.freeInputState.code;
+      el.stdinEditor.value = state.freeInputState.stdin;
+      el.inputCsvEditor.value = state.freeInputState.inputCsv;
+      el.outputCsvEditor.value = state.freeInputState.outputCsv;
+      el.runtimeOutput.textContent = state.freeInputState.runtimeOutput || "";
+      
+      el.codeEditor.readOnly = false;
+      el.stdinEditor.readOnly = false;
+      el.inputCsvEditor.readOnly = false;
+      el.runButton.disabled = false;
+    } else {
+      const sample = getCurrentSample();
+      const session = getCurrentSession();
+      if (!sample || !session) return;
+      setDraftFromSample(sample);
+      const draft = draftFor(sample.id);
+      const formattedCode = formatCodeForEditor(draft.code);
+      if (formattedCode !== draft.code) {
+        draft.code = formattedCode;
+      }
+
+      el.editorTitle.textContent = `${sample.title}`;
+      el.editorSubtitle.textContent = sample.mode === "guide"
+        ? "このサンプルは説明用です。コードは参照中心になります。"
+        : "コードを編集して、チェックと実行を試せます。";
+      el.codeEditor.value = draft.code;
+      el.stdinEditor.value = draft.stdin;
+      el.inputCsvEditor.value = draft.inputCsv;
+      el.outputCsvEditor.value = draft.outputCsv;
+      el.runtimeOutput.textContent = draft.runtimeOutput || "";
+
+      el.codeEditor.readOnly = sample.mode === "guide";
+      el.stdinEditor.readOnly = sample.mode === "guide";
+      el.inputCsvEditor.readOnly = sample.mode === "guide";
+      el.runButton.disabled = sample.mode === "guide";
     }
-
-    el.editorTitle.textContent = `${sample.title}`;
-    el.editorSubtitle.textContent = sample.mode === "guide"
-      ? "このサンプルは説明用です。コードは参照中心になります。"
-      : "コードを編集して、チェックと実行を試せます。";
-    el.codeEditor.value = draft.code;
-    el.stdinEditor.value = draft.stdin;
-    el.inputCsvEditor.value = draft.inputCsv;
-    el.outputCsvEditor.value = draft.outputCsv;
-    el.runtimeOutput.textContent = draft.runtimeOutput || "";
-
-    el.codeEditor.readOnly = sample.mode === "guide";
-    el.stdinEditor.readOnly = sample.mode === "guide";
-    el.inputCsvEditor.readOnly = sample.mode === "guide";
-    el.runButton.disabled = sample.mode === "guide";
     updateCodeLineNumbers();
     setCheckStatus(
       "idle",
-      sample.mode === "guide" ? "説明用サンプルです。" : "まだチェックしていません。",
+      state.currentMode === "sample" && getCurrentSample()?.mode === "guide" 
+        ? "説明用サンプルです。" 
+        : "まだチェックしていません。",
     );
   };
+
 
   const renderDiagnostics = (items = []) => {
     if (!items.length) {
@@ -3651,8 +4028,8 @@ return main();
       .map(
         (item) => `
           <div class="diagnostic-item diagnostic-item--${item.level}">
-            <strong>${item.title}</strong>
-            <span>${item.message}</span>
+            <strong>${escapeHTML(item.title)}</strong>
+            <span>${escapeHTML(item.message)}</span>
           </div>
         `,
       )
@@ -3660,16 +4037,25 @@ return main();
   };
 
   const syncDraftFromInputs = () => {
-    const sample = getCurrentSample();
-    if (!sample) return;
-    const draft = draftFor(sample.id);
-    draft.code = el.codeEditor.value;
-    draft.stdin = el.stdinEditor.value;
-    draft.inputCsv = el.inputCsvEditor.value;
-    draft.outputCsv = el.outputCsvEditor.value;
-    draft.runtimeOutput = el.runtimeOutput.textContent;
+    if (state.currentMode === "free") {
+      state.freeInputState.code = el.codeEditor.value;
+      state.freeInputState.stdin = el.stdinEditor.value;
+      state.freeInputState.inputCsv = el.inputCsvEditor.value;
+      state.freeInputState.outputCsv = el.outputCsvEditor.value;
+      state.freeInputState.runtimeOutput = el.runtimeOutput.textContent;
+    } else {
+      const sample = getCurrentSample();
+      if (!sample) return;
+      const draft = draftFor(sample.id);
+      draft.code = el.codeEditor.value;
+      draft.stdin = el.stdinEditor.value;
+      draft.inputCsv = el.inputCsvEditor.value;
+      draft.outputCsv = el.outputCsvEditor.value;
+      draft.runtimeOutput = el.runtimeOutput.textContent;
+    }
     schedulePersist();
   };
+
 
   const applySampleSelection = (sessionNo, sampleId = null) => {
     state.currentSessionNo = sessionNo;
@@ -3701,15 +4087,16 @@ return main();
     ];
 
   const checkCurrentCode = () => {
-    const sample = getCurrentSample();
-    if (!sample) return null;
-    const result = syntaxCheck(el.codeEditor.value, { mode: sample.mode });
+    const mode = state.currentMode === "free" ? "run" : getCurrentSample()?.mode;
+    if (!mode) return null;
+    const result = syntaxCheck(el.codeEditor.value, { mode });
     renderDiagnostics(buildDiagnostics(result));
     const summary = summarizeCheckResult(result);
     setCheckStatus(summary.kind, summary.message);
     el.runSummary.textContent = result.ok ? "チェックは通過しました。" : "エラーを修正してから実行してください。";
     return result;
   };
+
 
   const updateOutputs = ({ stdout = "", stderr = "", outputCsv = "", summary = "" }) => {
     const merged = [stdout, stderr ? `\n[stderr]\n${stderr}` : ""].join("").trim();
@@ -3720,8 +4107,9 @@ return main();
   };
 
   const runCurrentCode = () => {
-    const sample = getCurrentSample();
-    if (!sample || sample.mode === "guide") return;
+    const isFree = state.currentMode === "free";
+    const sample = !isFree ? getCurrentSample() : null;
+    if (!isFree && (!sample || sample.mode === "guide")) return;
 
     const checked = checkCurrentCode();
     if (!checked || !checked.ok) return;
@@ -3732,7 +4120,7 @@ return main();
 
     window.setTimeout(() => {
       const result = executeProgram(el.codeEditor.value, {
-        mode: sample.mode,
+        mode: isFree ? "run" : sample.mode,
         stdin: el.stdinEditor.value,
         inputCsv: el.inputCsvEditor.value,
         maxStdoutBytes: Number(state.data?.runtime?.maxStdoutBytes || 65536),
@@ -3742,28 +4130,48 @@ return main();
     }, 0);
   };
 
+
   const resetCurrentSample = () => {
-    const sample = getCurrentSample();
-    if (!sample) return;
-    const draft = draftFor(sample.id);
-    draft.code = formatCodeForEditor(sample.browserCode || sample.originalCode || "");
-    draft.stdin = sample.stdinDefault || "";
-    draft.inputCsv = sample.inputCsvDefault || "";
-    draft.outputCsv = "";
-    draft.runtimeOutput = "";
+    if (state.currentMode === "free") {
+      if (!window.confirm("コードを初期化してよろしいですか？")) return;
+      state.freeInputState.code = DEFAULT_FREE_INPUT_CODE;
+      state.freeInputState.stdin = "";
+      state.freeInputState.inputCsv = "";
+      state.freeInputState.outputCsv = "";
+      state.freeInputState.runtimeOutput = "";
+      state.freeInputState.lastModified = Date.now();
+      el.runSummary.textContent = "初期状態に戻しました。";
+    } else {
+      const sample = getCurrentSample();
+      if (!sample) return;
+      const draft = draftFor(sample.id);
+      draft.code = formatCodeForEditor(sample.browserCode || sample.originalCode || "");
+      draft.stdin = sample.stdinDefault || "";
+      draft.inputCsv = sample.inputCsvDefault || "";
+      draft.outputCsv = "";
+      draft.runtimeOutput = "";
+      el.runSummary.textContent = "サンプル初期状態に戻しました。";
+    }
     renderEditor();
     renderDiagnostics();
-    el.runSummary.textContent = "サンプル初期状態に戻しました。";
     schedulePersist();
   };
 
+
   const saveCurrentCode = () => {
-    const session = getCurrentSession();
-    if (!session) return;
+    persistNow();
     const studentId = ensureStudentId();
     if (!studentId) return;
 
-    const filename = buildDownloadFilename(studentId, session.sessionNo);
+    let filename = "";
+    if (state.currentMode === "free") {
+      filename = `${studentId}_FreeInput_${formatToday()}.c`;
+    } else {
+      const session = getCurrentSession();
+      if (!session) return;
+      filename = buildDownloadFilename(studentId, session.sessionNo);
+    }
+
     const blob = new Blob([el.codeEditor.value], {
       type: "text/x-csrc;charset=utf-8",
     });
@@ -3777,9 +4185,9 @@ return main();
     window.setTimeout(() => URL.revokeObjectURL(url), 0);
 
     syncDraftFromInputs();
-    persistNow();
     el.runSummary.textContent = `保存しました: ${filename}`;
   };
+
 
   const bindEvents = () => {
     el.sessionSelect.addEventListener("change", () => {
@@ -3796,11 +4204,16 @@ return main();
       schedulePersist();
     });
 
+    el.modeButtonSample.addEventListener("click", () => switchMode("sample"));
+    el.modeButtonFree.addEventListener("click", () => switchMode("free"));
+
     el.codeEditor.addEventListener("input", () => {
       updateCodeLineNumbers();
       setCheckStatus("idle", "変更あり。再チェックしてください。");
       syncDraftFromInputs();
+      if (state.currentMode === "free") scheduleAutoSave();
     });
+
     el.codeEditor.addEventListener("scroll", syncCodeEditorScroll);
 
     [el.stdinEditor, el.inputCsvEditor].forEach((node) => {
@@ -3820,6 +4233,22 @@ return main();
       saveCurrentCode();
     });
 
+    el.helpButton.addEventListener("click", () => {
+      renderHelpList();
+      el.helpOverlay.classList.add("is-visible");
+    });
+
+    el.helpCloseBtn.addEventListener("click", () => {
+      el.helpOverlay.classList.remove("is-visible");
+    });
+
+    el.helpOverlay.addEventListener("click", (e) => {
+      if (e.target === el.helpOverlay) {
+        el.helpOverlay.classList.remove("is-visible");
+      }
+    });
+
+
     document.querySelectorAll("[data-panel-toggle]").forEach((button) => {
       button.addEventListener("click", () => {
         const key = button.dataset.panelToggle;
@@ -3830,19 +4259,44 @@ return main();
     });
   };
 
+  const renderHelpList = () => {
+    if (!el.helpList) return;
+    el.helpList.innerHTML = Object.entries(featureDocs)
+      .map(([name, desc]) => `
+        <div class="help-item">
+          <code>${name}</code>
+          <span>${escapeHTML(desc)}</span>
+        </div>
+      `)
+      .join("");
+  };
+
   const boot = () => {
     loadPersistedState();
     state.data = window.__CEMU_DATA__;
+    
     const session = getSessions().find((item) => item.sessionNo === state.currentSessionNo) || getSessions()[0];
     state.currentSessionNo = session?.sessionNo || 1;
     if (!state.currentSampleId) {
       state.currentSampleId = session?.samples[0]?.id || null;
     }
+    
     bindEvents();
-    applySampleSelection(state.currentSessionNo, state.currentSampleId);
+    
+    updateUIVisibility(state.currentMode);
+    updatePageTitle(state.currentMode);
+    updateModeIndicator(state.currentMode);
+    
+    if (state.currentMode === "free") {
+      initializeFreeInputMode();
+    } else {
+      applySampleSelection(state.currentSessionNo, state.currentSampleId);
+    }
+    
     setupSessionPanelSync();
     applyCollapsiblePanels();
   };
+
 
   try {
     boot();
@@ -3853,5 +4307,17 @@ return main();
 })();
 
 </script>
+
+  <!-- Help Modal -->
+  <div id="helpOverlay" class="help-overlay">
+    <div class="help-modal">
+      <h2>対応関数・文法一覧</h2>
+      <div id="helpList" class="help-list">
+        <!-- Content injected by JS -->
+      </div>
+      <button id="helpCloseBtn" class="help-close-btn">閉じる</button>
+    </div>
+  </div>
+
 </body>
 </html>
