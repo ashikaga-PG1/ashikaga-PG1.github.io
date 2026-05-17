@@ -3124,7 +3124,8 @@
             const sizeExpr = sizeRaw.trim()
               ? transformInline(sizeRaw.trim())
               : `${initLiteral}.length`;
-            return `${name} = __arrayInit(${sizeExpr}, ${initLiteral})`;
+            const hasInit = initRaw ? "true" : "false";
+            return `${name} = __arrayInit(${sizeExpr}, ${initLiteral}, ${hasInit})`;
           }
 
           if (structDefs[typeName]) {
@@ -3332,11 +3333,13 @@
             enforceSize(files["output.csv"].content, Number(options.maxFileBytes || 32768), "output.csv");
             return 0;
           },
-          __arrayInit: (size, initialValues) => {
+          __arrayInit: (size, initialValues, hasInit) => {
             const base = Array.isArray(initialValues) ? [...initialValues] : [];
             const targetSize = Number(size);
             if (!Number.isFinite(targetSize) || targetSize <= 0) return base;
-            while (base.length < targetSize) base.push(0);
+            while (base.length < targetSize) {
+              base.push(hasInit ? 0 : Math.floor(Math.random() * 200000000) - 100000000);
+            }
             return base.slice(0, targetSize);
           },
           __structInit: (name, values) => {
