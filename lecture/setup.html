@@ -208,6 +208,76 @@
             <p style="color:var(--text-muted)">C言語プログラミングを始めるための準備</p>
         </header>
 
+        <!-- 0. 最速ルート：ポータブルパッケージでの環境構築（推奨） -->
+        <section class="summary-block" style="border: 1px solid rgba(34, 211, 238, 0.3); background: rgba(15, 23, 42, 0.85); box-shadow: 0 0 30px rgba(34, 211, 238, 0.1);">
+            <h2 style="color: var(--accent-cyan); display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 0.75rem; color: #030a16; background: var(--accent-cyan); padding: 4px 10px; border-radius: 100px; font-weight: 700; letter-spacing: 0.05em; line-height: 1;">RECOMMENDED</span>
+                【最速】ポータブル版での環境構築
+            </h2>
+            <p>面倒な環境変数の設定などを行うことなく、ダウンロードして解凍するだけでC言語の開発を始められる、最も簡単でトラブルの少ない推奨ルートです。</p>
+
+            <div class="grid">
+                <!-- 左コラム: ダウンロード & 注意事項 -->
+                <div>
+                    <div class="download-card" style="border-color: var(--accent-cyan); background: rgba(34, 211, 238, 0.03);">
+                        <h3>Portable VS Code + MinGW (ZIP)</h3>
+                        <p style="font-size:0.9rem; color:var(--text-muted)">VS Code と GCC コンパイラがあらかじめ同梱された、本授業用のポータブルパッケージです。</p>
+                        <a href="https://github.com/ashikaga-PG1/ashikaga-PG1.github.io/releases/download/v1.0.0/VisualStudioCode.zip" class="download-btn" style="background: var(--accent-cyan); color: var(--bg-deep); text-shadow: none;">Download Portable Bundle</a>
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 16px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 12px; font-size: 0.85rem;">
+                        <strong style="color: var(--accent-gold); display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                            ⚠️ Windowsでの解凍前注意（必須）
+                        </strong>
+                        <p style="margin: 0; color: var(--text-primary); line-height: 1.6;">
+                            ダウンロードしたZIPファイルを<strong>右クリックして「プロパティ」</strong>を開き、全般タブの最下部にあるセキュリティ欄の<strong>「許可する」</strong>（または「ブロックの解除」）にチェックを入れて「OK」を押してから解凍してください。
+                        </p>
+                        <p style="margin: 6px 0 0 0; color: var(--text-muted); font-size: 0.75rem; line-height: 1.5;">
+                            ※ これを行わないと、セキュリティ機能により解凍後のプログラムやバッチファイルの実行がブロックされ、正常に起動・コンパイルできない場合があります。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 右コラム: 手順 -->
+                <div>
+                    <h3>導入と初期設定の手順</h3>
+                    <ul class="step-list">
+                        <li class="step-item">
+                            <div class="step-number">1</div>
+                            <strong>ZIPの解凍と起動</strong><br>
+                            セキュリティブロックを解除したZIPファイルを任意の場所（<code>C:\Prog1_Package_regular</code> など）に解凍し、フォルダ内の <strong>Prog1.code-workspace</strong> をダブルクリックしてVSCodeを起動します。
+                        </li>
+                        <li class="step-item">
+                            <div class="step-number">2</div>
+                            <strong>言語パック（日本語 / 母国語）の導入</strong><br>
+                            左端の拡張機能アイコン（四角形のマーク <code>Ctrl+Shift+X</code>）から、希望の言語パックを検索してインストールします。<br>
+                            ・日本語で学習する場合: <strong>"Japanese Language Pack"</strong> をインストール。<br>
+                            ・留学生の方などで、自身の母国語で学習したい場合: 該当の言語パック（例: <strong>"Simplified Chinese Language Pack"</strong> (簡体字中国語) や <strong>"Korean Language Pack"</strong> など）をインストール。<br>
+                            ※インストール後、右下のポップアップで <strong>"Change Language and Restart"</strong> をクリックし再起動します。
+                        </li>
+                        <li class="step-item">
+                            <div class="step-number">3</div>
+                            <strong>C/C++ 拡張機能のインストール</strong><br>
+                            拡張機能の検索窓に <strong>"C/C++"</strong>（Microsoft製）と入力してインストールします。コードの自動補完やエラー箇所表示、デバッグが可能になります。
+                        </li>
+                        <li class="step-item">
+                            <div class="step-number">4</div>
+                            <strong>Code Runner 拡張機能のインストール</strong><br>
+                            拡張機能で <strong>"Code Runner"</strong> を検索してインストールします。完了後、設定（歯車マーク ➔ 拡張機能の設定）から <strong>"Run In Terminal"</strong> にチェックを入れてください。<br>
+                            <span style="color:var(--accent-gold); font-size: 0.8rem;">※ これにより、プログラムの実行結果が統合ターミナルに出力され、キーボード入力や日本語表示が正常に動作します。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="point-box" style="margin-top:20px; background: rgba(34, 211, 238, 0.05); border-color: rgba(34, 211, 238, 0.3);">
+                <div class="point-title" style="color: var(--accent-cyan);">💡 パス（環境変数）の設定は不要です</div>
+                <p style="font-size:0.9rem; margin:0;">
+                    このポータブルパッケージにはコンパイラ（MinGW-w64）が組み込まれているため、後述の「2. パスの設定（環境変数）」の作業を行う必要はありません。すぐに「5. ファイルの配置」または「6. VSCodeの基本操作」へ進んで動作確認を行ってください。
+                </p>
+            </div>
+        </section>
+
         <!-- 1. ソフトウェアの導入 -->
         <section class="summary-block">
             <h2>1. ソフトウェアのインストール</h2>
