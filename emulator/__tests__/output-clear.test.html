@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Emulator Output Clear Test</title>
+</head>
+<body>
+  <pre id="result">RUNNING</pre>
+  <script>
+    const assert = (condition, message) => {
+      if (!condition) throw new Error(message);
+    };
+
+    const run = async () => {
+      localStorage.clear();
+
+      const frame = document.createElement("iframe");
+      frame.src = "../index.html";
+      document.body.appendChild(frame);
+      await new Promise((resolve) => frame.addEventListener("load", resolve, { once: true }));
+
+      const doc = frame.contentDocument;
+      const editor = doc.getElementById("codeEditor");
+      const runtimeOutput = doc.getElementById("runtimeOutput");
+      const outputCsv = doc.getElementById("outputCsvEditor");
+      const checkButton = doc.getElementById("checkButton");
+      const runButton = doc.getElementById("runButton");
+
+      editor.value = "invalid c code !!!";
+      runtimeOutput.textContent = "previous stdout / stderr";
+      outputCsv.value = "previous csv";
+      checkButton.click();
+      assert(runtimeOutput.textContent === "", "チェック時に前回の stdout / stderr が消えていません。");
+      assert(outputCsv.value === "", "チェック時に前回の出力CSVが消えていません。");
+
+      runtimeOutput.textContent = "previous stdout / stderr";
+      outputCsv.value = "previous csv";
+      runButton.click();
+      assert(runtimeOutput.textContent === "", "実行時に前回の stdout / stderr が消えていません。");
+      assert(outputCsv.value === "", "実行時に前回の出力CSVが消えていません。");
+
+      document.getElementById("result").textContent = "PASS";
+    };
+
+    run().catch((error) => {
+      document.getElementById("result").textContent = `FAIL: ${error.message}`;
+    });
+  </script>
+</body>
+</html>

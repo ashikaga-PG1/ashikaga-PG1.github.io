@@ -81,4 +81,27 @@ int main(void) {
 assert.equal(undeclaredArray.ok, false);
 assert.ok(undeclaredArray.errors.some((message) => message.includes("i は配列またはポインタ")));
 
+const validFunctionParameters = check(`
+#include <stdio.h>
+double current(double V, double R) {
+  return V / R;
+}
+int main(void) {
+  printf("%.2f\\n", current(5, 10));
+  return 0;
+}`);
+assert.equal(validFunctionParameters.ok, true, validFunctionParameters.errors.join("\n"));
+
+const wrongParameterCase = check(`
+#include <stdio.h>
+double current(double V, double R) {
+  return v / R;
+}
+int main(void) {
+  printf("%.2f\\n", current(5, 10));
+  return 0;
+}`);
+assert.equal(wrongParameterCase.ok, false);
+assert.ok(wrongParameterCase.errors.some((message) => message.includes("v は宣言されていません")));
+
 console.log("CEmu Runtime semantic tests passed");

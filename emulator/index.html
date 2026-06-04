@@ -3545,6 +3545,132 @@
         return errors;
       };
 
+      const findIdentifierCaseErrors = (text) => {
+        const { cleaned } = scanSource(text);
+        const errors = [];
+        const lines = cleaned.split("\n");
+        const functionNames = new Set();
+        const globalNames = new Set();
+        const ignoredNames = new Set([
+          "break", "case", "char", "const", "continue", "default", "do", "double",
+          "else", "FILE", "for", "if", "int", "NULL", "return", "sizeof", "struct",
+          "switch", "typedef", "void", "while",
+          "printf", "scanf", "fopen", "fclose", "fscanf", "fprintf",
+        ]);
+        const { structDefs } = parseStructDefinitions(cleaned);
+        Object.keys(structDefs).forEach((name) => ignoredNames.add(name));
+
+        const registerDeclarators = (rawDeclarators, names) => {
+          for (const rawDeclarator of splitTopLevel(rawDeclarators)) {
+            const match = rawDeclarator.trim().match(/^\*+\s*([A-Za-z_]\w*)|^([A-Za-z_]\w*)/);
+            const name = match?.[1] || match?.[2];
+            if (name) names.add(name);
+          }
+        };
+
+        let firstPassBraceDepth = 0;
+        let firstPassInStruct = false;
+        lines.forEach((line) => {
+          const trimmed = line.trim();
+          if (/^(?:typedef\s+)?struct\b[\s\S]*\{\s*$/.test(trimmed)) {
+            firstPassInStruct = true;
+          }
+          if (firstPassInStruct) {
+            if (/^}\s*[A-Za-z_]\w*\s*;\s*$/.test(trimmed)) firstPassInStruct = false;
+            return;
+          }
+
+          const functionHeader = line.match(
+            /^\s*(?:const\s+)?(?:int|double|void|char|FILE|[A-Z]\w+)\b\s*\**\s*([A-Za-z_]\w*)\s*\(([^)]*)\)\s*\{/,
+          );
+          if (functionHeader) functionNames.add(functionHeader[1]);
+
+          if (firstPassBraceDepth === 0) {
+            const declaration = line.match(
+              /^\s*(?:const\s+)?(?:int|double|char|FILE|[A-Z]\w+)\b\s*(.+);\s*$/,
+            );
+            if (declaration) registerDeclarators(declaration[1], globalNames);
+          }
+
+          firstPassBraceDepth += countGroupingDelta(line).brace;
+        });
+
+        let currentNames = new Set([...globalNames, ...functionNames]);
+        let functionBraceDepth = 0;
+        let inFunction = false;
+        let inStruct = false;
+
+        lines.forEach((line, i) => {
+          const row = i + 1;
+          const trimmed = line.trim();
+          if (/^(?:typedef\s+)?struct\b[\s\S]*\{\s*$/.test(trimmed)) {
+            inStruct = true;
+          }
+          if (inStruct) {
+            if (/^}\s*[A-Za-z_]\w*\s*;\s*$/.test(trimmed)) inStruct = false;
+            return;
+          }
+
+          const functionHeader = line.match(
+            /^\s*(?:const\s+)?(?:int|double|void|char|FILE|[A-Z]\w+)\b\s*\**\s*([A-Za-z_]\w*)\s*\(([^)]*)\)\s*\{/,
+          );
+          if (functionHeader) {
+            inFunction = true;
+            functionBraceDepth = 0;
+            currentNames = new Set([...globalNames, ...functionNames]);
+            for (const parameter of splitTopLevel(functionHeader[2])) {
+              const paramMatch = parameter.match(
+                /^\s*(?:const\s+)?(?:int|double|char|FILE|[A-Z]\w+)\b\s*(.+)\s*$/,
+              );
+              if (paramMatch) registerDeclarators(paramMatch[1], currentNames);
+            }
+          }
+
+          if (inFunction) {
+            const declaration = line.match(
+              /^\s*(?:const\s+)?(?:int|double|char|FILE|[A-Z]\w+)\b\s*(.+);\s*$/,
+            );
+            if (declaration) registerDeclarators(declaration[1], currentNames);
+            for (const loopMatch of line.matchAll(
+              /\bfor\s*\(\s*(?:const\s+)?(?:int|double|char)\s+([A-Za-z_]\w*)/g,
+            )) {
+              currentNames.add(loopMatch[1]);
+            }
+          }
+
+          if (!trimmed.startsWith("#")) {
+            const withoutLiterals = line.replace(/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, "");
+            for (const match of withoutLiterals.matchAll(/\b[A-Za-z_]\w*\b/g)) {
+              const name = match[0];
+              const index = match.index || 0;
+              const previous = withoutLiterals[index - 1] || "";
+              if (previous === "." || previous === ">") continue;
+              if (ignoredNames.has(name) || currentNames.has(name)) continue;
+
+              const caseVariant = [...currentNames].find(
+                (declaredName) => declaredName !== name && declaredName.toLowerCase() === name.toLowerCase(),
+              );
+              if (caseVariant) {
+                pushUnique(
+                  errors,
+                  `${row}行目: ${name} は宣言されていません。${caseVariant} との大文字・小文字の違いを確認してください。`,
+                );
+              }
+            }
+          }
+
+          if (inFunction) {
+            functionBraceDepth += countGroupingDelta(line).brace;
+            if (functionBraceDepth <= 0) {
+              inFunction = false;
+              currentNames = new Set([...globalNames, ...functionNames]);
+            }
+          }
+        });
+
+        return errors;
+      };
+
       const syntaxCheck = (source, options = {}) => {
         const text = normalizeSource(source);
         const errors = [];
@@ -3594,6 +3720,7 @@
         errors.push(...advanced.errors);
         warnings.push(...advanced.warnings);
         errors.push(...findArraySemanticErrors(text));
+        errors.push(...findIdentifierCaseErrors(text));
 
         try {
           transpileProgram(text);
@@ -4299,9 +4426,16 @@ return main();
             : [{ level: "info", title: "OK", message: "大きな問題は見つかりませんでした。" }]),
         ];
 
+      const clearExecutionOutputs = () => {
+        el.runtimeOutput.textContent = "";
+        el.outputCsvEditor.value = "";
+        syncDraftFromInputs();
+      };
+
       const checkCurrentCode = () => {
         const mode = state.currentMode === "free" ? "run" : getCurrentSample()?.mode;
         if (!mode) return null;
+        clearExecutionOutputs();
         const result = syntaxCheck(el.codeEditor.value, { mode });
         renderDiagnostics(buildDiagnostics(result));
         const summary = summarizeCheckResult(result);
@@ -4328,8 +4462,6 @@ return main();
         if (!checked || !checked.ok) return;
 
         el.runSummary.textContent = "実行中...";
-        el.runtimeOutput.textContent = "";
-        el.outputCsvEditor.value = "";
 
         window.setTimeout(() => {
           const result = executeProgram(el.codeEditor.value, {
