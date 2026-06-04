@@ -3446,6 +3446,105 @@
         return { errors, warnings };
       };
 
+      const findArraySemanticErrors = (text) => {
+        const { cleaned } = scanSource(text);
+        const errors = [];
+        const lines = cleaned.split("\n");
+        const scalarTypes = new Map();
+        const indexableNames = new Set();
+        const arrayDeclarations = [];
+
+        const registerDeclarators = (rawType, rawDeclarators, row) => {
+          const typeName = String(rawType || "").trim();
+          for (const rawDeclarator of splitTopLevel(rawDeclarators)) {
+            const declarator = rawDeclarator.trim();
+            const arrayMatch = declarator.match(
+              /^\**\s*([A-Za-z_]\w*)\s*\[([^\]]*)\]/,
+            );
+            if (arrayMatch) {
+              const [, name, sizeExpression] = arrayMatch;
+              indexableNames.add(name);
+              arrayDeclarations.push({ name, row, sizeExpression: sizeExpression.trim() });
+              continue;
+            }
+
+            const pointerMatch = declarator.match(/^\*+\s*([A-Za-z_]\w*)/);
+            if (pointerMatch) {
+              indexableNames.add(pointerMatch[1]);
+              scalarTypes.set(pointerMatch[1], typeName);
+              continue;
+            }
+
+            const scalarMatch = declarator.match(/^([A-Za-z_]\w*)/);
+            if (scalarMatch) scalarTypes.set(scalarMatch[1], typeName);
+          }
+        };
+
+        lines.forEach((line, i) => {
+          const row = i + 1;
+          const declaration = line.match(
+            /^\s*(?:const\s+)?(int|double|char|FILE|[A-Z]\w+)\b\s*(.+);\s*$/,
+          );
+          if (declaration) registerDeclarators(declaration[1], declaration[2], row);
+
+          const functionHeader = line.match(
+            /^\s*(?:const\s+)?(?:int|double|void|char|FILE|[A-Z]\w+)\b\s*\**\s*[A-Za-z_]\w*\s*\(([^)]*)\)\s*\{/,
+          );
+          if (functionHeader) {
+            for (const parameter of splitTopLevel(functionHeader[1])) {
+              const paramMatch = parameter.match(
+                /^\s*(?:const\s+)?(int|double|char|FILE|[A-Z]\w+)\b\s*(.+)\s*$/,
+              );
+              if (paramMatch) registerDeclarators(paramMatch[1], paramMatch[2], row);
+            }
+          }
+
+          for (const loopMatch of line.matchAll(
+            /\bfor\s*\(\s*(?:const\s+)?(int|double|char)\s+([A-Za-z_]\w*)/g,
+          )) {
+            scalarTypes.set(loopMatch[2], loopMatch[1]);
+          }
+        });
+
+        for (const { name, row, sizeExpression } of arrayDeclarations) {
+          if (!sizeExpression) continue;
+
+          const expressionWithoutSizeof = sizeExpression.replace(/\bsizeof\s*\([^)]*\)/g, "");
+          const identifiers = expressionWithoutSizeof.match(/\b[A-Za-z_]\w*\b/g) || [];
+          const nonIntegerName = identifiers.find((identifier) => {
+            const typeName = scalarTypes.get(identifier);
+            return typeName && typeName !== "int" && typeName !== "char";
+          });
+
+          if (nonIntegerName) {
+            pushUnique(
+              errors,
+              `${row}行目: 配列 ${name} の要素数には整数型が必要ですが、${nonIntegerName} は ${scalarTypes.get(nonIntegerName)} 型です。`,
+            );
+          } else if (/(?:^|[^\w.])(?:\d+\.\d*|\.\d+)(?:[eE][+-]?\d+)?[fFlL]?(?:$|[^\w.])/.test(sizeExpression)) {
+            pushUnique(errors, `${row}行目: 配列 ${name} の要素数には整数を指定してください。`);
+          }
+        }
+
+        lines.forEach((line, i) => {
+          const row = i + 1;
+          const withoutLiterals = line.replace(/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, "");
+          for (const match of withoutLiterals.matchAll(/\b([A-Za-z_]\w*)\s*\[/g)) {
+            const name = match[1];
+            const previous = withoutLiterals[(match.index || 0) - 1] || "";
+            if (previous === "." || previous === ">") continue;
+            if (!indexableNames.has(name)) {
+              pushUnique(
+                errors,
+                `${row}行目: ${name} は配列またはポインタとして宣言されていません。大文字・小文字も確認してください。`,
+              );
+            }
+          }
+        });
+
+        return errors;
+      };
+
       const syntaxCheck = (source, options = {}) => {
         const text = normalizeSource(source);
         const errors = [];
@@ -3494,6 +3593,7 @@
         const advanced = findAdvancedSyntaxErrors(text);
         errors.push(...advanced.errors);
         warnings.push(...advanced.warnings);
+        errors.push(...findArraySemanticErrors(text));
 
         try {
           transpileProgram(text);
