@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub & Codespaces Setup</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .content-shell {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 40px 20px;
+        }
+        .content-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: var(--accent-cyan);
+            margin-bottom: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: var(--accent-blue);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        p, li {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .warning-box p {
+            margin: 0;
+            color: #fcd34d;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: var(--accent-cyan);
+        }
+        .code-snippet {
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #e2e8f0;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            white-space: pre-wrap;
+        }
+        .img-mockup {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 15px 0 25px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="content-shell">
+        <a href="../index.html" class="back-link">&larr; ポータルに戻る</a>
+        
+        <section class="hero-section" style="text-align: center;">
+            <p class="eyebrow">ONLINE ENVIRONMENT SETUP</p>
+            <h1 class="main-title">GitHub & Codespaces</h1>
+            <p class="hero-desc">ブラウザ上でC言語プログラミングを行うためのオンライン環境構築手順</p>
+        </section>
+
+        <div class="content-card">
+            <h2>1. GitHubアカウントの作成</h2>
+            <p>Codespacesを利用するには、まずGitHubのアカウントが必要です。以下の手順で無料で作成できます。</p>
+            <ol>
+                <li><a href="https://github.com/" target="_blank" style="color: var(--accent-blue);">GitHub公式サイト</a> にアクセスします。</li>
+                <li>右上の「Sign up」ボタンをクリックします。</li>
+                <li>メールアドレス、パスワード、ユーザー名を入力し、指示に従って登録を完了させます。（大学のメールアドレスを利用することを推奨します）</li>
+                <li>登録したメールアドレスに認証メールが届くので、リンクをクリックしてアカウントを有効化します。</li>
+            </ol>
+        </div>
+
+        <div class="content-card">
+            <h2>2. Git / GitHubの基本用語</h2>
+            <p>プログラミング演習や開発で頻繁に登場するGit（ギット）とGitHub（ギットハブ）の基本用語を説明します。</p>
+            <ul>
+                <li><strong>リポジトリ (Repository)</strong>：プログラムのソースコードや変更履歴を保存しておく「貯蔵庫」のことです。
+                    <ul>
+                        <li><strong>パブリック (Public)</strong>：世界中の誰でも見ることができる設定です。</li>
+                        <li><strong>プライベート (Private)</strong>：自分や許可した人しか見られない設定です。<span style="color: var(--accent-gold); font-weight: bold;">※講義の課題などを保存する場合は、他の受講生に見られないように必ず「プライベート」を選択してください。</span></li>
+                    </ul>
+                    <img src="file:///Users/tanaka/.gemini/antigravity-ide/brain/6326c14a-9b81-46d4-97a5-6801de4e68de/repo_private_setting_1780708355047.png" alt="Repository Private Setting" class="img-mockup" style="max-width: 600px;">
+                </li>
+                <li><strong>コミット (Commit)</strong>：ファイルの変更履歴を記録（セーブ）することです。意味のある区切りごとにコミットします。</li>
+                <li><strong>プッシュ (Push)</strong>：手元の環境（Codespacesや自分のPC）でコミットした変更を、GitHub上のリモートリポジトリに送信・反映させることです。</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2>3. Codespaceの利用環境設定</h2>
+            <p>GitHub Codespacesは、ブラウザ上で動作する完全な開発環境（VS Codeベース）です。ソフトウェアのインストール不要でC言語の開発が可能です。</p>
+            <h3>リポジトリの作成とCodespaceの起動</h3>
+            <ol>
+                <li>GitHubにログインし、新しいリポジトリ（Repository）を作成します。</li>
+                <li>リポジトリのページで、緑色の「<> Code」ボタンをクリックし、「Codespaces」タブを選択します。</li>
+                <li>「Create codespace on main」をクリックすると、ブラウザ内でVS Codeに似たエディタが起動します。</li>
+            </ol>
+            <img src="file:///Users/tanaka/.gemini/antigravity-ide/brain/6326c14a-9b81-46d4-97a5-6801de4e68de/launch_codespace_1780708366928.png" alt="Launch Codespaces" class="img-mockup" style="max-width: 600px;">
+            
+            <h3>C言語環境のセットアップ</h3>
+            <p>通常、Codespacesのデフォルト環境（Linux）にはCコンパイラ（GCC）が既にインストールされています。確認のために、下部の「Terminal」タブを開き、以下のコマンドを入力してください：</p>
+            <div class="code-snippet">gcc --version</div>
+            <img src="file:///Users/tanaka/.gemini/antigravity-ide/brain/6326c14a-9b81-46d4-97a5-6801de4e68de/gcc_version_terminal_1780709574379.png" alt="Terminal showing gcc version" class="img-mockup" style="max-width: 600px;">
+            <p>バージョン情報が表示されれば、すぐにC言語のコンパイルと実行が可能です。</p>
+            
+            <h3>推奨される拡張機能のインストール</h3>
+            <p>より快適にプログラミングを行うために、C言語向けの拡張機能をインストールしましょう。</p>
+            <ol>
+                <li>画面左側のアイコン一覧から「Extensions（拡張機能）」をクリックします。</li>
+                <li>検索バーに <code>C/C++</code> と入力します。</li>
+                <li>Microsoftが提供している「C/C++」拡張機能を見つけ、「Install（インストール）」をクリックします。</li>
+            </ol>
+            <p>これにより、コードの自動補完（サジェスト）や構文エラーの強調表示などが有効になります。</p>
+        </div>
+
+        <div class="content-card">
+            <h2>4. Hello, World! の実行</h2>
+            <p>実際にC言語のプログラムを作成し、実行してみましょう。</p>
+            
+            <h3>ファイルの作成とコードの入力</h3>
+            <ol>
+                <li>画面左側の「Explorer（エクスプローラー）」を開き、新しいファイルを作成するアイコンをクリックします。</li>
+                <li>ファイル名を <code>hello.c</code> とします（拡張子 <code>.c</code> が重要です）。</li>
+                <li>作成したファイルに以下のコードを入力します：</li>
+            </ol>
+<div class="code-snippet">#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf("Hello, World!\n");
+    return 0;
+}</div>
+            
+            <h3>コンパイルと実行（.exeファイルの生成）</h3>
+            <p>入力が完了したら、プログラムを実行可能な形式に変換（コンパイル）します。</p>
+            <ol>
+                <li>Terminal（ターミナル）を開きます。</li>
+                <li>以下のコマンドを入力してコンパイルします（<code>-o hello.exe</code> は出力するファイル名を指定しています）：</li>
+            </ol>
+            <div class="code-snippet">gcc hello.c -o hello.exe</div>
+            <p>※Codespacesの標準環境はLinuxですが、演習の便宜上、出力ファイル名にWindowsの実行形式である <code>.exe</code> を付けています。</p>
+            <ol start="3">
+                <li>コンパイルが成功すると、<code>hello.exe</code> というファイルが生成されます。以下のコマンドで実行します：</li>
+            </ol>
+            <div class="code-snippet">./hello.exe</div>
+            <p>画面に <code>Hello, World!</code> と表示されれば成功です！</p>
+            <img src="file:///Users/tanaka/.gemini/antigravity-ide/brain/6326c14a-9b81-46d4-97a5-6801de4e68de/vscode_terminal_1780708379238.png" alt="VS Code Terminal showing Hello World" class="img-mockup">
+        </div>
+
+        <div class="content-card">
+            <h2>5. ファイルのダウンロード</h2>
+            <p>Codespaces上で作成したファイルや生成されたファイルを、自分のパソコンに保存（ダウンロード）することができます。課題の提出時などに利用します。</p>
+            <ul>
+                <li><strong>ソースファイル（.c）</strong>：あなたが書いたプログラムのソースコードです。課題提出では主にこちらのファイルを提出します。</li>
+                <li><strong>実行ファイル（.exeなど）</strong>：コンパイルして出来上がった実行可能なファイルです。パソコンの環境によってはそのまま実行できないことがあります。</li>
+            </ul>
+            <h3>ダウンロード手順</h3>
+            <ol>
+                <li>左側のエクスプローラーから、ダウンロードしたいファイル（例：<code>hello.c</code> または <code>hello.exe</code>）を右クリックします。</li>
+                <li>メニューから「Download（ダウンロード）」を選択します。</li>
+                <li>ブラウザの通常のダウンロード機能を通じて、手元のパソコンにファイルが保存されます。</li>
+            </ol>
+        </div>
+
+        <div class="content-card">
+            <h2>6. 講義終了時の保存と片付け</h2>
+            <p>実習が終わったら、作成したプログラムをGitHubに保存し、Codespaceを確実に終了させましょう。</p>
+            
+            <h3>1. リポジトリへのコミットとプッシュ</h3>
+            <ol>
+                <li>画面左側の「Source Control（ソース管理）」アイコン（枝分かれしたマーク）をクリックします。</li>
+                <li>「Message」の入力欄に「課題の完了」など、作業内容がわかるコメントを入力します。</li>
+                <li>「Commit」ボタンをクリックして、変更をコミット（記録）します。（※「変更をステージしますか？」と聞かれたら「Yes（はい）」を選びます）</li>
+                <li>「Sync Changes（変更の同期）」または「Push」をクリックして、GitHub上のリポジトリに変更を反映（アップロード）させます。これで保存は完了です。</li>
+            </ol>
+            <div class="warning-box" style="background: rgba(59, 130, 246, 0.1); border-left-color: var(--accent-blue);">
+                <p style="color: var(--accent-cyan);"><strong>💡 プッシュの重要性</strong><br>
+                変更をGitHub上のリポジトリにプッシュしておけば、無料枠節約のためにCodespace本体を「Delete（削除）」しても、ファイルやコードはGitHub上に安全に残ります。次回は同じリポジトリから新しいCodespaceを作り直すだけで、続きから作業を再開できます。</p>
+            </div>
+            
+            <h3>2. Codespaceのターミネート（終了）</h3>
+            <p><strong>【重要】</strong> ブラウザのタブを閉じるだけではCodespaceはすぐに終了せず、バックグラウンドで動き続けて無料枠を消費してしまいます。</p>
+            <ol>
+                <li>画面左下にある青色（または緑色）の「&gt;&lt;」アイコンをクリックします。</li>
+                <li>画面上部に出てくるメニューから <strong>「Stop Current Codespace」</strong> を選択します。</li>
+                <li>画面が切り替わり停止状態になれば、安全にブラウザを閉じて終了できます。</li>
+            </ol>
+        </div>
+
+        <div class="content-card">
+            <h2>7. 無料枠での実習対応に関する注意</h2>
+            <p>GitHub Codespacesは、個人アカウント向けに<strong>毎月一定時間（標準で120コア時間/月など）</strong>の無料枠が提供されています。</p>
+            <div class="warning-box">
+                <p><strong>【重要】無料枠を使い切らないための対策</strong></p>
+                <ul style="margin-top: 10px; margin-bottom: 0;">
+                    <li><strong>必ず停止する:</strong> 作業が終わったら、画面左下の「&gt;&lt;」アイコン（Codespacesメニュー）から「Stop Current Codespace」を選択し、明示的に停止させてください。</li>
+                    <li><strong>タブを閉じるだけでは不十分:</strong> ブラウザのタブを閉じただけでは、一定時間（デフォルト約30分）バックグラウンドで起動し続け、無料枠を無駄に消費してしまいます。</li>
+                    <li><strong>不要なCodespaceの削除:</strong> <a href="https://github.com/codespaces" target="_blank" style="color: var(--accent-gold);">Codespacesの管理画面</a>から、使わなくなった環境はこまめに削除しましょう。</li>
+                </ul>
+            </div>
+            <p>授業での実習（週1回の講義と課題）であれば、こまめに停止して無駄なアイドル時間を減らせば、無料枠内で十分に賄うことができます。</p>
+        </div>
+        
+        <footer class="portal-footer" style="text-align: center; margin-top: 50px;">
+            <p>&copy; 2026 Department of Electrical and Electronic Engineering. All rights reserved.</p>
+        </footer>
+    </main>
+</body>
+</html>
