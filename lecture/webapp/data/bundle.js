@@ -63,7 +63,7 @@ window.__COURSE__ = {
     {
       "id": "session04",
       "no": 4,
-      "title": "演習課題1（出題編）：オームの法則",
+      "title": "電気回路とプログラミング1（演習課題1）",
       "slides": [],
       "assignment": {
         "title": "演習課題1：オームの法則（for/if）",
@@ -88,7 +88,7 @@ window.__COURSE__ = {
     {
       "id": "session05",
       "no": 5,
-      "title": "演習課題1（解説編）：制限エリアで公開",
+      "title": "演習課題1の解説と復習（課題1）",
       "slides": [],
       "assignment": {
         "title": "演習課題1 解説：オームの法則（for/if）",
@@ -120,7 +120,7 @@ window.__COURSE__ = {
     {
       "id": "session07",
       "no": 7,
-      "title": "演習課題2（出題編）：配列でオームの法則",
+      "title": "電気回路とプログラミング2（演習課題2）",
       "slides": [],
       "assignment": {
         "title": "演習課題2：配列でオームの法則（scanfなし）",
@@ -142,7 +142,7 @@ window.__COURSE__ = {
     {
       "id": "session08",
       "no": 8,
-      "title": "演習課題2（解説編）：制限エリアで公開",
+      "title": "演習課題2の解説と復習（課題2）",
       "slides": [],
       "assignment": {
         "title": "演習課題2：配列でオームの法則（scanfなし）",
@@ -179,7 +179,7 @@ window.__COURSE__ = {
     {
       "id": "session10",
       "no": 10,
-      "title": "演習課題3（出題編）：関数でオームの法則",
+      "title": "電気回路とプログラミング3（演習課題3）",
       "slides": [],
       "assignment": {
         "title": "演習課題3：関数でオームの法則（配列版・scanfなし）",
@@ -204,7 +204,7 @@ window.__COURSE__ = {
     {
       "id": "session11",
       "no": 11,
-      "title": "演習課題3（解説編）：制限エリアで公開",
+      "title": "演習課題3の解説と復習（課題3）",
       "slides": [],
       "assignment": {
         "title": "演習課題3（解説）：関数でオームの法則（配列版）",
@@ -239,7 +239,7 @@ window.__COURSE__ = {
     {
       "id": "session13",
       "no": 13,
-      "title": "演習課題4（出題編）：ファイル入力でデータ処理",
+      "title": "電気回路とプログラミング4（演習課題4）",
       "slides": [],
       "assignment": {
         "title": "演習課題4：ファイル入力でデータ処理（ファイル入出力）",
@@ -262,7 +262,7 @@ window.__COURSE__ = {
     {
       "id": "session14",
       "no": 14,
-      "title": "演習課題4（解説編）：制限エリアで公開",
+      "title": "演習課題4の解説と復習（課題4）",
       "slides": [],
       "assignment": {
         "title": "演習課題4：ファイル入力でデータ処理（ファイル入出力）",
@@ -2042,7 +2042,7 @@ window.__COURSE__ = {
     "10": [
       {
         "title": "未完成コード（課題）",
-        "code": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI) {\n  if (R <= 0) {\n    return 0;\n  }\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b) {\n  if (???) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;          // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b) {\n  if (???) return a;  // もし、a が b よりも小さければ、a を返す\n  return b;          // そうでない場合は、 b を返す\n}\n\nint main(void) {\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};  // 電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};  // 抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for (int k = 0; k < N; k++) {\n    double V = ???;        // TODO2-1: 電圧リストのk番目\n    double R = ???;        // TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if (!calcI_checked(V, R, &I)) {\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if (validCount == 0) {\n      maxI = I;\n      minI = I;\n    } else {\n      maxI = ???(maxI, I);  // TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);  // TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if (validCount > 0) {\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  } else {\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}"
+        "code": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI) {\n  if (R <= 0) {\n    return 0;\n  }\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b) {\n  if (???) {\n    return a;  // もし、a が b よりも大きければ、a を返す\n  }\n  return b;          // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b) {\n  if (???) {\n    return a;  // もし、a が b よりも小さければ、a を返す\n  }\n  return b;          // そうでない場合は、 b を返す\n}\n\nint main(void) {\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};  // 電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};  // 抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for (int k = 0; k < N; k++) {\n    double V = ???;        // TODO2-1: 電圧リストのk番目\n    double R = ???;        // TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if (!calcI_checked(V, R, &I)) {\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if (validCount == 0) {\n      maxI = I;\n      minI = I;\n    } else {\n      maxI = ???(maxI, I);  // TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);  // TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if (validCount > 0) {\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  } else {\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}"
       }
     ],
     "11": [
