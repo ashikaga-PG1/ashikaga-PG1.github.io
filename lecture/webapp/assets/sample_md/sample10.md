@@ -22,13 +22,17 @@ int calcI_checked(double V, double R, double *outI) {
 
 // TODO1-1: 新しいmaxを返す
 double maxValue(double a, double b) {
-  if (???) return a;  // もし、a が b よりも大きければ、a を返す
+  if (???) {
+    return a;  // もし、a が b よりも大きければ、a を返す
+  }
   return b;          // そうでない場合は、 b を返す
 }
 
 // TODO1-2: 新しいminを返す
 double minValue(double a, double b) {
-  if (???) return a;  // もし、a が b よりも小さければ、a を返す
+  if (???) {
+    return a;  // もし、a が b よりも小さければ、a を返す
+  }
   return b;          // そうでない場合は、 b を返す
 }
 

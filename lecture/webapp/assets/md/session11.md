@@ -31,20 +31,26 @@ double calcI(double V, double R){
 
 // 入力チェック込み（成功:1 / 失敗:0）
 int calcI_checked(double V, double R, double *outI){
-  if(R <= 0) return 0;
+  if(R <= 0) {
+    return 0;
+  }
   *outI = calcI(V, R);
   return 1;
 }
 
 // TODO1-1: 新しいmaxを返す
 double maxValue(double a, double b){
-  if(???) return a;  // もし、a が b よりも大きければ、a を返す
+  if(???) {
+    return a;  // もし、a が b よりも大きければ、a を返す
+  }
   return b;          // そうでない場合は、b を返す
 }
 
 // TODO1-2: 新しいminを返す
 double minValue(double a, double b){
-  if(???) return a;  // もし、a が b よりも小さければ、a を返す
+  if(???) {
+    return a;  // もし、a が b よりも小さければ、a を返す
+  }
   return b;          // そうでない場合は、b を返す
 }
 
@@ -113,20 +119,26 @@ double calcI(double V, double R){
 
 // 入力チェック込み（成功:1 / 失敗:0）
 int calcI_checked(double V, double R, double *outI){
-  if(R <= 0) return 0;
+  if(R <= 0) {
+    return 0;
+  }
   *outI = calcI(V, R);
   return 1;
 }
 
 // TODO1-1: 新しいmaxを返す
 double maxValue(double a, double b){
-  if(a > b) return a;  // もし、a が b よりも大きければ、a を返す
+  if(a > b) {
+    return a;  // もし、a が b よりも大きければ、a を返す
+  }
   return b;            // そうでない場合は、 b を返す
 }
 
 // TODO1-2: 新しいminを返す
 double minValue(double a, double b){
-  if(a < b) return a;  // もし、a が b よりも小さければ、a を返す
+  if(a < b) {
+    return a;  // もし、a が b よりも小さければ、a を返す
+  }
   return b;            // そうでない場合は、 b を返す
 }
 
