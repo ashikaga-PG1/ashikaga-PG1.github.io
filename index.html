@@ -70,8 +70,13 @@
             <h1 class="main-title">Programming 1<span class="sub-title">Unified Education Portal</span></h1>
             <p class="hero-desc">講義資料、演習課題、学習用ゲームを統合した受講生専用プラットフォームです。</p>
             
-            <div style="margin-top: 30px; font-size: 0.85rem; color: var(--accent-gold); opacity: 0.9;">
-                ※ 環境によりバックスラッシュ（\）が円記号（¥）として表示される場合がありますが、同様に扱われます。
+            <div style="margin-top: 30px; font-size: 0.85rem; color: var(--accent-gold); opacity: 0.9; line-height: 1.6; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <div>※ 環境によりバックスラッシュ（\）が円記号（¥）として表示される場合がありますが、同様に扱われます。</div>
+                <div style="margin-top: 10px; border-top: 1px solid rgba(245, 158, 11, 0.2); padding-top: 10px;">
+                    ⚠️ <b>Visual Studio を使用する学生へ:</b><br>
+                    第12回〜14回のキーボード入力やファイル入出力プログラムでは、ビルドエラー（C4996）を防ぐため、プログラムの<b>1行目</b>（<code>#include</code> より上）に以下を記述してください。<br>
+                    <code style="display: inline-block; background: rgba(0, 0, 0, 0.4); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #fff; margin-top: 4px;">#define _CRT_SECURE_NO_WARNINGS</code>
+                </div>
             </div>
         </section>
 

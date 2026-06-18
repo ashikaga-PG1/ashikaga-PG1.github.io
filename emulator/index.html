@@ -919,1767 +919,1881 @@
   <script>
     /* --- CEmu Data --- */
     window.__CEMU_DATA__ = {
-  "version": 1,
-  "app": {
-    "title": "C Learning Emulator",
-    "targetSessions": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15
-    ],
-    "virtualFiles": [
-      {
-        "name": "input.csv",
-        "modes": [
-          "r"
+      "version": 1,
+      "app": {
+        "title": "C Learning Emulator",
+        "targetSessions": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "virtualFiles": [
+          {
+            "name": "input.csv",
+            "modes": [
+              "r"
+            ]
+          },
+          {
+            "name": "output.csv",
+            "modes": [
+              "w"
+            ]
+          }
         ]
       },
-      {
-        "name": "output.csv",
-        "modes": [
-          "w"
+      "runtime": {
+        "maxRunMs": 1500,
+        "maxStdoutBytes": 65536,
+        "maxFileBytes": 32768,
+        "allowedHeaders": [
+          "stdio.h"
         ]
-      }
-    ]
-  },
-  "runtime": {
-    "maxRunMs": 1500,
-    "maxStdoutBytes": 65536,
-    "maxFileBytes": 32768,
-    "allowedHeaders": [
-      "stdio.h"
-    ]
-  },
-  "sessions": [
-    {
-      "sessionNo": 1,
-      "title": "プログラムの基本",
-      "description": "第1回のサンプルコードをブラウザ上で試すための独立学習環境です。",
-      "assignment": null,
-      "samples": [
+      },
+      "sessions": [
         {
-          "id": "s01-01",
-          "sampleIndex": 1,
-          "title": "Hello, world（表示の流れ）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 表示する\n  printf(\"Hello, world!\\n\");\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 表示する\n  printf(\"Hello, world!\\n\");\n  return 0;\n}",
-          "watch": [],
-          "trace": [
+          "sessionNo": 1,
+          "title": "プログラムの基本",
+          "description": "第1回のサンプルコードをブラウザ上で試すための独立学習環境です。",
+          "assignment": null,
+          "samples": [
             {
-              "at": "開始",
-              "vars": {
-                "(開始)": ""
-              },
-              "stdout": ""
+              "id": "s01-01",
+              "sampleIndex": 1,
+              "title": "Hello, world（表示の流れ）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 表示する\n  printf(\"Hello, world!\\n\");\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 表示する\n  printf(\"Hello, world!\\n\");\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "開始",
+                  "vars": {
+                    "(開始)": ""
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "main開始",
+                  "vars": {
+                    "(main開始)": ""
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "表示する",
+                  "vars": {
+                    "(printf呼出)": ""
+                  },
+                  "stdout": "Hello, world!\n"
+                }
+              ],
+              "features": [
+                "printf"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "Hello, world!\n",
+              "notes": []
             },
             {
-              "at": "main開始",
-              "vars": {
-                "(main開始)": ""
-              },
-              "stdout": ""
+              "id": "s01-02",
+              "sampleIndex": 2,
+              "title": "整数の計算と出力（printf）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a = 3, b = 5;\n  // @bp 結果を表示\n  printf(\"%d\\n\", a + b);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a = 3, b = 5;\n  // @bp 結果を表示\n  printf(\"%d\\n\", a + b);\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "値を用意",
+                  "vars": {
+                    "a": 3,
+                    "b": 5
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "結果を表示",
+                  "vars": {
+                    "a": 3,
+                    "b": 5
+                  },
+                  "stdout": "8\n"
+                }
+              ],
+              "features": [
+                "printf"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "8\n",
+              "notes": []
             },
             {
-              "at": "表示する",
-              "vars": {
-                "(printf呼出)": ""
-              },
-              "stdout": "Hello, world!\n"
+              "id": "s01-03",
+              "sampleIndex": 3,
+              "title": "コンパイル→実行のイメージ（擬似）",
+              "mode": "guide",
+              "originalCode": "// 実際はVSCode＋gccで実行します\n// ここでは手順の確認だけ",
+              "browserCode": "// 実際はVSCode＋gccで実行します\n// ここでは手順の確認だけ",
+              "watch": [],
+              "trace": [
+                {
+                  "vars": {
+                    "手順": "gcc main.c -o main.exe"
+                  },
+                  "stdout": ""
+                },
+                {
+                  "vars": {
+                    "手順": "./main.exe"
+                  },
+                  "stdout": "（実行結果が表示される）\n"
+                }
+              ],
+              "features": [],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "（実行結果が表示される）\n",
+              "notes": [
+                "このサンプルはコンパイル手順の説明用です。",
+                "ブラウザ版では実行ではなく学習ガイドとして表示します。"
+              ]
             }
-          ],
-          "features": [
-            "printf"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "Hello, world!\n",
-          "notes": []
+          ]
         },
         {
-          "id": "s01-02",
-          "sampleIndex": 2,
-          "title": "整数の計算と出力（printf）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a = 3, b = 5;\n  // @bp 結果を表示\n  printf(\"%d\\n\", a + b);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a = 3, b = 5;\n  // @bp 結果を表示\n  printf(\"%d\\n\", a + b);\n  return 0;\n}",
-          "watch": [],
-          "trace": [
+          "sessionNo": 2,
+          "title": "C言語の基本（変数・出力）",
+          "description": "第2回のサンプルコードをブラウザ上で試すための独立学習環境です。",
+          "assignment": null,
+          "samples": [
             {
-              "at": "値を用意",
-              "vars": {
-                "a": 3,
-                "b": 5
-              },
-              "stdout": ""
+              "id": "s02-01",
+              "sampleIndex": 1,
+              "title": "変数とprintf（足し算）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a = 3;\n  // @bp bを用意\n  int b = 5;\n  // @bp 合計を計算\n  int s = a + b;\n  // @bp 結果を表示\n  printf(\"%d\\n\", s);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a = 3;\n  // @bp bを用意\n  int b = 5;\n  // @bp 合計を計算\n  int s = a + b;\n  // @bp 結果を表示\n  printf(\"%d\\n\", s);\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "aを用意",
+                  "vars": {
+                    "a": 3
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "bを用意",
+                  "vars": {
+                    "a": 3,
+                    "b": 5
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "合計を計算",
+                  "vars": {
+                    "a": 3,
+                    "b": 5,
+                    "s": 8
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "結果を表示",
+                  "vars": {
+                    "a": 3,
+                    "b": 5,
+                    "s": 8
+                  },
+                  "stdout": "8\n"
+                }
+              ],
+              "features": [
+                "printf"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "8\n",
+              "notes": []
             },
             {
-              "at": "結果を表示",
-              "vars": {
-                "a": 3,
-                "b": 5
-              },
-              "stdout": "8\n"
+              "id": "s02-02",
+              "sampleIndex": 2,
+              "title": "doubleと書式（面積）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 半径を用意\n  double r = 2.0;\n  // @bp 面積を計算\n  double s = 3.14159 * r * r;\n  // @bp 結果を表示\n  printf(\"%.2f\\n\", s);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 半径を用意\n  double r = 2.0;\n  // @bp 面積を計算\n  double s = 3.14159 * r * r;\n  // @bp 結果を表示\n  printf(\"%.2f\\n\", s);\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "半径を用意",
+                  "vars": {
+                    "r": 2
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "面積を計算",
+                  "vars": {
+                    "r": 2,
+                    "s": 12.56636
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "結果を表示",
+                  "vars": {
+                    "r": 2,
+                    "s": 12.56636
+                  },
+                  "stdout": "12.57\n"
+                }
+              ],
+              "features": [
+                "printf"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "12.57\n",
+              "notes": []
+            },
+            {
+              "id": "s02-03",
+              "sampleIndex": 3,
+              "title": "整数除算とキャスト",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  int a = 7, b = 2;\n  // @bp 整数除算を表示\n  printf(\"%d\\n\", a / b);\n  // @bp 実数除算を表示\n  printf(\"%.1f\\n\", (double)a / b);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  int a = 7, b = 2;\n  // @bp 整数除算を表示\n  printf(\"%d\\n\", a / b);\n  // @bp 実数除算を表示\n  printf(\"%.1f\\n\", (double)a / b);\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "値を用意",
+                  "vars": {
+                    "a": 7,
+                    "b": 2
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "整数除算を表示",
+                  "vars": {
+                    "a": 7,
+                    "b": 2
+                  },
+                  "stdout": "3\n"
+                },
+                {
+                  "at": "実数除算を表示",
+                  "vars": {
+                    "a": 7,
+                    "b": 2
+                  },
+                  "stdout": "3\n3.5\n"
+                }
+              ],
+              "features": [
+                "printf"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "3\n3.5\n",
+              "notes": []
             }
-          ],
-          "features": [
-            "printf"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "8\n",
-          "notes": []
+          ]
         },
         {
-          "id": "s01-03",
-          "sampleIndex": 3,
-          "title": "コンパイル→実行のイメージ（擬似）",
-          "mode": "guide",
-          "originalCode": "// 実際はVSCode＋gccで実行します\n// ここでは手順の確認だけ",
-          "browserCode": "// 実際はVSCode＋gccで実行します\n// ここでは手順の確認だけ",
-          "watch": [],
-          "trace": [
+          "sessionNo": 3,
+          "title": "条件分岐と繰り返し（if / for / while）",
+          "description": "第3回のサンプルコードをブラウザ上で試すための独立学習環境です。",
+          "assignment": null,
+          "samples": [
             {
-              "vars": {
-                "手順": "gcc main.c -o main.exe"
-              },
-              "stdout": ""
+              "id": "s03-01",
+              "sampleIndex": 1,
+              "title": "if/else（偶数・奇数）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  int n = 7;\n\n  if (n % 2 == 0) {\n    printf(\"even\\n\");\n  } else {\n    // @bp 判定結果を表示\n    printf(\"odd\\n\");\n  }\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  int n = 7;\n\n  if (n % 2 == 0) {\n    printf(\"even\\n\");\n  } else {\n    // @bp 判定結果を表示\n    printf(\"odd\\n\");\n  }\n  return 0;\n}",
+              "watch": [
+                "n"
+              ],
+              "trace": [
+                {
+                  "at": "値を用意",
+                  "vars": {
+                    "n": 7
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "判定結果を表示",
+                  "vars": {
+                    "n": 7
+                  },
+                  "stdout": "odd\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "if"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "odd\n",
+              "notes": []
             },
             {
-              "vars": {
-                "手順": "./main.exe"
-              },
-              "stdout": "（実行結果が表示される）\n"
+              "id": "s03-02",
+              "sampleIndex": 2,
+              "title": "for（1〜5の合計）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 初期化\n  int sum = 0;\n\n  for (int i = 1; i <= 5; i++) {\n    // @bp 合計を更新\n    sum += i;\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 初期化\n  int sum = 0;\n\n  for (int i = 1; i <= 5; i++) {\n    // @bp 合計を更新\n    sum += i;\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+              "watch": [
+                "i",
+                "sum"
+              ],
+              "trace": [
+                {
+                  "at": "初期化",
+                  "vars": {
+                    "sum": 0,
+                    "i": 1
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "合計を更新",
+                  "vars": {
+                    "sum": 1,
+                    "i": 2
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "合計を更新",
+                  "vars": {
+                    "sum": 3,
+                    "i": 3
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "合計を更新",
+                  "vars": {
+                    "sum": 6,
+                    "i": 4
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "合計を更新",
+                  "vars": {
+                    "sum": 10,
+                    "i": 5
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "合計を更新",
+                  "vars": {
+                    "sum": 15,
+                    "i": 6
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "結果を表示",
+                  "vars": {
+                    "sum": 15
+                  },
+                  "stdout": "15\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "for"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "15\n",
+              "notes": []
+            },
+            {
+              "id": "s03-03",
+              "sampleIndex": 3,
+              "title": "while（カウントダウン）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 初期値を用意\n  int n = 3;\n\n  while (n > 0) {\n    // @bp 現在値を表示\n    printf(\"%d\\n\", n);\n    n--;\n  }\n\n  // @bp 終了を表示\n  printf(\"go!\\n\");\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 初期値を用意\n  int n = 3;\n\n  while (n > 0) {\n    // @bp 現在値を表示\n    printf(\"%d\\n\", n);\n    n--;\n  }\n\n  // @bp 終了を表示\n  printf(\"go!\\n\");\n  return 0;\n}",
+              "watch": [
+                "n"
+              ],
+              "trace": [
+                {
+                  "at": "初期値を用意",
+                  "vars": {
+                    "n": 3
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "現在値を表示",
+                  "vars": {
+                    "n": 3
+                  },
+                  "stdout": "3\n"
+                },
+                {
+                  "at": "現在値を表示",
+                  "vars": {
+                    "n": 2
+                  },
+                  "stdout": "3\n2\n"
+                },
+                {
+                  "at": "現在値を表示",
+                  "vars": {
+                    "n": 1
+                  },
+                  "stdout": "3\n2\n1\n"
+                },
+                {
+                  "at": "終了を表示",
+                  "vars": {
+                    "n": 0
+                  },
+                  "stdout": "3\n2\n1\ngo!\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "while"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "3\n2\n1\ngo!\n",
+              "notes": []
             }
-          ],
-          "features": [],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "（実行結果が表示される）\n",
-          "notes": [
-            "このサンプルはコンパイル手順の説明用です。",
-            "ブラウザ版では実行ではなく学習ガイドとして表示します。"
+          ]
+        },
+        {
+          "sessionNo": 4,
+          "title": "電気回路とプログラミング1（演習課題1）",
+          "description": "scanfを使わずに、抵抗値を変化させて電流を計算し、安全判定（OK/WARN）するプログラムを作成する。",
+          "assignment": {
+            "title": "演習課題1：オームの法則（for/if）",
+            "task": "scanfを使わずに、抵抗値を変化させて電流を計算し、安全判定（OK/WARN）するプログラムを作成する。",
+            "specs": [
+              "電圧 V=5.0[V]、許容電流 Imax=0.60[A] とする。",
+              "for文で抵抗 R=5,10,15,...,50[Ω] を順に処理する。",
+              "各Rについて I=V/R を計算し、1行ずつ表示する（小数3桁）。",
+              "I>Imax なら WARN、それ以外は OK と表示する。",
+              "OK の件数を数えて最後に OK=○ / 10 を表示する。"
+            ],
+            "hints": "ヒント：I=V/R。小数表示は printf(\"%.3f\", 値) を使います。",
+            "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 1; k <= 10; k++){\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if( ??? ){\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    }else{\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}\n"
+          },
+          "samples": [
+            {
+              "id": "s04-01",
+              "sampleIndex": 1,
+              "title": "未完成コード（課題）",
+              "mode": "edit-run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for (int k = 1; k <= 10; k++) {\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if ( ??? ) {\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    } else {\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for (int k = 1; k <= 10; k++) {\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if ( ??? ) {\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    } else {\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}",
+              "watch": [],
+              "trace": [],
+              "features": [
+                "printf",
+                "if",
+                "for"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 5,
+          "title": "演習課題1の解説と復習（課題1）",
+          "description": "未完成コードの ??? を埋めて、仕様を満たす完成版にする。",
+          "assignment": {
+            "title": "演習課題1 解説：オームの法則（for/if）",
+            "task": "未完成コードの ??? を埋めて、仕様を満たす完成版にする。",
+            "specs": [
+              "TODOの ??? を埋めて完成させる。",
+              "計算式 I=V/R、判定 I>Imax、OK件数の更新を正しく実装する。",
+              "出力形式（改行含む）を仕様どおりに揃える。"
+            ],
+            "hints": "ヒント：I=V/R。小数表示は printf(\"%.3f\", 値) を使います。",
+            "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 1; k <= 10; k++){\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if( ??? ){\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    }else{\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}\n"
+          },
+          "samples": [
+            {
+              "id": "s05-01",
+              "sampleIndex": 1,
+              "title": "オームの法則（V=IR）：Iを計算",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  double V = 5.0, R = 10.0;\n  // @bp 電流を計算\n  double I = V / R;\n  // @bp 結果を表示\n  printf(\"I=%.3f A\\n\", I);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  double V = 5.0, R = 10.0;\n  // @bp 電流を計算\n  double I = V / R;\n  // @bp 結果を表示\n  printf(\"I=%.3f A\\n\", I);\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "値を用意",
+                  "vars": {
+                    "V": 5,
+                    "R": 10
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "結果を表示",
+                  "vars": {
+                    "V": 5,
+                    "R": 10,
+                    "I": 0.5
+                  },
+                  "stdout": "I=0.500 A\n"
+                }
+              ],
+              "features": [
+                "printf"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "I=0.500 A\n",
+              "notes": []
+            },
+            {
+              "id": "s05-02",
+              "sampleIndex": 2,
+              "title": "条件分岐：許容電流を超えたら警告",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  double I = 0.8;\n\n  if (I > 0.5) {\n    // @bp 警告を表示\n    printf(\"WARN\\n\");\n  } else {\n    printf(\"OK\\n\");\n  }\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  double I = 0.8;\n\n  if (I > 0.5) {\n    // @bp 警告を表示\n    printf(\"WARN\\n\");\n  } else {\n    printf(\"OK\\n\");\n  }\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "警告を表示",
+                  "vars": {
+                    "I": 0.8
+                  },
+                  "stdout": "WARN\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "if"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "WARN\n",
+              "notes": []
+            },
+            {
+              "id": "s05-03",
+              "sampleIndex": 3,
+              "title": "繰り返し：Rを変えてIを一覧表示",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 電圧を用意\n  double V = 5.0;\n\n  for (int r = 5; r <= 15; r += 5) {\n    // @bp 各抵抗で表示\n    printf(\"R=%d I=%.2f\\n\", r, V / r);\n  }\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 電圧を用意\n  double V = 5.0;\n\n  for (int r = 5; r <= 15; r += 5) {\n    // @bp 各抵抗で表示\n    printf(\"R=%d I=%.2f\\n\", r, V / r);\n  }\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "各抵抗で表示",
+                  "vars": {
+                    "V": 5,
+                    "r": 5
+                  },
+                  "stdout": "R=5 I=1.00\n"
+                },
+                {
+                  "at": "各抵抗で表示",
+                  "vars": {
+                    "V": 5,
+                    "r": 10
+                  },
+                  "stdout": "R=5 I=1.00\nR=10 I=0.50\n"
+                },
+                {
+                  "at": "各抵抗で表示",
+                  "vars": {
+                    "V": 5,
+                    "r": 15
+                  },
+                  "stdout": "R=5 I=1.00\nR=10 I=0.50\nR=15 I=0.33\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "for"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "R=5 I=1.00\nR=10 I=0.50\nR=15 I=0.33\n",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 6,
+          "title": "配列（一次元配列）",
+          "description": "第6回のサンプルコードをブラウザ上で試すための独立学習環境です。",
+          "assignment": null,
+          "samples": [
+            {
+              "id": "s06-01",
+              "sampleIndex": 1,
+              "title": "配列の合計",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a[5] = {1, 2, 3, 4, 5};\n  // @bp 合計を初期化\n  int sum = 0;\n\n  for (int i = 0; i < 5; i++) {\n    // @bp 合計を更新\n    sum += a[i];\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a[5] = {1, 2, 3, 4, 5};\n  // @bp 合計を初期化\n  int sum = 0;\n\n  for (int i = 0; i < 5; i++) {\n    // @bp 合計を更新\n    sum += a[i];\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
+              "watch": [
+                "i",
+                "sum",
+                "a[i]"
+              ],
+              "trace": [
+                {
+                  "at": "合計を初期化",
+                  "vars": {
+                    "i": 0,
+                    "sum": 0
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "合計を更新",
+                  "vars": {
+                    "i": 1,
+                    "sum": 1
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "合計を更新",
+                  "vars": {
+                    "i": 2,
+                    "sum": 3
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "合計を更新",
+                  "vars": {
+                    "i": 3,
+                    "sum": 6
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "合計を更新",
+                  "vars": {
+                    "i": 4,
+                    "sum": 10
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "結果を表示",
+                  "vars": {
+                    "i": 5,
+                    "sum": 15
+                  },
+                  "stdout": "15\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "for",
+                "array"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "15\n",
+              "notes": []
+            },
+            {
+              "id": "s06-02",
+              "sampleIndex": 2,
+              "title": "最大値を探す",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a[4] = {3, 7, 2, 5};\n  // @bp 最大値を初期化\n  int max = a[0];\n\n  for (int i = 1; i < 4; i++) {\n    // @bp 最大値を確認\n    if (a[i] > max) {\n      max = a[i];\n    }\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", max);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a[4] = {3, 7, 2, 5};\n  // @bp 最大値を初期化\n  int max = a[0];\n\n  for (int i = 1; i < 4; i++) {\n    // @bp 最大値を確認\n    if (a[i] > max) {\n      max = a[i];\n    }\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", max);\n  return 0;\n}",
+              "watch": [
+                "i",
+                "max",
+                "a[i]"
+              ],
+              "trace": [
+                {
+                  "at": "最大値を初期化",
+                  "vars": {
+                    "i": 1,
+                    "max": 3
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "最大値を確認",
+                  "vars": {
+                    "i": 2,
+                    "max": 7
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "最大値を確認",
+                  "vars": {
+                    "i": 3,
+                    "max": 7
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "結果を表示",
+                  "vars": {
+                    "i": 4,
+                    "max": 7
+                  },
+                  "stdout": "7\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "if",
+                "for",
+                "array"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "7\n",
+              "notes": []
+            },
+            {
+              "id": "s06-03",
+              "sampleIndex": 3,
+              "title": "配列とprintf（一覧表示）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a[3] = {2, 4, 6};\n\n  for (int i = 0; i < 3; i++) {\n    // @bp 各要素を表示\n    printf(\"%d\\n\", a[i]);\n  }\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a[3] = {2, 4, 6};\n\n  for (int i = 0; i < 3; i++) {\n    // @bp 各要素を表示\n    printf(\"%d\\n\", a[i]);\n  }\n  return 0;\n}",
+              "watch": [
+                "i",
+                "a[i]"
+              ],
+              "trace": [
+                {
+                  "at": "各要素を表示",
+                  "vars": {
+                    "i": 0
+                  },
+                  "stdout": "2\n"
+                },
+                {
+                  "at": "各要素を表示",
+                  "vars": {
+                    "i": 1
+                  },
+                  "stdout": "2\n4\n"
+                },
+                {
+                  "at": "各要素を表示",
+                  "vars": {
+                    "i": 2
+                  },
+                  "stdout": "2\n4\n6\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "for",
+                "array"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "2\n4\n6\n",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 7,
+          "title": "電気回路とプログラミング2（演習課題2）",
+          "description": "<p>抵抗値を配列で用意し、オームの法則 <b>I = V / R</b> で電流を計算します。<br>この回は <b>配列＋for＋if</b> がポイントです（<b>scanfは使いません</b>）。</p>",
+          "assignment": {
+            "title": "演習課題2：配列でオームの法則（scanfなし）",
+            "task": "<p>抵抗値を配列で用意し、オームの法則 <b>I = V / R</b> で電流を計算します。<br>この回は <b>配列＋for＋if</b> がポイントです（<b>scanfは使いません</b>）。</p>",
+            "specs": [
+              "定数：V=5.0[V], Imax=0.60[A]",
+              "抵抗配列：R={5,10,15,20,25}（要素数5）",
+              "for文で I[k]=V/R[k] を計算して配列Iに格納する",
+              "if(I[k] > Imax) なら WARN、それ以外は OK を表示する",
+              "最後に OK件数 okCount を表示する"
+            ],
+            "hints": "ヒント：配列の要素数は5（添字0〜4）。計算→格納→判定→表示→集計の順で書くと整理しやすい。",
+            "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for(int k = 0; k < 5; k++){\n    I[k] = ???;\n  }\n// TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 0; k < 5; k++){\n    if(???){\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    }else{\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}\n"
+          },
+          "samples": [
+            {
+              "id": "s07-01",
+              "sampleIndex": 1,
+              "title": "未完成コード（課題）",
+              "mode": "edit-run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for (int k = 0; k < 5; k++) {\n    I[k] = ???;\n  }\n\n  // TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for (int k = 0; k < 5; k++) {\n    if (???) {\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    } else {\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for (int k = 0; k < 5; k++) {\n    I[k] = ???;\n  }\n\n  // TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for (int k = 0; k < 5; k++) {\n    if (???) {\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    } else {\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}",
+              "watch": [],
+              "trace": [],
+              "features": [
+                "printf",
+                "if",
+                "for",
+                "array"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 8,
+          "title": "演習課題2の解説と復習（課題2）",
+          "description": "<p>抵抗値を配列で用意し、オームの法則 <b>I = V / R</b> で電流を計算します。<br>この回は <b>配列＋for＋if</b> がポイントです（<b>scanfは使いません</b>）。</p>",
+          "assignment": {
+            "title": "演習課題2：配列でオームの法則（scanfなし）",
+            "task": "<p>抵抗値を配列で用意し、オームの法則 <b>I = V / R</b> で電流を計算します。<br>この回は <b>配列＋for＋if</b> がポイントです（<b>scanfは使いません</b>）。</p>",
+            "specs": [
+              "定数：V=5.0[V], Imax=0.60[A]",
+              "抵抗配列：R={5,10,15,20,25}（要素数5）",
+              "for文で I[k]=V/R[k] を計算して配列Iに格納する",
+              "if(I[k] > Imax) なら WARN、それ以外は OK を表示する",
+              "最後に OK件数 okCount を表示する"
+            ],
+            "hints": "ヒント：配列の要素数は5（添字0〜4）。計算→格納→判定→表示→集計の順で書くと整理しやすい。",
+            "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for(int k = 0; k < 5; k++){\n    I[k] = ???;\n  }\n// TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 0; k < 5; k++){\n    if(???){\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    }else{\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}\n"
+          },
+          "samples": [
+            {
+              "id": "s08-01",
+              "sampleIndex": 1,
+              "title": "配列に計算結果を格納（I[k]=V/R[k]）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;\n  int R[5] = {5, 10, 15, 20, 25};\n  double I[5];\n\n  for (int k = 0; k < 5; k++) {\n    // @bp 配列に保存\n    I[k] = V / R[k];\n  }\n\n  // @bp 先頭と末尾を表示\n  printf(\"%.3f %.3f\\n\", I[0], I[4]);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;\n  int R[5] = {5, 10, 15, 20, 25};\n  double I[5];\n\n  for (int k = 0; k < 5; k++) {\n    // @bp 配列に保存\n    I[k] = V / R[k];\n  }\n\n  // @bp 先頭と末尾を表示\n  printf(\"%.3f %.3f\\n\", I[0], I[4]);\n  return 0;\n}",
+              "watch": [
+                "k",
+                "I[k]"
+              ],
+              "trace": [
+                {
+                  "at": "配列に保存",
+                  "stdout": "",
+                  "vars": {
+                    "k": 0
+                  }
+                },
+                {
+                  "at": "配列に保存",
+                  "stdout": "",
+                  "vars": {
+                    "k": 1
+                  }
+                },
+                {
+                  "at": "配列に保存",
+                  "stdout": "",
+                  "vars": {
+                    "k": 2
+                  }
+                },
+                {
+                  "at": "配列に保存",
+                  "stdout": "",
+                  "vars": {
+                    "k": 3
+                  }
+                },
+                {
+                  "at": "配列に保存",
+                  "stdout": "",
+                  "vars": {
+                    "k": 4
+                  }
+                },
+                {
+                  "at": "先頭と末尾を表示",
+                  "stdout": "1.000 0.200\n",
+                  "vars": {
+                    "I0": 1,
+                    "I4": 0.2
+                  }
+                }
+              ],
+              "features": [
+                "printf",
+                "for",
+                "array"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "1.000 0.200\n",
+              "notes": []
+            },
+            {
+              "id": "s08-02",
+              "sampleIndex": 2,
+              "title": "if判定＋カウント（OK/WARN）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const double Imax = 0.60;\n  double I = 0.50;\n  int okCount = 0;\n\n  if (I > Imax) {\n    printf(\"WARN\\n\");\n  } else {\n    // @bp OKを表示\n    printf(\"OK\\n\");\n    okCount = okCount + 1;\n  }\n\n  // @bp 件数を表示\n  printf(\"OK=%d\\n\", okCount);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const double Imax = 0.60;\n  double I = 0.50;\n  int okCount = 0;\n\n  if (I > Imax) {\n    printf(\"WARN\\n\");\n  } else {\n    // @bp OKを表示\n    printf(\"OK\\n\");\n    okCount = okCount + 1;\n  }\n\n  // @bp 件数を表示\n  printf(\"OK=%d\\n\", okCount);\n  return 0;\n}",
+              "watch": [
+                "okCount"
+              ],
+              "trace": [
+                {
+                  "at": "OKを表示",
+                  "stdout": "OK\n",
+                  "vars": {
+                    "I": 0.5,
+                    "Imax": 0.6,
+                    "okCount": 1
+                  }
+                },
+                {
+                  "at": "件数を表示",
+                  "stdout": "OK\nOK=1\n",
+                  "vars": {
+                    "I": 0.5,
+                    "Imax": 0.6,
+                    "okCount": 1
+                  }
+                }
+              ],
+              "features": [
+                "printf",
+                "if"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "OK\nOK=1\n",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 9,
+          "title": "関数（引数・戻り値）",
+          "description": "第9回のサンプルコードをブラウザ上で試すための独立学習環境です。",
+          "assignment": null,
+          "samples": [
+            {
+              "id": "s09-01",
+              "sampleIndex": 1,
+              "title": "関数で2乗を計算",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\ndouble square(double x) {\n  return x * x;\n}\n\nint main(void) {\n  // @bp 値を用意\n  double a = 3;\n  // @bp 計算結果を表示\n  printf(\"%.0f\\n\", square(a));\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\ndouble square(double x) {\n  return x * x;\n}\n\nint main(void) {\n  // @bp 値を用意\n  double a = 3;\n  // @bp 計算結果を表示\n  printf(\"%.0f\\n\", square(a));\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "値を用意",
+                  "vars": {
+                    "a": 3
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "計算結果を表示",
+                  "vars": {
+                    "a": 3
+                  },
+                  "stdout": "9\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "function"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "9\n",
+              "notes": []
+            },
+            {
+              "id": "s09-02",
+              "sampleIndex": 2,
+              "title": "関数でオームの法則（I=V/R）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\ndouble current(double V, double R) {\n  return V / R;\n}\n\nint main(void) {\n  // @bp 電流を表示\n  printf(\"%.2f\\n\", current(5, 10));\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\ndouble current(double V, double R) {\n  return V / R;\n}\n\nint main(void) {\n  // @bp 電流を表示\n  printf(\"%.2f\\n\", current(5, 10));\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "電流を表示",
+                  "vars": {},
+                  "stdout": "0.50\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "function"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "0.50\n",
+              "notes": []
+            },
+            {
+              "id": "s09-03",
+              "sampleIndex": 3,
+              "title": "関数で配列の合計",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint sum3(int a[3]) {\n  return a[0] + a[1] + a[2];\n}\n\nint main(void) {\n  int x[3] = {1, 2, 3};\n  // @bp 合計を表示\n  printf(\"%d\\n\", sum3(x));\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint sum3(int a[3]) {\n  return a[0] + a[1] + a[2];\n}\n\nint main(void) {\n  int x[3] = {1, 2, 3};\n  // @bp 合計を表示\n  printf(\"%d\\n\", sum3(x));\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "合計を表示",
+                  "vars": {
+                    "x[0]": 1,
+                    "x[1]": 2,
+                    "x[2]": 3
+                  },
+                  "stdout": "6\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "array",
+                "function"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "6\n",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 10,
+          "title": "電気回路とプログラミング3（演習課題3）",
+          "description": "<p>電流計算を関数 <b>calcI(V,R)</b> に分け、mainから呼び出す形でプログラムを完成させてください。<br>入力は <b>scanf</b> を使わず、<b>配列</b>（V_list/R_list）を用いて複数ケースを処理します。</p>",
+          "assignment": {
+            "title": "演習課題3：関数でオームの法則（配列版・scanfなし）",
+            "task": "<p>電流計算を関数 <b>calcI(V,R)</b> に分け、mainから呼び出す形でプログラムを完成させてください。<br>入力は <b>scanf</b> を使わず、<b>配列</b>（V_list/R_list）を用いて複数ケースを処理します。</p>",
+            "specs": [
+              "関数 calcI(V,R) を作り、I = V / R を返す（Rのチェックはmain側）",
+              "V_list/R_list の3ケース分を for で処理して I を計算する",
+              "R<=0 の場合は \"R error\" を表示してスキップする",
+              "I を小数3桁で表示する",
+              "有効データの平均電流 avg を表示する（valid==0なら NA）"
+            ],
+            "hints": "ヒント：配列の要素数N回だけ同じ処理を繰り返す。平均は sumI と valid を更新して最後に sumI/valid。",
+            "starterCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(???) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(???) return a; // もし、a が b よりも小さければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};        //電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};        //抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = ???;        //TODO2-1: 電圧リストのk番目\n    double R = ???;        //TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = ???(maxI, I);       //TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);         //TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n"
+          },
+          "samples": [
+            {
+              "id": "s10-01",
+              "sampleIndex": 1,
+              "title": "未完成コード（課題）",
+              "mode": "edit-run",
+              "originalCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI) {\n  if (R <= 0) {\n    return 0;\n  }\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b) {\n  if (???) {\n    return a;  // もし、a が b よりも大きければ、a を返す\n  }\n  return b;          // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b) {\n  if (???) {\n    return a;  // もし、a が b よりも小さければ、a を返す\n  }\n  return b;          // そうでない場合は、 b を返す\n}\n\nint main(void) {\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};  // 電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};  // 抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for (int k = 0; k < N; k++) {\n    double V = ???;        // TODO2-1: 電圧リストのk番目\n    double R = ???;        // TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if (!calcI_checked(V, R, &I)) {\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if (validCount == 0) {\n      maxI = I;\n      minI = I;\n    } else {\n      maxI = ???(maxI, I);  // TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);  // TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if (validCount > 0) {\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  } else {\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI) {\n  if (R <= 0) {\n    return 0;\n  }\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b) {\n  if (???) {\n    return a;  // もし、a が b よりも大きければ、a を返す\n  }\n  return b;          // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b) {\n  if (???) {\n    return a;  // もし、a が b よりも小さければ、a を返す\n  }\n  return b;          // そうでない場合は、 b を返す\n}\n\nint main(void) {\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};  // 電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};  // 抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for (int k = 0; k < N; k++) {\n    double V = ???;        // TODO2-1: 電圧リストのk番目\n    double R = ???;        // TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if (!calcI_checked(V, R, &I)) {\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if (validCount == 0) {\n      maxI = I;\n      minI = I;\n    } else {\n      maxI = ???(maxI, I);  // TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);  // TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if (validCount > 0) {\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  } else {\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}",
+              "watch": [],
+              "trace": [],
+              "features": [
+                "printf",
+                "if",
+                "for",
+                "array",
+                "sizeof",
+                "function"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 11,
+          "title": "演習課題3の解説と復習（課題3）",
+          "description": "<p>第10回の未完成コードを完成させたサンプルコードを確認し、<b>関数</b>（引数・戻り値）と <b>配列＋for</b> の典型パターンを復習します。</p>",
+          "assignment": {
+            "title": "演習課題3（解説）：関数でオームの法則（配列版）",
+            "task": "<p>第10回の未完成コードを完成させたサンプルコードを確認し、<b>関数</b>（引数・戻り値）と <b>配列＋for</b> の典型パターンを復習します。</p>",
+            "specs": [
+              "関数 calcI(V,R) を作り、I = V / R を返す（Rのチェックはmain側）",
+              "V_list/R_list の3ケース分を for で処理して I を計算する",
+              "R<=0 の場合は \"R error\" を表示してスキップする",
+              "I を小数3桁で表示する",
+              "有効データの平均電流 avg を表示する（valid==0なら NA）"
+            ],
+            "hints": "ポイント：calcIは V/R を返す。表示は %.3f。sumI+=I, valid++。",
+            "starterCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(???) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(???) return a; // もし、a が b よりも小さければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};        //電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};        //抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = ???;        //TODO2-1: 電圧リストのk番目\n    double R = ???;        //TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = ???(maxI, I);       //TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);         //TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n"
+          },
+          "samples": [
+            {
+              "id": "s11-01",
+              "sampleIndex": 1,
+              "title": "関数 calcI の最小例",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\nint main(void) {\n  // @bp 計算結果を表示\n  printf(\"%.3f\\n\", calcI(5.0, 10.0));\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\nint main(void) {\n  // @bp 計算結果を表示\n  printf(\"%.3f\\n\", calcI(5.0, 10.0));\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "計算結果を表示",
+                  "stdout": "0.500\n",
+                  "vars": {}
+                }
+              ],
+              "features": [
+                "printf",
+                "function"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "0.500\n",
+              "notes": []
+            },
+            {
+              "id": "s11-02",
+              "sampleIndex": 2,
+              "title": "配列で複数ケースを処理（scanfなし）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const int N = 3;\n  double V_list[3] = {5.0, 5.0, 5.0};\n  double R_list[3] = {5.0, 10.0, 0.0};\n\n  for (int k = 0; k < N; k++) {\n    // @bp 各ケースを表示\n    printf(\"%d %.1f %.1f\\n\", k, V_list[k], R_list[k]);\n  }\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const int N = 3;\n  double V_list[3] = {5.0, 5.0, 5.0};\n  double R_list[3] = {5.0, 10.0, 0.0};\n\n  for (int k = 0; k < N; k++) {\n    // @bp 各ケースを表示\n    printf(\"%d %.1f %.1f\\n\", k, V_list[k], R_list[k]);\n  }\n  return 0;\n}",
+              "watch": [
+                "k",
+                "V_list[k]"
+              ],
+              "trace": [
+                {
+                  "at": "各ケースを表示",
+                  "stdout": "0 5.0 5.0\n",
+                  "vars": {
+                    "k": 0
+                  }
+                },
+                {
+                  "at": "各ケースを表示",
+                  "stdout": "0 5.0 5.0\n1 5.0 10.0\n",
+                  "vars": {
+                    "k": 1
+                  }
+                },
+                {
+                  "at": "各ケースを表示",
+                  "stdout": "0 5.0 5.0\n1 5.0 10.0\n2 5.0 0.0\n",
+                  "vars": {
+                    "k": 2
+                  }
+                }
+              ],
+              "features": [
+                "printf",
+                "for",
+                "array"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "0 5.0 5.0\n1 5.0 10.0\n2 5.0 0.0\n",
+              "notes": []
+            },
+            {
+              "id": "s11-03",
+              "sampleIndex": 3,
+              "title": "未完成コード（課題）",
+              "mode": "edit-run",
+              "originalCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(???) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(???) return a; // もし、a が b よりも小さければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};        //電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};        //抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = ???;        //TODO2-1: 電圧リストのk番目\n    double R = ???;        //TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = ???(maxI, I);       //TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);         //TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n",
+              "browserCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(???) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(???) return a; // もし、a が b よりも小さければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};        //電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};        //抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = ???;        //TODO2-1: 電圧リストのk番目\n    double R = ???;        //TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = ???(maxI, I);       //TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);         //TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n",
+              "watch": [],
+              "trace": [],
+              "features": [
+                "printf",
+                "if",
+                "for",
+                "array",
+                "sizeof",
+                "function"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "",
+              "notes": []
+            },
+            {
+              "id": "s11-04",
+              "sampleIndex": 4,
+              "title": "解答例：演習課題3（関数＋配列）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(a > b) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;            // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(a < b) return a;  // もし、a が b よりも小さければ、a を返す\n  return b;            // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};  // 電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};  // 抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = V_list[k];  // TODO2-1: 電圧リストのk番目\n    double R = R_list[k];  // TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = maxValue(maxI, I);  // TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = minValue(minI, I);  // TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n",
+              "browserCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(a > b) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;            // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(a < b) return a;  // もし、a が b よりも小さければ、a を返す\n  return b;            // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};  // 電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};  // 抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = V_list[k];  // TODO2-1: 電圧リストのk番目\n    double R = R_list[k];  // TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = maxValue(maxI, I);  // TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = minValue(minI, I);  // TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n",
+              "watch": [
+                "k",
+                "V",
+                "R",
+                "I",
+                "validCount",
+                "sumI",
+                "maxI",
+                "minI"
+              ],
+              "trace": [
+                {
+                  "stdout": "",
+                  "vars": {
+                    "sumI": 0,
+                    "validCount": 0
+                  }
+                },
+                {
+                  "stdout": "case 1: V=5.0 R=5.0 -> I=1.000\n",
+                  "vars": {
+                    "k": 0,
+                    "V": 5,
+                    "R": 5,
+                    "I": 1,
+                    "outI": 1,
+                    "sumI": 1,
+                    "validCount": 1,
+                    "maxI": 1,
+                    "minI": 1
+                  }
+                },
+                {
+                  "stdout": "case 1: V=5.0 R=5.0 -> I=1.000\ncase 2: V=5.0 R=10.0 -> I=0.500\n",
+                  "vars": {
+                    "k": 1,
+                    "V": 5,
+                    "R": 10,
+                    "I": 0.5,
+                    "outI": 0.5,
+                    "sumI": 1.5,
+                    "validCount": 2,
+                    "maxI": 1,
+                    "minI": 0.5
+                  }
+                },
+                {
+                  "stdout": "case 1: V=5.0 R=5.0 -> I=1.000\ncase 2: V=5.0 R=10.0 -> I=0.500\ncase 3: V=5.0 R=0.0 -> R error\ncase 4: V=12.0 R=6.0 -> I=2.000\n",
+                  "vars": {
+                    "k": 3,
+                    "V": 12,
+                    "R": 6,
+                    "I": 2,
+                    "outI": 2,
+                    "sumI": 3.5,
+                    "validCount": 3,
+                    "maxI": 2,
+                    "minI": 0.5
+                  }
+                },
+                {
+                  "stdout": "case 1: V=5.0 R=5.0 -> I=1.000\ncase 2: V=5.0 R=10.0 -> I=0.500\ncase 3: V=5.0 R=0.0 -> R error\ncase 4: V=12.0 R=6.0 -> I=2.000\ncase 5: V=9.0 R=3.0 -> I=3.000\navg=1.625\nmax=3.000\nmin=0.500\n",
+                  "vars": {
+                    "sumI": 6.5,
+                    "validCount": 4,
+                    "maxI": 3,
+                    "minI": 0.5,
+                    "outI": 3,
+                    "avg": 1.625
+                  }
+                }
+              ],
+              "features": [
+                "printf",
+                "if",
+                "for",
+                "array",
+                "sizeof",
+                "function"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "case 1: V=5.0 R=5.0 -> I=1.000\ncase 2: V=5.0 R=10.0 -> I=0.500\ncase 3: V=5.0 R=0.0 -> R error\ncase 4: V=12.0 R=6.0 -> I=2.000\ncase 5: V=9.0 R=3.0 -> I=3.000\navg=1.625\nmax=3.000\nmin=0.500\n",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 12,
+          "title": "入出力（キーボード入力とファイル入出力）",
+          "description": "第12回のサンプルコードをブラウザ上で試すための独立学習環境です。",
+          "assignment": null,
+          "samples": [
+            {
+              "id": "s12-01",
+              "sampleIndex": 1,
+              "title": "scanf（キーボード入力）の最小例",
+              "mode": "run",
+              "originalCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\nint main(void) {\n  int x;\n  // @bp 入力を受け取る\n  printf(\"x ? \");\n  // ここではキーボードから 1 つ整数を入力する\n  if (scanf(\"%d\", &x) != 1) {\n    printf(\"input error\\n\");\n    return 0;\n  }\n  // @bp 結果を表示\n  printf(\"x=%d\\n\", x);\n  return 0;\n}",
+              "browserCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\nint main(void) {\n  int x;\n  // @bp 入力を受け取る\n  printf(\"x ? \");\n  // ここではキーボードから 1 つ整数を入力する\n  if (scanf(\"%d\", &x) != 1) {\n    printf(\"input error\\n\");\n    return 0;\n  }\n  // @bp 結果を表示\n  printf(\"x=%d\\n\", x);\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "入力を受け取る",
+                  "vars": {
+                    "x": 7
+                  },
+                  "stdout": "x ? 7\n"
+                },
+                {
+                  "at": "結果を表示",
+                  "vars": {
+                    "x": 7
+                  },
+                  "stdout": "x ? 7\nx=7\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "scanf",
+                "if"
+              ],
+              "stdinDefault": "7\n",
+              "inputCsvDefault": "",
+              "expectedStdout": "x ? 7\nx=7\n",
+              "notes": []
+            },
+            {
+              "id": "s12-02",
+              "sampleIndex": 2,
+              "title": "scanfで2値入力→計算（V, R → I）",
+              "mode": "run",
+              "originalCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\nint main(void) {\n  double v, r;\n  // @bp 入力を受け取る\n  printf(\"V R ? \");\n  if (scanf(\"%lf %lf\", &v, &r) != 2) {\n    printf(\"input error\\n\");\n    return 0;\n  }\n  if (r <= 0) {\n    printf(\"R error\\n\");\n    return 0;\n  }\n  // @bp 電流を表示\n  printf(\"I=%.3f\\n\", v / r);\n  return 0;\n}",
+              "browserCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\nint main(void) {\n  double v, r;\n  // @bp 入力を受け取る\n  printf(\"V R ? \");\n  if (scanf(\"%lf %lf\", &v, &r) != 2) {\n    printf(\"input error\\n\");\n    return 0;\n  }\n  if (r <= 0) {\n    printf(\"R error\\n\");\n    return 0;\n  }\n  // @bp 電流を表示\n  printf(\"I=%.3f\\n\", v / r);\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "入力を受け取る",
+                  "vars": {
+                    "v": 10,
+                    "r": 5
+                  },
+                  "stdout": "V R ? 10 5\n"
+                },
+                {
+                  "at": "電流を表示",
+                  "vars": {
+                    "v": 10,
+                    "r": 5,
+                    "I": 2
+                  },
+                  "stdout": "V R ? 10 5\nI=2.000\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "scanf",
+                "if"
+              ],
+              "stdinDefault": "10 5\n",
+              "inputCsvDefault": "",
+              "expectedStdout": "V R ? 10 5\nI=2.000\n",
+              "notes": []
+            },
+            {
+              "id": "s12-03",
+              "sampleIndex": 3,
+              "title": "ファイル入力（fscanf）：正しい書き方 → 擬似データで実行",
+              "mode": "run",
+              "originalCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\nint main(void) {\n  // VS Code で実行するときは、実際にファイルから読み込みます\n  // このツール上では、下の「擬似データ」部分が有効です\n  const char *inName = \"data.txt\";\n\n  double V[100], R[100];\n  int n = 0;\n\n  /* ----------------------------\n   * 【本来の実装】ファイルから読み込む（正しい書き方）\n   * 1行に V R（空白区切り）\n   * 例: 10 5\n   * ---------------------------- */\n  /*\n  FILE *fp = fopen(inName, \"r\");\n  if (fp == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  while (n < 100 && fscanf(fp, \"%lf %lf\", &V[n], &R[n]) == 2) {\n    n++;\n  }\n\n  fclose(fp);\n  */\n\n  /* ----------------------------\n   * 【ツール用】擬似的に配列から読み込む（data.txt相当）\n   * ※ data.txt の先頭数行と同じデータ\n   * ---------------------------- */\n  {\n    double v_dummy[] = {10, 12, 8, 15};\n    double r_dummy[] = {5, 0, 4, 7};\n    int dummy_n = (int)(sizeof(v_dummy) / sizeof(v_dummy[0]));\n\n    for (int i = 0; i < dummy_n && i < 100; i++) {\n      V[i] = v_dummy[i];\n      R[i] = r_dummy[i];\n    }\n    n = dummy_n;\n  }\n\n  // --- ここから共通処理（読み込んだデータを使う）---\n  double sumI = 0.0;\n  int valid = 0;\n\n  for (int i = 0; i < n; i++) {\n    if (R[i] <= 0) {\n      // @bp 各行を処理\n      printf(\"R error\\n\");\n      continue;\n    }\n    double I = V[i] / R[i];\n    // @bp 各行を処理\n    printf(\"I=%.3f\\n\", I);\n    sumI += I;\n    valid++;\n  }\n\n  // @bp 平均を表示\n  if (valid > 0) {\n    printf(\"avg=%.3f\\n\", sumI / valid);\n  } else {\n    printf(\"avg=NA\\n\");\n  }\n\n  return 0;\n}",
+              "browserCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\nint main(void){\n  const char *inName = \"input.csv\";\n\n  double V[100], R[100];\n  int n = 0;\n\n  FILE *fp = fopen(inName, \"r\");\n  if(fp == NULL){\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  while(n < 100 && fscanf(fp, \"%lf %lf\", &V[n], &R[n]) == 2){\n    n++;\n  }\n\n  fclose(fp);\n\n  double sumI = 0.0;\n  int valid = 0;\n\n  for(int i=0; i<n; i++){\n    if(R[i] <= 0){\n      printf(\"R error\\n\");\n      continue;\n    }\n    double I = V[i] / R[i];\n    printf(\"I=%.3f\\n\", I);\n    sumI += I;\n    valid++;\n  }\n\n  if(valid > 0) printf(\"avg=%.3f\\n\", sumI / valid);\n  else          printf(\"avg=NA\\n\");\n\n  return 0;\n}\n",
+              "watch": [
+                "i",
+                "n",
+                "V[n]"
+              ],
+              "trace": [
+                {
+                  "at": "各行を処理",
+                  "vars": {
+                    "i": 0,
+                    "n": 4
+                  },
+                  "stdout": "I=2.000\n"
+                },
+                {
+                  "at": "各行を処理",
+                  "vars": {
+                    "i": 1,
+                    "n": 4
+                  },
+                  "stdout": "I=2.000\nR error\n"
+                },
+                {
+                  "at": "各行を処理",
+                  "vars": {
+                    "i": 2,
+                    "n": 4
+                  },
+                  "stdout": "I=2.000\nR error\nI=2.000\n"
+                },
+                {
+                  "at": "各行を処理",
+                  "vars": {
+                    "i": 3,
+                    "n": 4
+                  },
+                  "stdout": "I=2.000\nR error\nI=2.000\nI=2.143\n"
+                },
+                {
+                  "at": "平均を表示",
+                  "vars": {
+                    "sumI": 6.142857,
+                    "valid": 3
+                  },
+                  "stdout": "I=2.000\nR error\nI=2.000\nI=2.143\navg=2.048\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "fopen",
+                "fclose",
+                "fscanf",
+                "if",
+                "for",
+                "while",
+                "array"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "10 5\n12 0\n8 4\n15 7\n",
+              "expectedStdout": "I=2.000\nR error\nI=2.000\nI=2.143\navg=2.048\n",
+              "notes": []
+            },
+            {
+              "id": "s12-04",
+              "sampleIndex": 4,
+              "title": "ファイル出力（fprintf）：正しい書き方 → 画面に擬似出力",
+              "mode": "run",
+              "originalCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\nint main(void) {\n  const char *outName = \"output12.txt\";\n\n  /* ----------------------------\n   * 【本来の実装】ファイルへ書き込む（正しい書き方）\n   * ---------------------------- */\n  /*\n  FILE *fp = fopen(outName, \"w\");\n  if (fp == NULL) {\n    printf(\"open error: %s\\n\", outName);\n    return 0;\n  }\n\n  // 例：I の計算結果を保存する\n  fprintf(fp, \"I=%.3f\\n\", 2.000);\n  fprintf(fp, \"I=%.3f\\n\", 2.143);\n\n  fclose(fp);\n  printf(\"%s に保存しました\\n\", outName);\n  return 0;\n  */\n\n  /* ----------------------------\n   * 【ツール用】擬似的に「保存する内容」を画面に表示\n   * ---------------------------- */\n  // @bp 保存先を表示\n  printf(\"[write] %s\\n\", outName);\n  // @bp 1件目を書き出し\n  printf(\"I=2.000\\n\");\n  // @bp 2件目を書き出し\n  printf(\"I=2.143\\n\");\n  // @bp 完了を表示\n  printf(\"(done)\\n\");\n  return 0;\n}",
+              "browserCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\nint main(void){\n  const char *outName = \"output.csv\";\n\n  FILE *fp = fopen(outName, \"w\");\n  if(fp == NULL){\n    printf(\"open error: %s\\n\", outName);\n    return 0;\n  }\n\n  printf(\"[write] %s\\n\", outName);\n  fprintf(fp, \"I=%.3f\\n\", 2.000);\n  fprintf(fp, \"I=%.3f\\n\", 2.143);\n\n  fclose(fp);\n  printf(\"%s に保存しました\\n\", outName);\n  return 0;\n}\n",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "保存先を表示",
+                  "vars": {
+                    "outName": "output12.txt"
+                  },
+                  "stdout": "[write] output12.txt\n"
+                },
+                {
+                  "at": "1件目を書き出し",
+                  "vars": {
+                    "outName": "output12.txt"
+                  },
+                  "stdout": "[write] output12.txt\nI=2.000\n"
+                },
+                {
+                  "at": "2件目を書き出し",
+                  "vars": {
+                    "outName": "output12.txt"
+                  },
+                  "stdout": "[write] output12.txt\nI=2.000\nI=2.143\n"
+                },
+                {
+                  "at": "完了を表示",
+                  "vars": {},
+                  "stdout": "[write] output12.txt\nI=2.000\nI=2.143\n(done)\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "fopen",
+                "fclose",
+                "fprintf",
+                "if"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "[write] output.csv\noutput.csv に保存しました\n",
+              "notes": []
+            },
+            {
+              "id": "s12-05",
+              "sampleIndex": 5,
+              "title": "構造体 `Stats` の最小確認",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\nint main(void) {\n  Stats st = {0.0, 0};\n\n  // @bp 値を更新\n  st.sumI += 1.2;\n  st.valid++;\n\n  // @bp 結果を表示\n  printf(\"sumI=%.1f valid=%d\\n\", st.sumI, st.valid);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\nint main(void) {\n  Stats st = {0.0, 0};\n\n  // @bp 値を更新\n  st.sumI += 1.2;\n  st.valid++;\n\n  // @bp 結果を表示\n  printf(\"sumI=%.1f valid=%d\\n\", st.sumI, st.valid);\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "初期値を用意",
+                  "vars": {
+                    "sumI": 0,
+                    "valid": 0
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "結果を表示",
+                  "vars": {
+                    "sumI": 1.2,
+                    "valid": 1
+                  },
+                  "stdout": "sumI=1.2 valid=1\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "struct"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "sumI=1.2 valid=1\n",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 13,
+          "title": "電気回路とプログラミング4（演習課題4）",
+          "description": "<p>ファイル <b>data.txt</b> から (V, R) を読み込み、I=V/R を計算して表示します。</p><p>この回は <b>fopen / fscanf / fclose</b> がポイントです。</p>",
+          "assignment": {
+            "title": "演習課題4：ファイル入力でデータ処理（ファイル入出力）",
+            "task": "<p>ファイル <b>data.txt</b> から (V, R) を読み込み、I=V/R を計算して表示します。</p><p>この回は <b>fopen / fscanf / fclose</b> がポイントです。</p>",
+            "specs": [
+              "data.txt を読み取りで開く。",
+              "result.txt を書き込みで開く。",
+              "while(fscanf(... )==2) で V と R を1行ずつ読み取り、I=V/R を計算する。",
+              "R<=0 の行は \"skip (R error)\" を表示してスキップする。",
+              "有効な行は result.txt に出力し、最後に平均 avg を表示する。"
+            ],
+            "hints": "ヒント：while(fscanf(fp, \"%lf %lf\", &V, &R) == 2) が定番です。最後に fclose(fp) を忘れずに。",
+            "starterCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name){\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name){\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout){\n  Stats st = {0.0, 0};\n  double V, R;\n\n// TODO2-1: 値をファイルから読み込み\n  while(???(fin, \"%lf %lf\", &V, &R) == 2){\n    if(R <= 0){\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st){\n  if(st.valid > 0) printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  else          printf(\"avg=NA\\n\");\n}\n\nint main(void){\n  const char *inName = \"input.csv\";\n  const char *outName = \"output.csv\";\n\n  FILE *fin = openInputFile(inName);\n  if(fin == NULL){\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if(fout == NULL){\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n\n  return 0;\n}"
+          },
+          "samples": [
+            {
+              "id": "s13-01",
+              "sampleIndex": 1,
+              "title": "未完成コード（課題）",
+              "mode": "edit-run",
+              "originalCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name) {\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name) {\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout) {\n  Stats st = {0.0, 0};\n  double V, R;\n\n  // TODO2-1: 値をファイルから読み込み\n  while (???(fin, \"%lf %lf\", &V, &R) == 2) {\n    if (R <= 0) {\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st) {\n  if (st.valid > 0) {\n    printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  } else {\n    printf(\"avg=NA\\n\");\n  }\n}\n\nint main(void) {\n  const char *inName = \"data.txt\";\n  const char *outName = \"result.txt\";\n\n  FILE *fin = openInputFile(inName);\n  if (fin == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if (fout == NULL) {\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n  return 0;\n}",
+              "browserCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name) {\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name) {\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout) {\n  Stats st = {0.0, 0};\n  double V, R;\n\n  // TODO2-1: 値をファイルから読み込み\n  while (???(fin, \"%lf %lf\", &V, &R) == 2) {\n    if (R <= 0) {\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st) {\n  if (st.valid > 0) {\n    printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  } else {\n    printf(\"avg=NA\\n\");\n  }\n}\n\nint main(void) {\n  const char *inName = \"input.csv\";\n  const char *outName = \"output.csv\";\n\n  FILE *fin = openInputFile(inName);\n  if (fin == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if (fout == NULL) {\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n  return 0;\n}",
+              "watch": [],
+              "trace": [],
+              "features": [
+                "printf",
+                "fclose",
+                "if",
+                "while",
+                "struct",
+                "function"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "10 5\n12 0\n8 4\n",
+              "expectedStdout": "",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 14,
+          "title": "演習課題4の解説と復習（課題4）",
+          "description": "<p>ファイル <b>data.txt</b> から (V, R) を読み込み、I=V/R を計算して表示します。</p><p>この回は <b>fopen / fscanf / fclose</b> がポイントです。</p>",
+          "assignment": {
+            "title": "演習課題4：ファイル入力でデータ処理（ファイル入出力）",
+            "task": "<p>ファイル <b>data.txt</b> から (V, R) を読み込み、I=V/R を計算して表示します。</p><p>この回は <b>fopen / fscanf / fclose</b> がポイントです。</p>",
+            "specs": [
+              "data.txt を読み取りで開く。",
+              "result.txt を書き込みで開く。",
+              "while(fscanf(... )==2) で V と R を1行ずつ読み取り、I=V/R を計算する。",
+              "R<=0 の行は \"skip (R error)\" を表示してスキップする。",
+              "有効な行は result.txt に出力し、最後に平均 avg を表示する。"
+            ],
+            "hints": "ヒント：while(fscanf(fp, \"%lf %lf\", &V, &R) == 2) が定番です。最後に fclose(fp) を忘れずに。",
+            "starterCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name){\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name){\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout){\n  Stats st = {0.0, 0};\n  double V, R;\n\n// TODO2-1: 値をファイルから読み込み\n  while(???(fin, \"%lf %lf\", &V, &R) == 2){\n    if(R <= 0){\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st){\n  if(st.valid > 0) printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  else          printf(\"avg=NA\\n\");\n}\n\nint main(void){\n  const char *inName = \"input.csv\";\n  const char *outName = \"output.csv\";\n\n  FILE *fin = openInputFile(inName);\n  if(fin == NULL){\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if(fout == NULL){\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n\n  return 0;\n}"
+          },
+          "samples": [
+            {
+              "id": "s14-01",
+              "sampleIndex": 1,
+              "title": "ファイルを開く→値を表示→閉じる（最小）",
+              "mode": "run",
+              "originalCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\nint main(void) {\n  const char *inName = \"data.txt\";\n  // @bp ファイルを開く\n  FILE *fin = fopen(inName, \"r\");\n  if (fin == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  double V, R;\n\n  while (fscanf(fin, \"%lf %lf\", &V, &R) == 2) {\n    // @bp 1行を表示\n    printf(\"V=%.1f R=%.1f\\n\", V, R);\n  }\n\n  fclose(fin);\n  // @bp 完了を表示\n  printf(\"done\\n\");\n\n  return 0;\n}",
+              "browserCode": "// Visual Studio用\n// #define _CRT_SECURE_NO_WARNINGS\n#include <stdio.h>\n\nint main(void) {\n  const char *inName = \"input.csv\";\n  // @bp ファイルを開く\n  FILE *fin = fopen(inName, \"r\");\n  if (fin == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  double V, R;\n\n  while (fscanf(fin, \"%lf %lf\", &V, &R) == 2) {\n    // @bp 1行を表示\n    printf(\"V=%.1f R=%.1f\\n\", V, R);\n  }\n\n  fclose(fin);\n  // @bp 完了を表示\n  printf(\"done\\n\");\n\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "ファイルを開く",
+                  "vars": {
+                    "inName": "data.txt"
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "1行を表示",
+                  "vars": {
+                    "V": 10,
+                    "R": 5
+                  },
+                  "stdout": "V=10.0 R=5.0\n"
+                },
+                {
+                  "at": "1行を表示",
+                  "vars": {
+                    "V": 10,
+                    "R": 5
+                  },
+                  "stdout": "V=10.0 R=5.0\n"
+                },
+                {
+                  "at": "1行を表示",
+                  "vars": {
+                    "V": 12,
+                    "R": 0
+                  },
+                  "stdout": "V=10.0 R=5.0\nV=12.0 R=0.0\n"
+                },
+                {
+                  "at": "1行を表示",
+                  "vars": {
+                    "V": 8,
+                    "R": 4
+                  },
+                  "stdout": "V=10.0 R=5.0\nV=12.0 R=0.0\nV=8.0 R=4.0\n"
+                },
+                {
+                  "at": "完了を表示",
+                  "vars": {},
+                  "stdout": "V=10.0 R=5.0\nV=12.0 R=0.0\nV=8.0 R=4.0\ndone\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "fopen",
+                "fclose",
+                "fscanf",
+                "if",
+                "while"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "10 5\n12 0\n8 4\n",
+              "expectedStdout": "V=10.0 R=5.0\nV=12.0 R=0.0\nV=8.0 R=4.0\ndone\n",
+              "notes": []
+            }
+          ]
+        },
+        {
+          "sessionNo": 15,
+          "title": "総括：今後の学習へ（発展：ソート等）",
+          "description": "第15回のサンプルコードをブラウザ上で試すための独立学習環境です。",
+          "assignment": null,
+          "samples": [
+            {
+              "id": "s15-01",
+              "sampleIndex": 1,
+              "title": "線形探索（見つけたら位置）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a[4] = {3, 7, 2, 5};\n  int key = 2, pos = -1;\n\n  for (int i = 0; i < 4; i++) {\n    // @bp 一致を確認\n    if (a[i] == key) {\n      pos = i;\n      break;\n    }\n  }\n\n  // @bp 位置を表示\n  printf(\"%d\\n\", pos);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a[4] = {3, 7, 2, 5};\n  int key = 2, pos = -1;\n\n  for (int i = 0; i < 4; i++) {\n    // @bp 一致を確認\n    if (a[i] == key) {\n      pos = i;\n      break;\n    }\n  }\n\n  // @bp 位置を表示\n  printf(\"%d\\n\", pos);\n  return 0;\n}",
+              "watch": [
+                "i",
+                "pos",
+                "key",
+                "a[i]"
+              ],
+              "trace": [
+                {
+                  "at": "一致を確認",
+                  "vars": {
+                    "i": 0,
+                    "pos": -1
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "一致を確認",
+                  "vars": {
+                    "i": 1,
+                    "pos": -1
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "一致を確認",
+                  "vars": {
+                    "i": 2,
+                    "pos": 2
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "位置を表示",
+                  "vars": {
+                    "pos": 2
+                  },
+                  "stdout": "2\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "if",
+                "for",
+                "array"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "2\n",
+              "notes": []
+            },
+            {
+              "id": "s15-02",
+              "sampleIndex": 2,
+              "title": "バブルソート（2回だけのイメージ）",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a[3] = {3, 1, 2};\n  // @bp 配列を用意\n  int n = (int)(sizeof(a) / sizeof(a[0]));  // 配列の要素数\n\n  // バブルソート（n=3なので外側は2回）\n  for (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - 1 - i; j++) {\n      if (a[j] > a[j + 1]) {\n        int tmp = a[j];\n        a[j] = a[j + 1];\n        a[j + 1] = tmp;\n      }\n    }\n  }\n\n  // 結果表示\n  // @bp 並べ替え結果を表示\n  for (int k = 0; k < n; k++) {\n    printf(\"%d\", a[k]);\n    if (k < n - 1) printf(\" \");\n  }\n  printf(\"\\n\");\n\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a[3] = {3, 1, 2};\n  // @bp 配列を用意\n  int n = (int)(sizeof(a) / sizeof(a[0]));  // 配列の要素数\n\n  // バブルソート（n=3なので外側は2回）\n  for (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - 1 - i; j++) {\n      if (a[j] > a[j + 1]) {\n        int tmp = a[j];\n        a[j] = a[j + 1];\n        a[j + 1] = tmp;\n      }\n    }\n  }\n\n  // 結果表示\n  // @bp 並べ替え結果を表示\n  for (int k = 0; k < n; k++) {\n    printf(\"%d\", a[k]);\n    if (k < n - 1) printf(\" \");\n  }\n  printf(\"\\n\");\n\n  return 0;\n}",
+              "watch": [
+                "i",
+                "j",
+                "k",
+                "n",
+                "a[j]"
+              ],
+              "trace": [
+                {
+                  "at": "配列を用意",
+                  "vars": {
+                    "a": "3, 1, 2"
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "並べ替え結果を表示",
+                  "vars": {
+                    "a": "1, 2, 3"
+                  },
+                  "stdout": "1 2 3\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "if",
+                "for",
+                "array",
+                "sizeof"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "1 2 3\n",
+              "notes": []
+            },
+            {
+              "id": "s15-03",
+              "sampleIndex": 3,
+              "title": "関数の復習：min関数",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\nint min2(int a, int b) {\n  return (a < b) ? a : b;\n}\n\nint main(void) {\n  // @bp 最小値を表示\n  printf(\"%d\\n\", min2(3, 5));\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\nint min2(int a, int b) {\n  return (a < b) ? a : b;\n}\n\nint main(void) {\n  // @bp 最小値を表示\n  printf(\"%d\\n\", min2(3, 5));\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "最小値を表示",
+                  "vars": {},
+                  "stdout": "3\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "function"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "3\n",
+              "notes": []
+            },
+            {
+              "id": "s15-04",
+              "sampleIndex": 4,
+              "title": "構造体（struct）：RLCの定数と状態をまとめる",
+              "mode": "run",
+              "originalCode": "#include <stdio.h>\n\ntypedef struct {\n  double R, L, C;\n} RLCParam;\n\ntypedef struct {\n  double i;\n  double vc;\n} State;\n\nint main(void) {\n  // @bp 値を用意\n  RLCParam p = {10.0, 0.1, 0.0001};\n  State x = {0.0, 1.0};  // i0, Vc0\n\n  // @bp di/dtを計算\n  double didt = -(p.R / p.L) * x.i - (1.0 / p.L) * x.vc;\n  // @bp dVc/dtを計算\n  double dvcdt = (1.0 / p.C) * x.i;\n\n  // @bp 結果を表示\n  printf(\"di/dt=%.3f dVc/dt=%.3f\\n\", didt, dvcdt);\n  return 0;\n}",
+              "browserCode": "#include <stdio.h>\n\ntypedef struct {\n  double R, L, C;\n} RLCParam;\n\ntypedef struct {\n  double i;\n  double vc;\n} State;\n\nint main(void) {\n  // @bp 値を用意\n  RLCParam p = {10.0, 0.1, 0.0001};\n  State x = {0.0, 1.0};  // i0, Vc0\n\n  // @bp di/dtを計算\n  double didt = -(p.R / p.L) * x.i - (1.0 / p.L) * x.vc;\n  // @bp dVc/dtを計算\n  double dvcdt = (1.0 / p.C) * x.i;\n\n  // @bp 結果を表示\n  printf(\"di/dt=%.3f dVc/dt=%.3f\\n\", didt, dvcdt);\n  return 0;\n}",
+              "watch": [],
+              "trace": [
+                {
+                  "at": "値を用意",
+                  "vars": {
+                    "p.R": 10,
+                    "p.L": 0.1,
+                    "p.C": 0.0001,
+                    "x.i": 0,
+                    "x.vc": 1
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "di/dtを計算",
+                  "vars": {
+                    "p.R": 10,
+                    "p.L": 0.1,
+                    "p.C": 0.0001,
+                    "x.i": 0,
+                    "x.vc": 1,
+                    "didt": -10
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "dVc/dtを計算",
+                  "vars": {
+                    "p.R": 10,
+                    "p.L": 0.1,
+                    "p.C": 0.0001,
+                    "x.i": 0,
+                    "x.vc": 1,
+                    "didt": -10,
+                    "dvcdt": 0
+                  },
+                  "stdout": ""
+                },
+                {
+                  "at": "結果を表示",
+                  "vars": {
+                    "didt": -10,
+                    "dvcdt": 0
+                  },
+                  "stdout": "di/dt=-10.000 dVc/dt=0.000\n"
+                }
+              ],
+              "features": [
+                "printf",
+                "struct"
+              ],
+              "stdinDefault": "",
+              "inputCsvDefault": "",
+              "expectedStdout": "di/dt=-10.000 dVc/dt=0.000\n",
+              "notes": []
+            }
           ]
         }
       ]
-    },
-    {
-      "sessionNo": 2,
-      "title": "C言語の基本（変数・出力）",
-      "description": "第2回のサンプルコードをブラウザ上で試すための独立学習環境です。",
-      "assignment": null,
-      "samples": [
-        {
-          "id": "s02-01",
-          "sampleIndex": 1,
-          "title": "変数とprintf（足し算）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a = 3;\n  // @bp bを用意\n  int b = 5;\n  // @bp 合計を計算\n  int s = a + b;\n  // @bp 結果を表示\n  printf(\"%d\\n\", s);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a = 3;\n  // @bp bを用意\n  int b = 5;\n  // @bp 合計を計算\n  int s = a + b;\n  // @bp 結果を表示\n  printf(\"%d\\n\", s);\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "aを用意",
-              "vars": {
-                "a": 3
-              },
-              "stdout": ""
-            },
-            {
-              "at": "bを用意",
-              "vars": {
-                "a": 3,
-                "b": 5
-              },
-              "stdout": ""
-            },
-            {
-              "at": "合計を計算",
-              "vars": {
-                "a": 3,
-                "b": 5,
-                "s": 8
-              },
-              "stdout": ""
-            },
-            {
-              "at": "結果を表示",
-              "vars": {
-                "a": 3,
-                "b": 5,
-                "s": 8
-              },
-              "stdout": "8\n"
-            }
-          ],
-          "features": [
-            "printf"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "8\n",
-          "notes": []
-        },
-        {
-          "id": "s02-02",
-          "sampleIndex": 2,
-          "title": "doubleと書式（面積）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 半径を用意\n  double r = 2.0;\n  // @bp 面積を計算\n  double s = 3.14159 * r * r;\n  // @bp 結果を表示\n  printf(\"%.2f\\n\", s);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 半径を用意\n  double r = 2.0;\n  // @bp 面積を計算\n  double s = 3.14159 * r * r;\n  // @bp 結果を表示\n  printf(\"%.2f\\n\", s);\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "半径を用意",
-              "vars": {
-                "r": 2.0
-              },
-              "stdout": ""
-            },
-            {
-              "at": "面積を計算",
-              "vars": {
-                "r": 2.0,
-                "s": 12.56636
-              },
-              "stdout": ""
-            },
-            {
-              "at": "結果を表示",
-              "vars": {
-                "r": 2.0,
-                "s": 12.56636
-              },
-              "stdout": "12.57\n"
-            }
-          ],
-          "features": [
-            "printf"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "12.57\n",
-          "notes": []
-        },
-        {
-          "id": "s02-03",
-          "sampleIndex": 3,
-          "title": "整数除算とキャスト",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  int a = 7, b = 2;\n  // @bp 整数除算を表示\n  printf(\"%d\\n\", a / b);\n  // @bp 実数除算を表示\n  printf(\"%.1f\\n\", (double)a / b);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  int a = 7, b = 2;\n  // @bp 整数除算を表示\n  printf(\"%d\\n\", a / b);\n  // @bp 実数除算を表示\n  printf(\"%.1f\\n\", (double)a / b);\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "値を用意",
-              "vars": {
-                "a": 7,
-                "b": 2
-              },
-              "stdout": ""
-            },
-            {
-              "at": "整数除算を表示",
-              "vars": {
-                "a": 7,
-                "b": 2
-              },
-              "stdout": "3\n"
-            },
-            {
-              "at": "実数除算を表示",
-              "vars": {
-                "a": 7,
-                "b": 2
-              },
-              "stdout": "3\n3.5\n"
-            }
-          ],
-          "features": [
-            "printf"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "3\n3.5\n",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 3,
-      "title": "条件分岐と繰り返し（if / for / while）",
-      "description": "第3回のサンプルコードをブラウザ上で試すための独立学習環境です。",
-      "assignment": null,
-      "samples": [
-        {
-          "id": "s03-01",
-          "sampleIndex": 1,
-          "title": "if/else（偶数・奇数）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  int n = 7;\n\n  if (n % 2 == 0) {\n    printf(\"even\\n\");\n  } else {\n    // @bp 判定結果を表示\n    printf(\"odd\\n\");\n  }\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  int n = 7;\n\n  if (n % 2 == 0) {\n    printf(\"even\\n\");\n  } else {\n    // @bp 判定結果を表示\n    printf(\"odd\\n\");\n  }\n  return 0;\n}",
-          "watch": [
-            "n"
-          ],
-          "trace": [
-            {
-              "at": "値を用意",
-              "vars": {
-                "n": 7
-              },
-              "stdout": ""
-            },
-            {
-              "at": "判定結果を表示",
-              "vars": {
-                "n": 7
-              },
-              "stdout": "odd\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "if"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "odd\n",
-          "notes": []
-        },
-        {
-          "id": "s03-02",
-          "sampleIndex": 2,
-          "title": "for（1〜5の合計）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 初期化\n  int sum = 0;\n\n  for (int i = 1; i <= 5; i++) {\n    // @bp 合計を更新\n    sum += i;\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 初期化\n  int sum = 0;\n\n  for (int i = 1; i <= 5; i++) {\n    // @bp 合計を更新\n    sum += i;\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
-          "watch": [
-            "i",
-            "sum"
-          ],
-          "trace": [
-            {
-              "at": "初期化",
-              "vars": {
-                "sum": 0,
-                "i": 1
-              },
-              "stdout": ""
-            },
-            {
-              "at": "合計を更新",
-              "vars": {
-                "sum": 1,
-                "i": 2
-              },
-              "stdout": ""
-            },
-            {
-              "at": "合計を更新",
-              "vars": {
-                "sum": 3,
-                "i": 3
-              },
-              "stdout": ""
-            },
-            {
-              "at": "合計を更新",
-              "vars": {
-                "sum": 6,
-                "i": 4
-              },
-              "stdout": ""
-            },
-            {
-              "at": "合計を更新",
-              "vars": {
-                "sum": 10,
-                "i": 5
-              },
-              "stdout": ""
-            },
-            {
-              "at": "合計を更新",
-              "vars": {
-                "sum": 15,
-                "i": 6
-              },
-              "stdout": ""
-            },
-            {
-              "at": "結果を表示",
-              "vars": {
-                "sum": 15
-              },
-              "stdout": "15\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "for"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "15\n",
-          "notes": []
-        },
-        {
-          "id": "s03-03",
-          "sampleIndex": 3,
-          "title": "while（カウントダウン）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 初期値を用意\n  int n = 3;\n\n  while (n > 0) {\n    // @bp 現在値を表示\n    printf(\"%d\\n\", n);\n    n--;\n  }\n\n  // @bp 終了を表示\n  printf(\"go!\\n\");\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 初期値を用意\n  int n = 3;\n\n  while (n > 0) {\n    // @bp 現在値を表示\n    printf(\"%d\\n\", n);\n    n--;\n  }\n\n  // @bp 終了を表示\n  printf(\"go!\\n\");\n  return 0;\n}",
-          "watch": [
-            "n"
-          ],
-          "trace": [
-            {
-              "at": "初期値を用意",
-              "vars": {
-                "n": 3
-              },
-              "stdout": ""
-            },
-            {
-              "at": "現在値を表示",
-              "vars": {
-                "n": 3
-              },
-              "stdout": "3\n"
-            },
-            {
-              "at": "現在値を表示",
-              "vars": {
-                "n": 2
-              },
-              "stdout": "3\n2\n"
-            },
-            {
-              "at": "現在値を表示",
-              "vars": {
-                "n": 1
-              },
-              "stdout": "3\n2\n1\n"
-            },
-            {
-              "at": "終了を表示",
-              "vars": {
-                "n": 0
-              },
-              "stdout": "3\n2\n1\ngo!\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "while"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "3\n2\n1\ngo!\n",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 4,
-      "title": "電気回路とプログラミング1（演習課題1）",
-      "description": "scanfを使わずに、抵抗値を変化させて電流を計算し、安全判定（OK/WARN）するプログラムを作成する。",
-      "assignment": {
-        "title": "演習課題1：オームの法則（for/if）",
-        "task": "scanfを使わずに、抵抗値を変化させて電流を計算し、安全判定（OK/WARN）するプログラムを作成する。",
-        "specs": [
-          "電圧 V=5.0[V]、許容電流 Imax=0.60[A] とする。",
-          "for文で抵抗 R=5,10,15,...,50[Ω] を順に処理する。",
-          "各Rについて I=V/R を計算し、1行ずつ表示する（小数3桁）。",
-          "I>Imax なら WARN、それ以外は OK と表示する。",
-          "OK の件数を数えて最後に OK=○ / 10 を表示する。"
-        ],
-        "hints": "ヒント：I=V/R。小数表示は printf(\"%.3f\", 値) を使います。",
-        "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 1; k <= 10; k++){\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if( ??? ){\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    }else{\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}\n"
-      },
-      "samples": [
-        {
-          "id": "s04-01",
-          "sampleIndex": 1,
-          "title": "未完成コード（課題）",
-          "mode": "edit-run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for (int k = 1; k <= 10; k++) {\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if ( ??? ) {\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    } else {\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for (int k = 1; k <= 10; k++) {\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if ( ??? ) {\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    } else {\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}",
-          "watch": [],
-          "trace": [],
-          "features": [
-            "printf",
-            "if",
-            "for"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 5,
-      "title": "演習課題1の解説と復習（課題1）",
-      "description": "未完成コードの ??? を埋めて、仕様を満たす完成版にする。",
-      "assignment": {
-        "title": "演習課題1 解説：オームの法則（for/if）",
-        "task": "未完成コードの ??? を埋めて、仕様を満たす完成版にする。",
-        "specs": [
-          "TODOの ??? を埋めて完成させる。",
-          "計算式 I=V/R、判定 I>Imax、OK件数の更新を正しく実装する。",
-          "出力形式（改行含む）を仕様どおりに揃える。"
-        ],
-        "hints": "ヒント：I=V/R。小数表示は printf(\"%.3f\", 値) を使います。",
-        "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  int okCount = 0;           // OKの件数\n\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 1; k <= 10; k++){\n    int R = 5 * k;              // 5,10,15,...,50\n\n    // TODO1: オームの法則で電流Iを計算\n    double I = ???;\n\n    // TODO2: 判定して表示（WARN/OK）\n    //        OKのときは okCount を増やす\n    if( ??? ){\n      printf(\"%5d  %6.3f   WARN\\n\", R, I);\n    }else{\n      printf(\"%5d  %6.3f   OK\\n\", R, I);\n      okCount = ???;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 10\\n\", okCount);\n\n  return 0;\n}\n"
-      },
-      "samples": [
-        {
-          "id": "s05-01",
-          "sampleIndex": 1,
-          "title": "オームの法則（V=IR）：Iを計算",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  double V = 5.0, R = 10.0;\n  // @bp 電流を計算\n  double I = V / R;\n  // @bp 結果を表示\n  printf(\"I=%.3f A\\n\", I);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  double V = 5.0, R = 10.0;\n  // @bp 電流を計算\n  double I = V / R;\n  // @bp 結果を表示\n  printf(\"I=%.3f A\\n\", I);\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "値を用意",
-              "vars": {
-                "V": 5.0,
-                "R": 10.0
-              },
-              "stdout": ""
-            },
-            {
-              "at": "結果を表示",
-              "vars": {
-                "V": 5.0,
-                "R": 10.0,
-                "I": 0.5
-              },
-              "stdout": "I=0.500 A\n"
-            }
-          ],
-          "features": [
-            "printf"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "I=0.500 A\n",
-          "notes": []
-        },
-        {
-          "id": "s05-02",
-          "sampleIndex": 2,
-          "title": "条件分岐：許容電流を超えたら警告",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  double I = 0.8;\n\n  if (I > 0.5) {\n    // @bp 警告を表示\n    printf(\"WARN\\n\");\n  } else {\n    printf(\"OK\\n\");\n  }\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 値を用意\n  double I = 0.8;\n\n  if (I > 0.5) {\n    // @bp 警告を表示\n    printf(\"WARN\\n\");\n  } else {\n    printf(\"OK\\n\");\n  }\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "警告を表示",
-              "vars": {
-                "I": 0.8
-              },
-              "stdout": "WARN\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "if"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "WARN\n",
-          "notes": []
-        },
-        {
-          "id": "s05-03",
-          "sampleIndex": 3,
-          "title": "繰り返し：Rを変えてIを一覧表示",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 電圧を用意\n  double V = 5.0;\n\n  for (int r = 5; r <= 15; r += 5) {\n    // @bp 各抵抗で表示\n    printf(\"R=%d I=%.2f\\n\", r, V / r);\n  }\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  // @bp 電圧を用意\n  double V = 5.0;\n\n  for (int r = 5; r <= 15; r += 5) {\n    // @bp 各抵抗で表示\n    printf(\"R=%d I=%.2f\\n\", r, V / r);\n  }\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "各抵抗で表示",
-              "vars": {
-                "V": 5.0,
-                "r": 5
-              },
-              "stdout": "R=5 I=1.00\n"
-            },
-            {
-              "at": "各抵抗で表示",
-              "vars": {
-                "V": 5.0,
-                "r": 10
-              },
-              "stdout": "R=5 I=1.00\nR=10 I=0.50\n"
-            },
-            {
-              "at": "各抵抗で表示",
-              "vars": {
-                "V": 5.0,
-                "r": 15
-              },
-              "stdout": "R=5 I=1.00\nR=10 I=0.50\nR=15 I=0.33\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "for"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "R=5 I=1.00\nR=10 I=0.50\nR=15 I=0.33\n",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 6,
-      "title": "配列（一次元配列）",
-      "description": "第6回のサンプルコードをブラウザ上で試すための独立学習環境です。",
-      "assignment": null,
-      "samples": [
-        {
-          "id": "s06-01",
-          "sampleIndex": 1,
-          "title": "配列の合計",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a[5] = {1, 2, 3, 4, 5};\n  // @bp 合計を初期化\n  int sum = 0;\n\n  for (int i = 0; i < 5; i++) {\n    // @bp 合計を更新\n    sum += a[i];\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a[5] = {1, 2, 3, 4, 5};\n  // @bp 合計を初期化\n  int sum = 0;\n\n  for (int i = 0; i < 5; i++) {\n    // @bp 合計を更新\n    sum += a[i];\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", sum);\n  return 0;\n}",
-          "watch": [
-            "i",
-            "sum",
-            "a[i]"
-          ],
-          "trace": [
-            {
-              "at": "合計を初期化",
-              "vars": {
-                "i": 0,
-                "sum": 0
-              },
-              "stdout": ""
-            },
-            {
-              "at": "合計を更新",
-              "vars": {
-                "i": 1,
-                "sum": 1
-              },
-              "stdout": ""
-            },
-            {
-              "at": "合計を更新",
-              "vars": {
-                "i": 2,
-                "sum": 3
-              },
-              "stdout": ""
-            },
-            {
-              "at": "合計を更新",
-              "vars": {
-                "i": 3,
-                "sum": 6
-              },
-              "stdout": ""
-            },
-            {
-              "at": "合計を更新",
-              "vars": {
-                "i": 4,
-                "sum": 10
-              },
-              "stdout": ""
-            },
-            {
-              "at": "結果を表示",
-              "vars": {
-                "i": 5,
-                "sum": 15
-              },
-              "stdout": "15\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "for",
-            "array"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "15\n",
-          "notes": []
-        },
-        {
-          "id": "s06-02",
-          "sampleIndex": 2,
-          "title": "最大値を探す",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a[4] = {3, 7, 2, 5};\n  // @bp 最大値を初期化\n  int max = a[0];\n\n  for (int i = 1; i < 4; i++) {\n    // @bp 最大値を確認\n    if (a[i] > max) {\n      max = a[i];\n    }\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", max);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a[4] = {3, 7, 2, 5};\n  // @bp 最大値を初期化\n  int max = a[0];\n\n  for (int i = 1; i < 4; i++) {\n    // @bp 最大値を確認\n    if (a[i] > max) {\n      max = a[i];\n    }\n  }\n\n  // @bp 結果を表示\n  printf(\"%d\\n\", max);\n  return 0;\n}",
-          "watch": [
-            "i",
-            "max",
-            "a[i]"
-          ],
-          "trace": [
-            {
-              "at": "最大値を初期化",
-              "vars": {
-                "i": 1,
-                "max": 3
-              },
-              "stdout": ""
-            },
-            {
-              "at": "最大値を確認",
-              "vars": {
-                "i": 2,
-                "max": 7
-              },
-              "stdout": ""
-            },
-            {
-              "at": "最大値を確認",
-              "vars": {
-                "i": 3,
-                "max": 7
-              },
-              "stdout": ""
-            },
-            {
-              "at": "結果を表示",
-              "vars": {
-                "i": 4,
-                "max": 7
-              },
-              "stdout": "7\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "if",
-            "for",
-            "array"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "7\n",
-          "notes": []
-        },
-        {
-          "id": "s06-03",
-          "sampleIndex": 3,
-          "title": "配列とprintf（一覧表示）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a[3] = {2, 4, 6};\n\n  for (int i = 0; i < 3; i++) {\n    // @bp 各要素を表示\n    printf(\"%d\\n\", a[i]);\n  }\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a[3] = {2, 4, 6};\n\n  for (int i = 0; i < 3; i++) {\n    // @bp 各要素を表示\n    printf(\"%d\\n\", a[i]);\n  }\n  return 0;\n}",
-          "watch": [
-            "i",
-            "a[i]"
-          ],
-          "trace": [
-            {
-              "at": "各要素を表示",
-              "vars": {
-                "i": 0
-              },
-              "stdout": "2\n"
-            },
-            {
-              "at": "各要素を表示",
-              "vars": {
-                "i": 1
-              },
-              "stdout": "2\n4\n"
-            },
-            {
-              "at": "各要素を表示",
-              "vars": {
-                "i": 2
-              },
-              "stdout": "2\n4\n6\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "for",
-            "array"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "2\n4\n6\n",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 7,
-      "title": "電気回路とプログラミング2（演習課題2）",
-      "description": "<p>抵抗値を配列で用意し、オームの法則 <b>I = V / R</b> で電流を計算します。<br>この回は <b>配列＋for＋if</b> がポイントです（<b>scanfは使いません</b>）。</p>",
-      "assignment": {
-        "title": "演習課題2：配列でオームの法則（scanfなし）",
-        "task": "<p>抵抗値を配列で用意し、オームの法則 <b>I = V / R</b> で電流を計算します。<br>この回は <b>配列＋for＋if</b> がポイントです（<b>scanfは使いません</b>）。</p>",
-        "specs": [
-          "定数：V=5.0[V], Imax=0.60[A]",
-          "抵抗配列：R={5,10,15,20,25}（要素数5）",
-          "for文で I[k]=V/R[k] を計算して配列Iに格納する",
-          "if(I[k] > Imax) なら WARN、それ以外は OK を表示する",
-          "最後に OK件数 okCount を表示する"
-        ],
-        "hints": "ヒント：配列の要素数は5（添字0〜4）。計算→格納→判定→表示→集計の順で書くと整理しやすい。",
-        "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for(int k = 0; k < 5; k++){\n    I[k] = ???;\n  }\n// TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 0; k < 5; k++){\n    if(???){\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    }else{\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}\n"
-      },
-      "samples": [
-        {
-          "id": "s07-01",
-          "sampleIndex": 1,
-          "title": "未完成コード（課題）",
-          "mode": "edit-run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for (int k = 0; k < 5; k++) {\n    I[k] = ???;\n  }\n\n  // TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for (int k = 0; k < 5; k++) {\n    if (???) {\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    } else {\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for (int k = 0; k < 5; k++) {\n    I[k] = ???;\n  }\n\n  // TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for (int k = 0; k < 5; k++) {\n    if (???) {\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    } else {\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}",
-          "watch": [],
-          "trace": [],
-          "features": [
-            "printf",
-            "if",
-            "for",
-            "array"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 8,
-      "title": "演習課題2の解説と復習（課題2）",
-      "description": "<p>抵抗値を配列で用意し、オームの法則 <b>I = V / R</b> で電流を計算します。<br>この回は <b>配列＋for＋if</b> がポイントです（<b>scanfは使いません</b>）。</p>",
-      "assignment": {
-        "title": "演習課題2：配列でオームの法則（scanfなし）",
-        "task": "<p>抵抗値を配列で用意し、オームの法則 <b>I = V / R</b> で電流を計算します。<br>この回は <b>配列＋for＋if</b> がポイントです（<b>scanfは使いません</b>）。</p>",
-        "specs": [
-          "定数：V=5.0[V], Imax=0.60[A]",
-          "抵抗配列：R={5,10,15,20,25}（要素数5）",
-          "for文で I[k]=V/R[k] を計算して配列Iに格納する",
-          "if(I[k] > Imax) なら WARN、それ以外は OK を表示する",
-          "最後に OK件数 okCount を表示する"
-        ],
-        "hints": "ヒント：配列の要素数は5（添字0〜4）。計算→格納→判定→表示→集計の順で書くと整理しやすい。",
-        "starterCode": "#include <stdio.h>\n\nint main(void){\n  const double V = 5.0;      // 電圧[V]\n  const double Imax = 0.60;  // 許容電流[A]\n\n  // TODO1: 配列の定義をする\n  int R[?] = {5, 10, 15, 20, 25};   // 抵抗[Ω]\n  double I[5];                      // 電流[A]（計算結果）\n  int okCount = 0;\n\n  // TODO2: 配列Iに電流を計算して格納\n  for(int k = 0; k < 5; k++){\n    I[k] = ???;\n  }\n// TODO3: 一覧表示＋OK件数の集計（ifで判定）\n  printf(\"V=%.1fV  Imax=%.2fA\\n\", V, Imax);\n  printf(\"-------------------------\\n\");\n  printf(\"k  R(ohm)   I(A)    judge\\n\");\n  printf(\"-------------------------\\n\");\n\n  for(int k = 0; k < 5; k++){\n    if(???){\n      printf(\"%d %5d  %6.3f   WARN\\n\", k, R[k], I[k]);\n    }else{\n      printf(\"%d %5d  %6.3f   OK\\n\", k, R[k], I[k]);\n      okCount = okCount + 1;\n    }\n  }\n\n  printf(\"-------------------------\\n\");\n  printf(\"OK=%d / 5\\n\", okCount);\n\n  return 0;\n}\n"
-      },
-      "samples": [
-        {
-          "id": "s08-01",
-          "sampleIndex": 1,
-          "title": "配列に計算結果を格納（I[k]=V/R[k]）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;\n  int R[5] = {5, 10, 15, 20, 25};\n  double I[5];\n\n  for (int k = 0; k < 5; k++) {\n    // @bp 配列に保存\n    I[k] = V / R[k];\n  }\n\n  // @bp 先頭と末尾を表示\n  printf(\"%.3f %.3f\\n\", I[0], I[4]);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const double V = 5.0;\n  int R[5] = {5, 10, 15, 20, 25};\n  double I[5];\n\n  for (int k = 0; k < 5; k++) {\n    // @bp 配列に保存\n    I[k] = V / R[k];\n  }\n\n  // @bp 先頭と末尾を表示\n  printf(\"%.3f %.3f\\n\", I[0], I[4]);\n  return 0;\n}",
-          "watch": [
-            "k",
-            "I[k]"
-          ],
-          "trace": [
-            {
-              "at": "配列に保存",
-              "stdout": "",
-              "vars": {
-                "k": 0
-              }
-            },
-            {
-              "at": "配列に保存",
-              "stdout": "",
-              "vars": {
-                "k": 1
-              }
-            },
-            {
-              "at": "配列に保存",
-              "stdout": "",
-              "vars": {
-                "k": 2
-              }
-            },
-            {
-              "at": "配列に保存",
-              "stdout": "",
-              "vars": {
-                "k": 3
-              }
-            },
-            {
-              "at": "配列に保存",
-              "stdout": "",
-              "vars": {
-                "k": 4
-              }
-            },
-            {
-              "at": "先頭と末尾を表示",
-              "stdout": "1.000 0.200\n",
-              "vars": {
-                "I0": 1.0,
-                "I4": 0.2
-              }
-            }
-          ],
-          "features": [
-            "printf",
-            "for",
-            "array"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "1.000 0.200\n",
-          "notes": []
-        },
-        {
-          "id": "s08-02",
-          "sampleIndex": 2,
-          "title": "if判定＋カウント（OK/WARN）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const double Imax = 0.60;\n  double I = 0.50;\n  int okCount = 0;\n\n  if (I > Imax) {\n    printf(\"WARN\\n\");\n  } else {\n    // @bp OKを表示\n    printf(\"OK\\n\");\n    okCount = okCount + 1;\n  }\n\n  // @bp 件数を表示\n  printf(\"OK=%d\\n\", okCount);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const double Imax = 0.60;\n  double I = 0.50;\n  int okCount = 0;\n\n  if (I > Imax) {\n    printf(\"WARN\\n\");\n  } else {\n    // @bp OKを表示\n    printf(\"OK\\n\");\n    okCount = okCount + 1;\n  }\n\n  // @bp 件数を表示\n  printf(\"OK=%d\\n\", okCount);\n  return 0;\n}",
-          "watch": [
-            "okCount"
-          ],
-          "trace": [
-            {
-              "at": "OKを表示",
-              "stdout": "OK\n",
-              "vars": {
-                "I": 0.5,
-                "Imax": 0.6,
-                "okCount": 1
-              }
-            },
-            {
-              "at": "件数を表示",
-              "stdout": "OK\nOK=1\n",
-              "vars": {
-                "I": 0.5,
-                "Imax": 0.6,
-                "okCount": 1
-              }
-            }
-          ],
-          "features": [
-            "printf",
-            "if"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "OK\nOK=1\n",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 9,
-      "title": "関数（引数・戻り値）",
-      "description": "第9回のサンプルコードをブラウザ上で試すための独立学習環境です。",
-      "assignment": null,
-      "samples": [
-        {
-          "id": "s09-01",
-          "sampleIndex": 1,
-          "title": "関数で2乗を計算",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\ndouble square(double x) {\n  return x * x;\n}\n\nint main(void) {\n  // @bp 値を用意\n  double a = 3;\n  // @bp 計算結果を表示\n  printf(\"%.0f\\n\", square(a));\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\ndouble square(double x) {\n  return x * x;\n}\n\nint main(void) {\n  // @bp 値を用意\n  double a = 3;\n  // @bp 計算結果を表示\n  printf(\"%.0f\\n\", square(a));\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "値を用意",
-              "vars": {
-                "a": 3.0
-              },
-              "stdout": ""
-            },
-            {
-              "at": "計算結果を表示",
-              "vars": {
-                "a": 3.0
-              },
-              "stdout": "9\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "function"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "9\n",
-          "notes": []
-        },
-        {
-          "id": "s09-02",
-          "sampleIndex": 2,
-          "title": "関数でオームの法則（I=V/R）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\ndouble current(double V, double R) {\n  return V / R;\n}\n\nint main(void) {\n  // @bp 電流を表示\n  printf(\"%.2f\\n\", current(5, 10));\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\ndouble current(double V, double R) {\n  return V / R;\n}\n\nint main(void) {\n  // @bp 電流を表示\n  printf(\"%.2f\\n\", current(5, 10));\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "電流を表示",
-              "vars": {},
-              "stdout": "0.50\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "function"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "0.50\n",
-          "notes": []
-        },
-        {
-          "id": "s09-03",
-          "sampleIndex": 3,
-          "title": "関数で配列の合計",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint sum3(int a[3]) {\n  return a[0] + a[1] + a[2];\n}\n\nint main(void) {\n  int x[3] = {1, 2, 3};\n  // @bp 合計を表示\n  printf(\"%d\\n\", sum3(x));\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint sum3(int a[3]) {\n  return a[0] + a[1] + a[2];\n}\n\nint main(void) {\n  int x[3] = {1, 2, 3};\n  // @bp 合計を表示\n  printf(\"%d\\n\", sum3(x));\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "合計を表示",
-              "vars": {
-                "x[0]": 1,
-                "x[1]": 2,
-                "x[2]": 3
-              },
-              "stdout": "6\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "array",
-            "function"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "6\n",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 10,
-      "title": "電気回路とプログラミング3（演習課題3）",
-      "description": "<p>電流計算を関数 <b>calcI(V,R)</b> に分け、mainから呼び出す形でプログラムを完成させてください。<br>入力は <b>scanf</b> を使わず、<b>配列</b>（V_list/R_list）を用いて複数ケースを処理します。</p>",
-      "assignment": {
-        "title": "演習課題3：関数でオームの法則（配列版・scanfなし）",
-        "task": "<p>電流計算を関数 <b>calcI(V,R)</b> に分け、mainから呼び出す形でプログラムを完成させてください。<br>入力は <b>scanf</b> を使わず、<b>配列</b>（V_list/R_list）を用いて複数ケースを処理します。</p>",
-        "specs": [
-          "関数 calcI(V,R) を作り、I = V / R を返す（Rのチェックはmain側）",
-          "V_list/R_list の3ケース分を for で処理して I を計算する",
-          "R<=0 の場合は \"R error\" を表示してスキップする",
-          "I を小数3桁で表示する",
-          "有効データの平均電流 avg を表示する（valid==0なら NA）"
-        ],
-        "hints": "ヒント：配列の要素数N回だけ同じ処理を繰り返す。平均は sumI と valid を更新して最後に sumI/valid。",
-        "starterCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(???) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(???) return a; // もし、a が b よりも小さければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};        //電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};        //抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = ???;        //TODO2-1: 電圧リストのk番目\n    double R = ???;        //TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = ???(maxI, I);       //TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);         //TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n"
-      },
-      "samples": [
-        {
-          "id": "s10-01",
-          "sampleIndex": 1,
-          "title": "未完成コード（課題）",
-          "mode": "edit-run",
-          "originalCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI) {\n  if (R <= 0) {\n    return 0;\n  }\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b) {\n  if (???) {\n    return a;  // もし、a が b よりも大きければ、a を返す\n  }\n  return b;          // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b) {\n  if (???) {\n    return a;  // もし、a が b よりも小さければ、a を返す\n  }\n  return b;          // そうでない場合は、 b を返す\n}\n\nint main(void) {\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};  // 電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};  // 抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for (int k = 0; k < N; k++) {\n    double V = ???;        // TODO2-1: 電圧リストのk番目\n    double R = ???;        // TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if (!calcI_checked(V, R, &I)) {\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if (validCount == 0) {\n      maxI = I;\n      minI = I;\n    } else {\n      maxI = ???(maxI, I);  // TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);  // TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if (validCount > 0) {\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  } else {\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI) {\n  if (R <= 0) {\n    return 0;\n  }\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b) {\n  if (???) {\n    return a;  // もし、a が b よりも大きければ、a を返す\n  }\n  return b;          // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b) {\n  if (???) {\n    return a;  // もし、a が b よりも小さければ、a を返す\n  }\n  return b;          // そうでない場合は、 b を返す\n}\n\nint main(void) {\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};  // 電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};  // 抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for (int k = 0; k < N; k++) {\n    double V = ???;        // TODO2-1: 電圧リストのk番目\n    double R = ???;        // TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if (!calcI_checked(V, R, &I)) {\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if (validCount == 0) {\n      maxI = I;\n      minI = I;\n    } else {\n      maxI = ???(maxI, I);  // TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);  // TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if (validCount > 0) {\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  } else {\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}",
-          "watch": [],
-          "trace": [],
-          "features": [
-            "printf",
-            "if",
-            "for",
-            "array",
-            "sizeof",
-            "function"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 11,
-      "title": "演習課題3の解説と復習（課題3）",
-      "description": "<p>第10回の未完成コードを完成させたサンプルコードを確認し、<b>関数</b>（引数・戻り値）と <b>配列＋for</b> の典型パターンを復習します。</p>",
-      "assignment": {
-        "title": "演習課題3（解説）：関数でオームの法則（配列版）",
-        "task": "<p>第10回の未完成コードを完成させたサンプルコードを確認し、<b>関数</b>（引数・戻り値）と <b>配列＋for</b> の典型パターンを復習します。</p>",
-        "specs": [
-          "関数 calcI(V,R) を作り、I = V / R を返す（Rのチェックはmain側）",
-          "V_list/R_list の3ケース分を for で処理して I を計算する",
-          "R<=0 の場合は \"R error\" を表示してスキップする",
-          "I を小数3桁で表示する",
-          "有効データの平均電流 avg を表示する（valid==0なら NA）"
-        ],
-        "hints": "ポイント：calcIは V/R を返す。表示は %.3f。sumI+=I, valid++。",
-        "starterCode": "#include <stdio.h>\n\n// 計算専用\ndouble calcI(double V, double R){\n  return V / R;\n}\n\n// 入力チェック込み（成功:1 / 失敗:0）\nint calcI_checked(double V, double R, double *outI){\n  if(R <= 0) return 0;\n  *outI = calcI(V, R);\n  return 1;\n}\n\n// TODO1-1: 新しいmaxを返す\ndouble maxValue(double a, double b){\n  if(???) return a;  // もし、a が b よりも大きければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\n// TODO1-2: 新しいminを返す\ndouble minValue(double a, double b){\n  if(???) return a; // もし、a が b よりも小さければ、a を返す\n  return b;                // そうでない場合は、 b を返す\n}\n\nint main(void){\n  double V_list[] = {5.0, 5.0, 5.0, 12.0, 9.0};        //電圧リスト\n  double R_list[] = {5.0, 10.0, 0.0, 6.0, 3.0};        //抵抗リスト\n  int N = (int)(sizeof(V_list) / sizeof(V_list[0]));\n\n  double sumI = 0.0;\n  int validCount = 0;\n  double maxI = 0.0;\n  double minI = 0.0;\n\n  for(int k = 0; k < N; k++){\n    double V = ???;        //TODO2-1: 電圧リストのk番目\n    double R = ???;        //TODO2-2: 抵抗リストのk番目\n    double I;\n\n    printf(\"case %d: V=%.1f R=%.1f -> \", k + 1, V, R);\n\n    if(!calcI_checked(V, R, &I)){\n      printf(\"R error\\n\");\n      continue;\n    }\n\n    printf(\"I=%.3f\\n\", I);\n\n    sumI += I;\n    if(validCount == 0){\n      maxI = I;\n      minI = I;\n    }else{\n      maxI = ???(maxI, I);       //TODO3-1: 電流の最大値を取得する関数を呼ぶ\n      minI = ???(minI, I);         //TODO3-2: 電流の最小値を取得する関数を呼ぶ\n    }\n    validCount++;\n  }\n\n  if(validCount > 0){\n    printf(\"avg=%.3f\\n\", sumI / validCount);\n    printf(\"max=%.3f\\n\", maxI);\n    printf(\"min=%.3f\\n\", minI);\n  }else{\n    printf(\"avg=NA\\n\");\n    printf(\"max=NA\\n\");\n    printf(\"min=NA\\n\");\n  }\n\n  return 0;\n}\n"
-      },
-      "samples": [
-        {
-          "id": "s11-01",
-          "sampleIndex": 1,
-          "title": "関数 calcI の最小例",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\nint main(void) {\n  // @bp 計算結果を表示\n  printf(\"%.3f\\n\", calcI(5.0, 10.0));\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\ndouble calcI(double V, double R) {\n  return V / R;\n}\n\nint main(void) {\n  // @bp 計算結果を表示\n  printf(\"%.3f\\n\", calcI(5.0, 10.0));\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "計算結果を表示",
-              "stdout": "0.500\n",
-              "vars": {}
-            }
-          ],
-          "features": [
-            "printf",
-            "function"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "0.500\n",
-          "notes": []
-        },
-        {
-          "id": "s11-02",
-          "sampleIndex": 2,
-          "title": "配列で複数ケースを処理（scanfなし）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const int N = 3;\n  double V_list[3] = {5.0, 5.0, 5.0};\n  double R_list[3] = {5.0, 10.0, 0.0};\n\n  for (int k = 0; k < N; k++) {\n    // @bp 各ケースを表示\n    printf(\"%d %.1f %.1f\\n\", k, V_list[k], R_list[k]);\n  }\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const int N = 3;\n  double V_list[3] = {5.0, 5.0, 5.0};\n  double R_list[3] = {5.0, 10.0, 0.0};\n\n  for (int k = 0; k < N; k++) {\n    // @bp 各ケースを表示\n    printf(\"%d %.1f %.1f\\n\", k, V_list[k], R_list[k]);\n  }\n  return 0;\n}",
-          "watch": [
-            "k",
-            "V_list[k]"
-          ],
-          "trace": [
-            {
-              "at": "各ケースを表示",
-              "stdout": "0 5.0 5.0\n",
-              "vars": {
-                "k": 0
-              }
-            },
-            {
-              "at": "各ケースを表示",
-              "stdout": "0 5.0 5.0\n1 5.0 10.0\n",
-              "vars": {
-                "k": 1
-              }
-            },
-            {
-              "at": "各ケースを表示",
-              "stdout": "0 5.0 5.0\n1 5.0 10.0\n2 5.0 0.0\n",
-              "vars": {
-                "k": 2
-              }
-            }
-          ],
-          "features": [
-            "printf",
-            "for",
-            "array"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "0 5.0 5.0\n1 5.0 10.0\n2 5.0 0.0\n",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 12,
-      "title": "入出力（キーボード入力とファイル入出力）",
-      "description": "第12回のサンプルコードをブラウザ上で試すための独立学習環境です。",
-      "assignment": null,
-      "samples": [
-        {
-          "id": "s12-01",
-          "sampleIndex": 1,
-          "title": "scanf（キーボード入力）の最小例",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int x;\n  // @bp 入力を受け取る\n  printf(\"x ? \");\n  // ここではキーボードから 1 つ整数を入力する\n  if (scanf(\"%d\", &x) != 1) {\n    printf(\"input error\\n\");\n    return 0;\n  }\n  // @bp 結果を表示\n  printf(\"x=%d\\n\", x);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int x;\n  // @bp 入力を受け取る\n  printf(\"x ? \");\n  // ここではキーボードから 1 つ整数を入力する\n  if (scanf(\"%d\", &x) != 1) {\n    printf(\"input error\\n\");\n    return 0;\n  }\n  // @bp 結果を表示\n  printf(\"x=%d\\n\", x);\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "入力を受け取る",
-              "vars": {
-                "x": 7
-              },
-              "stdout": "x ? 7\n"
-            },
-            {
-              "at": "結果を表示",
-              "vars": {
-                "x": 7
-              },
-              "stdout": "x ? 7\nx=7\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "scanf",
-            "if"
-          ],
-          "stdinDefault": "7\n",
-          "inputCsvDefault": "",
-          "expectedStdout": "x ? 7\nx=7\n",
-          "notes": []
-        },
-        {
-          "id": "s12-02",
-          "sampleIndex": 2,
-          "title": "scanfで2値入力→計算（V, R → I）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  double v, r;\n  // @bp 入力を受け取る\n  printf(\"V R ? \");\n  if (scanf(\"%lf %lf\", &v, &r) != 2) {\n    printf(\"input error\\n\");\n    return 0;\n  }\n  if (r <= 0) {\n    printf(\"R error\\n\");\n    return 0;\n  }\n  // @bp 電流を表示\n  printf(\"I=%.3f\\n\", v / r);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  double v, r;\n  // @bp 入力を受け取る\n  printf(\"V R ? \");\n  if (scanf(\"%lf %lf\", &v, &r) != 2) {\n    printf(\"input error\\n\");\n    return 0;\n  }\n  if (r <= 0) {\n    printf(\"R error\\n\");\n    return 0;\n  }\n  // @bp 電流を表示\n  printf(\"I=%.3f\\n\", v / r);\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "入力を受け取る",
-              "vars": {
-                "v": 10.0,
-                "r": 5.0
-              },
-              "stdout": "V R ? 10 5\n"
-            },
-            {
-              "at": "電流を表示",
-              "vars": {
-                "v": 10.0,
-                "r": 5.0,
-                "I": 2.0
-              },
-              "stdout": "V R ? 10 5\nI=2.000\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "scanf",
-            "if"
-          ],
-          "stdinDefault": "10 5\n",
-          "inputCsvDefault": "",
-          "expectedStdout": "V R ? 10 5\nI=2.000\n",
-          "notes": []
-        },
-        {
-          "id": "s12-03",
-          "sampleIndex": 3,
-          "title": "ファイル入力（fscanf）：正しい書き方 → 擬似データで実行",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  // VS Code で実行するときは、実際にファイルから読み込みます\n  // このツール上では、下の「擬似データ」部分が有効です\n  const char *inName = \"data.txt\";\n\n  double V[100], R[100];\n  int n = 0;\n\n  /* ----------------------------\n   * 【本来の実装】ファイルから読み込む（正しい書き方）\n   * 1行に V R（空白区切り）\n   * 例: 10 5\n   * ---------------------------- */\n  /*\n  FILE *fp = fopen(inName, \"r\");\n  if (fp == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  while (n < 100 && fscanf(fp, \"%lf %lf\", &V[n], &R[n]) == 2) {\n    n++;\n  }\n\n  fclose(fp);\n  */\n\n  /* ----------------------------\n   * 【ツール用】擬似的に配列から読み込む（data.txt相当）\n   * ※ data.txt の先頭数行と同じデータ\n   * ---------------------------- */\n  {\n    double v_dummy[] = {10, 12, 8, 15};\n    double r_dummy[] = {5, 0, 4, 7};\n    int dummy_n = (int)(sizeof(v_dummy) / sizeof(v_dummy[0]));\n\n    for (int i = 0; i < dummy_n && i < 100; i++) {\n      V[i] = v_dummy[i];\n      R[i] = r_dummy[i];\n    }\n    n = dummy_n;\n  }\n\n  // --- ここから共通処理（読み込んだデータを使う）---\n  double sumI = 0.0;\n  int valid = 0;\n\n  for (int i = 0; i < n; i++) {\n    if (R[i] <= 0) {\n      // @bp 各行を処理\n      printf(\"R error\\n\");\n      continue;\n    }\n    double I = V[i] / R[i];\n    // @bp 各行を処理\n    printf(\"I=%.3f\\n\", I);\n    sumI += I;\n    valid++;\n  }\n\n  // @bp 平均を表示\n  if (valid > 0) {\n    printf(\"avg=%.3f\\n\", sumI / valid);\n  } else {\n    printf(\"avg=NA\\n\");\n  }\n\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void){\n  const char *inName = \"input.csv\";\n\n  double V[100], R[100];\n  int n = 0;\n\n  FILE *fp = fopen(inName, \"r\");\n  if(fp == NULL){\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  while(n < 100 && fscanf(fp, \"%lf %lf\", &V[n], &R[n]) == 2){\n    n++;\n  }\n\n  fclose(fp);\n\n  double sumI = 0.0;\n  int valid = 0;\n\n  for(int i=0; i<n; i++){\n    if(R[i] <= 0){\n      printf(\"R error\\n\");\n      continue;\n    }\n    double I = V[i] / R[i];\n    printf(\"I=%.3f\\n\", I);\n    sumI += I;\n    valid++;\n  }\n\n  if(valid > 0) printf(\"avg=%.3f\\n\", sumI / valid);\n  else          printf(\"avg=NA\\n\");\n\n  return 0;\n}\n",
-          "watch": [
-            "i",
-            "n",
-            "V[n]"
-          ],
-          "trace": [
-            {
-              "at": "各行を処理",
-              "vars": {
-                "i": 0,
-                "n": 4
-              },
-              "stdout": "I=2.000\n"
-            },
-            {
-              "at": "各行を処理",
-              "vars": {
-                "i": 1,
-                "n": 4
-              },
-              "stdout": "I=2.000\nR error\n"
-            },
-            {
-              "at": "各行を処理",
-              "vars": {
-                "i": 2,
-                "n": 4
-              },
-              "stdout": "I=2.000\nR error\nI=2.000\n"
-            },
-            {
-              "at": "各行を処理",
-              "vars": {
-                "i": 3,
-                "n": 4
-              },
-              "stdout": "I=2.000\nR error\nI=2.000\nI=2.143\n"
-            },
-            {
-              "at": "平均を表示",
-              "vars": {
-                "sumI": 6.142857,
-                "valid": 3
-              },
-              "stdout": "I=2.000\nR error\nI=2.000\nI=2.143\navg=2.048\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "fopen",
-            "fclose",
-            "fscanf",
-            "if",
-            "for",
-            "while",
-            "array"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "10 5\n12 0\n8 4\n15 7\n",
-          "expectedStdout": "I=2.000\nR error\nI=2.000\nI=2.143\navg=2.048\n",
-          "notes": []
-        },
-        {
-          "id": "s12-04",
-          "sampleIndex": 4,
-          "title": "ファイル出力（fprintf）：正しい書き方 → 画面に擬似出力",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const char *outName = \"output12.txt\";\n\n  /* ----------------------------\n   * 【本来の実装】ファイルへ書き込む（正しい書き方）\n   * ---------------------------- */\n  /*\n  FILE *fp = fopen(outName, \"w\");\n  if (fp == NULL) {\n    printf(\"open error: %s\\n\", outName);\n    return 0;\n  }\n\n  // 例：I の計算結果を保存する\n  fprintf(fp, \"I=%.3f\\n\", 2.000);\n  fprintf(fp, \"I=%.3f\\n\", 2.143);\n\n  fclose(fp);\n  printf(\"%s に保存しました\\n\", outName);\n  return 0;\n  */\n\n  /* ----------------------------\n   * 【ツール用】擬似的に「保存する内容」を画面に表示\n   * ---------------------------- */\n  // @bp 保存先を表示\n  printf(\"[write] %s\\n\", outName);\n  // @bp 1件目を書き出し\n  printf(\"I=2.000\\n\");\n  // @bp 2件目を書き出し\n  printf(\"I=2.143\\n\");\n  // @bp 完了を表示\n  printf(\"(done)\\n\");\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void){\n  const char *outName = \"output.csv\";\n\n  FILE *fp = fopen(outName, \"w\");\n  if(fp == NULL){\n    printf(\"open error: %s\\n\", outName);\n    return 0;\n  }\n\n  printf(\"[write] %s\\n\", outName);\n  fprintf(fp, \"I=%.3f\\n\", 2.000);\n  fprintf(fp, \"I=%.3f\\n\", 2.143);\n\n  fclose(fp);\n  printf(\"%s に保存しました\\n\", outName);\n  return 0;\n}\n",
-          "watch": [],
-          "trace": [
-            {
-              "at": "保存先を表示",
-              "vars": {
-                "outName": "output12.txt"
-              },
-              "stdout": "[write] output12.txt\n"
-            },
-            {
-              "at": "1件目を書き出し",
-              "vars": {
-                "outName": "output12.txt"
-              },
-              "stdout": "[write] output12.txt\nI=2.000\n"
-            },
-            {
-              "at": "2件目を書き出し",
-              "vars": {
-                "outName": "output12.txt"
-              },
-              "stdout": "[write] output12.txt\nI=2.000\nI=2.143\n"
-            },
-            {
-              "at": "完了を表示",
-              "vars": {},
-              "stdout": "[write] output12.txt\nI=2.000\nI=2.143\n(done)\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "fopen",
-            "fclose",
-            "fprintf",
-            "if"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "[write] output.csv\noutput.csv に保存しました\n",
-          "notes": []
-        },
-        {
-          "id": "s12-05",
-          "sampleIndex": 5,
-          "title": "構造体 `Stats` の最小確認",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\nint main(void) {\n  Stats st = {0.0, 0};\n\n  // @bp 値を更新\n  st.sumI += 1.2;\n  st.valid++;\n\n  // @bp 結果を表示\n  printf(\"sumI=%.1f valid=%d\\n\", st.sumI, st.valid);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\nint main(void) {\n  Stats st = {0.0, 0};\n\n  // @bp 値を更新\n  st.sumI += 1.2;\n  st.valid++;\n\n  // @bp 結果を表示\n  printf(\"sumI=%.1f valid=%d\\n\", st.sumI, st.valid);\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "初期値を用意",
-              "vars": {
-                "sumI": 0.0,
-                "valid": 0
-              },
-              "stdout": ""
-            },
-            {
-              "at": "結果を表示",
-              "vars": {
-                "sumI": 1.2,
-                "valid": 1
-              },
-              "stdout": "sumI=1.2 valid=1\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "struct"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "sumI=1.2 valid=1\n",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 13,
-      "title": "電気回路とプログラミング4（演習課題4）",
-      "description": "<p>ファイル <b>data.txt</b> から (V, R) を読み込み、I=V/R を計算して表示します。</p><p>この回は <b>fopen / fscanf / fclose</b> がポイントです。</p>",
-      "assignment": {
-        "title": "演習課題4：ファイル入力でデータ処理（ファイル入出力）",
-        "task": "<p>ファイル <b>data.txt</b> から (V, R) を読み込み、I=V/R を計算して表示します。</p><p>この回は <b>fopen / fscanf / fclose</b> がポイントです。</p>",
-        "specs": [
-          "data.txt を読み取りで開く。",
-          "result.txt を書き込みで開く。",
-          "while(fscanf(... )==2) で V と R を1行ずつ読み取り、I=V/R を計算する。",
-          "R<=0 の行は \"skip (R error)\" を表示してスキップする。",
-          "有効な行は result.txt に出力し、最後に平均 avg を表示する。"
-        ],
-        "hints": "ヒント：while(fscanf(fp, \"%lf %lf\", &V, &R) == 2) が定番です。最後に fclose(fp) を忘れずに。",
-        "starterCode": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name){\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name){\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout){\n  Stats st = {0.0, 0};\n  double V, R;\n\n// TODO2-1: 値をファイルから読み込み\n  while(???(fin, \"%lf %lf\", &V, &R) == 2){\n    if(R <= 0){\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st){\n  if(st.valid > 0) printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  else          printf(\"avg=NA\\n\");\n}\n\nint main(void){\n  const char *inName = \"input.csv\";\n  const char *outName = \"output.csv\";\n\n  FILE *fin = openInputFile(inName);\n  if(fin == NULL){\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if(fout == NULL){\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n\n  return 0;\n}"
-      },
-      "samples": [
-        {
-          "id": "s13-01",
-          "sampleIndex": 1,
-          "title": "未完成コード（課題）",
-          "mode": "edit-run",
-          "originalCode": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name) {\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name) {\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout) {\n  Stats st = {0.0, 0};\n  double V, R;\n\n  // TODO2-1: 値をファイルから読み込み\n  while (???(fin, \"%lf %lf\", &V, &R) == 2) {\n    if (R <= 0) {\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st) {\n  if (st.valid > 0) {\n    printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  } else {\n    printf(\"avg=NA\\n\");\n  }\n}\n\nint main(void) {\n  const char *inName = \"data.txt\";\n  const char *outName = \"result.txt\";\n\n  FILE *fin = openInputFile(inName);\n  if (fin == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if (fout == NULL) {\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name) {\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name) {\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout) {\n  Stats st = {0.0, 0};\n  double V, R;\n\n  // TODO2-1: 値をファイルから読み込み\n  while (???(fin, \"%lf %lf\", &V, &R) == 2) {\n    if (R <= 0) {\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st) {\n  if (st.valid > 0) {\n    printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  } else {\n    printf(\"avg=NA\\n\");\n  }\n}\n\nint main(void) {\n  const char *inName = \"input.csv\";\n  const char *outName = \"output.csv\";\n\n  FILE *fin = openInputFile(inName);\n  if (fin == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if (fout == NULL) {\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n  return 0;\n}",
-          "watch": [],
-          "trace": [],
-          "features": [
-            "printf",
-            "fclose",
-            "if",
-            "while",
-            "struct",
-            "function"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "10 5\n12 0\n8 4\n",
-          "expectedStdout": "",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 14,
-      "title": "演習課題4の解説と復習（課題4）",
-      "description": "<p>ファイル <b>data.txt</b> から (V, R) を読み込み、I=V/R を計算して表示します。</p><p>この回は <b>fopen / fscanf / fclose</b> がポイントです。</p>",
-      "assignment": {
-        "title": "演習課題4：ファイル入力でデータ処理（ファイル入出力）",
-        "task": "<p>ファイル <b>data.txt</b> から (V, R) を読み込み、I=V/R を計算して表示します。</p><p>この回は <b>fopen / fscanf / fclose</b> がポイントです。</p>",
-        "specs": [
-          "data.txt を読み取りで開く。",
-          "result.txt を書き込みで開く。",
-          "while(fscanf(... )==2) で V と R を1行ずつ読み取り、I=V/R を計算する。",
-          "R<=0 の行は \"skip (R error)\" を表示してスキップする。",
-          "有効な行は result.txt に出力し、最後に平均 avg を表示する。"
-        ],
-        "hints": "ヒント：while(fscanf(fp, \"%lf %lf\", &V, &R) == 2) が定番です。最後に fclose(fp) を忘れずに。",
-        "starterCode": "#include <stdio.h>\n\ntypedef struct {\n  double sumI;\n  int valid;\n} Stats;\n\n// TODO1-1: 入力ファイルを開く\nFILE *openInputFile(const char *name){\n  FILE *fin = ???(name, \"r\");\n  return fin;\n}\n\n// TODO1-2: 出力ファイルを開く\nFILE *openOutputFile(const char *name){\n  FILE *fout = ???(name, \"w\");\n  return fout;\n}\n\n// 読み込み → 処理 → 書き込み\nStats processAndWrite(FILE *fin, FILE *fout){\n  Stats st = {0.0, 0};\n  double V, R;\n\n// TODO2-1: 値をファイルから読み込み\n  while(???(fin, \"%lf %lf\", &V, &R) == 2){\n    if(R <= 0){\n      printf(\"skip (R error)\\n\");\n      continue;\n    }\n    double I = V / R;\n    ???(fout, \"%.3f\\n\", I);      // TODO2-2: 値をファイルに出力（書き込み）\n    printf(\"I=%.3f (write)\\n\", I);\n    st.sumI += I;\n    st.valid++;\n  }\n  return st;\n}\n\n// 結果（電流の平均値）を画面に出力する\nvoid printSummary(Stats st){\n  if(st.valid > 0) printf(\"avg=%.3f\\n\", st.sumI / st.valid);\n  else          printf(\"avg=NA\\n\");\n}\n\nint main(void){\n  const char *inName = \"input.csv\";\n  const char *outName = \"output.csv\";\n\n  FILE *fin = openInputFile(inName);\n  if(fin == NULL){\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  FILE *fout = openOutputFile(outName);\n  if(fout == NULL){\n    printf(\"open error: %s\\n\", outName);\n    fclose(fin);\n    return 0;\n  }\n\n  Stats st = processAndWrite(fin, fout);\n\n  ???(fin);       //TODO3-1: ファイルを閉じる\n  ???(fout);      //TODO3-2: ファイルを閉じる\n\n  // TODO4: まとめ（電流の平均値）を出力する関数を呼び出す\n  ???(st);\n\n  return 0;\n}"
-      },
-      "samples": [
-        {
-          "id": "s14-01",
-          "sampleIndex": 1,
-          "title": "ファイルを開く→値を表示→閉じる（最小）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  const char *inName = \"data.txt\";\n  // @bp ファイルを開く\n  FILE *fin = fopen(inName, \"r\");\n  if (fin == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  double V, R;\n\n  while (fscanf(fin, \"%lf %lf\", &V, &R) == 2) {\n    // @bp 1行を表示\n    printf(\"V=%.1f R=%.1f\\n\", V, R);\n  }\n\n  fclose(fin);\n  // @bp 完了を表示\n  printf(\"done\\n\");\n\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  const char *inName = \"input.csv\";\n  // @bp ファイルを開く\n  FILE *fin = fopen(inName, \"r\");\n  if (fin == NULL) {\n    printf(\"open error: %s\\n\", inName);\n    return 0;\n  }\n\n  double V, R;\n\n  while (fscanf(fin, \"%lf %lf\", &V, &R) == 2) {\n    // @bp 1行を表示\n    printf(\"V=%.1f R=%.1f\\n\", V, R);\n  }\n\n  fclose(fin);\n  // @bp 完了を表示\n  printf(\"done\\n\");\n\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "ファイルを開く",
-              "vars": {
-                "inName": "data.txt"
-              },
-              "stdout": ""
-            },
-            {
-              "at": "1行を表示",
-              "vars": {
-                "V": 10.0,
-                "R": 5.0
-              },
-              "stdout": "V=10.0 R=5.0\n"
-            },
-            {
-              "at": "1行を表示",
-              "vars": {
-                "V": 10.0,
-                "R": 5.0
-              },
-              "stdout": "V=10.0 R=5.0\n"
-            },
-            {
-              "at": "1行を表示",
-              "vars": {
-                "V": 12.0,
-                "R": 0.0
-              },
-              "stdout": "V=10.0 R=5.0\nV=12.0 R=0.0\n"
-            },
-            {
-              "at": "1行を表示",
-              "vars": {
-                "V": 8.0,
-                "R": 4.0
-              },
-              "stdout": "V=10.0 R=5.0\nV=12.0 R=0.0\nV=8.0 R=4.0\n"
-            },
-            {
-              "at": "完了を表示",
-              "vars": {},
-              "stdout": "V=10.0 R=5.0\nV=12.0 R=0.0\nV=8.0 R=4.0\ndone\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "fopen",
-            "fclose",
-            "fscanf",
-            "if",
-            "while"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "10 5\n12 0\n8 4\n",
-          "expectedStdout": "V=10.0 R=5.0\nV=12.0 R=0.0\nV=8.0 R=4.0\ndone\n",
-          "notes": []
-        }
-      ]
-    },
-    {
-      "sessionNo": 15,
-      "title": "総括：今後の学習へ（発展：ソート等）",
-      "description": "第15回のサンプルコードをブラウザ上で試すための独立学習環境です。",
-      "assignment": null,
-      "samples": [
-        {
-          "id": "s15-01",
-          "sampleIndex": 1,
-          "title": "線形探索（見つけたら位置）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a[4] = {3, 7, 2, 5};\n  int key = 2, pos = -1;\n\n  for (int i = 0; i < 4; i++) {\n    // @bp 一致を確認\n    if (a[i] == key) {\n      pos = i;\n      break;\n    }\n  }\n\n  // @bp 位置を表示\n  printf(\"%d\\n\", pos);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a[4] = {3, 7, 2, 5};\n  int key = 2, pos = -1;\n\n  for (int i = 0; i < 4; i++) {\n    // @bp 一致を確認\n    if (a[i] == key) {\n      pos = i;\n      break;\n    }\n  }\n\n  // @bp 位置を表示\n  printf(\"%d\\n\", pos);\n  return 0;\n}",
-          "watch": [
-            "i",
-            "pos",
-            "key",
-            "a[i]"
-          ],
-          "trace": [
-            {
-              "at": "一致を確認",
-              "vars": {
-                "i": 0,
-                "pos": -1
-              },
-              "stdout": ""
-            },
-            {
-              "at": "一致を確認",
-              "vars": {
-                "i": 1,
-                "pos": -1
-              },
-              "stdout": ""
-            },
-            {
-              "at": "一致を確認",
-              "vars": {
-                "i": 2,
-                "pos": 2
-              },
-              "stdout": ""
-            },
-            {
-              "at": "位置を表示",
-              "vars": {
-                "pos": 2
-              },
-              "stdout": "2\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "if",
-            "for",
-            "array"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "2\n",
-          "notes": []
-        },
-        {
-          "id": "s15-02",
-          "sampleIndex": 2,
-          "title": "バブルソート（2回だけのイメージ）",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint main(void) {\n  int a[3] = {3, 1, 2};\n  // @bp 配列を用意\n  int n = (int)(sizeof(a) / sizeof(a[0]));  // 配列の要素数\n\n  // バブルソート（n=3なので外側は2回）\n  for (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - 1 - i; j++) {\n      if (a[j] > a[j + 1]) {\n        int tmp = a[j];\n        a[j] = a[j + 1];\n        a[j + 1] = tmp;\n      }\n    }\n  }\n\n  // 結果表示\n  // @bp 並べ替え結果を表示\n  for (int k = 0; k < n; k++) {\n    printf(\"%d\", a[k]);\n    if (k < n - 1) printf(\" \");\n  }\n  printf(\"\\n\");\n\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint main(void) {\n  int a[3] = {3, 1, 2};\n  // @bp 配列を用意\n  int n = (int)(sizeof(a) / sizeof(a[0]));  // 配列の要素数\n\n  // バブルソート（n=3なので外側は2回）\n  for (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - 1 - i; j++) {\n      if (a[j] > a[j + 1]) {\n        int tmp = a[j];\n        a[j] = a[j + 1];\n        a[j + 1] = tmp;\n      }\n    }\n  }\n\n  // 結果表示\n  // @bp 並べ替え結果を表示\n  for (int k = 0; k < n; k++) {\n    printf(\"%d\", a[k]);\n    if (k < n - 1) printf(\" \");\n  }\n  printf(\"\\n\");\n\n  return 0;\n}",
-          "watch": [
-            "i",
-            "j",
-            "k",
-            "n",
-            "a[j]"
-          ],
-          "trace": [
-            {
-              "at": "配列を用意",
-              "vars": {
-                "a": "3, 1, 2"
-              },
-              "stdout": ""
-            },
-            {
-              "at": "並べ替え結果を表示",
-              "vars": {
-                "a": "1, 2, 3"
-              },
-              "stdout": "1 2 3\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "if",
-            "for",
-            "array",
-            "sizeof"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "1 2 3\n",
-          "notes": []
-        },
-        {
-          "id": "s15-03",
-          "sampleIndex": 3,
-          "title": "関数の復習：min関数",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\nint min2(int a, int b) {\n  return (a < b) ? a : b;\n}\n\nint main(void) {\n  // @bp 最小値を表示\n  printf(\"%d\\n\", min2(3, 5));\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\nint min2(int a, int b) {\n  return (a < b) ? a : b;\n}\n\nint main(void) {\n  // @bp 最小値を表示\n  printf(\"%d\\n\", min2(3, 5));\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "最小値を表示",
-              "vars": {},
-              "stdout": "3\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "function"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "3\n",
-          "notes": []
-        },
-        {
-          "id": "s15-04",
-          "sampleIndex": 4,
-          "title": "構造体（struct）：RLCの定数と状態をまとめる",
-          "mode": "run",
-          "originalCode": "#include <stdio.h>\n\ntypedef struct {\n  double R, L, C;\n} RLCParam;\n\ntypedef struct {\n  double i;\n  double vc;\n} State;\n\nint main(void) {\n  // @bp 値を用意\n  RLCParam p = {10.0, 0.1, 0.0001};\n  State x = {0.0, 1.0};  // i0, Vc0\n\n  // @bp di/dtを計算\n  double didt = -(p.R / p.L) * x.i - (1.0 / p.L) * x.vc;\n  // @bp dVc/dtを計算\n  double dvcdt = (1.0 / p.C) * x.i;\n\n  // @bp 結果を表示\n  printf(\"di/dt=%.3f dVc/dt=%.3f\\n\", didt, dvcdt);\n  return 0;\n}",
-          "browserCode": "#include <stdio.h>\n\ntypedef struct {\n  double R, L, C;\n} RLCParam;\n\ntypedef struct {\n  double i;\n  double vc;\n} State;\n\nint main(void) {\n  // @bp 値を用意\n  RLCParam p = {10.0, 0.1, 0.0001};\n  State x = {0.0, 1.0};  // i0, Vc0\n\n  // @bp di/dtを計算\n  double didt = -(p.R / p.L) * x.i - (1.0 / p.L) * x.vc;\n  // @bp dVc/dtを計算\n  double dvcdt = (1.0 / p.C) * x.i;\n\n  // @bp 結果を表示\n  printf(\"di/dt=%.3f dVc/dt=%.3f\\n\", didt, dvcdt);\n  return 0;\n}",
-          "watch": [],
-          "trace": [
-            {
-              "at": "値を用意",
-              "vars": {
-                "p.R": 10.0,
-                "p.L": 0.1,
-                "p.C": 0.0001,
-                "x.i": 0.0,
-                "x.vc": 1.0
-              },
-              "stdout": ""
-            },
-            {
-              "at": "di/dtを計算",
-              "vars": {
-                "p.R": 10.0,
-                "p.L": 0.1,
-                "p.C": 0.0001,
-                "x.i": 0.0,
-                "x.vc": 1.0,
-                "didt": -10.0
-              },
-              "stdout": ""
-            },
-            {
-              "at": "dVc/dtを計算",
-              "vars": {
-                "p.R": 10.0,
-                "p.L": 0.1,
-                "p.C": 0.0001,
-                "x.i": 0.0,
-                "x.vc": 1.0,
-                "didt": -10.0,
-                "dvcdt": 0.0
-              },
-              "stdout": ""
-            },
-            {
-              "at": "結果を表示",
-              "vars": {
-                "didt": -10.0,
-                "dvcdt": 0.0
-              },
-              "stdout": "di/dt=-10.000 dVc/dt=0.000\n"
-            }
-          ],
-          "features": [
-            "printf",
-            "struct"
-          ],
-          "stdinDefault": "",
-          "inputCsvDefault": "",
-          "expectedStdout": "di/dt=-10.000 dVc/dt=0.000\n",
-          "notes": []
-        }
-      ]
     }
-  ]
-}
 ;
 
     /* --- CEmu Runtime --- */
@@ -3687,6 +3801,9 @@
         text.split("\n").forEach((line, i) => {
           const trimmed = line.trim();
           if (trimmed.startsWith("#")) {
+            if (trimmed.startsWith("#define _CRT_SECURE_NO_WARNINGS")) {
+              return;
+            }
             const match = trimmed.match(/^#include\s*[<"]([^>"]+)[>"]$/);
             if (match) {
               if (match[1] !== SUPPORTED_HEADER) {
