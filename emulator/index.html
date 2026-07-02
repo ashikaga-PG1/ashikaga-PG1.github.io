@@ -3922,6 +3922,7 @@ return main();
       const STATE_KEY = "cemu-state-v1";
       const FREE_STATE_KEY = "cemu-free-input-v1";
       const MODE_KEY = "cemu-current-mode-v1";
+      const SAMPLE_DATA_REVISION = 2;
 
       const DEFAULT_FREE_INPUT_CODE = `#include <stdio.h>\n\nint main(void) {\n  printf("Hello, world!\\n");\n  return 0;\n}`;
 
@@ -3998,6 +3999,9 @@ return main();
             state.currentSessionNo = Number(parsed.currentSessionNo || 1);
             state.currentSampleId = parsed.currentSampleId || null;
             state.drafts = parsed.drafts || {};
+            if (Number(parsed.sampleDataRevision || 0) < SAMPLE_DATA_REVISION) {
+              delete state.drafts["s12-03"];
+            }
             state.studentId = String(parsed.studentId || "");
             state.collapsedPanels = {
               ...state.collapsedPanels,
@@ -4027,6 +4031,7 @@ return main();
               JSON.stringify({
                 currentSessionNo: state.currentSessionNo,
                 currentSampleId: state.currentSampleId,
+                sampleDataRevision: SAMPLE_DATA_REVISION,
                 drafts: state.drafts,
                 studentId: state.studentId,
                 collapsedPanels: state.collapsedPanels,
