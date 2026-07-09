@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     --bg-deep: #030a16;
     --bg-dark: #051121;
     --accent-blue: #3b82f6;
@@ -270,6 +270,22 @@ body {
     color: #34d399;
 }
 
+
+.codespace-card:hover {
+    border-color: rgba(34, 211, 238, 0.45);
+    box-shadow: 0 30px 60px rgba(34, 211, 238, 0.14);
+}
+.codespace-card .card-icon {
+    background: rgba(34, 211, 238, 0.1);
+    color: var(--accent-cyan);
+}
+.codespace-card:hover .card-icon {
+    background: var(--accent-cyan);
+    color: var(--bg-deep);
+}
+.codespace-card:hover .action-label {
+    color: var(--accent-cyan);
+}
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .entry-grid {
@@ -279,3 +295,4 @@ body {
         padding: 30px;
     }
 }
+

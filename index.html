@@ -9,10 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Entrance Gate Style */
         #portalGate {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(3, 10, 22, 0.8);
             backdrop-filter: blur(20px);
             z-index: 9999;
@@ -25,11 +27,24 @@
             background: rgba(15, 23, 42, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 50px;
-            border-radius: 32px;
+            border-radius: 24px;
             text-align: center;
             max-width: 400px;
             width: 90%;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+        }
+        .gate-mark {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(59, 130, 246, 0.45);
+            color: var(--accent-cyan);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.08em;
         }
         .gate-card h2 { font-family: 'Outfit', sans-serif; margin-bottom: 8px; font-size: 2rem; }
         .gate-card p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 30px; }
@@ -50,9 +65,9 @@
 <body>
     <div id="portalGate">
         <div class="gate-card">
-            <div style="font-size:3rem; margin-bottom:20px;">🔒</div>
+            <div class="gate-mark">PG1</div>
             <h2>Student Access</h2>
-            <p>このプラットフォームは受講生専用です。<br>案内されたパスワードを入力してください。</p>
+            <p>このポータルは受講生専用です。<br>授業で案内されたアクセスコードを入力してください。</p>
             <input type="password" id="gatePass" placeholder="Enter Access Code" autofocus>
             <button onclick="unlockPortal()">Unlock Portal</button>
             <div id="gateError" style="color:#ef4444; margin-top:15px; font-size:0.85rem; height:1.2em;"></div>
@@ -68,20 +83,19 @@
         <section class="hero-section">
             <p class="eyebrow">DEPARTMENT OF ELECTRICAL ENGINEERING</p>
             <h1 class="main-title">Programming 1<span class="sub-title">Unified Education Portal</span></h1>
-            <p class="hero-desc">講義資料、演習課題、学習用ゲームを統合した受講生専用プラットフォームです。</p>
-            
+            <p class="hero-desc">講義資料、環境構築、ブラウザ実行環境、学習ゲームをまとめたプログラミングIの入口です。</p>
+
             <div style="margin-top: 30px; font-size: 0.85rem; color: var(--accent-gold); opacity: 0.9; line-height: 1.6; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;">
-                <div>※ 環境によりバックスラッシュ（\）が円記号（¥）として表示される場合がありますが、同様に扱われます。</div>
+                <div>環境によってバックスラッシュ（\）が円記号（¥）として表示される場合がありますが、同じ記号として扱ってください。</div>
                 <div style="margin-top: 10px; border-top: 1px solid rgba(245, 158, 11, 0.2); padding-top: 10px;">
-                    ⚠️ <b>Visual Studio を使用する学生へ:</b><br>
-                    第12回〜14回のキーボード入力やファイル入出力プログラムでは、ビルドエラー（C4996）を防ぐため、プログラムの<b>1行目</b>（<code>#include</code> より上）に以下を記述してください。<br>
+                    <b>Visual Studio を使用する学生へ:</b><br>
+                    第12回・第14回のキーボード入力やファイル入出力のプログラムでは、ビルドエラーを防ぐため、プログラムの1行目に次を記述してください。<br>
                     <code style="display: inline-block; background: rgba(0, 0, 0, 0.4); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #fff; margin-top: 4px;">#define _CRT_SECURE_NO_WARNINGS</code>
                 </div>
             </div>
         </section>
 
         <nav class="entry-grid">
-            <!-- 1. Assignment & Lecture -->
             <a href="lecture/index.html" class="portal-card lecture-card">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -90,12 +104,11 @@
                 </div>
                 <div class="card-content">
                     <h2>Assignment & Lecture</h2>
-                    <p>講義スライド、サンプルコード、および課題の確認・解答解説はこちらから。</p>
+                    <p>講義スライド、サンプルコード、課題の確認と解説はこちらから。</p>
                     <span class="action-label">課題と資料を確認する &rarr;</span>
                 </div>
             </a>
 
-            <!-- 2. Environment & Review -->
             <a href="lecture/setup.html" class="portal-card review-card">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -105,12 +118,24 @@
                 </div>
                 <div class="card-content">
                     <h2>Environment & Review</h2>
-                    <p>環境構築手順（VSCode/GCC）と、基本構文・制御構造の要点まとめ。</p>
+                    <p>VSCode/GCCのローカル環境構築と、基本構文・制御構造の要点まとめ。</p>
                     <span class="action-label">環境と要点を確認する &rarr;</span>
                 </div>
             </a>
 
-            <!-- 3. C Emulator -->
+            <a href="codespace/index.html" class="portal-card codespace-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h2>GitHub Codespaces</h2>
+                    <p>ブラウザだけでC言語の開発環境を起動する手順。GitHub登録からHello, World、終了操作まで。</p>
+                    <span class="action-label">オンライン環境を準備する &rarr;</span>
+                </div>
+            </a>
+
             <a href="emulator/index.html" class="portal-card emulator-card">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -119,12 +144,11 @@
                 </div>
                 <div class="card-content">
                     <h2>C Emulator</h2>
-                    <p>ブラウザ上でC言語を即座に実行できる練習環境。ちょっとした動作確認に。</p>
+                    <p>ブラウザ上でC言語をすぐに実行できる練習環境。小さな動作確認に使えます。</p>
                     <span class="action-label">エミュレータを起動する &rarr;</span>
                 </div>
             </a>
 
-            <!-- 4. Circuit Quest -->
             <a href="game/index.html" class="portal-card game-card">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -133,7 +157,7 @@
                 </div>
                 <div class="card-content">
                     <h2>Circuit Quest</h2>
-                    <p>電気回路のデバッグをテーマにした学習ゲーム。遊びながら論理力を鍛えます。</p>
+                    <p>電気回路のデバッグをテーマにした学習ゲーム。遊びながら読解力を鍛えます。</p>
                     <span class="action-label">クエストを開始する &rarr;</span>
                 </div>
             </a>
@@ -145,13 +169,13 @@
     </main>
 
     <script>
-        const PORTAL_CODE = "pg1-2026"; // ポータル全体のパスワード
+        const PORTAL_CODE = "pg1-2026";
 
         function unlockPortal() {
             const pass = document.getElementById('gatePass').value;
             const gate = document.getElementById('portalGate');
             const err = document.getElementById('gateError');
-            
+
             if (pass === PORTAL_CODE) {
                 gate.classList.add('hidden');
                 sessionStorage.setItem('portal_unlocked', 'true');
@@ -161,12 +185,10 @@
             }
         }
 
-        // 初期チェック
         if (sessionStorage.getItem('portal_unlocked') === 'true') {
             document.getElementById('portalGate').classList.add('hidden');
         }
 
-        // Enterキー対応
         document.getElementById('gatePass').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') unlockPortal();
         });
